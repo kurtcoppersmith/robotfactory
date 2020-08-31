@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameClock : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class GameClock : MonoBehaviour
     float milliseconds;
 
     //In game UI Text which displays the current timer
-    public Text timeText;
+    //public Text timeText;
+    public TextMeshProUGUI timeTextTMP;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,7 @@ public class GameClock : MonoBehaviour
         milliseconds = (clockTime % 1) * 100;
 
   
-        timeText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
+        //timeText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
+        timeTextTMP.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
     }
 }
