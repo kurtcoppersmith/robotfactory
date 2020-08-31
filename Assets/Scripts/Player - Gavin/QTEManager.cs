@@ -80,6 +80,7 @@ public class QTEManager : MonoBehaviour
             QTETimer -= Time.deltaTime;
 
             QTETimerImage.fillAmount = (((QTETimer - 0) * (1 - 0)) / (maxQTETimer - 0)) + 0;
+            QTETimerImage.transform.SetAsFirstSibling();
 
             if (QTETimer <= 0)
             {
@@ -91,6 +92,12 @@ public class QTEManager : MonoBehaviour
     void GetNextKey()
     {
         QTEBuffer -= Time.deltaTime;
+
+        if (QTEBuffer <= initialQTEBuffer / 2 && !playerModel.playerMovement.canMove)
+        {
+            playerModel.playerMovement.canMove = true;
+        }
+
         if (QTEBuffer <= 0)
         {
             currentKey = (QTEOptions)Random.Range(0, (int)QTEOptions.QTEOptionsSize);
@@ -122,8 +129,15 @@ public class QTEManager : MonoBehaviour
 
     public void Passed()
     {
+        if (playerModel.playerState != PlayerModel.PlayerState.Carrying)
+        {
+            return;
+        }
+
         QTETimerImage.fillAmount = 0;
         Debug.Log("Passed!");
+
+        playerModel.RemoveCurrentPickup();
 
         playerModel.ChangeState(PlayerModel.PlayerState.Moving);
     }
@@ -131,6 +145,9 @@ public class QTEManager : MonoBehaviour
     void Fail()
     {
         Debug.Log("FAIL!");
+
+        playerModel.RemoveCurrentPickup();
+
         playerModel.ChangeState(PlayerModel.PlayerState.Stunned);
     }
 

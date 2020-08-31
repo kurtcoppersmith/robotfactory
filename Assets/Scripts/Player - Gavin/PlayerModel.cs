@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class PlayerModel : MonoBehaviour
 {
@@ -12,6 +13,14 @@ public class PlayerModel : MonoBehaviour
 
     public PlayerMovement playerMovement { get; private set; }
     public QTEManager qteManager { get; private set; }
+
+    public PlayerPickup playerPickup;
+
+    public BoxCollider pickupColliderGizmo;
+
+    public Transform carryingPosition;
+
+    public GameObject currentPickup { get; private set; } = null;
 
     public Canvas QTECanvas;
     
@@ -37,7 +46,7 @@ public class PlayerModel : MonoBehaviour
     public enum PlayerState
     {
         Moving,
-        Attacking,
+        Carrying,
         Stunned
     }
 
@@ -50,15 +59,49 @@ public class PlayerModel : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        DebugExtension.DebugWireSphere(transform.position, Color.red, maxAttackRadius);
+        DebugExtension.DebugBounds(pickupColliderGizmo.bounds, Color.red);
     }
 
     void OnBoxPickup(InputValue inputValue)
     {
-        if (playerState == PlayerState.Moving)
+        if (currentPickup != null)
         {
-            ChangeState(PlayerState.Attacking);
+            return;
         }
+        GameObject pickup = null;
+
+        for (int i = 0; i < playerPickup.currentColliders.Count; i++)
+        {
+            if (playerPickup.currentColliders[i].gameObject.tag == "Pickup")
+            {
+                pickup = playerPickup.currentColliders[i].gameObject;
+                break;
+            }
+        }
+
+        if (pickup == null)
+        {
+            return;
+        }
+        else
+        {
+            pickup.transform.parent = this.gameObject.transform;
+            currentPickup = pickup;
+            pickup.transform.DOMove(carryingPosition.position, qteManager.initialQTEBuffer / 2);
+            
+            if (playerState == PlayerState.Moving)
+            {
+                ChangeState(PlayerState.Carrying);
+            }
+        }
+    }
+
+    public void RemoveCurrentPickup()
+    {
+        playerPickup.currentColliders.Remove(currentPickup.GetComponent<Collider>());
+
+        currentPickup.SetActive(false);
+        currentPickup = null;
     }
 
     public void ChangeState(PlayerState state)
@@ -69,9 +112,9 @@ public class PlayerModel : MonoBehaviour
                 playerMovement.canMove = true;
                 qteManager.enabled = false;
                 break;
-            case PlayerState.Attacking:
+            case PlayerState.Carrying:
                 qteManager.enabled = true;
-                playerMovement.canMove = true;
+                playerMovement.canMove = false;
                 break;
             case PlayerState.Stunned:
                 playerMovement.canMove = false;
