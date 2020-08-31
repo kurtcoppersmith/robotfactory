@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class QTEManager : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class QTEManager : MonoBehaviour
     {
         North,
         South,
-        West,
         East,
+        West,
         QTEOptionsSize
     }
 
@@ -19,7 +20,6 @@ public class QTEManager : MonoBehaviour
     public RangeFloat maxQTEBuffer;
     public float QTEBuffer = 0;
     public float QTETimer;
-    public RangeInt maxQuickTimeEvents;
 
     public GameObject QTETimerRoot;
     public UnityEngine.UI.Image QTETimerImage;
@@ -29,34 +29,30 @@ public class QTEManager : MonoBehaviour
     public InputKeyUI eastKey;
 
     private float maxQTETimer = 0;
-    private int currentPasses = 0;
+
+    PlayerModel playerModel;
 
     private bool canGetNextKey = true;
     private bool checkQTETimer = false;
-    private bool isEating = false;
 
     void Awake()
     {
+        playerModel = GetComponent<PlayerModel>();
+
         QTEBuffer = maxQTEBuffer.GetRandom();
         maxQTETimer = QTETimer;
     }
 
     void OnEnable()
     {
-        maxQuickTimeEvents.SelectRandom();
-
         canGetNextKey = true;
         checkQTETimer = false;
 
         QTEBuffer = initialQTEBuffer;
         QTETimer = maxQTETimer;
 
-        currentPasses = 0;
-
         QTETimerRoot.SetActive(true);
         QTETimerImage.fillAmount = 0;
-
-        isEating = false;
     }
 
     void OnDisable()
@@ -94,8 +90,6 @@ public class QTEManager : MonoBehaviour
 
     void GetNextKey()
     {
-        CheckPass();
-
         QTEBuffer -= Time.deltaTime;
         if (QTEBuffer <= 0)
         {
@@ -126,29 +120,18 @@ public class QTEManager : MonoBehaviour
         }
     }
 
-    void Fail()
+    public void Passed()
     {
-        Debug.Log("Fail");
+        QTETimerImage.fillAmount = 0;
+        Debug.Log("Passed!");
 
-        .ChangeState(PlayerModel.PlayerState.Moving);
-        this.enabled = false;
+        playerModel.ChangeState(PlayerModel.PlayerState.Moving);
     }
 
-    void CheckPass()
+    void Fail()
     {
-        if (isEating)
-        {
-            return;
-        }
-
-        if (currentPasses == maxQuickTimeEvents.selected)
-        {
-            Debug.Log("Passed!");
-
-           
-        }
-
-        QTETimerImage.fillAmount = 0;
+        Debug.Log("FAIL!");
+        playerModel.ChangeState(PlayerModel.PlayerState.Stunned);
     }
 
     void OnQuickTimeNorth(InputValue inputValue)
@@ -157,7 +140,6 @@ public class QTEManager : MonoBehaviour
         {
             if (currentKey == QTEOptions.North)
             {
-                currentPasses++;
 
                 checkQTETimer = false;
                 canGetNextKey = true;
@@ -165,7 +147,6 @@ public class QTEManager : MonoBehaviour
                 QTEBuffer = maxQTEBuffer.GetRandom();
 
                 northKey.gameObject.SetActive(false);
-                Debug.Log("Good!");
             }
             else
             {
@@ -180,7 +161,6 @@ public class QTEManager : MonoBehaviour
         {
             if (currentKey == QTEOptions.South)
             {
-                currentPasses++;
 
                 checkQTETimer = false;
                 canGetNextKey = true;
@@ -188,30 +168,6 @@ public class QTEManager : MonoBehaviour
                 QTEBuffer = maxQTEBuffer.GetRandom();
 
                 southKey.gameObject.SetActive(false);
-                Debug.Log("Good!");
-            }
-            else
-            {
-                Fail();
-            }
-        }
-    }
-
-    void OnQuickTimeWest(InputValue inputValue)
-    {
-        if (!canGetNextKey)
-        {
-            if (currentKey == QTEOptions.West)
-            {
-                currentPasses++;
-
-                checkQTETimer = false;
-                canGetNextKey = true;
-
-                QTEBuffer = maxQTEBuffer.GetRandom();
-
-                westKey.gameObject.SetActive(false);
-                Debug.Log("Good!");
             }
             else
             {
@@ -226,7 +182,6 @@ public class QTEManager : MonoBehaviour
         {
             if (currentKey == QTEOptions.East)
             {
-                currentPasses++;
 
                 checkQTETimer = false;
                 canGetNextKey = true;
@@ -234,7 +189,27 @@ public class QTEManager : MonoBehaviour
                 QTEBuffer = maxQTEBuffer.GetRandom();
 
                 eastKey.gameObject.SetActive(false);
-                Debug.Log("Good!");
+            }
+            else
+            {
+                Fail();
+            }
+        }
+    }
+
+    void OnQuickTimeWest(InputValue inputValue)
+    {
+        if (!canGetNextKey)
+        {
+            if (currentKey == QTEOptions.West)
+            {
+
+                checkQTETimer = false;
+                canGetNextKey = true;
+
+                QTEBuffer = maxQTEBuffer.GetRandom();
+
+                westKey.gameObject.SetActive(false);
             }
             else
             {
