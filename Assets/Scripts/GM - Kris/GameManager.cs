@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour
     public Camera mainCam;
     
     //Float used by in game timer
-    private float timeRemaining = 600;
-    private int lives = 600;
+    public float timeRemaining = 600;
+    public int lives = 3;
+    public int score = 0;
 
     void Awake()
     {
@@ -86,5 +87,32 @@ public class GameManager : MonoBehaviour
     public void setLives(int setLives)
     {
         lives = setLives;
+    }
+
+
+
+    public void subScore(int scoreToSub)
+    {
+        score -= scoreToSub;
+        if (score <= 0)
+        {
+            score = 0;
+        }
+    }
+
+    // Below are the score functions
+    public void addScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+    }
+
+    public int returnScore()
+    {
+        return score;
+    }
+
+    public void setScore(int scoreToSet)
+    {
+        score = scoreToSet;
     }
 }
