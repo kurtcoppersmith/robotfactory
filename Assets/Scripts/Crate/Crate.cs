@@ -16,6 +16,8 @@ public class Crate : MonoBehaviour
     public Color maxDurationColor;
     public Color minDurationColor;
 
+    public QTEManager qte;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,8 @@ public class Crate : MonoBehaviour
 
         //
         delivered = false;
+
+        qte = FindObjectOfType<QTEManager>();
     }
 
     // Update is called once per frame
@@ -76,5 +80,21 @@ public class Crate : MonoBehaviour
                 materialColor.color = Color.red;
                 break;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("hello");
+
+        //if (collision.gameObject.tag == "Obstacle")
+        //{
+        //    qte.Fail();
+        //    manager.Explode();
+        //}
+        //else
+        //{
+        //    qte.Fail();
+        //    manager.Explode();
+        //}A
     }
 }

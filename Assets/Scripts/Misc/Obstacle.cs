@@ -14,6 +14,8 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("hello");
+
         if(collision.transform.parent.gameObject.tag == "Player")
         {
             collision.transform.parent.gameObject.GetComponent<QTEManager>().Fail();
