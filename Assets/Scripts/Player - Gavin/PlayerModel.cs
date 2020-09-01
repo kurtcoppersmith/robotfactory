@@ -21,8 +21,6 @@ public class PlayerModel : MonoBehaviour
     public Transform carryingPosition;
 
     public GameObject currentPickup { get; private set; } = null;
-
-    public Canvas QTECanvas;
     
     /*new void Awake()
     {
@@ -48,11 +46,6 @@ public class PlayerModel : MonoBehaviour
         Moving,
         Carrying,
         Stunned
-    }
-
-    void Start()
-    {
-        QTECanvas.worldCamera = GameManager.Instance.mainCam;
     }
 
     public PlayerState playerState = PlayerState.Moving;

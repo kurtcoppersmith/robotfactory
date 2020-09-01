@@ -10,6 +10,11 @@ public class Crate : MonoBehaviour
     private CrateManager manager;
     public bool delivered;
     public Color color;
+    [Header("UI Variables")]
+    public UnityEngine.UI.Slider durationSlider;
+    public UnityEngine.UI.Image durationFill;
+    public Color maxDurationColor;
+    public Color minDurationColor;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +30,12 @@ public class Crate : MonoBehaviour
         SpawnColor();
         //set crate timer
         timer = manager.duration;
+
+        //set UI values
+        float currentSliderValue = HelperUtilities.Remap(timer, 0, manager.duration, 0, 1);
+        durationSlider.value = currentSliderValue;
+        durationFill.color = Color.Lerp(minDurationColor, maxDurationColor, (float)currentSliderValue / manager.duration);
+
         //
         delivered = false;
     }
@@ -34,8 +45,14 @@ public class Crate : MonoBehaviour
     {
         //lower crate timer
         timer -= Time.deltaTime;
+
+        //set UI values
+        float currentSliderValue = HelperUtilities.Remap(timer, 0, manager.duration, 0, 1);
+        durationSlider.value = currentSliderValue;
+        durationFill.color = Color.Lerp(minDurationColor, maxDurationColor, currentSliderValue);
+
         //call explode when timer = 0;
-        if(timer<=0 && !delivered)
+        if (timer<=0 && !delivered)
         {
             manager.Explode();
             Debug.Log("Time is up");

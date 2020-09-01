@@ -23,10 +23,10 @@ public class CrateStand : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         collisionCrate = collision.gameObject.GetComponent<Crate>();
-        if (collisionCrate.color == standColor)
+        if (collisionCrate.color == standColor && collision.transform.parent.gameObject.tag == "Player")
         {
             crateManager.GetComponent<CrateManager>().DeliverCrate();
-            collision.gameObject.GetComponent<QTEManager>().Passed();
+            collision.transform.parent.gameObject.GetComponent<QTEManager>().Passed();
             Destroy(collision.gameObject);
         }
         else

@@ -13,6 +13,9 @@ public class CrateManager : MonoBehaviour
     //crate prefab for instantiating
     public GameObject Crate;
     // Start is called before the first frame update
+    public Transform spawnLocation;
+    //Public variable to allow for easy spawning location of crate.
+
     void Start()
     {
         SpawnCrate();
@@ -33,7 +36,7 @@ public class CrateManager : MonoBehaviour
 
     void SpawnCrate()
     {
-        Instantiate(Crate, new Vector3(0, 2, 0), Quaternion.identity);
+        Instantiate(Crate, spawnLocation.position, Quaternion.identity);
     }
 
     public void Explode()
