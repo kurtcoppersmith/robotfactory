@@ -142,7 +142,7 @@ public class QTEManager : MonoBehaviour
         playerModel.ChangeState(PlayerModel.PlayerState.Moving);
     }
 
-    void Fail()
+    public void Fail()
     {
         Debug.Log("FAIL!");
 
