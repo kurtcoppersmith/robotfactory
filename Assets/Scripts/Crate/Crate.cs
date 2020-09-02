@@ -12,11 +12,10 @@ public class Crate : MonoBehaviour
     public Color color;
     [Header("UI Variables")]
     public UnityEngine.UI.Slider durationSlider;
+    public UnityEngine.UI.Slider durationSliderBackground;
     public UnityEngine.UI.Image durationFill;
     public Color maxDurationColor;
     public Color minDurationColor;
-
-    public QTEManager qte;
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +35,11 @@ public class Crate : MonoBehaviour
         //set UI values
         float currentSliderValue = HelperUtilities.Remap(timer, 0, manager.duration, 0, 1);
         durationSlider.value = currentSliderValue;
+        durationSliderBackground.value = durationSlider.value;
         durationFill.color = Color.Lerp(minDurationColor, maxDurationColor, (float)currentSliderValue / manager.duration);
 
         //
         delivered = false;
-
-        qte = FindObjectOfType<QTEManager>();
     }
 
     // Update is called once per frame
@@ -53,6 +51,7 @@ public class Crate : MonoBehaviour
         //set UI values
         float currentSliderValue = HelperUtilities.Remap(timer, 0, manager.duration, 0, 1);
         durationSlider.value = currentSliderValue;
+        durationSliderBackground.value = durationSlider.value;
         durationFill.color = Color.Lerp(minDurationColor, maxDurationColor, currentSliderValue);
 
         //call explode when timer = 0;
