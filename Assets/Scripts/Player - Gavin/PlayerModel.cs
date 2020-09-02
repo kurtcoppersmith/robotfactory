@@ -92,6 +92,8 @@ public class PlayerModel : MonoBehaviour
 
     public void RemoveCurrentPickup()
     {
+        CrateManager.Instance.Explode();
+        CrateManager.Instance.spawnLocationStatus[CrateManager.Instance.currentSpawnedItems[currentPickup]] = false;
         playerPickup.currentColliders.Remove(currentPickup.GetComponent<Collider>());
 
         currentPickup.SetActive(false);

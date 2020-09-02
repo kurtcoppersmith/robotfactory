@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrateManager : MonoBehaviour
+public class CrateManager : SingletonMonoBehaviour<CrateManager>
 {
     //spawn time in seconds
     public float SpawnTime;
@@ -13,8 +13,26 @@ public class CrateManager : MonoBehaviour
     //crate prefab for instantiating
     public GameObject Crate;
     // Start is called before the first frame update
-    public Transform spawnLocation;
+
+    public List<Transform> spawnLocations;
+    public Dictionary<Transform, bool> spawnLocationStatus { get; private set; }
+    public Dictionary<GameObject, Transform> currentSpawnedItems { get; private set; } = new Dictionary<GameObject, Transform>();
     //Public variable to allow for easy spawning location of crate.
+
+    public RangeInt spawnNumbers;
+    
+    new void Awake()
+    {
+        base.Awake();
+
+        spawnLocationStatus = new Dictionary<Transform, bool>();
+        spawnNumbers = new RangeInt(0, spawnLocations.Count);
+
+        for (int i = 0; i < spawnLocations.Count; i++)
+        {
+            spawnLocationStatus.Add(spawnLocations[i], false);
+        }
+    }
 
     void Start()
     {
@@ -25,28 +43,56 @@ public class CrateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        if(RemaningSpawnTime<=0)
+        if (spawnNumbers.min < spawnNumbers.max)
         {
-            SpawnCrate();
-            RemaningSpawnTime = SpawnTime;
+            if (RemaningSpawnTime <= 0)
+            {
+                SpawnCrate();
+                RemaningSpawnTime = SpawnTime;
+            }
+            RemaningSpawnTime -= Time.deltaTime;
         }
-        RemaningSpawnTime -= Time.deltaTime;
     }
 
     void SpawnCrate()
     {
-        Instantiate(Crate, spawnLocation.position, Quaternion.identity);
+        for (int i = 0; i < spawnLocationStatus.Count; i++)
+        {
+            if (!spawnLocationStatus[spawnLocations[i]])
+            {
+                currentSpawnedItems.Add(Instantiate(Crate, spawnLocations[i].position, Quaternion.identity), spawnLocations[i]);
+                spawnLocationStatus[spawnLocations[i]] = true;
+                spawnNumbers.min++;
+                break;
+            }
+        }
+    }
+
+    void RemoveCrateFromCurrentActiveCount()
+    {
+        if (spawnNumbers.min > 0)
+        {
+            spawnNumbers.min--;
+
+            if (spawnNumbers.min == spawnNumbers.max - 1)
+            {
+                RemaningSpawnTime = SpawnTime;
+            }
+        }
     }
 
     public void Explode()
     {
         //Call Game over 
         Debug.Log("You Lose Game Over");
+
+        RemoveCrateFromCurrentActiveCount();
     }
 
     public void DeliverCrate()
     {
         Debug.Log("Crate Delivered");
+
+        RemoveCrateFromCurrentActiveCount();
     }
 }

@@ -59,7 +59,20 @@ public class Crate : MonoBehaviour
         if (timer<=0 && !delivered)
         {
             manager.Explode();
-            Debug.Log("Time is up");
+
+            QTEManager playerQTE = null;
+            playerQTE = transform.GetComponentInParent<QTEManager>();
+            if (playerQTE != null)
+            {
+                playerQTE.Fail();
+            }
+            else
+            {
+                Debug.Log("This worked on crate.");
+                CrateManager.Instance.spawnLocationStatus[CrateManager.Instance.currentSpawnedItems[this.gameObject]] = false;
+            }
+
+            Destroy(gameObject);
         }
     }
 
@@ -84,7 +97,7 @@ public class Crate : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("hello");
+        //Debug.Log("hello");
 
         //if (collision.gameObject.tag == "Obstacle")
         //{

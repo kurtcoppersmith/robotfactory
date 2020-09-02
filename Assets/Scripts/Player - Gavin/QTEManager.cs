@@ -101,7 +101,6 @@ public class QTEManager : MonoBehaviour
         if (QTEBuffer <= 0)
         {
             currentKey = (QTEOptions)Random.Range(0, (int)QTEOptions.QTEOptionsSize);
-            Debug.Log(currentKey);
 
             switch (currentKey)
             {
