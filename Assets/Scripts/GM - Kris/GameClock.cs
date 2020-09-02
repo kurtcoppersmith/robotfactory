@@ -43,7 +43,7 @@ public class GameClock : MonoBehaviour
 
 
         //timeText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
-        if (!GameManager.Instance.isPaused)
+        if (!GameManager.Instance.isPaused && !GameManager.Instance.hasEnded)
         {
             timeTextTMP.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
         }

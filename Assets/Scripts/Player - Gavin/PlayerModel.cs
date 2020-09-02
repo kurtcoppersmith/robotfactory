@@ -56,7 +56,7 @@ public class PlayerModel : MonoBehaviour
 
     void OnBoxPickup(InputValue inputValue)
     {
-        if (currentPickup != null)
+        if (currentPickup != null || GameManager.Instance.hasEnded)
         {
             return;
         }
@@ -140,17 +140,25 @@ public class PlayerModel : MonoBehaviour
 
     void OnPauseToggle(InputValue inputValue)
     {
-        if (playerState == PlayerState.Moving)
+        if (playerState == PlayerState.Moving && !GameManager.Instance.hasEnded)
         {
             GameManager.Instance.PauseToggle();
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnControllerColliderHit(ControllerColliderHit other)
     {
-        if (other.gameObject.tag != "Stand" && currentPickup != null)
+        CollisionFlags ignoreGround = ~CollisionFlags.Below;
+
+        CollisionFlags newCollisionFlags = playerMovement.charController.collisionFlags & ignoreGround;
+
+        if (newCollisionFlags != 0)
         {
-            qteManager.Fail();
-        }
+            if ((other.gameObject.tag != "Stand" && other.gameObject.tag != "Pickup") && currentPickup != null)
+            {
+                qteManager.Fail();
+                Debug.Log(other.gameObject.name);
+            }
+        }        
     }
 }

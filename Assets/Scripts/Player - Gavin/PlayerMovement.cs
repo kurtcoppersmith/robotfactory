@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    CharacterController charController;
+    public CharacterController charController { get; private set; }
 
     Vector2 movementInput;
     Vector3 movementVector;
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (canMove)
+        if (canMove && !GameManager.Instance.hasEnded)
         {
             MovePlayer();
         }

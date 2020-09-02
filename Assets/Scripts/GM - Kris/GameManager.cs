@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     public InputDevice lastDetectedDevice = null;
     public Camera mainCam;
     public GameObject pausePanel;
+    public GameObject endPanel;
     public bool isPaused { get; private set; } = false;
+    public bool hasEnded { get; set; } = false;
     
     //Float used by in game timer
     public float timeRemaining = 600;
@@ -35,14 +37,14 @@ public class GameManager : MonoBehaviour
     
     public void subtractTime()
     {
-        if(timeRemaining >= 0)
+        if(timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
         }
         else
         {
             timeRemaining = 0;
-            //write the end-game scenario for running out of time here
+            EnableEndScreen();
         }
     }
 
@@ -134,5 +136,12 @@ public class GameManager : MonoBehaviour
             HelperUtilities.UpdateCursorLock(false);
             pausePanel.SetActive(true);
         }
+    }
+
+    public void EnableEndScreen()
+    {
+        hasEnded = true;
+        HelperUtilities.UpdateCursorLock(false);
+        endPanel.SetActive(true);
     }
 }

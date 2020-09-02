@@ -15,7 +15,7 @@ public class ScoreCounter : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.Instance.isPaused)
+        if (!GameManager.Instance.isPaused && !GameManager.Instance.hasEnded)
         {
             scoreTextTMP.text = $"Score: { GameManager.Instance.returnScore()}";
         }

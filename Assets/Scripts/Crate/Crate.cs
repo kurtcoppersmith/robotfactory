@@ -45,6 +45,14 @@ public class Crate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.Instance.hasEnded)
+        {
+            DecreaseCrateTimer();
+        }
+    }
+
+    void DecreaseCrateTimer()
+    {
         //lower crate timer
         timer -= Time.deltaTime;
 
@@ -55,7 +63,7 @@ public class Crate : MonoBehaviour
         durationFill.color = Color.Lerp(minDurationColor, maxDurationColor, currentSliderValue);
 
         //call explode when timer = 0;
-        if (timer<=0 && !delivered)
+        if (timer <= 0 && !delivered)
         {
             manager.Explode();
 

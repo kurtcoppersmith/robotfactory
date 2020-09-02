@@ -43,7 +43,7 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
     // Update is called once per frame
     void Update()
     {
-        if (spawnNumbers.min < spawnNumbers.max)
+        if (spawnNumbers.min < spawnNumbers.max && !GameManager.Instance.hasEnded)
         {
             if (RemaningSpawnTime <= 0)
             {
@@ -83,15 +83,14 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
 
     public void Explode()
     {
-        //Call Game over 
-        Debug.Log("You Lose Game Over");
+        //Debug.Log("You Lose Game Over");
 
         RemoveCrateFromCurrentActiveCount();
     }
 
     public void DeliverCrate()
     {
-        Debug.Log("Crate Delivered");
+        //Debug.Log("Crate Delivered");
 
         RemoveCrateFromCurrentActiveCount();
     }
