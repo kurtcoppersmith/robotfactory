@@ -41,8 +41,15 @@ public class GameClock : MonoBehaviour
         seconds = Mathf.FloorToInt(clockTime % 60);
         milliseconds = (clockTime % 1) * 100;
 
-  
+
         //timeText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
-        timeTextTMP.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
+        if (!GameManager.Instance.isPaused)
+        {
+            timeTextTMP.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
+        }
+        else
+        {
+            timeTextTMP.text = "";
+        } 
     }
 }

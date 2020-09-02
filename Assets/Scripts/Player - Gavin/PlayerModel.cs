@@ -6,8 +6,6 @@ using DG.Tweening;
 
 public class PlayerModel : MonoBehaviour
 {
-    public float maxAttackRadius = 3f;
-    public float maxAttackAngle = 30f;
     public float playerStunnedTime = 3f;
     private float maxPlayerStunnedTime;
 
@@ -142,20 +140,17 @@ public class PlayerModel : MonoBehaviour
 
     void OnPauseToggle(InputValue inputValue)
     {
-        print("Pause");
-
         if (playerState == PlayerState.Moving)
         {
-            if (Time.timeScale == 0.0f)
-            {
-                Time.timeScale = 1.0f;
-                HelperUtilities.UpdateCursorLock(false);
-            }
-            else
-            {
-                Time.timeScale = 0.0f;
-                HelperUtilities.UpdateCursorLock(true);
-            }
+            GameManager.Instance.PauseToggle();
+        }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag != "Stand" && currentPickup != null)
+        {
+            qteManager.Fail();
         }
     }
 }

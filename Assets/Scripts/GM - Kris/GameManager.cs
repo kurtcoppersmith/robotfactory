@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance = null;
     public InputDevice lastDetectedDevice = null;
     public Camera mainCam;
+    public GameObject pausePanel;
+    public bool isPaused { get; private set; } = false;
     
     //Float used by in game timer
     public float timeRemaining = 600;
@@ -115,5 +117,22 @@ public class GameManager : MonoBehaviour
     public void setScore(int scoreToSet)
     {
         score = scoreToSet;
+    }
+
+    public void PauseToggle()
+    {
+        isPaused = !isPaused;
+        if (Time.timeScale == 0.0f)
+        {
+            Time.timeScale = 1.0f;
+            HelperUtilities.UpdateCursorLock(true);
+            pausePanel.SetActive(false);
+        }
+        else
+        {
+            Time.timeScale = 0.0f;
+            HelperUtilities.UpdateCursorLock(false);
+            pausePanel.SetActive(true);
+        }
     }
 }
