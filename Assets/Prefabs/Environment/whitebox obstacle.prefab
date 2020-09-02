@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 7222099419081194464}
   - component: {fileID: 7222099419081194465}
   - component: {fileID: 7222099419081194466}
+  - component: {fileID: 8045704585186801590}
   m_Layer: 0
-  m_Name: obstacle
+  m_Name: whitebox obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,3 +94,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8045704585186801590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7222099419081194468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b58171f42ec634dbffdb1395e2481a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crateManager: {fileID: 0}

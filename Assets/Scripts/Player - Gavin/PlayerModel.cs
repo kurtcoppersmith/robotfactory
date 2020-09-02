@@ -52,7 +52,8 @@ public class PlayerModel : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        DebugExtension.DebugBounds(pickupColliderGizmo.bounds, Color.red);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(pickupColliderGizmo.transform.position, pickupColliderGizmo.size);
     }
 
     void OnBoxPickup(InputValue inputValue)
