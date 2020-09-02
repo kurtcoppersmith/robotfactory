@@ -67,7 +67,8 @@ public class Crate : MonoBehaviour
             }
             else
             {
-                Debug.Log("This worked on crate.");
+                GameManager.Instance.subScore(1);
+
                 CrateManager.Instance.spawnLocationStatus[CrateManager.Instance.currentSpawnedItems[this.gameObject]] = false;
             }
 

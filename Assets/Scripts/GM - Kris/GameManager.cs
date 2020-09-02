@@ -94,10 +94,11 @@ public class GameManager : MonoBehaviour
     public void subScore(int scoreToSub)
     {
         score -= scoreToSub;
-        if (score <= 0)
+        
+        /*if (score <= 0)
         {
             score = 0;
-        }
+        }*/ //Commented out because I wanna see what people think about the ability to get a negative score. - Gavin
     }
 
     // Below are the score functions

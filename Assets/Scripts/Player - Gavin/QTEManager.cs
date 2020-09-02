@@ -134,19 +134,17 @@ public class QTEManager : MonoBehaviour
         }
 
         QTETimerImage.fillAmount = 0;
-        Debug.Log("Passed!");
+        GameManager.Instance.addScore(5);
 
         playerModel.RemoveCurrentPickup();
-
         playerModel.ChangeState(PlayerModel.PlayerState.Moving);
     }
 
     public void Fail()
     {
-        Debug.Log("FAIL!");
+        GameManager.Instance.subScore(2);
 
         playerModel.RemoveCurrentPickup();
-
         playerModel.ChangeState(PlayerModel.PlayerState.Stunned);
     }
 
