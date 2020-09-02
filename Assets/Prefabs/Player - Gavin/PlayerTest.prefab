@@ -371,7 +371,6 @@ MonoBehaviour:
   playerPickup: {fileID: 5891889522736597555}
   pickupColliderGizmo: {fileID: 1903259900745558312}
   carryingPosition: {fileID: 2664855879011159116}
-  QTECanvas: {fileID: 5116920883247416815}
   playerState: 0
 --- !u!114 &6316313628876847855
 MonoBehaviour:
@@ -387,7 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rotationSpeed: 4
-  gravity: 10
+  gravity: 20
   minimumGravity: 0.01
   canMove: 1
 --- !u!114 &2813048119358463857

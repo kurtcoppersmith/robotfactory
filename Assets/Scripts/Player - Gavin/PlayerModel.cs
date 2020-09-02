@@ -50,7 +50,7 @@ public class PlayerModel : MonoBehaviour
 
     public PlayerState playerState = PlayerState.Moving;
 
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
         DebugExtension.DebugBounds(pickupColliderGizmo.bounds, Color.red);
     }
