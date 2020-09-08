@@ -51,7 +51,6 @@ public class QTEManager : MonoBehaviour
         QTEBuffer = initialQTEBuffer;
         QTETimer = maxQTETimer;
 
-        QTETimerRoot.SetActive(true);
         QTETimerImage.fillAmount = 0;
     }
 
@@ -68,8 +67,6 @@ public class QTEManager : MonoBehaviour
 
     void Update()
     {
-        QTETimerRoot.SetActive(QTETimerImage.fillAmount > 0);
-
         if (canGetNextKey)
         {
             GetNextKey();
@@ -120,6 +117,7 @@ public class QTEManager : MonoBehaviour
 
             checkQTETimer = true;
             QTETimer = maxQTETimer;
+            QTETimerRoot.SetActive(true);
             QTETimerImage.fillAmount = 1;
 
             canGetNextKey = false;
@@ -134,6 +132,7 @@ public class QTEManager : MonoBehaviour
         }
 
         QTETimerImage.fillAmount = 0;
+        QTETimerRoot.SetActive(false);
         GameManager.Instance.addScore(5);
 
         playerModel.RemoveCurrentPickup();
@@ -142,6 +141,8 @@ public class QTEManager : MonoBehaviour
 
     public void Fail()
     {
+        QTETimerImage.fillAmount = 0;
+        QTETimerRoot.SetActive(false);
         GameManager.Instance.subScore(2);
 
         playerModel.RemoveCurrentPickup();
@@ -154,7 +155,7 @@ public class QTEManager : MonoBehaviour
         {
             if (currentKey == QTEOptions.North)
             {
-
+                QTETimerRoot.SetActive(false);
                 checkQTETimer = false;
                 canGetNextKey = true;
 
@@ -175,7 +176,7 @@ public class QTEManager : MonoBehaviour
         {
             if (currentKey == QTEOptions.South)
             {
-
+                QTETimerRoot.SetActive(false);
                 checkQTETimer = false;
                 canGetNextKey = true;
 
@@ -196,7 +197,7 @@ public class QTEManager : MonoBehaviour
         {
             if (currentKey == QTEOptions.East)
             {
-
+                QTETimerRoot.SetActive(false);
                 checkQTETimer = false;
                 canGetNextKey = true;
 
@@ -217,7 +218,7 @@ public class QTEManager : MonoBehaviour
         {
             if (currentKey == QTEOptions.West)
             {
-
+                QTETimerRoot.SetActive(false);
                 checkQTETimer = false;
                 canGetNextKey = true;
 

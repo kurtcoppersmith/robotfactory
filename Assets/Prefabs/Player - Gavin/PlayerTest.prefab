@@ -365,8 +365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d26fd2fc5ec244faf3a541e8e6ae5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAttackRadius: 3
-  maxAttackAngle: 30
   playerStunnedTime: 3
   playerPickup: {fileID: 5891889522736597555}
   pickupColliderGizmo: {fileID: 1903259900745558312}
@@ -384,9 +382,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978a68b3082d805408e0dd42116ef989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  tankControls: 0
+  topForwardSpeed: 4
+  topReverseSpeed: 4
+  acceleration: 4
+  tankRotationSpeed: 4
+  stoppedTankRotationSpeed: 5
+  speed: 4
   rotationSpeed: 15
-  gravity: 20
+  gravity: 150
   minimumGravity: 0.01
   canMove: 1
 --- !u!114 &2813048119358463857
@@ -435,8 +439,8 @@ MonoBehaviour:
   currentKey: 0
   initialQTEBuffer: 1
   maxQTEBuffer:
-    min: 0
-    max: 0
+    min: 0.75
+    max: 2.5
     selectedDebug: 
   QTEBuffer: 0
   QTETimer: 1.25
