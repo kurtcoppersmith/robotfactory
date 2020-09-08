@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Camera mainCam;
     public GameObject pausePanel;
     public GameObject endPanel;
-    public bool isPaused { get; private set; } = false;
+    public bool isPaused { get; set; } = false;
     public bool hasEnded { get; set; } = false;
     
     //Float used by in game timer

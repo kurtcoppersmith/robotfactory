@@ -7,9 +7,11 @@ public class MenuScript : MonoBehaviour
 {
     public void LoadNextScene(string sceneName)
     {
+        Time.timeScale = 1.0f;
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.hasEnded = false;    
+            GameManager.Instance.hasEnded = false;
+            GameManager.Instance.isPaused = false;
         }
 
         SceneManager.LoadScene(sceneName);
