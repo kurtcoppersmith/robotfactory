@@ -7,7 +7,6 @@ public class Crate : MonoBehaviour
     public enum Colors{Red, Blue, Green}
     private float timer;
     private Material materialColor;
-    private CrateManager manager;
     public bool delivered;
     public Color color;
     [Header("UI Variables")]
@@ -20,23 +19,18 @@ public class Crate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //manager
-        if (GameObject.Find("Crate Manager") != null)
-            manager = GameObject.Find("Crate Manager").GetComponent<CrateManager>();
-        else
-            Debug.LogError("Unable to find Crate Manager");
         //material
         materialColor = this.gameObject.GetComponent<Renderer>().material;
         //set crate color
         SpawnColor();
         //set crate timer
-        timer = manager.duration;
+        timer = CrateManager.Instance.duration;
 
         //set UI values
-        float currentSliderValue = HelperUtilities.Remap(timer, 0, manager.duration, 0, 1);
+        float currentSliderValue = HelperUtilities.Remap(timer, 0, CrateManager.Instance.duration, 0, 1);
         durationSlider.value = currentSliderValue;
         durationSliderBackground.value = durationSlider.value;
-        durationFill.color = Color.Lerp(minDurationColor, maxDurationColor, (float)currentSliderValue / manager.duration);
+        durationFill.color = Color.Lerp(minDurationColor, maxDurationColor, (float)currentSliderValue / CrateManager.Instance.duration);
 
         //
         delivered = false;
@@ -57,7 +51,7 @@ public class Crate : MonoBehaviour
         timer -= Time.deltaTime;
 
         //set UI values
-        float currentSliderValue = HelperUtilities.Remap(timer, 0, manager.duration, 0, 1);
+        float currentSliderValue = HelperUtilities.Remap(timer, 0, CrateManager.Instance.duration, 0, 1);
         durationSlider.value = currentSliderValue;
         durationSliderBackground.value = durationSlider.value;
         durationFill.color = Color.Lerp(minDurationColor, maxDurationColor, currentSliderValue);
@@ -65,8 +59,6 @@ public class Crate : MonoBehaviour
         //call explode when timer = 0;
         if (timer <= 0 && !delivered)
         {
-            manager.Explode();
-
             QTEManager playerQTE = null;
             playerQTE = transform.GetComponentInParent<QTEManager>();
             if (playerQTE != null)
@@ -76,7 +68,7 @@ public class Crate : MonoBehaviour
             else
             {
                 GameManager.Instance.subScore(1);
-
+                CrateManager.Instance.Explode();
                 CrateManager.Instance.spawnLocationStatus[CrateManager.Instance.currentSpawnedItems[this.gameObject]] = false;
             }
 
