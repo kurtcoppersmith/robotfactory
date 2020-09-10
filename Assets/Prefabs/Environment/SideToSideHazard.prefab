@@ -107,7 +107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b58171f42ec634dbffdb1395e2481a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crateManager: {fileID: 0}
 --- !u!114 &1362568032483955159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTime:
     min: 0
-    max: 1.5
+    max: 2
     selectedDebug: 
   speed: 5
   localMovement: {x: -9.7, y: 0, z: 0}
