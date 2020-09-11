@@ -197,7 +197,7 @@ public class PlayerModel : MonoBehaviour
     {
         if (playerState == PlayerState.Moving && !GameManager.Instance.hasEnded)
         {
-            GameManager.Instance.PauseToggle();
+            LevelManager.Instance.PauseToggle();
         }
     }
 

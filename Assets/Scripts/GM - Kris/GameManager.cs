@@ -7,8 +7,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     public InputDevice lastDetectedDevice = null;
     public Camera mainCam;
-    public GameObject pausePanel;
-    public GameObject endPanel;
+    
     public bool isPaused { get; set; } = false;
     public bool hasEnded { get; set; } = false;
     
@@ -36,7 +35,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         else
         {
             timeRemaining = 0;
-            EnableEndScreen();
+            LevelManager.Instance.EnableEndScreen();
         }
     }
 
@@ -111,29 +110,5 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void setScore(int scoreToSet)
     {
         score = scoreToSet;
-    }
-
-    public void PauseToggle()
-    {
-        isPaused = !isPaused;
-        if (Time.timeScale == 0.0f)
-        {
-            Time.timeScale = 1.0f;
-            HelperUtilities.UpdateCursorLock(true);
-            pausePanel.SetActive(false);
-        }
-        else
-        {
-            Time.timeScale = 0.0f;
-            HelperUtilities.UpdateCursorLock(false);
-            pausePanel.SetActive(true);
-        }
-    }
-
-    public void EnableEndScreen()
-    {
-        hasEnded = true;
-        HelperUtilities.UpdateCursorLock(false);
-        endPanel.SetActive(true);
     }
 }
