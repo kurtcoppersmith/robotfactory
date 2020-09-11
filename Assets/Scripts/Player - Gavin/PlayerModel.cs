@@ -45,7 +45,6 @@ public class PlayerModel : MonoBehaviour
         qteManager.enabled = false;
 
         maxPlayerStunnedTime = playerStunnedTime;
-        playerMovement.charController.detectCollisions = true;
     }
 
     public enum PlayerState
@@ -180,6 +179,7 @@ public class PlayerModel : MonoBehaviour
     {
         playerStunnedTime -= Time.deltaTime;
         sparksParticleDuration -= Time.deltaTime;
+        Debug.Log(playerStunnedTime);
 
         if (sparksParticleDuration <= 0 && sparksParticleEffect.activeInHierarchy)
         {

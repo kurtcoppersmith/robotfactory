@@ -22,7 +22,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         base.Awake();
 
         InputSystem.onEvent += (ptr, device) => { lastDetectedDevice = device; };
+    }
 
+    void Start()
+    {
         if (Instance == this)
         {
             DontDestroyOnLoad(this.gameObject);
