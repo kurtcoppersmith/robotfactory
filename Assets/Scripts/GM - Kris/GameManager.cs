@@ -6,13 +6,14 @@ using UnityEngine.InputSystem;
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     public InputDevice lastDetectedDevice = null;
-    public Camera mainCam;
-    
+
+    public bool tempTankBool = false; //Temp bool for playtest
+
     public bool isPaused { get; set; } = false;
     public bool hasEnded { get; set; } = false;
     
     //Float used by in game timer
-    public float timeRemaining = 600;
+    public float timeRemaining = 150;
     public int lives = 3;
     public int score = 0;
 
@@ -21,8 +22,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         base.Awake();
 
         InputSystem.onEvent += (ptr, device) => { lastDetectedDevice = device; };
-    }
 
+        if (Instance == this)
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
 
     // Below are the four functions involving the in game timer
     

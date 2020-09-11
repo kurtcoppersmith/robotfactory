@@ -44,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
         movementVector = Vector3.zero;
         currentTopSpeed = topForwardSpeed;
+
+        tankControls = GameManager.Instance.tempTankBool;
     }
 
     void OnMovement(InputValue inputValue)

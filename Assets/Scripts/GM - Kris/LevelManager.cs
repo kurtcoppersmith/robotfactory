@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelManager : SingletonMonoBehaviour<LevelManager>
 {
+    public Camera mainCam;
+
     public GameObject pausePanel;
     public GameObject endPanel;
 
