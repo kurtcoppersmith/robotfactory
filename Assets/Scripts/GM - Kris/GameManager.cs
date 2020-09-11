@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-    public static GameManager Instance = null;
     public InputDevice lastDetectedDevice = null;
     public Camera mainCam;
     public GameObject pausePanel;
@@ -18,16 +17,9 @@ public class GameManager : MonoBehaviour
     public int lives = 3;
     public int score = 0;
 
-    void Awake()
+    new void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
+        base.Awake();
 
         InputSystem.onEvent += (ptr, device) => { lastDetectedDevice = device; };
     }
@@ -99,10 +91,10 @@ public class GameManager : MonoBehaviour
     {
         score -= scoreToSub;
         
-        /*if (score <= 0)
+        if (score <= 0)
         {
             score = 0;
-        }*/ //Commented out because I wanna see what people think about the ability to get a negative score. - Gavin
+        }
     }
 
     // Below are the score functions
