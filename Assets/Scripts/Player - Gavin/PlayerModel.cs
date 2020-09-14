@@ -179,7 +179,6 @@ public class PlayerModel : MonoBehaviour
     {
         playerStunnedTime -= Time.deltaTime;
         sparksParticleDuration -= Time.deltaTime;
-        Debug.Log(playerStunnedTime);
 
         if (sparksParticleDuration <= 0 && sparksParticleEffect.activeInHierarchy)
         {

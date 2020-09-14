@@ -63,7 +63,7 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
         {
             if (!spawnLocationStatus[spawnLocations[i]])
             {
-                pooler.SpawnFromPool("crate", spawnLocations[i].position, Quaternion.identity);
+                currentSpawnedItems.Add(pooler.SpawnFromPool("crate", spawnLocations[i].position, Quaternion.identity), spawnLocations[i]);
                 spawnLocationStatus[spawnLocations[i]] = true;
                 spawnNumbers.min++;
                 break;
