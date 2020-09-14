@@ -12,7 +12,9 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
     public float duration;
     //crate prefab for instantiating
     public GameObject Crate;
-    // Start is called before the first frame update
+
+    //Object pooler for spawning the objects
+    public ObjectPooler pooler;
 
     public List<Transform> spawnLocations;
     public Dictionary<Transform, bool> spawnLocationStatus { get; private set; }
@@ -36,8 +38,9 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
 
     void Start()
     {
-        SpawnCrate();
+        pooler = ObjectPooler.Instance;
         RemaningSpawnTime = SpawnTime;
+        SpawnCrate();
     }
 
     // Update is called once per frame
@@ -60,7 +63,7 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
         {
             if (!spawnLocationStatus[spawnLocations[i]])
             {
-                currentSpawnedItems.Add(Instantiate(Crate, spawnLocations[i].position, Quaternion.identity), spawnLocations[i]);
+                pooler.SpawnFromPool("crate", spawnLocations[i].position, Quaternion.identity);
                 spawnLocationStatus[spawnLocations[i]] = true;
                 spawnNumbers.min++;
                 break;

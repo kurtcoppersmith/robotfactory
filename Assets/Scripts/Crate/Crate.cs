@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crate : MonoBehaviour
+public class Crate : MonoBehaviour, IPooledObject
 {
     public enum Colors{Red, Blue, Green}
     private float timer;
@@ -17,7 +17,7 @@ public class Crate : MonoBehaviour
     public Color minDurationColor;
 
     // Start is called before the first frame update
-    void Start()
+    public void OnObjectSpawn()
     {
         //material
         materialColor = this.gameObject.GetComponent<Renderer>().material;
