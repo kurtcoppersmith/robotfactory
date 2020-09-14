@@ -10,6 +10,7 @@ public class MenuScript : MonoBehaviour
         Time.timeScale = 1.0f;
         if (GameManager.Instance != null)
         {
+            GameManager.Instance.setTime(150);
             GameManager.Instance.hasEnded = false;
             GameManager.Instance.isPaused = false;
         }

@@ -7,6 +7,9 @@ using DG.Tweening;
 public class PlayerModel : MonoBehaviour
 {
     public float playerStunnedTime = 3f;
+    [Range(0,1)]
+    public float bottomOfCharacter = 0.25f;
+    public float collisionDetectionDistance = 0.2f;
     private float maxPlayerStunnedTime;
 
     public PlayerMovement playerMovement { get; private set; }
@@ -17,6 +20,11 @@ public class PlayerModel : MonoBehaviour
     public BoxCollider pickupColliderGizmo;
 
     public Transform carryingPosition;
+
+    public GameObject sparksParticleEffect;
+
+    public ParticleSystem sparksParticleSystem;
+    private float sparksParticleDuration;
 
     public GameObject currentPickup { get; private set; } = null;
     
@@ -98,6 +106,40 @@ public class PlayerModel : MonoBehaviour
         currentPickup = null;
     }
 
+    void DetectCollisions()
+    {
+        RaycastHit hit;
+        Vector3 p1 = transform.position + Vector3.up * bottomOfCharacter;
+        Vector3 p2 = p1 + Vector3.up * playerMovement.charController.height;
+
+        for (int i = 0; i < 360; i += 18)
+        {
+            if (Physics.CapsuleCast(p1, p2, 0, new Vector3(Mathf.Cos(i), 0, Mathf.Sin(i)), out hit, playerMovement.charController.radius + collisionDetectionDistance))
+            {
+                PlayerModel tempPlay = null;
+                tempPlay = hit.collider.gameObject.GetComponentInParent<PlayerModel>();
+                if (tempPlay == null)
+                {
+                    Vector3 temp = (hit.point - transform.position).normalized;
+                    temp.y = 0;
+                    playerMovement.charController.Move((temp) * (collisionDetectionDistance - hit.distance));
+
+                    if (hit.collider.gameObject.tag == "Hazard" && currentPickup != null)
+                    {
+                        qteManager.Fail();
+                    }
+                }
+
+            }
+            DebugExtension.DebugCapsule(p1 + new Vector3(Mathf.Cos(i), 0, Mathf.Sin(i)), p2 + new Vector3(Mathf.Cos(i), 0, Mathf.Sin(i)), 0);
+        }
+
+        //if (Physics.Raycast(transform.position + Vector3.up, -Vector3.up, out hit))
+        //{
+        //    playerMovement.charController.Move(Vector3.up * (1 - hit.distance));
+        //}
+    }
+
     public void ChangeState(PlayerState state)
     {
         switch (state)
@@ -113,6 +155,10 @@ public class PlayerModel : MonoBehaviour
             case PlayerState.Stunned:
                 playerMovement.canMove = false;
                 qteManager.enabled = false;
+
+                sparksParticleEffect.SetActive(true);
+                sparksParticleDuration = sparksParticleSystem.main.duration;
+                transform.DOPunchPosition(new Vector3(Random.Range(0.1f, 0.2f), 0, Random.Range(0.1f, 0.2f)), maxPlayerStunnedTime / 2);
                 break;
         }
 
@@ -125,11 +171,20 @@ public class PlayerModel : MonoBehaviour
         {
             Stunned();
         }
+
+        DetectCollisions();
     }
 
     void Stunned()
     {
         playerStunnedTime -= Time.deltaTime;
+        sparksParticleDuration -= Time.deltaTime;
+        Debug.Log(playerStunnedTime);
+
+        if (sparksParticleDuration <= 0 && sparksParticleEffect.activeInHierarchy)
+        {
+            sparksParticleEffect.SetActive(false);
+        }
 
         if (playerStunnedTime <= 0)
         {
@@ -142,23 +197,16 @@ public class PlayerModel : MonoBehaviour
     {
         if (playerState == PlayerState.Moving && !GameManager.Instance.hasEnded)
         {
-            GameManager.Instance.PauseToggle();
+            LevelManager.Instance.PauseToggle();
         }
     }
 
     void OnControllerColliderHit(ControllerColliderHit other)
     {
-        CollisionFlags ignoreGround = ~CollisionFlags.Below;
-
-        CollisionFlags newCollisionFlags = playerMovement.charController.collisionFlags & ignoreGround;
-
-        if (newCollisionFlags != 0)
+        if (other.gameObject.tag == "Hazard" && currentPickup != null)
         {
-            if ((other.gameObject.tag != "Stand" && other.gameObject.tag != "Pickup") && currentPickup != null)
-            {
-                qteManager.Fail();
-                Debug.Log(other.gameObject.name);
-            }
-        }        
+            Debug.Log("Test");
+            qteManager.Fail();
+        }
     }
 }

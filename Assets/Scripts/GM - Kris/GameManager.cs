@@ -3,35 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-    public static GameManager Instance = null;
     public InputDevice lastDetectedDevice = null;
-    public Camera mainCam;
-    public GameObject pausePanel;
-    public GameObject endPanel;
+
+    public bool tempTankBool = false; //Temp bool for playtest
+
     public bool isPaused { get; set; } = false;
     public bool hasEnded { get; set; } = false;
     
     //Float used by in game timer
-    public float timeRemaining = 600;
+    public float timeRemaining = 150;
     public int lives = 3;
     public int score = 0;
 
-    void Awake()
+    new void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
+        base.Awake();
 
         InputSystem.onEvent += (ptr, device) => { lastDetectedDevice = device; };
     }
 
+    void Start()
+    {
+        if (Instance == this)
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
 
     // Below are the four functions involving the in game timer
     
@@ -44,7 +43,7 @@ public class GameManager : MonoBehaviour
         else
         {
             timeRemaining = 0;
-            EnableEndScreen();
+            LevelManager.Instance.EnableEndScreen();
         }
     }
 
@@ -99,10 +98,10 @@ public class GameManager : MonoBehaviour
     {
         score -= scoreToSub;
         
-        /*if (score <= 0)
+        if (score <= 0)
         {
             score = 0;
-        }*/ //Commented out because I wanna see what people think about the ability to get a negative score. - Gavin
+        }
     }
 
     // Below are the score functions
@@ -119,29 +118,5 @@ public class GameManager : MonoBehaviour
     public void setScore(int scoreToSet)
     {
         score = scoreToSet;
-    }
-
-    public void PauseToggle()
-    {
-        isPaused = !isPaused;
-        if (Time.timeScale == 0.0f)
-        {
-            Time.timeScale = 1.0f;
-            HelperUtilities.UpdateCursorLock(true);
-            pausePanel.SetActive(false);
-        }
-        else
-        {
-            Time.timeScale = 0.0f;
-            HelperUtilities.UpdateCursorLock(false);
-            pausePanel.SetActive(true);
-        }
-    }
-
-    public void EnableEndScreen()
-    {
-        hasEnded = true;
-        HelperUtilities.UpdateCursorLock(false);
-        endPanel.SetActive(true);
     }
 }

@@ -94,6 +94,8 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
     public void DeliverCrate()
     {
         //Debug.Log("Crate Delivered");
+        HazardManager.Instance.CleanUpHazards();
+        HazardManager.Instance.SpawnHazards();
 
         RemoveCrateFromCurrentActiveCount();
     }
