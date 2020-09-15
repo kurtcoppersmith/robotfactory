@@ -8,6 +8,7 @@ public class CrusherHazard : MonoBehaviour
     public RangeFloat startTime = new RangeFloat(0, 1.5f);
     private float startTimeCounter = 0;
     public float speed = 0f;
+    public float soften = .9f;
 
     public Vector3 localMovement = Vector3.zero;
     private Vector3 originalLocation = Vector3.zero;
@@ -39,7 +40,7 @@ public class CrusherHazard : MonoBehaviour
 
     void Move()
     {
-        float duration = Vector3.Distance(transform.position + localMovement, transform.position) / speed;
+        float duration = Vector3.Distance(transform.position + localMovement, transform.position) / speed * soften;
         Sequence sequence = DOTween.Sequence();
         sequence.Append(transform.DOLocalMove(transform.position + localMovement, duration)).Append(transform.DOMove(originalLocation, duration)).SetLoops(-1);
     }
