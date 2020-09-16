@@ -118,7 +118,34 @@ public class PlayerMovement : MonoBehaviour
 
     void NormalMove(float h, float v)
     {
-        movementVector = new Vector3(h, 0, v);
+        Vector3 VertVector = LevelManager.Instance.mainCam.transform.forward;
+        VertVector.x = Mathf.Abs(VertVector.x);
+        VertVector.z = Mathf.Abs(VertVector.z);
+
+        if ((int)VertVector.x != 0 || !(VertVector.x < 0.1 && VertVector.x > -0.1))
+            VertVector.x /= VertVector.x;
+
+        if ((int)VertVector.z != 0 || !(VertVector.z < 0.1 && VertVector.z > -0.1))
+            VertVector.z /= VertVector.z;
+        
+        VertVector *= v;
+
+        Vector3 HorVector = LevelManager.Instance.mainCam.transform.right;
+        HorVector.x = Mathf.Abs(HorVector.x);
+        HorVector.z = Mathf.Abs(HorVector.z);
+        
+        if ((int)HorVector.x != 0 || !(HorVector.x < 0.1 && HorVector.x > -0.1))
+            HorVector.x /= HorVector.x;
+
+        if ((int)HorVector.z != 0 || !(HorVector.z < 0.1 && HorVector.x > -0.1))
+            HorVector.z /= HorVector.z;
+
+         HorVector *= -h;
+        
+        
+        Vector3 moveDirection = VertVector + HorVector;
+        moveDirection.y = 0;
+        movementVector = moveDirection;
         if (movementVector != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(transform.forward + movementVector, transform.up), rotationSpeed * Time.deltaTime);

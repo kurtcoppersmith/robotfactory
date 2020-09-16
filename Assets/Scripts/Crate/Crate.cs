@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crate : MonoBehaviour, IPooledObject
+public class Crate : MonoBehaviour//, IPooledObject
 {
     public enum Colors{Red, Blue, Green}
+    public List<Material> bombBoxMats = new List<Material>();
+    public MeshRenderer bombBoxMeshRenderer;
+
     private float timer;
     private Material materialColor;
     public bool delivered;
@@ -17,20 +20,26 @@ public class Crate : MonoBehaviour, IPooledObject
     public Color minDurationColor;
 
     // Start is called before the first frame update
-    public void OnObjectSpawn()
+    //public void OnObjectSpawn()
+    void OnEnable()
     {
         //material
-        materialColor = this.gameObject.GetComponent<Renderer>().material;
+        //materialColor = this.gameObject.GetComponent<Renderer>().material;
         //set crate color
-        SpawnColor();
-        //set crate timer
-        timer = CrateManager.Instance.duration;
+        //SpawnColor();
 
-        //set UI values
-        float currentSliderValue = HelperUtilities.Remap(timer, 0, CrateManager.Instance.duration, 0, 1);
-        durationSlider.value = currentSliderValue;
-        durationSliderBackground.value = durationSlider.value;
-        durationFill.color = Color.Lerp(minDurationColor, maxDurationColor, (float)currentSliderValue / CrateManager.Instance.duration);
+        SetMaterial();
+        //set crate timer
+        if (CrateManager.Instance != null)
+        {
+            timer = CrateManager.Instance.duration;
+
+            //set UI values
+            float currentSliderValue = HelperUtilities.Remap(timer, 0, CrateManager.Instance.duration, 0, 1);
+            durationSlider.value = currentSliderValue;
+            durationSliderBackground.value = durationSlider.value;
+            durationFill.color = Color.Lerp(minDurationColor, maxDurationColor, (float)currentSliderValue / CrateManager.Instance.duration);
+        }
 
         //
         delivered = false;
@@ -70,9 +79,10 @@ public class Crate : MonoBehaviour, IPooledObject
                 GameManager.Instance.subScore(1);
                 CrateManager.Instance.Explode();
                 CrateManager.Instance.spawnLocationStatus[CrateManager.Instance.currentSpawnedItems[this.gameObject]] = false;
-            }
+                CrateManager.Instance.currentSpawnedItems.Remove(this.gameObject);
 
-            Destroy(gameObject);
+                gameObject.SetActive(false);
+            }
         }
     }
 
@@ -91,6 +101,25 @@ public class Crate : MonoBehaviour, IPooledObject
             case Colors.Red:
                 color = Color.red;
                 materialColor.color = Color.red;
+                break;
+        }
+    }
+
+    private void SetMaterial()
+    {
+        switch ((Colors)Random.Range(0, 3))
+        {
+            case Colors.Blue:
+                bombBoxMeshRenderer.material = bombBoxMats[(int)Colors.Blue];
+                color = Color.blue;
+                break;
+            case Colors.Green:
+                bombBoxMeshRenderer.material = bombBoxMats[(int)Colors.Green];
+                color = Color.green;
+                break;
+            case Colors.Red:
+                bombBoxMeshRenderer.material = bombBoxMats[(int)Colors.Red];
+                color = Color.red;
                 break;
         }
     }

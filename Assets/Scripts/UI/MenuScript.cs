@@ -11,6 +11,7 @@ public class MenuScript : MonoBehaviour
         if (GameManager.Instance != null)
         {
             GameManager.Instance.setTime(150);
+            GameManager.Instance.setScore(0);
             GameManager.Instance.hasEnded = false;
             GameManager.Instance.isPaused = false;
         }

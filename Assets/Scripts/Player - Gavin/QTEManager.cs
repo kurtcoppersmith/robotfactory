@@ -126,27 +126,33 @@ public class QTEManager : MonoBehaviour
 
     public void Passed()
     {
-        if (playerModel.playerState != PlayerModel.PlayerState.Carrying)
+        if (!GameManager.Instance.hasEnded)
         {
-            return;
+            if (playerModel.playerState != PlayerModel.PlayerState.Carrying)
+            {
+                return;
+            }
+
+            QTETimerImage.fillAmount = 0;
+            QTETimerRoot.SetActive(false);
+            GameManager.Instance.addScore(5);
+
+            playerModel.RemoveCurrentPickup();
+            playerModel.ChangeState(PlayerModel.PlayerState.Moving);
         }
-
-        QTETimerImage.fillAmount = 0;
-        QTETimerRoot.SetActive(false);
-        GameManager.Instance.addScore(5);
-
-        playerModel.RemoveCurrentPickup();
-        playerModel.ChangeState(PlayerModel.PlayerState.Moving);
     }
 
     public void Fail()
     {
-        QTETimerImage.fillAmount = 0;
-        QTETimerRoot.SetActive(false);
-        GameManager.Instance.subScore(2);
+        if (!GameManager.Instance.hasEnded)
+        {
+            QTETimerImage.fillAmount = 0;
+            QTETimerRoot.SetActive(false);
+            GameManager.Instance.subScore(2);
 
-        playerModel.RemoveCurrentPickup();
-        playerModel.ChangeState(PlayerModel.PlayerState.Stunned);
+            playerModel.RemoveCurrentPickup();
+            playerModel.ChangeState(PlayerModel.PlayerState.Stunned);
+        }
     }
 
     void OnQuickTimeNorth(InputValue inputValue)

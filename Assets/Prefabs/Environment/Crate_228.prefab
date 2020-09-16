@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6456027985473277471}
   - component: {fileID: 539246054717519892}
   - component: {fileID: 2320948716283129663}
+  - component: {fileID: 962874899157576560}
+  - component: {fileID: 670886931738518866}
   m_Layer: 0
   m_Name: Crate_228
   m_TagString: Untagged
@@ -79,3 +81,28 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &962874899157576560
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4749710555189226521}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.17999995, y: 0.17999999, z: 0.18}
+  m_Center: {x: -0.0006646402, y: 0.089999996, z: -0.005330026}
+--- !u!114 &670886931738518866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4749710555189226521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b58171f42ec634dbffdb1395e2481a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

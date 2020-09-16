@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5502926817420374470}
   - component: {fileID: 1935076418364790947}
   - component: {fileID: 3266803703346267661}
+  - component: {fileID: 3651755388735537615}
   m_Layer: 0
   m_Name: Cone_5
   m_TagString: Untagged
@@ -58,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 838a9be180b8fa14684779996800641e, type: 2}
+  - {fileID: 2100000, guid: f7ffb76c5c54cff4aaa2649da5fc9ffb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3651755388735537615
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703487386760292099}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22126801, y: 1.6498195, z: 0.19997296}
+  m_Center: {x: 0, y: 0.73490965, z: 0.00000011920929}

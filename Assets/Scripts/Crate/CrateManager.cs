@@ -7,7 +7,7 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
     //spawn time in seconds
     public float SpawnTime;
     //time till next spawn
-    private float RemaningSpawnTime;
+    public float RemaningSpawnTime;
     //time till explosion
     public float duration;
     //crate prefab for instantiating
@@ -19,6 +19,8 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
     public List<Transform> spawnLocations;
     public Dictionary<Transform, bool> spawnLocationStatus { get; private set; }
     public Dictionary<GameObject, Transform> currentSpawnedItems { get; private set; } = new Dictionary<GameObject, Transform>();
+
+    private ObjectPoolerGavin.Key crateKey = ObjectPoolerGavin.Key.Pickup;
     //Public variable to allow for easy spawning location of crate.
 
     public RangeInt spawnNumbers;
@@ -63,7 +65,13 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
         {
             if (!spawnLocationStatus[spawnLocations[i]])
             {
-                currentSpawnedItems.Add(pooler.SpawnFromPool("crate", spawnLocations[i].position, Quaternion.identity), spawnLocations[i]);
+                //currentSpawnedItems.Add(pooler.SpawnFromPool("crate", spawnLocations[i].position, Quaternion.identity), spawnLocations[i]);
+                GameObject obj = ObjectPoolerGavin.GetPooler(crateKey).GetPooledObject();
+                obj.transform.position = spawnLocations[i].position;
+                obj.transform.rotation = Quaternion.identity;
+                obj.SetActive(true);
+                currentSpawnedItems.Add(obj, spawnLocations[i]);
+                
                 spawnLocationStatus[spawnLocations[i]] = true;
                 spawnNumbers.min++;
                 break;

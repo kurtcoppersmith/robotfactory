@@ -26,8 +26,11 @@ public class PlayerModel : MonoBehaviour
     public ParticleSystem sparksParticleSystem;
     private float sparksParticleDuration;
 
+    public GameObject pickupIndicator;
+
     public GameObject currentPickup { get; private set; } = null;
-    
+    public bool isHolding { get; private set; } = false;
+
     /*new void Awake()
     {
         base.Awake();
@@ -64,7 +67,7 @@ public class PlayerModel : MonoBehaviour
 
     void OnBoxPickup(InputValue inputValue)
     {
-        if (currentPickup != null || GameManager.Instance.hasEnded)
+        if (isHolding || GameManager.Instance.hasEnded)
         {
             return;
         }
@@ -87,6 +90,7 @@ public class PlayerModel : MonoBehaviour
         {
             pickup.transform.parent = this.gameObject.transform;
             currentPickup = pickup;
+            isHolding = true;
             pickup.transform.DOMove(carryingPosition.position, qteManager.initialQTEBuffer / 2);
             
             if (playerState == PlayerState.Moving)
@@ -100,10 +104,12 @@ public class PlayerModel : MonoBehaviour
     {
         CrateManager.Instance.Explode();
         CrateManager.Instance.spawnLocationStatus[CrateManager.Instance.currentSpawnedItems[currentPickup]] = false;
+        CrateManager.Instance.currentSpawnedItems.Remove(currentPickup);
         playerPickup.currentColliders.Remove(currentPickup.GetComponent<Collider>());
 
         currentPickup.SetActive(false);
-        currentPickup = null;
+        currentPickup.transform.parent = ObjectPoolerGavin.GetPooler(ObjectPoolerGavin.Key.Pickup).gameObject.transform;
+        isHolding = false;
     }
 
     void DetectCollisions()
@@ -124,7 +130,7 @@ public class PlayerModel : MonoBehaviour
                     temp.y = 0;
                     playerMovement.charController.Move((temp) * (collisionDetectionDistance - hit.distance));
 
-                    if (hit.collider.gameObject.tag == "Hazard" && currentPickup != null)
+                    if (hit.collider.gameObject.tag == "Hazard" && isHolding)
                     {
                         qteManager.Fail();
                     }
@@ -138,6 +144,31 @@ public class PlayerModel : MonoBehaviour
         //{
         //    playerMovement.charController.Move(Vector3.up * (1 - hit.distance));
         //}
+    }
+
+    void ShowPickUpIndicator()
+    {
+        if (isHolding || GameManager.Instance.hasEnded)
+        {
+            pickupIndicator.SetActive(false);
+            return;
+        }
+        bool pickup = false;
+
+        for (int i = 0; i < playerPickup.currentColliders.Count; i++)
+        {
+            if (playerPickup.currentColliders[i].gameObject.tag == "Pickup")
+            {
+                pickup = true;
+                pickupIndicator.SetActive(true);
+                break;
+            }
+        }
+
+        if (!pickup)
+        {
+            pickupIndicator.SetActive(false);
+        }
     }
 
     public void ChangeState(PlayerState state)
@@ -173,6 +204,7 @@ public class PlayerModel : MonoBehaviour
         }
 
         DetectCollisions();
+        ShowPickUpIndicator();
     }
 
     void Stunned()
@@ -202,7 +234,7 @@ public class PlayerModel : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit other)
     {
-        if (other.gameObject.tag == "Hazard" && currentPickup != null)
+        if (other.gameObject.tag == "Hazard" && isHolding)
         {
             Debug.Log("Test");
             qteManager.Fail();
