@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TypeOfHazard
+{
+    oilSlick,
+    liveWire
+}
+
 [System.Serializable]
 public class pos
 {
     public Vector3 coord;
     public bool off = true;
+    public TypeOfHazard typeOfHazard;
     public GameObject gameObject = null;
 }
 
@@ -14,7 +21,8 @@ public class pos
 
 public class HazardManager : SingletonMonoBehaviour<HazardManager>
 {
-    public GameObject hazaradGameObject;
+    public GameObject oilSlickGameObject;
+    public GameObject liveWireGameObject;
 
     public List<pos> hazards = new List<pos>();
 
@@ -94,9 +102,20 @@ public class HazardManager : SingletonMonoBehaviour<HazardManager>
             int ranInt = Random.Range(0, hazards.Count);
             if (hazards[ranInt].off)
             {
-                hazards[ranInt].gameObject = Instantiate(hazaradGameObject, hazards[ranInt].coord, Quaternion.identity);
-                hazards[ranInt].off = false;
-                i++;
+                if (hazards[ranInt].typeOfHazard == TypeOfHazard.oilSlick)
+                {
+                    hazards[ranInt].gameObject = Instantiate(oilSlickGameObject, hazards[ranInt].coord, Quaternion.identity);
+                    hazards[ranInt].off = false;
+                    i++;
+                }
+                else if (hazards[ranInt].typeOfHazard == TypeOfHazard.liveWire)
+                {
+                    hazards[ranInt].gameObject = Instantiate(liveWireGameObject, hazards[ranInt].coord, Quaternion.identity);
+                    hazards[ranInt].off = false;
+                    i++;
+                }
+
+                
             }
         }
         
