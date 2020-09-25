@@ -8,12 +8,21 @@ public enum TypeOfHazard
     liveWire
 }
 
+public enum HazardFromDirection
+{
+    xPlus,
+    xMinus,
+    zPlus,
+    zMinus
+}
+
 [System.Serializable]
 public class pos
 {
     public Vector3 coord;
     public bool off = true;
     public TypeOfHazard typeOfHazard;
+    public HazardFromDirection hazardFromDirection;
     public GameObject gameObject = null;
 }
 
@@ -105,6 +114,18 @@ public class HazardManager : SingletonMonoBehaviour<HazardManager>
                 if (hazards[ranInt].typeOfHazard == TypeOfHazard.oilSlick)
                 {
                     hazards[ranInt].gameObject = Instantiate(oilSlickGameObject, hazards[ranInt].coord, Quaternion.identity);
+                    if (hazards[ranInt].hazardFromDirection == HazardFromDirection.xMinus)
+                    {
+                        hazards[ranInt].gameObject.transform.Rotate(0, -90, 0, Space.Self);
+                    }
+                    else if (hazards[ranInt].hazardFromDirection == HazardFromDirection.xPlus)
+                    {
+                        hazards[ranInt].gameObject.transform.Rotate(0, 90, 0, Space.Self);
+                    }
+                    else if (hazards[ranInt].hazardFromDirection == HazardFromDirection.zMinus)
+                    {
+                        hazards[ranInt].gameObject.transform.Rotate(0, 180, 0, Space.Self);
+                    }
                     hazards[ranInt].off = false;
                     i++;
                 }

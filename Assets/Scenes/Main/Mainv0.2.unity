@@ -3163,7 +3163,7 @@ PrefabInstance:
     - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
       propertyPath: hazards.Array.data[0].coord.x
-      value: -28.8
+      value: -28.75
       objectReference: {fileID: 0}
     - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
@@ -3178,7 +3178,7 @@ PrefabInstance:
     - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
       propertyPath: hazards.Array.data[1].coord.x
-      value: -4.52
+      value: -3.94
       objectReference: {fileID: 0}
     - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
@@ -3193,7 +3193,7 @@ PrefabInstance:
     - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
       propertyPath: hazards.Array.data[2].coord.x
-      value: -24.7
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
@@ -3208,7 +3208,7 @@ PrefabInstance:
     - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
       propertyPath: hazards.Array.data[3].coord.x
-      value: -19.49
+      value: -19.7
       objectReference: {fileID: 0}
     - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
@@ -3223,12 +3223,12 @@ PrefabInstance:
     - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
       propertyPath: hazards.Array.data[4].coord.x
-      value: -32.6
+      value: -32.5
       objectReference: {fileID: 0}
     - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
       propertyPath: hazards.Array.data[4].coord.z
-      value: -25.6
+      value: -25.7
       objectReference: {fileID: 0}
     - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
@@ -3264,6 +3264,38 @@ PrefabInstance:
         type: 3}
       propertyPath: hazards.Array.data[6].off
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
+      propertyPath: hazards.Array.data[0].hazardFromDirection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
+      propertyPath: oilSlickGameObject
+      value: 
+      objectReference: {fileID: 5553283467922761412, guid: 0606442370c26884d825601e798ef99c,
+        type: 3}
+    - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
+      propertyPath: liveWireGameObject
+      value: 
+      objectReference: {fileID: 4847710077731870151, guid: 133ebda1265e50a419d42e1e1b0baa91,
+        type: 3}
+    - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
+      propertyPath: hazards.Array.data[2].hazardFromDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
+      propertyPath: hazards.Array.data[4].hazardFromDirection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
+      propertyPath: hazards.Array.data[5].hazardFromDirection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2090834906559733151, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
@@ -7550,7 +7582,7 @@ PrefabInstance:
     - target: {fileID: 2813048119358463859, guid: caa48001451e2be44936a4c9c95a53e8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.33
+      value: -33.23
       objectReference: {fileID: 0}
     - target: {fileID: 2813048119358463859, guid: caa48001451e2be44936a4c9c95a53e8,
         type: 3}
@@ -7560,7 +7592,7 @@ PrefabInstance:
     - target: {fileID: 2813048119358463859, guid: caa48001451e2be44936a4c9c95a53e8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.369048
+      value: -15.37
       objectReference: {fileID: 0}
     - target: {fileID: 2813048119358463859, guid: caa48001451e2be44936a4c9c95a53e8,
         type: 3}
