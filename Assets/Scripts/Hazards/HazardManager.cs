@@ -17,7 +17,7 @@ public enum HazardFromDirection
 }
 
 [System.Serializable]
-public class pos
+public class HazardDetails
 {
     public Vector3 coord;
     public bool off = true;
@@ -26,6 +26,14 @@ public class pos
     public GameObject gameObject = null;
 }
 
+[System.Serializable]
+public class Difficulty
+{
+    public int easy;
+    public int medium;
+    public int hard;
+    public int veryHard;
+}
 
 
 public class HazardManager : SingletonMonoBehaviour<HazardManager>
@@ -33,7 +41,9 @@ public class HazardManager : SingletonMonoBehaviour<HazardManager>
     public GameObject oilSlickGameObject;
     public GameObject liveWireGameObject;
 
-    public List<pos> hazards = new List<pos>();
+    public Difficulty difficulty;
+
+    public List<HazardDetails> hazards = new List<HazardDetails>();
 
     float y = -.04f;
     int numOfHazards = 0;
@@ -78,28 +88,116 @@ public class HazardManager : SingletonMonoBehaviour<HazardManager>
 
     void GetNumOfHazards()
     {
-        int ranInt = Random.Range(0, 101);
-        if (ranInt < 25)
+
+        int score = GameManager.Instance.returnScore();
+        //easy
+        if (difficulty.easy <= score && score < difficulty.medium)
         {
-            numOfHazards = 1;
+            int ranInt = Random.Range(0, 101);
+            if (ranInt < 50)
+            {
+                numOfHazards = 0;
+            }
+            else if (ranInt < 70)
+            {
+                numOfHazards = 1;
+            }
+            else if (ranInt < 85)
+            {
+                numOfHazards = 2;
+            }
+            else if (ranInt < 95)
+            {
+                numOfHazards = 3;
+            }
+            else if (ranInt < 101)
+            {
+                numOfHazards = 4;
+            }
         }
-        else if (ranInt < 60)
+
+
+        //medium
+        if (difficulty.medium <= score && score < difficulty.hard)
         {
-            numOfHazards = 2;
+            int ranInt = Random.Range(0, 101);
+            if (ranInt < 45)
+            {
+                numOfHazards = 1;
+            }
+            else if (ranInt < 75)
+            {
+                numOfHazards = 2;
+            }
+            else if (ranInt < 85)
+            {
+                numOfHazards = 3;
+            }
+            else if (ranInt < 95)
+            {
+                numOfHazards = 4;
+            }
+            else if (ranInt < 101)
+            {
+                numOfHazards = 5;
+            }
         }
-        else if (ranInt < 80)
+
+
+        //hard
+        if (difficulty.hard <= score && score < difficulty.veryHard)
         {
-            numOfHazards = 3;
+            int ranInt = Random.Range(0, 101);
+            if (ranInt < 35)
+            {
+                numOfHazards = 1;
+            }
+            else if (ranInt < 65)
+            {
+                numOfHazards = 2;
+            }
+            else if (ranInt < 85)
+            {
+                numOfHazards = 3;
+            }
+            else if (ranInt < 95)
+            {
+                numOfHazards = 4;
+            }
+            else if (ranInt < 101)
+            {
+                numOfHazards = 5;
+            }
         }
-        else if (ranInt < 95)
+
+
+        //very hard
+        if (difficulty.veryHard <= score)
         {
-            numOfHazards = 4;
+            int ranInt = Random.Range(0, 101);
+            if (ranInt < 5)
+            {
+                numOfHazards = 1;
+            }
+            else if (ranInt < 40)
+            {
+                numOfHazards = 2;
+            }
+            else if (ranInt < 75)
+            {
+                numOfHazards = 3;
+            }
+            else if (ranInt < 95)
+            {
+                numOfHazards = 4;
+            }
+            else if (ranInt < 101)
+            {
+                numOfHazards = 5;
+            }
         }
-        else if (ranInt < 101)
-        {
-            numOfHazards = 5;
-        }
-        
+            
+
     }
 
     public void SpawnHazards()
