@@ -9,17 +9,19 @@ public class OilSlickHazard : MonoBehaviour
         HazardManager.Instance.TakeCareOffHazard(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         Destroy(gameObject);
 
+        Debug.Log("OilCollision");
+
         if (other.gameObject.tag == "Player")
         {
             if (other.GetComponent<PlayerModel>().isHolding)
             {
-                //needs to be changed to speed up player and make them drift when moving like on ice
-                other.GetComponent<PlayerModel>().qteManager.Fail();
+                other.GetComponent<PlayerModel>().playerMovement.SetPlayerIced(true);
+                //other.GetComponent<PlayerModel>().qteManager.Fail();
             }
             else
             {
-                //needs to be changed to speed up player and make them drift when moving like on ice
-                other.GetComponent<PlayerModel>().ChangeState(PlayerModel.PlayerState.Stunned);
+                other.GetComponent<PlayerModel>().playerMovement.SetPlayerIced(true);
+                //other.GetComponent<PlayerModel>().ChangeState(PlayerModel.PlayerState.Stunned);
             }
         }
     }

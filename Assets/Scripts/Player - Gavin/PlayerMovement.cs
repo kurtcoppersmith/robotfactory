@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,14 +23,27 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Normal Control Variables")]
     public float speed = 4;
+    private float initialSpeed;
     public float rotationSpeed = 4;
 
-    public float gravity = 10;
+    [Header("Icey Movement Variables")]
+    Vector3 finalDir = Vector3.zero;
+    public float iceSpeed = 5.5f;
+    private float friction = 1.0f;
+    private bool isIced = false;
+
+    [Header("General Hazard Effect Variables")]
+    public float hazardEffectDuration = 2.0f;
+    private float maxHazardEffectDuration;
+
+    private bool isSlowed = false;
 
     private float currentSpeed;
     private float currentTopSpeed;
     private bool isAccel = false;
 
+    [Header("Additional Variables")]
+    public float gravity = 10;
     [Range(0.01f, 1f)]
     public float minimumGravity = 0.01f;
 
@@ -45,6 +59,9 @@ public class PlayerMovement : MonoBehaviour
         movementVector = Vector3.zero;
         currentTopSpeed = topForwardSpeed;
         charController.detectCollisions = true;
+
+        initialSpeed = speed;
+        maxHazardEffectDuration = hazardEffectDuration;
     }
 
     void Start()
@@ -55,6 +72,34 @@ public class PlayerMovement : MonoBehaviour
     void OnMovement(InputValue inputValue)
     {
         movementInput = inputValue.Get<Vector2>();
+    }
+
+    public void SetPlayerIced(bool option)
+    {
+        isIced = option;
+
+        if (option)
+        {
+            speed = iceSpeed;
+            hazardEffectDuration = maxHazardEffectDuration;
+
+            Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
+            Debug.Log(tempRelativeValues);
+            Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
+            finalDir = tempFinalDir;
+        }
+    }
+
+    public void IcePlayer()
+    {
+        hazardEffectDuration -= Time.deltaTime;
+
+        if (hazardEffectDuration <= 0)
+        {
+            isIced = false;
+            friction = 1.0f;
+            speed = initialSpeed;
+        }
     }
 
     void TankMove(float h, float v)
@@ -116,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
         movementVector.z *= currentSpeed * Time.deltaTime;
     }
 
-    void NormalMove(float h, float v)
+    Vector2 FindMovementRelativeToCamera(float h, float v)
     {
         Vector3 VertVector = LevelManager.Instance.mainCam.transform.forward;
         VertVector.x = Mathf.Abs(VertVector.x);
@@ -127,32 +172,54 @@ public class PlayerMovement : MonoBehaviour
 
         if ((int)VertVector.z != 0 || !(VertVector.z < 0.1 && VertVector.z > -0.1))
             VertVector.z /= VertVector.z;
-        
+
         VertVector *= v;
 
         Vector3 HorVector = LevelManager.Instance.mainCam.transform.right;
         HorVector.x = Mathf.Abs(HorVector.x);
         HorVector.z = Mathf.Abs(HorVector.z);
-        
+
         if ((int)HorVector.x != 0 || !(HorVector.x < 0.1 && HorVector.x > -0.1))
             HorVector.x /= HorVector.x;
 
         if ((int)HorVector.z != 0 || !(HorVector.z < 0.1 && HorVector.x > -0.1))
             HorVector.z /= HorVector.z;
 
-         HorVector *= -h;
+        HorVector *= -h;
+
+        Vector3 tempVec = VertVector + HorVector;
+
+        return new Vector2(tempVec.x, tempVec.z);
+    }
+
+    void NormalMove(float h, float v)
+    {
+        Vector2 relativeMoveValues = FindMovementRelativeToCamera(h, v);
         
         
-        Vector3 moveDirection = VertVector + HorVector;
-        moveDirection.y = 0;
-        movementVector = moveDirection;
+        Vector3 moveDirection = new Vector3(relativeMoveValues.x, 0, relativeMoveValues.y);
+        
+        if(isIced)
+        {
+            Vector3 directionVelocity = moveDirection * speed;
+            finalDir = Vector3.Lerp(finalDir, directionVelocity, friction * Time.deltaTime);
+            movementVector = finalDir;
+
+            movementVector.x *= Time.deltaTime;
+            movementVector.z *= Time.deltaTime;
+        }
+        else
+        {
+            movementVector = moveDirection;
+
+            movementVector.x *= speed * Time.deltaTime;
+            movementVector.z *= speed * Time.deltaTime;
+        }
+        
         if (movementVector != Vector3.zero)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(transform.forward + movementVector, transform.up), rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(transform.forward + moveDirection, transform.up), rotationSpeed * Time.deltaTime);
         }
-
-        movementVector.x *= speed * Time.deltaTime;
-        movementVector.z *= speed * Time.deltaTime;
     }
 
     void MovePlayer()
@@ -179,6 +246,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         charController.Move(movementVector);
+    }
+
+    void Update()
+    {
+        if (isIced)
+        {
+            IcePlayer();
+        }
     }
 
     void FixedUpdate()
