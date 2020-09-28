@@ -560,6 +560,7 @@ GameObject:
   - component: {fileID: 320951859981895666}
   - component: {fileID: 256214006}
   - component: {fileID: 5750735901565193005}
+  - component: {fileID: 2596596997351290730}
   m_Layer: 0
   m_Name: Crate
   m_TagString: Pickup
@@ -610,7 +611,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &5750735901565193005
 MonoBehaviour:
@@ -636,6 +637,20 @@ MonoBehaviour:
   durationFill: {fileID: 8035799944132055145}
   maxDurationColor: {r: 0.41048336, g: 1, b: 0, a: 1}
   minDurationColor: {r: 1, g: 0, b: 0.06730747, a: 1}
+--- !u!114 &2596596997351290730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6697691059644475954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f51d3db9dc3b940b9b23e4e51825e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.75
+  reset: {fileID: 8034378311479095219, guid: e0aa40e90f45d424eb20285bb3aa26d9, type: 3}
 --- !u!1 &7855236737938758386
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,15 +861,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01425ba2ef88a8c45bb0010d325af697, type: 3}
---- !u!4 &7891279662110428895 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7519509594884144830, guid: 01425ba2ef88a8c45bb0010d325af697,
-    type: 3}
-  m_PrefabInstance: {fileID: 421613403219341409}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &9063593027205117360 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8651844786181506513, guid: 01425ba2ef88a8c45bb0010d325af697,
+    type: 3}
+  m_PrefabInstance: {fileID: 421613403219341409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7891279662110428895 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7519509594884144830, guid: 01425ba2ef88a8c45bb0010d325af697,
     type: 3}
   m_PrefabInstance: {fileID: 421613403219341409}
   m_PrefabAsset: {fileID: 0}

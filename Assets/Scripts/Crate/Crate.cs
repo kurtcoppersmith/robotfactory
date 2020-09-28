@@ -50,7 +50,11 @@ public class Crate : MonoBehaviour//, IPooledObject
     {
         if (!GameManager.Instance.hasEnded)
         {
-            DecreaseCrateTimer();
+            //if picked up
+            if (gameObject.GetComponent<IdleCrate>().PickedUp())
+            {
+                DecreaseCrateTimer();
+            }
         }
     }
 
