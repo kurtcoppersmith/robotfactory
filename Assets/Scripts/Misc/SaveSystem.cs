@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.IO;
+﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Collections.Generic;
 using UnityEngine;
 
-public static class SaveSystem
-{
+public class SaveSystem
+{    
     /// <summary>
     /// The generic passed in MUST be an instance of a class.
     /// </summary>
     /// <typeparam name="D"></typeparam>
     /// <param name="dataToBeSaved"></param>
     /// <param name="fileName"></param>
-    public static void SaveData<D>(D dataToBeSaved, string fileName) where D : class
+    public static void SaveData(GameManager dataToBeSaved, string fileName)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/" + fileName;
@@ -21,7 +19,7 @@ public static class SaveSystem
 
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        D data = dataToBeSaved;
+        SaveData data = new SaveData(dataToBeSaved);
 
         formatter.Serialize(stream, data);
         stream.Close();
@@ -33,7 +31,7 @@ public static class SaveSystem
     /// <typeparam name="D"></typeparam>
     /// <param name="fileName"></param>
     /// <returns></returns>
-    public static D LoadData<D>(string fileName) where D : class
+    public static SaveData LoadData(string fileName)
     {
         string path = Application.persistentDataPath + "/" + fileName;
         if (File.Exists(path))
@@ -41,7 +39,7 @@ public static class SaveSystem
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            D data = formatter.Deserialize(stream) as D;
+            SaveData data = formatter.Deserialize(stream) as SaveData;
             stream.Close();
 
             return data;
