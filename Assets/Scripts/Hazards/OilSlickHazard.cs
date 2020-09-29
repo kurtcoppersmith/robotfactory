@@ -9,8 +9,6 @@ public class OilSlickHazard : MonoBehaviour
         HazardManager.Instance.TakeCareOffHazard(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         Destroy(gameObject);
 
-        Debug.Log("OilCollision");
-
         if (other.gameObject.tag == "Player")
         {
             if (other.GetComponent<PlayerModel>().isHolding)

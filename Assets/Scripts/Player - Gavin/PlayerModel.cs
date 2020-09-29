@@ -10,7 +10,7 @@ public class PlayerModel : MonoBehaviour
     [Range(0,1)]
     public float bottomOfCharacter = 0.25f;
     public float collisionDetectionDistance = 0.2f;
-    private float maxPlayerStunnedTime;
+    public float maxPlayerStunnedTime { get; private set; }
 
     public PlayerMovement playerMovement { get; private set; }
     public QTEManager qteManager { get; private set; }
