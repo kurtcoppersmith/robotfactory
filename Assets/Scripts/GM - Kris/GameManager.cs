@@ -16,6 +16,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public float timeRemaining = 150;
     public int lives = 3;
     public int score = 0;
+    public Transform pm;
+
 
     new void Awake()
     {
@@ -119,4 +121,38 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         score = scoreToSet;
     }
+
+    public float[] returnPlayerPos()
+    {
+        pm = GameObject.FindGameObjectWithTag("Player").transform;
+        float[] position = { pm.position.x, pm.position.y, pm.position.z };
+
+        return position;
+    }
+
+    public void setPlayerPosition(float x, float y, float z)
+    {
+        Vector3 position; 
+        position.x = x;
+        position.y = y;
+        position.z = z;
+        GameObject.FindGameObjectWithTag("Player").transform.position = position;
+    }
+
+    public void SavePlayer()
+    {
+        SaveSystem.SaveData(this, "test");
+    }
+
+    public void LoadPlayer()
+    {
+        SaveData data = SaveSystem.LoadData("test");
+        this.setScore(data.score);
+        this.setTime(data.time);
+        this.setPlayerPosition(data.position[0], data.position[1], data.position[2]);
+
+        
+    }
+
+        
 }
