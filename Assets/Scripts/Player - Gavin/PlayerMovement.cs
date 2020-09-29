@@ -7,6 +7,7 @@ using DG.Tweening;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController charController { get; private set; }
+    private PlayerModel playerModel;
 
     Vector2 movementInput;
     Vector3 movementVector;
@@ -32,11 +33,13 @@ public class PlayerMovement : MonoBehaviour
     private float friction = 1.0f;
     private bool isIced = false;
 
+    [Header("Slowed Movement Variables")]
+    public float slowedSpeed = 4;
+    private bool isSlowed = false;
+
     [Header("General Hazard Effect Variables")]
     public float hazardEffectDuration = 2.0f;
     private float maxHazardEffectDuration;
-
-    private bool isSlowed = false;
 
     private float currentSpeed;
     private float currentTopSpeed;
@@ -53,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         charController = GetComponent<CharacterController>();
+        playerModel = GetComponent<PlayerModel>();
 
         HelperUtilities.UpdateCursorLock(true);
 
@@ -84,13 +88,12 @@ public class PlayerMovement : MonoBehaviour
             hazardEffectDuration = maxHazardEffectDuration;
 
             Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
-            Debug.Log(tempRelativeValues);
             Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
             finalDir = tempFinalDir;
         }
     }
 
-    public void IcePlayer()
+    void IcePlayer()
     {
         hazardEffectDuration -= Time.deltaTime;
 
@@ -98,6 +101,28 @@ public class PlayerMovement : MonoBehaviour
         {
             isIced = false;
             friction = 1.0f;
+            speed = initialSpeed;
+        }
+    }
+
+    public void SetPlayerSlowed(bool option)
+    {
+        isSlowed = option;
+
+        if (option)
+        {
+            speed = slowedSpeed;
+            hazardEffectDuration = maxHazardEffectDuration + playerModel.maxPlayerStunnedTime;
+        }
+    }
+
+    void SlowPlayer()
+    {
+        hazardEffectDuration -= Time.deltaTime;
+
+        if (hazardEffectDuration <= 0)
+        {
+            isSlowed = false;
             speed = initialSpeed;
         }
     }
@@ -253,6 +278,11 @@ public class PlayerMovement : MonoBehaviour
         if (isIced)
         {
             IcePlayer();
+        }
+
+        if (isSlowed)
+        {
+            SlowPlayer();
         }
     }
 

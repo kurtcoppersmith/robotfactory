@@ -15,12 +15,12 @@ public class LiveWireHazard : MonoBehaviour
         {
             if (other.GetComponent<PlayerModel>().isHolding)
             {
-                //needs to be changed to after stun slows player for a amount of time
+                other.GetComponent<PlayerModel>().playerMovement.SetPlayerSlowed(true);
                 other.GetComponent<PlayerModel>().qteManager.Fail();
             }
             else
             {
-                //needs to be changed to after stun slows player for a amount of time
+                other.GetComponent<PlayerModel>().playerMovement.SetPlayerSlowed(true);
                 other.GetComponent<PlayerModel>().ChangeState(PlayerModel.PlayerState.Stunned);
             }
         }
