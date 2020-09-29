@@ -58,7 +58,7 @@ public class HazardManager : SingletonMonoBehaviour<HazardManager>
         Gizmos.color = Color.red;
         for (int i = 0; i < hazards.Count; i++)
         {
-            Gizmos.DrawWireCube(hazards[i].coord, new Vector3(3,1,3));
+            Gizmos.DrawWireCube(hazards[i].coord, new Vector3(2,1,2));
         }
     }
 
