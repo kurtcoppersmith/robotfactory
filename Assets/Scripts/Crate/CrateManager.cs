@@ -13,6 +13,8 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
     //crate prefab for instantiating
     public GameObject Crate;
 
+    public GameObject CrateResetObject;
+
     //Object pooler for spawning the objects
     public ObjectPooler pooler;
 
@@ -65,11 +67,11 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
         {
             if (!spawnLocationStatus[spawnLocations[i]])
             {
-                //currentSpawnedItems.Add(pooler.SpawnFromPool("crate", spawnLocations[i].position, Quaternion.identity), spawnLocations[i]);
                 GameObject obj = ObjectPoolerGavin.GetPooler(crateKey).GetPooledObject();
                 obj.transform.position = spawnLocations[i].position;
                 obj.transform.rotation = Quaternion.identity;
                 obj.GetComponent<IdleCrate>().PickUp(false);
+                obj.GetComponent<IdleCrate>().reset = CrateResetObject;
                 obj.SetActive(true);
                 currentSpawnedItems.Add(obj, spawnLocations[i]);
                 

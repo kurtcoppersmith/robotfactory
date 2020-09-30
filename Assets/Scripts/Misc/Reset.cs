@@ -8,9 +8,12 @@ public class Reset : MonoBehaviour
     {
         if(other.tag == "Pickup")
         {
-            //put back into object pooler
+            GameManager.Instance.subScore(1);
             CrateManager.Instance.Explode();
+            CrateManager.Instance.spawnLocationStatus[CrateManager.Instance.currentSpawnedItems[other.gameObject]] = false;
+            CrateManager.Instance.currentSpawnedItems.Remove(other.gameObject);
+
+            other.gameObject.SetActive(false);
         }
-        Debug.Log(other.gameObject.name);
     }
 }

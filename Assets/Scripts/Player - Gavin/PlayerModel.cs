@@ -89,6 +89,9 @@ public class PlayerModel : MonoBehaviour
         else
         {
             pickup.transform.parent = this.gameObject.transform;
+            pickup.GetComponent<IdleCrate>().PickUp(true);
+            pickup.GetComponent<Rigidbody>().useGravity = false;
+            pickup.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             currentPickup = pickup;
             isHolding = true;
             pickup.transform.DOMove(carryingPosition.position, qteManager.initialQTEBuffer / 2);
