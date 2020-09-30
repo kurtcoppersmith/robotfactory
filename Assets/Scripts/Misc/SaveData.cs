@@ -15,6 +15,6 @@ public class SaveData
     {
         score = gm.returnScore();
         time = gm.returnTime();
-        position = gm.returnPlayerPos();
+      //  position = gm.returnPlayerPos();
     }
 }
