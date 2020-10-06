@@ -71,7 +71,6 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
                 obj.transform.position = spawnLocations[i].position;
                 obj.transform.rotation = Quaternion.identity;
                 obj.GetComponent<IdleCrate>().PickUp(false);
-                obj.GetComponent<IdleCrate>().reset = CrateResetObject;
                 obj.SetActive(true);
                 currentSpawnedItems.Add(obj, spawnLocations[i]);
                 
