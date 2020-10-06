@@ -35,7 +35,7 @@ public class InputKeyUI : MonoBehaviour
     public Sprite keyboardSprite;
     public string keyboardText;
 
-    private string lastSeenControlScheme = "";
+    public string lastSeenControlScheme = "";
     private InputActionMap inputActionMap = null;
 
 

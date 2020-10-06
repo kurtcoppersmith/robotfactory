@@ -290,7 +290,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove && !GameManager.Instance.hasEnded)
         {
-            MovePlayer();
+            if ((TutorialManager.Instance != null && playerModel.isHolding && TutorialManager.Instance.currentObjective == 0) || (TutorialManager.Instance != null && TutorialManager.Instance.currentObjective > 0) || (TutorialManager.Instance == null))
+            {
+                MovePlayer();
+            }
         }
     }
 }

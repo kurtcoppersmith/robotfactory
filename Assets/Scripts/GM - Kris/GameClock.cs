@@ -23,14 +23,22 @@ public class GameClock : MonoBehaviour
     {
         //Attach current Gamemanager to the timer script
         GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+        if(GameManager.Instance != null)
+        {
+            timeTextTMP.text = "";
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //call GM SubtractTime script and TimerDisplay Script
-        GM.subtractTime();
-        TimerDisplay(GM.returnTime());
+        if (TutorialManager.Instance == null)
+        {
+            //call GM SubtractTime script and TimerDisplay Script
+            GM.subtractTime();
+            TimerDisplay(GM.returnTime());
+        }
     }
 
     //Used to display the remaining float time in a traditional clock format
