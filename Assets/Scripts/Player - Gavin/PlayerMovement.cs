@@ -37,6 +37,10 @@ public class PlayerMovement : MonoBehaviour
     public float slowedSpeed = 4;
     private bool isSlowed = false;
 
+    [Header("Speed Up Movement Variables")]
+    public float spedUpSpeed = 6f;
+    private bool isSped = false;
+
     [Header("General Hazard Effect Variables")]
     public float hazardEffectDuration = 2.0f;
     private float maxHazardEffectDuration;
@@ -44,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentSpeed;
     private float currentTopSpeed;
     private bool isAccel = false;
+    private bool robotChasis = false;
 
     [Header("Additional Variables")]
     public float gravity = 10;
@@ -80,16 +85,23 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetPlayerIced(bool option)
     {
-        isIced = option;
-
-        if (option)
+        if(robotChasis)
         {
-            speed = iceSpeed;
-            hazardEffectDuration = maxHazardEffectDuration;
+            SetPlayerChasis(false);
+        }
+        else 
+        {
+            isIced = option;
 
-            Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
-            Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
-            finalDir = tempFinalDir;
+            if (option)
+            {
+                speed = iceSpeed;
+                hazardEffectDuration = maxHazardEffectDuration;
+
+                Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
+                Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
+                finalDir = tempFinalDir;
+            }
         }
     }
 
@@ -107,12 +119,19 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetPlayerSlowed(bool option)
     {
-        isSlowed = option;
-
-        if (option)
+        if (robotChasis)
         {
-            speed = slowedSpeed;
-            hazardEffectDuration = maxHazardEffectDuration + playerModel.maxPlayerStunnedTime;
+            SetPlayerChasis(false);
+        }
+        else
+        {
+            isSlowed = option;
+
+            if (option)
+            {
+                speed = slowedSpeed;
+                hazardEffectDuration = maxHazardEffectDuration + playerModel.maxPlayerStunnedTime;
+            }
         }
     }
 
@@ -125,6 +144,33 @@ public class PlayerMovement : MonoBehaviour
             isSlowed = false;
             speed = initialSpeed;
         }
+    }
+
+    public void SetPlayerSped(bool option)
+    {
+        isSped = option;
+
+        if (option)
+        {
+            speed = spedUpSpeed;
+            hazardEffectDuration = maxHazardEffectDuration + playerModel.maxPlayerStunnedTime;
+        }
+    }
+
+    void SpeedPlayer()
+    {
+        hazardEffectDuration -= Time.deltaTime;
+
+        if (hazardEffectDuration <= 0)
+        {
+            isSped = false;
+            speed = initialSpeed;
+        }
+    }
+
+    public void SetPlayerChasis(bool option)
+    {
+        robotChasis = option;
     }
 
     void TankMove(float h, float v)
@@ -283,6 +329,11 @@ public class PlayerMovement : MonoBehaviour
         if (isSlowed)
         {
             SlowPlayer();
+        }
+
+        if(isSped)
+        {
+            SpeedPlayer();
         }
     }
 
