@@ -26,6 +26,10 @@ public class HazardDetails
     public GameObject gameObject = null;
 }
 
+//[Range(0,101)]
+//public int example
+
+
 [System.Serializable]
 public class Difficulty
 {
@@ -38,6 +42,7 @@ public class Difficulty
 
 public class HazardManager : SingletonMonoBehaviour<HazardManager>
 {
+    [Header("Hazard Types")]
     public GameObject oilSlickGameObject;
     public GameObject liveWireGameObject;
 
