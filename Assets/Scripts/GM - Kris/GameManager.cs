@@ -18,6 +18,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public int score = 0;
     public Transform pm;
 
+    public int gears = 0;
+
 
     new void Awake()
     {
@@ -120,6 +122,22 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void setScore(int scoreToSet)
     {
         score = scoreToSet;
+    }
+
+    // Below are the gear functions
+    public void addGears(int gearsToAdd)
+    {
+        gears += gearsToAdd;
+    }
+
+    public int returnGears()
+    {
+        return gears;
+    }
+
+    public void setGears(int gearsToSet)
+    {
+        gears = gearsToSet;
     }
 
     public float[] returnPlayerPos()
