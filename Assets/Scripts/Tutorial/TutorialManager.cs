@@ -74,6 +74,8 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
 
     void Update()
     {
+        Debug.Log(inputKeyUI.lastSeenControlScheme);
+
         if (!hasDescription)
         {
             switch (inputKeyUI.lastSeenControlScheme)

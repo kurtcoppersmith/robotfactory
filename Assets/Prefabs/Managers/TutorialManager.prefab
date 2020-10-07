@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 2500392565441758512}
   - component: {fileID: 2500392565441758513}
   - component: {fileID: 2500392565441758526}
-  - component: {fileID: 2500392565441758527}
+  - component: {fileID: 3592844752781240323}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -318,8 +318,20 @@ MonoBehaviour:
       session. >
     - For this task, press <sprite name="SpaceBar"> to pick up the crate in front
       of you. Then, use <sprite name="WASD"> to move around the level. >
-    currentObjectivesXBox: []
-    currentObjectivesPS4: []
+    currentObjectivesXBox:
+    - Hi! Welcome to the job, press "Enter" on your keyboard anytime you see ">"
+      to advance the text. >
+    - Great, you seem to take to tasks well. In that case, let's start our training
+      session. >
+    - For this task, press <sprite name="A"> to pick up the crate in front of you.
+      Then, use <sprite name="LeftStick"> to move around the level. >
+    currentObjectivesPS4:
+    - Hi! Welcome to the job, press "Enter" on your keyboard anytime you see ">"
+      to advance the text. >
+    - Great, you seem to take to tasks well. In that case, let's start our training
+      session. >
+    - For this task, press <sprite name="Cross"> to pick up the crate in front of
+      you. Then, use <sprite name="LeftStick"> to move around the level. >
   - currentObjectivesKeyboard:
     - Whoa! What are you doing?! There has to be something wrong, let me troubleshoot
       a bit for you. >
@@ -328,8 +340,22 @@ MonoBehaviour:
     - Anywho, I've done some reprogramming so that shouldn't happen again. >
     - Once again, use <sprite name="WASD"> to move around the level. When you're
       ready to proceed; pick up the box. >
-    currentObjectivesXBox: []
-    currentObjectivesPS4: []
+    currentObjectivesXBox:
+    - Whoa! What are you doing?! There has to be something wrong, let me troubleshoot
+      a bit for you. >
+    - Oh. Sorry for the overreaction there. You must still be getting used to that
+      new bod- err. networking. >
+    - Anywho, I've done some reprogramming so that shouldn't happen again. >
+    - Once again, use <sprite name="LeftStick"> to move around the level. When you're
+      ready to proceed; pick up the box. >
+    currentObjectivesPS4:
+    - Whoa! What are you doing?! There has to be something wrong, let me troubleshoot
+      a bit for you. >
+    - Oh. Sorry for the overreaction there. You must still be getting used to that
+      new bod- err. networking. >
+    - Anywho, I've done some reprogramming so that shouldn't happen again. >
+    - Once again, use <sprite name="LeftStick"> to move around the level. When you're
+      ready to proceed; pick up the box. >
   - currentObjectivesKeyboard:
     - Now that you've got a feeling for your... legs, let's move on to the next task.
       >
@@ -346,8 +372,38 @@ MonoBehaviour:
       Otherwise, press "Enter" to continue. >
     - 'Your task: Deliver the crate to the conveyor belt of corresponding color.
       You must deliver one crate to continue. >'
-    currentObjectivesXBox: []
-    currentObjectivesPS4: []
+    currentObjectivesXBox:
+    - Now that you've got a feeling for your... legs, let's move on to the next task.
+      >
+    - 'You''ll have to worry about a couple things during this task: The box''s timer
+      and your flimsy arms! >'
+    - The boxes must be delivered within a certain time limit once they've been picked
+      up. Can't have you slacking off! >
+    - The servos in your arms are quite weak and must be reset regularly so you don't
+      drop the crate. >
+    - 'There are several options for resetting your servos: <sprite name="A"> <sprite
+      name="B"> <sprite name="X"> <sprite name="Y"> >'
+    - Make sure to press the corresponding button when it appears on screen. >
+    - Oh, that's a lot, isn't it? If you would like a repeat, press "Backspace".
+      Otherwise, press "Enter" to continue. >
+    - 'Your task: Deliver the crate to the conveyor belt of corresponding color.
+      You must deliver one crate to continue. >'
+    currentObjectivesPS4:
+    - Now that you've got a feeling for your... legs, let's move on to the next task.
+      >
+    - 'You''ll have to worry about a couple things during this task: The box''s timer
+      and your flimsy arms! >'
+    - The boxes must be delivered within a certain time limit once they've been picked
+      up. Can't have you slacking off! >
+    - The servos in your arms are quite weak and must be reset regularly so you don't
+      drop the crate. >
+    - 'There are several options for resetting your servos: <sprite name="Cross">
+      <sprite name="Circle"> <sprite name="Square"> <sprite name="Triangle"> >'
+    - Make sure to press the corresponding button when it appears on screen. >
+    - Oh, that's a lot, isn't it? If you would like a repeat, press "Backspace".
+      Otherwise, press "Enter" to continue. >
+    - 'Your task: Deliver the crate to the conveyor belt of corresponding color.
+      You must deliver one crate to continue. >'
   - currentObjectivesKeyboard:
     - Perfect! If you had done that on the clock, you would've scored a couple points!
       >
@@ -357,8 +413,24 @@ MonoBehaviour:
       >
     - Any crate that you miss will go off screen and explode! That's a penalty on
       you, so don't let it happen! >
-    currentObjectivesXBox: []
-    currentObjectivesPS4: []
+    currentObjectivesXBox:
+    - Perfect! If you had done that on the clock, you would've scored a couple points!
+      >
+    - What? Money? ...for your work? >
+    - For your next task I want you to deliver another crate, but with a twist! >
+    - We've turned the delivery conveyor belt on, so your crates will begin to move.
+      >
+    - Any crate that you miss will go off screen and explode! That's a penalty on
+      you, so don't let it happen! >
+    currentObjectivesPS4:
+    - Perfect! If you had done that on the clock, you would've scored a couple points!
+      >
+    - What? Money? ...for your work? >
+    - For your next task I want you to deliver another crate, but with a twist! >
+    - We've turned the delivery conveyor belt on, so your crates will begin to move.
+      >
+    - Any crate that you miss will go off screen and explode! That's a penalty on
+      you, so don't let it happen! >
   - currentObjectivesKeyboard:
     - Great job! You're almost done with training, so keep it up! >
     - As you can see here, we have two types of hazards you may encounter in the
@@ -370,8 +442,28 @@ MonoBehaviour:
       to get a feel for their consquences. >
     - (Just a side note, the hazards in later levels may only spawn when you deliver
       crates. It is not a guaranteed spawn everytime.) >
-    currentObjectivesXBox: []
-    currentObjectivesPS4: []
+    currentObjectivesXBox:
+    - Great job! You're almost done with training, so keep it up! >
+    - As you can see here, we have two types of hazards you may encounter in the
+      factory while working. >
+    - What's that? Why are there hazards in the factory? ...>
+    - For your final task I want you to familiarize yourself with these hazards.
+      The oil slick (left) and live wire (right) >
+    - Each hazard will affect you in a different ways, so be sure to run into them
+      to get a feel for their consquences. >
+    - (Just a side note, the hazards in later levels may only spawn when you deliver
+      crates. It is not a guaranteed spawn everytime.) >
+    currentObjectivesPS4:
+    - Great job! You're almost done with training, so keep it up! >
+    - As you can see here, we have two types of hazards you may encounter in the
+      factory while working. >
+    - What's that? Why are there hazards in the factory? ...>
+    - For your final task I want you to familiarize yourself with these hazards.
+      The oil slick (left) and live wire (right) >
+    - Each hazard will affect you in a different ways, so be sure to run into them
+      to get a feel for their consquences. >
+    - (Just a side note, the hazards in later levels may only spawn when you deliver
+      crates. It is not a guaranteed spawn everytime.) >
   - currentObjectivesKeyboard:
     - Congrats! You have completed your training session and are ready for the real
       deal! >
@@ -385,8 +477,32 @@ MonoBehaviour:
     - 'Remeber to...
 
       <align="center"><i>Have a blast!</i> >'
-    currentObjectivesXBox: []
-    currentObjectivesPS4: []
+    currentObjectivesXBox:
+    - Congrats! You have completed your training session and are ready for the real
+      deal! >
+    - For completing this course, you have earned yourself an ever rare gear. >
+    - These bad boys will allow you to upgrade yourself with some augments in later
+      levels. Do good in these levels, and you'll earn more!
+    - I'll leave this area to you if you would like to continue honing your skills.
+      >
+    - If you're done, all you need to do is pause the game with the "Start" button
+      and exit to the main menu. >
+    - 'Remeber to...
+
+      <align="center"><i>Have a blast!</i> >'
+    currentObjectivesPS4:
+    - Congrats! You have completed your training session and are ready for the real
+      deal! >
+    - For completing this course, you have earned yourself an ever rare gear. >
+    - These bad boys will allow you to upgrade yourself with some augments in later
+      levels. Do good in these levels, and you'll earn more!
+    - I'll leave this area to you if you would like to continue honing your skills.
+      >
+    - If you're done, all you need to do is pause the game with the "Start" button
+      and exit to the main menu. >
+    - 'Remeber to...
+
+      <align="center"><i>Have a blast!</i> >'
   textBoxObject: {fileID: 2500392565112009151}
   descriptionTextMesh: {fileID: 2500392565723190382}
   currentObjective: 0
@@ -421,8 +537,9 @@ MonoBehaviour:
   actionText: {fileID: 0}
   disabledColor: {r: 0, g: 0, b: 0, a: 0}
   playerInput: {fileID: 0}
-  inputActionAsset: {fileID: 0}
-  inputActionMapName: 
+  inputActionAsset: {fileID: -944628639613478452, guid: 5cdb392dce75a53428c50d2947e8e176,
+    type: 3}
+  inputActionMapName: TutorialsController
   xBoxSprite: {fileID: 0}
   xBoxText: 
   ps4Sprite: {fileID: 0}
@@ -430,7 +547,7 @@ MonoBehaviour:
   keyboardSprite: {fileID: 0}
   keyboardText: 
   lastSeenControlScheme: 
---- !u!114 &2500392565441758527
+--- !u!114 &3592844752781240323
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
