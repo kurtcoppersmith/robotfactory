@@ -9,14 +9,25 @@ public class LiveWireHazard : MonoBehaviour
         HazardManager.Instance.TakeCareOffHazard(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         Destroy(gameObject);
 
-        Debug.Log("Wire Collision");
+        if (TutorialManager.Instance != null && !TutorialManager.Instance.hitWire)
+        {
+            TutorialManager.Instance.hitWire = true;
+        }
 
         if (other.gameObject.tag == "Player")
         {
             if (other.GetComponent<PlayerModel>().isHolding)
             {
                 other.GetComponent<PlayerModel>().playerMovement.SetPlayerSlowed(true);
-                other.GetComponent<PlayerModel>().qteManager.Fail();
+
+                if (TutorialManager.Instance == null)
+                {
+                    other.GetComponent<PlayerModel>().qteManager.Fail();
+                }
+                else
+                {
+                    other.GetComponent<PlayerModel>().qteManager.TutorialFail();
+                }
             }
             else
             {

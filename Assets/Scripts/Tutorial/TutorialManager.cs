@@ -34,12 +34,21 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
 
     public GameObject cratePrefab;
     public Transform spawnLocation;
+    public Transform movingSpawnLocation;
     [HideInInspector]
     public int spawnedCrateAmount = 0;
 
     public GameObject redBelt;
     public GameObject blueBelt;
     public GameObject greenBelt;
+
+    public float hazardSpawnTimer = 0;
+    private float maxHazardSpawnTimer = 0;
+    public bool hitWire = false;
+    public bool hitOil = false;
+
+    public float finalCompleteTextTimer = 0;
+    private float maxFinalCompleteTextTimer = 0;
 
     public bool hasDescription = false;
     public bool hasCompletedCurrent = false;
@@ -48,6 +57,9 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
     {
         base.Awake();
         inputKeyUI = GetComponent<InputKeyUI>();
+
+        maxHazardSpawnTimer = hazardSpawnTimer;
+        maxFinalCompleteTextTimer = finalCompleteTextTimer;
     }
 
     void OnEnter(InputValue inputValue)
@@ -120,6 +132,9 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
                     greenBelt.GetComponent<MeshRenderer>().material.DOColor(Color.green, 3.0f);
                     blueBelt.GetComponent<MeshRenderer>().material.DOColor(Color.blue, 3.0f);
                     break;
+                case 4:
+                    HazardManager.Instance.TutorialSpawnHazards();
+                    break;
             }
 
             hasCompletedCurrent = false;
@@ -129,8 +144,37 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
         {
             if (spawnedCrateAmount < 1)
             {
-                Instantiate(cratePrefab, spawnLocation.position, Quaternion.identity);
-                spawnedCrateAmount++;
+                if (currentObjective == 2)
+                {
+                    Instantiate(cratePrefab, spawnLocation.position, Quaternion.identity);
+                    spawnedCrateAmount++;
+                }
+                else if (currentObjective > 2)
+                {
+                    Instantiate(cratePrefab, movingSpawnLocation.position, Quaternion.identity);
+                    spawnedCrateAmount++;
+                }
+            }
+        }
+
+        if (currentObjective >= 4)
+        {
+            hazardSpawnTimer -= Time.deltaTime;
+
+            if (hazardSpawnTimer <= 0)
+            {
+                HazardManager.Instance.TutorialSpawnHazards();
+                hazardSpawnTimer = maxHazardSpawnTimer;
+            }
+        }
+
+        if (hitWire && hitOil && currentObjective == 4)
+        {
+            finalCompleteTextTimer -= Time.deltaTime;
+
+            if (finalCompleteTextTimer <= 0)
+            {
+                hasCompletedCurrent = true;
             }
         }
     }

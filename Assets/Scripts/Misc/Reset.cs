@@ -8,12 +8,21 @@ public class Reset : MonoBehaviour
     {
         if(other.tag == "Pickup")
         {
-            GameManager.Instance.subScore(1);
-            CrateManager.Instance.Explode();
-            CrateManager.Instance.spawnLocationStatus[CrateManager.Instance.currentSpawnedItems[other.gameObject]] = false;
-            CrateManager.Instance.currentSpawnedItems.Remove(other.gameObject);
+            if (TutorialManager.Instance == null)
+            {
+                GameManager.Instance.subScore(1);
+                CrateManager.Instance.Explode();
+                CrateManager.Instance.spawnLocationStatus[CrateManager.Instance.currentSpawnedItems[other.gameObject]] = false;
+                CrateManager.Instance.currentSpawnedItems.Remove(other.gameObject);
 
-            other.gameObject.SetActive(false);
+                other.gameObject.SetActive(false);
+            }
+            else
+            {
+                TutorialManager.Instance.spawnedCrateAmount--;
+                Destroy(other);
+            }
+            
         }
     }
 }

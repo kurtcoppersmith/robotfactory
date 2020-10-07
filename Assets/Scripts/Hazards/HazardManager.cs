@@ -244,4 +244,36 @@ public class HazardManager : SingletonMonoBehaviour<HazardManager>
         }
         
     }
+
+    public void TutorialSpawnHazards()
+    {
+        for (int i = 0; i < hazards.Count; i++)
+        {
+            if (hazards[i].off)
+            {
+                if (hazards[i].typeOfHazard == TypeOfHazard.oilSlick)
+                {
+                    hazards[i].gameObject = Instantiate(oilSlickGameObject, hazards[i].coord, Quaternion.identity);
+                    if (hazards[i].hazardFromDirection == HazardFromDirection.xMinus)
+                    {
+                        hazards[i].gameObject.transform.Rotate(0, -90, 0, Space.Self);
+                    }
+                    else if (hazards[i].hazardFromDirection == HazardFromDirection.xPlus)
+                    {
+                        hazards[i].gameObject.transform.Rotate(0, 90, 0, Space.Self);
+                    }
+                    else if (hazards[i].hazardFromDirection == HazardFromDirection.zMinus)
+                    {
+                        hazards[i].gameObject.transform.Rotate(0, 180, 0, Space.Self);
+                    }
+                    hazards[i].off = false;
+                }
+                else if (hazards[i].typeOfHazard == TypeOfHazard.liveWire)
+                {
+                    hazards[i].gameObject = Instantiate(liveWireGameObject, hazards[i].coord, Quaternion.identity);
+                    hazards[i].off = false;
+                }
+            }
+        }
+    }
 }
