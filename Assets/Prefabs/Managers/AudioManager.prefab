@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8122889509778504692}
-  - component: {fileID: 8122889509778504715}
+  - component: {fileID: 6096133475944232859}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8122889509778504715
+--- !u!114 &6096133475944232859
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,25 +40,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8122889509778504693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05336b6761856c54785c75e3121a0929, type: 3}
+  m_Script: {fileID: 11500000, guid: e2eeba5d61700da44bbeb96f3dd47b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Assembly
-    clip: {fileID: 8300000, guid: 80a9d94a70b189b42877f5d88d267f3c, type: 3}
-    volume: 0.3
-    pitch: 1
-    volVar: 0
-    pitchVar: 0
-  - name: Flo
-    clip: {fileID: 8300000, guid: c51fbea743aefd24fb1d83a2192293f7, type: 3}
-    volume: 0.3
-    pitch: 0
-    volVar: 0
-    pitchVar: 0
-  - name: Marble
+  - audioMixerGroup: {fileID: -2672658351734726105, guid: 91f87b7ed0a753944837044cb032318c,
+      type: 2}
+    name: Marble_Full
     clip: {fileID: 8300000, guid: 7b358ad15d024ae4b9b13bd0850a452a, type: 3}
     volume: 0.3
-    pitch: 0
-    volVar: 0
-    pitchVar: 0
+    pitch: 1
+    loop: 1
+    playOnAwake: 1

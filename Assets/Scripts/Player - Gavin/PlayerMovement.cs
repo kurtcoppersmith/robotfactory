@@ -12,16 +12,6 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movementInput;
     Vector3 movementVector;
 
-    public bool tankControls = false;
-
-    [Header("Tank Control Variables")]
-    public float topForwardSpeed = 2;
-    public float topReverseSpeed = 1;
-    public float acceleration = 3;
-
-    public float tankRotationSpeed = 4;
-    public float stoppedTankRotationSpeed = 5;
-
     [Header("Normal Control Variables")]
     public float speed = 4;
     private float initialSpeed;
@@ -66,16 +56,10 @@ public class PlayerMovement : MonoBehaviour
         HelperUtilities.UpdateCursorLock(true);
 
         movementVector = Vector3.zero;
-        currentTopSpeed = topForwardSpeed;
         charController.detectCollisions = true;
 
         initialSpeed = speed;
         maxHazardEffectDuration = hazardEffectDuration;
-    }
-
-    void Start()
-    {
-        tankControls = GameManager.Instance.tempTankBool;
     }
 
     void OnMovement(InputValue inputValue)
@@ -173,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
         robotChasis = option;
     }
 
-    void TankMove(float h, float v)
+    /*void TankMove(float h, float v)
     {
         float currentTurnRate = Mathf.Lerp(tankRotationSpeed, stoppedTankRotationSpeed, 1 - (currentSpeed / currentTopSpeed));
         Vector3 angles = transform.eulerAngles;
@@ -230,7 +214,7 @@ public class PlayerMovement : MonoBehaviour
         
         movementVector.x *= currentSpeed * Time.deltaTime;
         movementVector.z *= currentSpeed * Time.deltaTime;
-    }
+    }*/
 
     Vector2 FindMovementRelativeToCamera(float h, float v)
     {
@@ -316,14 +300,16 @@ public class PlayerMovement : MonoBehaviour
             v = movementInput.y;
         }
 
-        if (tankControls)
+        /*if (tankControls)
         {
             TankMove(h, v);
         }
         else
         {
             NormalMove(h, v);
-        }
+        }*/
+
+        NormalMove(h, v);
 
         if (!charController.isGrounded)
         {

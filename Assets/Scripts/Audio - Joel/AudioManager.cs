@@ -36,29 +36,31 @@ public class Sound
     }
 }
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : SingletonMonoBehaviour<AudioManager>
 { 
     public static AudioManager instance;
 
     public Sound[] sounds;
 
-    void Awake()
+    new void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else if (instance != this)
-            Destroy(gameObject);
+        base.Awake();
     }
 
     void Start()
     {
-        for(int i = 0; i < sounds.Length; i++)
+        if (Instance == this)
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+
+        for (int i = 0; i < sounds.Length; i++)
         {
             GameObject _go = new GameObject("Sound_" + i + "_" + sounds[i].name);
             _go.transform.SetParent(this.transform);
             sounds[i].setSource(_go.AddComponent<AudioSource>());
         }
-        PlaySound("Flo");
+        PlaySound("Marble_Full");
     }
 
     public void PlaySound(string _name)

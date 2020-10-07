@@ -22,6 +22,15 @@ public class ConveyorScript : MonoBehaviour
                     currentCrate.transform.position = Vector3.MoveTowards(currentCrate.transform.position, conveyorEnd.transform.position, moveSpeed);
                 }
             }
+            else
+            {
+                currentCrate = null;
+            }
+
+            if (currentCrate != null && !currentCrate.activeInHierarchy)
+            {
+                currentCrate = null;
+            }
         }
     }
 
