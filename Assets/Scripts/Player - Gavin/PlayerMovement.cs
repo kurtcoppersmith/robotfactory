@@ -295,8 +295,26 @@ public class PlayerMovement : MonoBehaviour
 
     void MovePlayer()
     {
-        float h = movementInput.x;
-        float v = movementInput.y;
+        float h, v;
+
+        if (TutorialManager.Instance != null && TutorialManager.Instance.currentObjective == 0)
+        {
+            if (movementInput.x != 0 || movementInput.y != 0)
+            {
+                h = 0;
+                v = 1;
+            }
+            else
+            {
+                h = 0; 
+                v = 0;
+            }
+        }
+        else
+        {
+            h = movementInput.x;
+            v = movementInput.y;
+        }
 
         if (tankControls)
         {
@@ -341,7 +359,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove && !GameManager.Instance.hasEnded)
         {
-            if ((TutorialManager.Instance != null && playerModel.isHolding && TutorialManager.Instance.currentObjective == 0) || (TutorialManager.Instance != null && TutorialManager.Instance.currentObjective > 0) || (TutorialManager.Instance == null))
+            if ((TutorialManager.Instance != null && playerModel.isHolding && TutorialManager.Instance.currentObjective == 0) || (TutorialManager.Instance != null && TutorialManager.Instance.currentObjective > 0 && TutorialManager.Instance.hasDescription) || (TutorialManager.Instance == null))
             {
                 MovePlayer();
             }

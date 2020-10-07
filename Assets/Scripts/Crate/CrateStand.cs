@@ -25,13 +25,31 @@ public class CrateStand : MonoBehaviour
         collisionCrate = collision.gameObject.GetComponent<Crate>();
         if (collisionCrate.color == standColor && collision.transform.parent.gameObject.tag == "Player")
         {
-            CrateManager.Instance.DeliverCrate();
-            collision.transform.parent.gameObject.GetComponent<QTEManager>().Passed();
-            //Destroy(collision.gameObject);
+            if (TutorialManager.Instance == null)
+            {
+                CrateManager.Instance.DeliverCrate();
+                collision.transform.parent.gameObject.GetComponent<QTEManager>().Passed();
+            }
+            else
+            {
+                collision.transform.parent.gameObject.GetComponent<QTEManager>().TutorialPassed();
+
+                if (TutorialManager.Instance.currentObjective == 2 || TutorialManager.Instance.currentObjective == 3)
+                {
+                    TutorialManager.Instance.hasCompletedCurrent = true;
+                }
+            }
         }
         else if(collisionCrate.color != standColor && collision.transform.parent.gameObject.tag == "Player")
         {
-            collision.transform.parent.gameObject.GetComponent<QTEManager>().Fail();
+            if (TutorialManager.Instance == null)
+            {
+                collision.transform.parent.gameObject.GetComponent<QTEManager>().Fail();
+            }
+            else
+            {
+                collision.transform.parent.gameObject.GetComponent<QTEManager>().TutorialFail();
+            }
         }
         
     }

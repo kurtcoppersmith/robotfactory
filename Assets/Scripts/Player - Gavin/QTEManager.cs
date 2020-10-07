@@ -67,21 +67,31 @@ public class QTEManager : MonoBehaviour
 
     void Update()
     {
-        if (canGetNextKey)
+        if ((TutorialManager.Instance != null && TutorialManager.Instance.hasDescription) || (TutorialManager.Instance == null))
         {
-            GetNextKey();
-        }
-
-        if (checkQTETimer)
-        {
-            QTETimer -= Time.deltaTime;
-
-            QTETimerImage.fillAmount = (((QTETimer - 0) * (1 - 0)) / (maxQTETimer - 0)) + 0;
-            QTETimerImage.transform.SetAsFirstSibling();
-
-            if (QTETimer <= 0)
+            if (canGetNextKey)
             {
-                Fail();
+                GetNextKey();
+            }
+
+            if (checkQTETimer)
+            {
+                QTETimer -= Time.deltaTime;
+
+                QTETimerImage.fillAmount = (((QTETimer - 0) * (1 - 0)) / (maxQTETimer - 0)) + 0;
+                QTETimerImage.transform.SetAsFirstSibling();
+
+                if (QTETimer <= 0)
+                {
+                    if (TutorialManager.Instance == null)
+                    {
+                        Fail();
+                    }
+                    else
+                    {
+                        TutorialFail();
+                    }
+                }
             }
         }
     }
@@ -95,32 +105,57 @@ public class QTEManager : MonoBehaviour
             playerModel.playerMovement.canMove = true;
         }
 
-        if (QTEBuffer <= 0)
+        if ((TutorialManager.Instance != null && TutorialManager.Instance.currentObjective > 0) || (TutorialManager.Instance == null))
         {
-            currentKey = (QTEOptions)Random.Range(0, (int)QTEOptions.QTEOptionsSize);
-
-            switch (currentKey)
+            if (QTEBuffer <= 0)
             {
-                case QTEOptions.North:
-                    northKey.gameObject.SetActive(true);
-                    break;
-                case QTEOptions.South:
-                    southKey.gameObject.SetActive(true);
-                    break;
-                case QTEOptions.West:
-                    westKey.gameObject.SetActive(true);
-                    break;
-                case QTEOptions.East:
-                    eastKey.gameObject.SetActive(true);
-                    break;
+                currentKey = (QTEOptions)Random.Range(0, (int)QTEOptions.QTEOptionsSize);
+
+                switch (currentKey)
+                {
+                    case QTEOptions.North:
+                        northKey.gameObject.SetActive(true);
+                        break;
+                    case QTEOptions.South:
+                        southKey.gameObject.SetActive(true);
+                        break;
+                    case QTEOptions.West:
+                        westKey.gameObject.SetActive(true);
+                        break;
+                    case QTEOptions.East:
+                        eastKey.gameObject.SetActive(true);
+                        break;
+                }
+
+                checkQTETimer = true;
+                QTETimer = maxQTETimer;
+                QTETimerRoot.SetActive(true);
+                QTETimerImage.fillAmount = 1;
+
+                canGetNextKey = false;
             }
+        }
+    }
 
-            checkQTETimer = true;
-            QTETimer = maxQTETimer;
-            QTETimerRoot.SetActive(true);
-            QTETimerImage.fillAmount = 1;
+    public void TutorialPassed()
+    {
+        if (playerModel.playerState != PlayerModel.PlayerState.Carrying)
+        {
+            return;
+        }
 
-            canGetNextKey = false;
+        QTETimerImage.fillAmount = 0;
+        QTETimerRoot.SetActive(false);
+
+        playerModel.isHolding = false;
+        playerModel.ChangeState(PlayerModel.PlayerState.Moving);
+        playerModel.playerPickup.currentColliders.Remove(playerModel.currentPickup.GetComponent<Collider>());
+        Destroy(playerModel.currentPickup);
+
+        TutorialManager.Instance.spawnedCrateAmount--;
+        if (TutorialManager.Instance.spawnedCrateAmount < 0)
+        {
+            TutorialManager.Instance.spawnedCrateAmount = 0;
         }
     }
 
@@ -139,6 +174,23 @@ public class QTEManager : MonoBehaviour
 
             playerModel.RemoveCurrentPickup();
             playerModel.ChangeState(PlayerModel.PlayerState.Moving);
+        }
+    }
+
+    public void TutorialFail()
+    {
+        QTETimerImage.fillAmount = 0;
+        QTETimerRoot.SetActive(false);
+
+        playerModel.isHolding = false;
+        playerModel.ChangeState(PlayerModel.PlayerState.Stunned);
+        playerModel.playerPickup.currentColliders.Remove(playerModel.currentPickup.GetComponent<Collider>());
+        Destroy(playerModel.currentPickup);
+
+        TutorialManager.Instance.spawnedCrateAmount--;
+        if (TutorialManager.Instance.spawnedCrateAmount < 0)
+        {
+            TutorialManager.Instance.spawnedCrateAmount = 0;
         }
     }
 
@@ -171,7 +223,14 @@ public class QTEManager : MonoBehaviour
             }
             else
             {
-                Fail();
+                if (TutorialManager.Instance == null)
+                {
+                    Fail();
+                }
+                else
+                {
+                    TutorialFail();
+                }
             }
         }
     }
@@ -192,7 +251,14 @@ public class QTEManager : MonoBehaviour
             }
             else
             {
-                Fail();
+                if (TutorialManager.Instance == null)
+                {
+                    Fail();
+                }
+                else
+                {
+                    TutorialFail();
+                }
             }
         }
     }
@@ -213,7 +279,14 @@ public class QTEManager : MonoBehaviour
             }
             else
             {
-                Fail();
+                if (TutorialManager.Instance == null)
+                {
+                    Fail();
+                }
+                else
+                {
+                    TutorialFail();
+                }
             }
         }
     }
@@ -234,7 +307,14 @@ public class QTEManager : MonoBehaviour
             }
             else
             {
-                Fail();
+                if (TutorialManager.Instance == null)
+                {
+                    Fail();
+                }
+                else
+                {
+                    TutorialFail();
+                }
             }
         }
     }
