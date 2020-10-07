@@ -29,7 +29,7 @@ public class PlayerModel : MonoBehaviour
     public GameObject pickupIndicator;
 
     public GameObject currentPickup { get; private set; } = null;
-    public bool isHolding { get; private set; } = false;
+    public bool isHolding { get; set; } = false;
 
     /*new void Awake()
     {
@@ -67,7 +67,7 @@ public class PlayerModel : MonoBehaviour
 
     void OnBoxPickup(InputValue inputValue)
     {
-        if (isHolding || GameManager.Instance.hasEnded)
+        if (isHolding || GameManager.Instance.hasEnded || (TutorialManager.Instance != null && !TutorialManager.Instance.hasDescription))
         {
             return;
         }
@@ -89,6 +89,9 @@ public class PlayerModel : MonoBehaviour
         else
         {
             pickup.transform.parent = this.gameObject.transform;
+            pickup.GetComponent<IdleCrate>().PickUp(true);
+            pickup.GetComponent<Rigidbody>().useGravity = false;
+            pickup.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             currentPickup = pickup;
             isHolding = true;
             pickup.transform.DOMove(carryingPosition.position, qteManager.initialQTEBuffer / 2);
@@ -96,6 +99,11 @@ public class PlayerModel : MonoBehaviour
             if (playerState == PlayerState.Moving)
             {
                 ChangeState(PlayerState.Carrying);
+            }
+
+            if (TutorialManager.Instance != null && TutorialManager.Instance.currentObjective == 1)
+            {
+                TutorialManager.Instance.hasCompletedCurrent = true;
             }
         }
     }
@@ -107,6 +115,7 @@ public class PlayerModel : MonoBehaviour
         CrateManager.Instance.currentSpawnedItems.Remove(currentPickup);
         playerPickup.currentColliders.Remove(currentPickup.GetComponent<Collider>());
 
+        currentPickup.GetComponent<IdleCrate>().PickUp(false);
         currentPickup.SetActive(false);
         currentPickup.transform.parent = ObjectPoolerGavin.GetPooler(ObjectPoolerGavin.Key.Pickup).gameObject.transform;
         isHolding = false;
@@ -148,7 +157,7 @@ public class PlayerModel : MonoBehaviour
 
     void ShowPickUpIndicator()
     {
-        if (isHolding || GameManager.Instance.hasEnded)
+        if (isHolding || GameManager.Instance.hasEnded || (TutorialManager.Instance != null))
         {
             pickupIndicator.SetActive(false);
             return;

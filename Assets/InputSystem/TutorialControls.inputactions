@@ -1,0 +1,63 @@
+{
+    "name": "TutorialControls",
+    "maps": [
+        {
+            "name": "TutorialsController",
+            "id": "4e6159b0-b44d-4ea2-b33e-4100e0a0822d",
+            "actions": [
+                {
+                    "name": "Enter",
+                    "type": "Button",
+                    "id": "31e8de09-5067-4f70-ae51-e28dc5099a41",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Backspace",
+                    "type": "Button",
+                    "id": "bf3b3e2d-2273-4fc0-a022-9acc9dc18636",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "76be1c70-716e-4646-abda-4b3b83c7c29d",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fddfa9ae-cb97-4611-a40d-1e2019f05be7",
+                    "path": "<Keyboard>/numpadEnter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a032702a-a857-45a6-a6c6-c4d785cd1759",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Backspace",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

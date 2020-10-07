@@ -11,8 +11,6 @@ public class PlayerPickup : MonoBehaviour
         if (!currentColliders.Contains(other) && other.gameObject.tag == "Pickup" && other.gameObject.activeInHierarchy)
         {
             currentColliders.Add(other);
-            //Tells the crate it has been picked up
-            other.gameObject.GetComponent<IdleCrate>().PickUp(true);
         }
     }
 
