@@ -115,6 +115,7 @@ public class PlayerModel : MonoBehaviour
         CrateManager.Instance.currentSpawnedItems.Remove(currentPickup);
         playerPickup.currentColliders.Remove(currentPickup.GetComponent<Collider>());
 
+        currentPickup.GetComponent<IdleCrate>().PickUp(false);
         currentPickup.SetActive(false);
         currentPickup.transform.parent = ObjectPoolerGavin.GetPooler(ObjectPoolerGavin.Key.Pickup).gameObject.transform;
         isHolding = false;

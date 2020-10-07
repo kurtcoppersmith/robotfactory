@@ -20,6 +20,6 @@ public class BillBoardEffect : MonoBehaviour
 
     void Update()
     {
-        transform.rotation = camTransform.rotation * originalRotation;
+        transform.rotation = LevelManager.Instance.mainCam.transform.rotation * originalRotation;
     }
 }
