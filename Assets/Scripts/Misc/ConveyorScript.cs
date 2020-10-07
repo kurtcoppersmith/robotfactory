@@ -17,7 +17,10 @@ public class ConveyorScript : MonoBehaviour
         {
             if (!currentCrate.GetComponent<IdleCrate>().PickedUp())
             {
-                currentCrate.transform.position = Vector3.MoveTowards(currentCrate.transform.position, conveyorEnd.transform.position, moveSpeed);
+                if ((TutorialManager.Instance != null && TutorialManager.Instance.hasDescription && TutorialManager.Instance.currentObjective > 2) || (TutorialManager.Instance == null))
+                {
+                    currentCrate.transform.position = Vector3.MoveTowards(currentCrate.transform.position, conveyorEnd.transform.position, moveSpeed);
+                }
             }
         }
     }
