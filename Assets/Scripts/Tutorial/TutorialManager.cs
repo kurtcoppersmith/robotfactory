@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 [System.Serializable]
 public class Description
@@ -23,7 +24,6 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
 
     public List<Description> descriptions;
     private int currentTextBox = 0;
-    public List<GameObject> currentObjectiveColliders;
 
     [Header("UI Stuff")]
     public GameObject textBoxObject;
@@ -32,8 +32,17 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
 
     public int currentObjective = 0;
 
-    private bool hasDescription = false;
-    private bool hasCompletedCurrent = false;
+    public GameObject cratePrefab;
+    public Transform spawnLocation;
+    [HideInInspector]
+    public int spawnedCrateAmount = 0;
+
+    public GameObject redBelt;
+    public GameObject blueBelt;
+    public GameObject greenBelt;
+
+    public bool hasDescription = false;
+    public bool hasCompletedCurrent = false;
 
     new void Awake()
     {
@@ -44,6 +53,11 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
     void OnEnter(InputValue inputValue)
     {
         currentTextBox++;
+    }
+
+    void OnBackspace(InputValue inputValue)
+    {
+        currentTextBox = 0;
     }
 
     void Update()
@@ -60,7 +74,6 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
                     else
                     {
                         hasDescription = true;
-                        currentObjectiveColliders[currentObjective].SetActive(true);
                         textBoxObject.SetActive(false);
                     }
                     break;
@@ -72,7 +85,6 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
                     else
                     {
                         hasDescription = true;
-                        currentObjectiveColliders[currentObjective].SetActive(true);
                         textBoxObject.SetActive(false);
                     }
                     break;
@@ -84,7 +96,6 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
                     else
                     {
                         hasDescription = true;
-                        currentObjectiveColliders[currentObjective].SetActive(true);
                         textBoxObject.SetActive(false);
                     }
                     break;
@@ -97,7 +108,30 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
             hasDescription = false;
             textBoxObject.SetActive(true);
             currentTextBox = 0;
+
+            switch (currentObjective)
+            {
+                case 1:
+                    Instantiate(cratePrefab, spawnLocation.position, Quaternion.identity);
+                    spawnedCrateAmount++;
+                    break;
+                case 2:
+                    redBelt.GetComponent<MeshRenderer>().material.DOColor(Color.red, 3.0f);
+                    greenBelt.GetComponent<MeshRenderer>().material.DOColor(Color.green, 3.0f);
+                    blueBelt.GetComponent<MeshRenderer>().material.DOColor(Color.blue, 3.0f);
+                    break;
+            }
+
             hasCompletedCurrent = false;
+        }
+
+        if (currentObjective >= 2)
+        {
+            if (spawnedCrateAmount < 1)
+            {
+                Instantiate(cratePrefab, spawnLocation.position, Quaternion.identity);
+                spawnedCrateAmount++;
+            }
         }
     }
 }

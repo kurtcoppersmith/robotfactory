@@ -8,7 +8,19 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.transform.parent != null && collision.transform.parent.gameObject.tag == "Player")
         {
-            collision.transform.parent.gameObject.GetComponent<QTEManager>().Fail();
+            if (TutorialManager.Instance != null)
+            {
+                collision.transform.parent.GetComponent<QTEManager>().TutorialFail();
+
+                if (TutorialManager.Instance.currentObjective == 0)
+                {
+                    TutorialManager.Instance.hasCompletedCurrent = true;
+                }
+            }
+            else
+            {
+                collision.transform.parent.gameObject.GetComponent<QTEManager>().Fail();
+            }
         }
     }
 }

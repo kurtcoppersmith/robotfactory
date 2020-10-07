@@ -56,7 +56,10 @@ public class Crate : MonoBehaviour//, IPooledObject
             //if picked up
             if (gameObject.GetComponent<IdleCrate>().PickedUp())
             {
-                DecreaseCrateTimer();
+                if ((TutorialManager.Instance != null && TutorialManager.Instance.hasDescription) || (TutorialManager.Instance == null))
+                {
+                    DecreaseCrateTimer();
+                }
             }
         }
     }
@@ -79,7 +82,17 @@ public class Crate : MonoBehaviour//, IPooledObject
             playerQTE = transform.GetComponentInParent<QTEManager>();
             if (playerQTE != null)
             {
-                playerQTE.Fail();
+                if (TutorialManager.Instance == null)
+                {
+                    playerQTE.Fail();
+                }
+                else
+                {
+                    if (TutorialManager.Instance.currentObjective > 0)
+                    {
+                        playerQTE.TutorialFail();
+                    }
+                }
             }
             else
             {

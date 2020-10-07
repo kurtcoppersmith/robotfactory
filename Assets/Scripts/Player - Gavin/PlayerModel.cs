@@ -29,7 +29,7 @@ public class PlayerModel : MonoBehaviour
     public GameObject pickupIndicator;
 
     public GameObject currentPickup { get; private set; } = null;
-    public bool isHolding { get; private set; } = false;
+    public bool isHolding { get; set; } = false;
 
     /*new void Awake()
     {
@@ -67,7 +67,7 @@ public class PlayerModel : MonoBehaviour
 
     void OnBoxPickup(InputValue inputValue)
     {
-        if (isHolding || GameManager.Instance.hasEnded)
+        if (isHolding || GameManager.Instance.hasEnded || (TutorialManager.Instance != null && !TutorialManager.Instance.hasDescription))
         {
             return;
         }
@@ -99,6 +99,11 @@ public class PlayerModel : MonoBehaviour
             if (playerState == PlayerState.Moving)
             {
                 ChangeState(PlayerState.Carrying);
+            }
+
+            if (TutorialManager.Instance != null && TutorialManager.Instance.currentObjective == 1)
+            {
+                TutorialManager.Instance.hasCompletedCurrent = true;
             }
         }
     }
@@ -151,7 +156,7 @@ public class PlayerModel : MonoBehaviour
 
     void ShowPickUpIndicator()
     {
-        if (isHolding || GameManager.Instance.hasEnded)
+        if (isHolding || GameManager.Instance.hasEnded || (TutorialManager.Instance != null))
         {
             pickupIndicator.SetActive(false);
             return;
