@@ -8,11 +8,22 @@ public class Killzone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.transform.position = origin.transform.position;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        other.transform.position = origin.transform.position;
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerMovement>().charController.enabled = false;
+            other.transform.position = origin.transform.position;
+            other.transform.rotation = origin.transform.rotation;
+            other.gameObject.GetComponent<PlayerMovement>().charController.enabled = true;
+            
+            if (other.GetComponent<PlayerModel>().isHolding)
+            {
+                other.GetComponent<PlayerModel>().qteManager.Fail();
+            }
+            else
+            {
+                other.GetComponent<PlayerModel>().ChangeState(PlayerModel.PlayerState.Stunned);
+            }
+        }
+        
     }
 }

@@ -6,16 +6,16 @@ public class OilSlickHazard : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        HazardManager.Instance.TakeCareOffHazard(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-        Destroy(gameObject);
-
-        if (TutorialManager.Instance != null && ! TutorialManager.Instance.hitOil)
-        {
-            TutorialManager.Instance.hitOil = true;
-        }
-
         if (other.gameObject.tag == "Player")
         {
+            HazardManager.Instance.TakeCareOffHazard(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            Destroy(gameObject);
+
+            if (TutorialManager.Instance != null && !TutorialManager.Instance.hitOil)
+            {
+                TutorialManager.Instance.hitOil = true;
+            }
+
             if (other.GetComponent<PlayerModel>().isHolding)
             {
                 other.GetComponent<PlayerModel>().playerMovement.SetPlayerIced(true);

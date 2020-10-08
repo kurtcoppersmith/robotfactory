@@ -198,7 +198,7 @@ public class PlayerModel : MonoBehaviour
 
                 sparksParticleEffect.SetActive(true);
                 sparksParticleDuration = sparksParticleSystem.main.duration;
-                transform.DOPunchPosition(new Vector3(Random.Range(0.1f, 0.2f), 0, Random.Range(0.1f, 0.2f)), maxPlayerStunnedTime / 2);
+                //transform.DOPunchPosition(new Vector3(Random.Range(0.1f, 0.2f), 0, Random.Range(0.1f, 0.2f)), maxPlayerStunnedTime / 2);
                 break;
         }
 

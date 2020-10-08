@@ -19,6 +19,13 @@ public class Crate : MonoBehaviour//, IPooledObject
     public Color maxDurationColor;
     public Color minDurationColor;
 
+    private Quaternion originalRotation;
+
+    void Awake()
+    {
+        originalRotation = transform.rotation;
+    }
+
     // Start is called before the first frame update
     //public void OnObjectSpawn()
     void OnEnable()
@@ -44,6 +51,7 @@ public class Crate : MonoBehaviour//, IPooledObject
         //
         delivered = false;
 
+        transform.rotation = originalRotation;
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
     }
@@ -142,21 +150,5 @@ public class Crate : MonoBehaviour//, IPooledObject
                 color = Color.red;
                 break;
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        //Debug.Log("hello");
-
-        //if (collision.gameObject.tag == "Obstacle")
-        //{
-        //    qte.Fail();
-        //    manager.Explode();
-        //}
-        //else
-        //{
-        //    qte.Fail();
-        //    manager.Explode();
-        //}A
     }
 }

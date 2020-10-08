@@ -336,19 +336,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978a68b3082d805408e0dd42116ef989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankControls: 0
-  topForwardSpeed: 6
-  topReverseSpeed: 6
-  acceleration: 6
-  tankRotationSpeed: 5
-  stoppedTankRotationSpeed: 5
   speed: 6
   rotationSpeed: 15
   iceSpeed: 6.5
   slowedSpeed: 2.5
   spedUpSpeed: 6
   hazardEffectDuration: 5
-  gravity: 150
+  gravity: 10
   minimumGravity: 0.01
   canMove: 1
 --- !u!114 &2813048119358463857

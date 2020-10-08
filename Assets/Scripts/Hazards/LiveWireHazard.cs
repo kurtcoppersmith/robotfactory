@@ -6,16 +6,16 @@ public class LiveWireHazard : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        HazardManager.Instance.TakeCareOffHazard(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-        Destroy(gameObject);
-
-        if (TutorialManager.Instance != null && !TutorialManager.Instance.hitWire)
-        {
-            TutorialManager.Instance.hitWire = true;
-        }
-
         if (other.gameObject.tag == "Player")
         {
+            HazardManager.Instance.TakeCareOffHazard(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            Destroy(gameObject);
+
+            if (TutorialManager.Instance != null && !TutorialManager.Instance.hitWire)
+            {
+                TutorialManager.Instance.hitWire = true;
+            }
+
             if (other.GetComponent<PlayerModel>().isHolding)
             {
                 other.GetComponent<PlayerModel>().playerMovement.SetPlayerSlowed(true);

@@ -69,7 +69,6 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
             {
                 GameObject obj = ObjectPoolerGavin.GetPooler(crateKey).GetPooledObject();
                 obj.transform.position = spawnLocations[i].position;
-                obj.transform.rotation = Quaternion.identity;
                 obj.GetComponent<IdleCrate>().PickUp(false);
                 obj.SetActive(true);
                 currentSpawnedItems.Add(obj, spawnLocations[i]);
