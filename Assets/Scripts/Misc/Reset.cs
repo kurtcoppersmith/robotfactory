@@ -10,7 +10,11 @@ public class Reset : MonoBehaviour
         {
             if (TutorialManager.Instance == null)
             {
-                GameManager.Instance.subScore(1);
+                if (!GameManager.Instance.hasEnded)
+                {
+                    GameManager.Instance.subScore(1);
+                }
+
                 CrateManager.Instance.Explode();
                 CrateManager.Instance.spawnLocationStatus[CrateManager.Instance.currentSpawnedItems[other.gameObject]] = false;
                 CrateManager.Instance.currentSpawnedItems.Remove(other.gameObject);

@@ -319,15 +319,15 @@ MonoBehaviour:
     - For this task, press <sprite name="SpaceBar"> to pick up the crate in front
       of you. Then, use <sprite name="WASD"> to move around the level. >
     currentObjectivesXBox:
-    - Hi! Welcome to the job, press "Enter" on your keyboard anytime you see ">"
-      to advance the text. >
+    - Hi! Welcome to the job, press <sprite name="A"> on your controller anytime
+      you see ">" to advance the text. >
     - Great, you seem to take to tasks well. In that case, let's start our training
       session. >
     - For this task, press <sprite name="A"> to pick up the crate in front of you.
       Then, use <sprite name="LeftStick"> to move around the level. >
     currentObjectivesPS4:
-    - Hi! Welcome to the job, press "Enter" on your keyboard anytime you see ">"
-      to advance the text. >
+    - Hi! Welcome to the job, press <sprite name="Cross"> on your controller anytime
+      you see ">" to advance the text. >
     - Great, you seem to take to tasks well. In that case, let's start our training
       session. >
     - For this task, press <sprite name="Cross"> to pick up the crate in front of
@@ -366,7 +366,7 @@ MonoBehaviour:
     - The servos in your arms are quite weak and must be reset regularly so you don't
       drop the crate. >
     - 'There are several options for resetting your servos: <sprite name="ArrowKeys">
-      >'
+      This is done in the form of a Quick Time Event. >'
     - Make sure to press the corresponding button when it appears on screen. >
     - Oh, that's a lot, isn't it? If you would like a repeat, press "Backspace".
       Otherwise, press "Enter" to continue. >
@@ -382,10 +382,11 @@ MonoBehaviour:
     - The servos in your arms are quite weak and must be reset regularly so you don't
       drop the crate. >
     - 'There are several options for resetting your servos: <sprite name="A"> <sprite
-      name="B"> <sprite name="X"> <sprite name="Y"> >'
+      name="B"> <sprite name="X"> <sprite name="Y"> This is done in the form of a
+      Quick Time Event. >'
     - Make sure to press the corresponding button when it appears on screen. >
-    - Oh, that's a lot, isn't it? If you would like a repeat, press "Backspace".
-      Otherwise, press "Enter" to continue. >
+    - Oh, that's a lot, isn't it? If you would like a repeat, press <sprite name="B">.
+      Otherwise, press <sprite name="A"> to continue. >
     - 'Your task: Deliver the crate to the conveyor belt of corresponding color.
       You must deliver one crate to continue. >'
     currentObjectivesPS4:
@@ -398,10 +399,11 @@ MonoBehaviour:
     - The servos in your arms are quite weak and must be reset regularly so you don't
       drop the crate. >
     - 'There are several options for resetting your servos: <sprite name="Cross">
-      <sprite name="Circle"> <sprite name="Square"> <sprite name="Triangle"> >'
+      <sprite name="Circle"> <sprite name="Square"> <sprite name="Triangle">  This
+      is done in the form of a Quick Time Event. >'
     - Make sure to press the corresponding button when it appears on screen. >
-    - Oh, that's a lot, isn't it? If you would like a repeat, press "Backspace".
-      Otherwise, press "Enter" to continue. >
+    - Oh, that's a lot, isn't it? If you would like a repeat, press <sprite name="Circle">.
+      Otherwise, press <sprite name="Cross"> to continue. >
     - 'Your task: Deliver the crate to the conveyor belt of corresponding color.
       You must deliver one crate to continue. >'
   - currentObjectivesKeyboard:
