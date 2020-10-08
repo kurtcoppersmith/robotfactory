@@ -15,7 +15,7 @@ public class ConveyorScript : MonoBehaviour
         float moveSpeed = speed * Time.deltaTime;
         if (currentCrate != null)
         {
-            if (!currentCrate.GetComponent<IdleCrate>().PickedUp())
+            if (!currentCrate.GetComponent<IdleCrate>().PickedUp() && !GameManager.Instance.hasEnded)
             {
                 if ((TutorialManager.Instance != null && TutorialManager.Instance.hasDescription && TutorialManager.Instance.currentObjective > 2) || (TutorialManager.Instance == null))
                 {
