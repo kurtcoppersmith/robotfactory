@@ -443,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 5886877900087628103, guid: 554e76985cf11e74490e65e1ccbbc9f4,
         type: 3}
       propertyPath: speed
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 554e76985cf11e74490e65e1ccbbc9f4, type: 3}
@@ -513,6 +513,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ConveyorBelt
+      objectReference: {fileID: 0}
+    - target: {fileID: 5886877900087628103, guid: 554e76985cf11e74490e65e1ccbbc9f4,
+        type: 3}
+      propertyPath: speed
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 554e76985cf11e74490e65e1ccbbc9f4, type: 3}
