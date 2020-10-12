@@ -11824,7 +11824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &630403011
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11860,6 +11860,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb33b33994d69454582c0e111f09dec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item1:
+    name: Item 1
+    nameText: {fileID: 26761144}
+    cost: 20
+    costText: {fileID: 901895969}
+    itemSprite: {fileID: 0}
+    itemImage: {fileID: 1182100054}
+  item2:
+    name: Item 2
+    nameText: {fileID: 1667757050}
+    cost: 30
+    costText: {fileID: 530614686}
+    itemSprite: {fileID: 0}
+    itemImage: {fileID: 1408373782}
+  item3:
+    name: Item 3
+    nameText: {fileID: 1131271620}
+    cost: 40
+    costText: {fileID: 664103039}
+    itemSprite: {fileID: 0}
+    itemImage: {fileID: 1963805581}
 --- !u!1001 &630962340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13384,7 +13405,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 695573730}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 630403012}
+        m_MethodName: Buy
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &695573730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21964,7 +21996,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1109486911}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 630403012}
+        m_MethodName: Buy
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1109486911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27483,7 +27526,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1335805143}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 630403012}
+        m_MethodName: Buy
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1335805143
 MonoBehaviour:
   m_ObjectHideFlags: 0
