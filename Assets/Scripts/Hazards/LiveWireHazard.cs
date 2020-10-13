@@ -22,11 +22,11 @@ public class LiveWireHazard : MonoBehaviour
 
                 if (TutorialManager.Instance == null)
                 {
-                    other.GetComponent<PlayerModel>().qteManager.Fail();
+                    other.GetComponent<PlayerModel>().Fail();
                 }
                 else
                 {
-                    other.GetComponent<PlayerModel>().qteManager.TutorialFail();
+                    other.GetComponent<PlayerModel>().TutorialFail();
                 }
             }
             else

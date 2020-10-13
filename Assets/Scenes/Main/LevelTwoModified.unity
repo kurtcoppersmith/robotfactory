@@ -1694,11 +1694,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConveyorBelt (Early)Slanted
       objectReference: {fileID: 0}
-    - target: {fileID: 8524326303007838362, guid: 0146a14c10170f3449d40fa5aace970c,
-        type: 3}
-      propertyPath: speed
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0146a14c10170f3449d40fa5aace970c, type: 3}
 --- !u!4 &331245885 stripped
@@ -3092,7 +3087,7 @@ PrefabInstance:
     - target: {fileID: 2090834906559733151, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.29
+      value: -8.91
       objectReference: {fileID: 0}
     - target: {fileID: 2090834906559733151, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
@@ -3108,6 +3103,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368731400051804301, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
+      propertyPath: duration
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6082887208262606432, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
@@ -7100,6 +7100,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 52582868}
     m_Modifications:
+    - target: {fileID: 1607172448943733685, guid: ef819e477ca315447bd2fc16a99345e7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607172448943733685, guid: ef819e477ca315447bd2fc16a99345e7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2591628212498896661, guid: ef819e477ca315447bd2fc16a99345e7,
         type: 3}
       propertyPath: m_Name
@@ -8107,7 +8117,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.4433962, g: 0.246796, b: 0.246796, a: 1}
+  m_Color: {r: 0.5660378, g: 0.3097188, b: 0.3097188, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -10546,6 +10556,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077756967714643350, guid: ef819e477ca315447bd2fc16a99345e7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -126
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077756967714643350, guid: ef819e477ca315447bd2fc16a99345e7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -335
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef819e477ca315447bd2fc16a99345e7, type: 3}

@@ -34,10 +34,22 @@ public class ObjectPoolerGavin : MonoBehaviour
             GameObject obj = (GameObject)Instantiate(pooledObject);
             obj.transform.parent = this.transform;
             obj.name = pooledObject.name + " " + (count);
+
             count++;
 
             obj.SetActive(false);
             pooledObjects.Add(obj);
+        }
+
+        if (key == Key.Pickup)
+        {
+            for (int i = 0; i < pooledObjects.Count - 1; i++)
+            {
+                for (int j = i + 1; j < pooledObjects.Count; j++)
+                {
+                    Physics.IgnoreCollision(pooledObjects[i].GetComponent<Collider>(), pooledObjects[j].GetComponent<Collider>(), true);
+                }
+            }
         }
     }
 

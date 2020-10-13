@@ -8,7 +8,7 @@ public class TestGoal : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<QTEManager>().Passed();
+            other.gameObject.GetComponent<PlayerModel>().Passed();
         }
     }
 }

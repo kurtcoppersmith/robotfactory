@@ -26,6 +26,7 @@ public class ConveyorScript : MonoBehaviour
             else
             {
                 currentCrate = null;
+
             }
 
             if (currentCrate != null && !currentCrate.activeInHierarchy)
@@ -38,7 +39,7 @@ public class ConveyorScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         GameObject obj = collision.gameObject;
-        if (obj.tag == "Pickup")
+        if (obj.tag == "Pickup" && obj.transform.parent.GetComponent<PlayerModel>() == null)
         {
             currentCrate = obj;
             onBelt = true;
@@ -49,7 +50,7 @@ public class ConveyorScript : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         GameObject obj = collision.gameObject;
-        if (obj.tag == "Pickup")
+        if (obj.tag == "Pickup" && obj.transform.parent.GetComponent<PlayerModel>() == null)
         {
             onBelt = false;
             currentCrate = null;

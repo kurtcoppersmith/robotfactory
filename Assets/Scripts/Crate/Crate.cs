@@ -86,19 +86,19 @@ public class Crate : MonoBehaviour//, IPooledObject
         //call explode when timer = 0;
         if (timer <= 0 && !delivered)
         {
-            QTEManager playerQTE = null;
-            playerQTE = transform.GetComponentInParent<QTEManager>();
-            if (playerQTE != null)
+            PlayerModel playerMod = null;
+            playerMod = transform.GetComponentInParent<PlayerModel>();
+            if (playerMod != null)
             {
                 if (TutorialManager.Instance == null)
                 {
-                    playerQTE.Fail();
+                    playerMod.Fail();
                 }
                 else
                 {
                     if (TutorialManager.Instance.currentObjective > 0)
                     {
-                        playerQTE.TutorialFail();
+                        playerMod.TutorialFail();
                     }
                 }
             }

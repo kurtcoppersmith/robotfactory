@@ -13,7 +13,7 @@ public class Hazard : MonoBehaviour
         {
             if (other.GetComponent<PlayerModel>().isHolding)
             {
-                other.GetComponent<PlayerModel>().qteManager.Fail();
+                other.GetComponent<PlayerModel>().Fail();
             }
             else
             {

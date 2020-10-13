@@ -85,11 +85,11 @@ public class QTEManager : MonoBehaviour
                 {
                     if (TutorialManager.Instance == null)
                     {
-                        Fail();
+                        playerModel.Fail();
                     }
                     else
                     {
-                        TutorialFail();
+                        playerModel.TutorialFail();
                     }
                 }
             }
@@ -137,6 +137,7 @@ public class QTEManager : MonoBehaviour
         }
     }
 
+    /*
     public void TutorialPassed()
     {
         if (playerModel.playerState != PlayerModel.PlayerState.Carrying)
@@ -206,6 +207,7 @@ public class QTEManager : MonoBehaviour
             playerModel.ChangeState(PlayerModel.PlayerState.Stunned);
         }
     }
+    */
 
     void OnQuickTimeNorth(InputValue inputValue)
     {
@@ -225,11 +227,11 @@ public class QTEManager : MonoBehaviour
             {
                 if (TutorialManager.Instance == null)
                 {
-                    Fail();
+                    playerModel.Fail();
                 }
                 else
                 {
-                    TutorialFail();
+                    playerModel.TutorialFail();
                 }
             }
         }
@@ -253,11 +255,11 @@ public class QTEManager : MonoBehaviour
             {
                 if (TutorialManager.Instance == null)
                 {
-                    Fail();
+                    playerModel.Fail();
                 }
                 else
                 {
-                    TutorialFail();
+                    playerModel.TutorialFail();
                 }
             }
         }
@@ -281,11 +283,11 @@ public class QTEManager : MonoBehaviour
             {
                 if (TutorialManager.Instance == null)
                 {
-                    Fail();
+                    playerModel.Fail();
                 }
                 else
                 {
-                    TutorialFail();
+                    playerModel.TutorialFail();
                 }
             }
         }
@@ -309,11 +311,11 @@ public class QTEManager : MonoBehaviour
             {
                 if (TutorialManager.Instance == null)
                 {
-                    Fail();
+                    playerModel.Fail();
                 }
                 else
                 {
-                    TutorialFail();
+                    playerModel.TutorialFail();
                 }
             }
         }

@@ -12,8 +12,11 @@ public class PlayerModel : MonoBehaviour
     public float collisionDetectionDistance = 0.2f;
     public float maxPlayerStunnedTime { get; private set; }
 
+    public float boxPickUpTime = 1f;
+    public float maxBoxPickUpTime = 0f;
+
     public PlayerMovement playerMovement { get; private set; }
-    public QTEManager qteManager { get; private set; }
+    //public QTEManager qteManager { get; private set; }
 
     public PlayerPickup playerPickup;
 
@@ -44,10 +47,11 @@ public class PlayerModel : MonoBehaviour
     {
         playerMovement = GetComponent<PlayerMovement>();
 
-        qteManager = GetComponent<QTEManager>();
-        qteManager.enabled = false;
+        //qteManager = GetComponent<QTEManager>();
+        //qteManager.enabled = false;
 
         maxPlayerStunnedTime = playerStunnedTime;
+        maxBoxPickUpTime = boxPickUpTime;
     }
 
     public enum PlayerState
@@ -94,7 +98,7 @@ public class PlayerModel : MonoBehaviour
             pickup.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             currentPickup = pickup;
             isHolding = true;
-            pickup.transform.DOMove(carryingPosition.position, qteManager.initialQTEBuffer / 2);
+            pickup.transform.DOMove(carryingPosition.position, maxBoxPickUpTime);
             
             if (playerState == PlayerState.Moving)
             {
@@ -141,7 +145,7 @@ public class PlayerModel : MonoBehaviour
 
                     if (hit.collider.gameObject.tag == "Hazard" && isHolding)
                     {
-                        qteManager.Fail();
+                        Fail();
                     }
                 }
 
@@ -153,6 +157,68 @@ public class PlayerModel : MonoBehaviour
         //{
         //    playerMovement.charController.Move(Vector3.up * (1 - hit.distance));
         //}
+    }
+
+    public void TutorialPassed()
+    {
+        if (playerState != PlayerState.Carrying)
+        {
+            return;
+        }
+
+        isHolding = false;
+        ChangeState(PlayerState.Moving);
+        playerPickup.currentColliders.Remove(currentPickup.GetComponent<Collider>());
+        Destroy(currentPickup);
+
+        TutorialManager.Instance.spawnedCrateAmount--;
+        if (TutorialManager.Instance.spawnedCrateAmount < 0)
+        {
+            TutorialManager.Instance.spawnedCrateAmount = 0;
+        }
+    }
+
+    //If we still need QTE, make sure to add the qte fails into this function.
+    public void Passed()
+    {
+        if (!GameManager.Instance.hasEnded)
+        {
+            if (playerState != PlayerState.Carrying)
+            {
+                return;
+            }
+
+            GameManager.Instance.addScore(5);
+
+            RemoveCurrentPickup();
+            ChangeState(PlayerState.Moving);
+        }
+    }
+
+    public void TutorialFail()
+    {
+        isHolding = false;
+        ChangeState(PlayerState.Stunned);
+        playerPickup.currentColliders.Remove(currentPickup.GetComponent<Collider>());
+        Destroy(currentPickup);
+
+        TutorialManager.Instance.spawnedCrateAmount--;
+        if (TutorialManager.Instance.spawnedCrateAmount < 0)
+        {
+            TutorialManager.Instance.spawnedCrateAmount = 0;
+        }
+    }
+
+    //If we still need QTE, make sure to add the qte fails into this function.
+    public void Fail()
+    {
+        if (!GameManager.Instance.hasEnded)
+        {
+            GameManager.Instance.subScore(2);
+
+            RemoveCurrentPickup();
+            ChangeState(PlayerState.Stunned);
+        }
     }
 
     void ShowPickUpIndicator()
@@ -186,18 +252,26 @@ public class PlayerModel : MonoBehaviour
         {
             case PlayerState.Moving:
                 playerMovement.canMove = true;
-                qteManager.enabled = false;
+                //qteManager.enabled = false;
                 break;
             case PlayerState.Carrying:
-                qteManager.enabled = true;
+                //qteManager.enabled = true;
                 playerMovement.canMove = false;
                 break;
             case PlayerState.Stunned:
                 playerMovement.canMove = false;
-                qteManager.enabled = false;
+                //qteManager.enabled = false;
 
                 sparksParticleEffect.SetActive(true);
-                sparksParticleDuration = sparksParticleSystem.main.duration;
+                if (maxPlayerStunnedTime < sparksParticleSystem.main.duration)
+                {
+                    sparksParticleDuration = maxPlayerStunnedTime;
+                }
+                else
+                {
+                    sparksParticleDuration = sparksParticleSystem.main.duration;
+                }
+                
                 //transform.DOPunchPosition(new Vector3(Random.Range(0.1f, 0.2f), 0, Random.Range(0.1f, 0.2f)), maxPlayerStunnedTime / 2);
                 break;
         }
@@ -207,6 +281,17 @@ public class PlayerModel : MonoBehaviour
 
     void Update()
     {
+        if (!playerMovement.canMove && playerState != PlayerState.Stunned)
+        {
+            boxPickUpTime -= Time.deltaTime;
+
+            if (boxPickUpTime <= 0)
+            {
+                playerMovement.canMove = true;
+                boxPickUpTime = maxBoxPickUpTime;
+            }
+        }
+
         if (playerState == PlayerState.Stunned)
         {
             Stunned();
@@ -246,7 +331,7 @@ public class PlayerModel : MonoBehaviour
         if (other.gameObject.tag == "Hazard" && isHolding)
         {
             Debug.Log("Test");
-            qteManager.Fail();
+            Fail();
         }
     }
 }

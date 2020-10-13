@@ -10,7 +10,7 @@ public class Obstacle : MonoBehaviour
         {
             if (TutorialManager.Instance != null)
             {
-                collision.transform.parent.GetComponent<QTEManager>().TutorialFail();
+                collision.transform.parent.GetComponent<PlayerModel>().TutorialFail();
 
                 if (TutorialManager.Instance.currentObjective == 0)
                 {
@@ -19,7 +19,7 @@ public class Obstacle : MonoBehaviour
             }
             else
             {
-                collision.transform.parent.gameObject.GetComponent<QTEManager>().Fail();
+                collision.transform.parent.gameObject.GetComponent<PlayerModel>().Fail();
             }
         }
     }

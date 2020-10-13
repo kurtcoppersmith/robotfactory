@@ -28,11 +28,11 @@ public class CrateStand : MonoBehaviour
             if (TutorialManager.Instance == null)
             {
                 CrateManager.Instance.DeliverCrate();
-                collision.transform.parent.gameObject.GetComponent<QTEManager>().Passed();
+                collision.transform.parent.gameObject.GetComponent<PlayerModel>().Passed();
             }
             else
             {
-                collision.transform.parent.gameObject.GetComponent<QTEManager>().TutorialPassed();
+                collision.transform.parent.gameObject.GetComponent<PlayerModel>().TutorialPassed();
 
                 if (TutorialManager.Instance.currentObjective == 2 || TutorialManager.Instance.currentObjective == 3)
                 {
@@ -44,11 +44,11 @@ public class CrateStand : MonoBehaviour
         {
             if (TutorialManager.Instance == null)
             {
-                collision.transform.parent.gameObject.GetComponent<QTEManager>().Fail();
+                collision.transform.parent.gameObject.GetComponent<PlayerModel>().Fail();
             }
             else
             {
-                collision.transform.parent.gameObject.GetComponent<QTEManager>().TutorialFail();
+                collision.transform.parent.gameObject.GetComponent<PlayerModel>().TutorialFail();
             }
         }
         
