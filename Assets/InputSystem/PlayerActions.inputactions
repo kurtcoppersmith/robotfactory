@@ -22,41 +22,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "QuickTimeNorth",
-                    "type": "Button",
-                    "id": "b88488b9-fed0-41f1-a243-4d5865f1063f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "QuickTimeSouth",
-                    "type": "Button",
-                    "id": "089dacb5-3647-4a4a-a323-09cb64e00172",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "QuickTimeEast",
-                    "type": "Button",
-                    "id": "760afaf3-26cb-4de6-a93f-5ab17cd959fe",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "QuickTimeWest",
-                    "type": "Button",
-                    "id": "2a2fbeba-8de6-48a0-8cdf-8385ce689a4d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "PauseToggle",
                     "type": "Button",
                     "id": "63b3c31d-6de7-41cc-a994-7e371da83858",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Scoot",
+                    "type": "Button",
+                    "id": "15080d07-1e96-4774-a2a2-671e04a0363b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -263,94 +239,6 @@
                 },
                 {
                     "name": "",
-                    "id": "1caf6291-7885-4dea-9c83-30d776d67fb1",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "QuickTimeNorth",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e24d6681-8de7-46ef-88dc-892162ab2146",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4;XBox",
-                    "action": "QuickTimeNorth",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7f8a1bb9-93ca-4353-a025-4476456ceece",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "QuickTimeSouth",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9617cb93-8aca-4218-b5f4-ebfe91cd2f41",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4;XBox",
-                    "action": "QuickTimeSouth",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0a35b1ec-219e-488a-9686-e874ebf1bc5c",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "QuickTimeEast",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4ea0320b-e828-4df1-8601-1588f28b7214",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4;XBox",
-                    "action": "QuickTimeEast",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "582ca97a-741e-49af-95dc-c2b4201cbe9f",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "QuickTimeWest",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2291176f-fab8-441e-a708-886a9b43c256",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4;XBox",
-                    "action": "QuickTimeWest",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "5bc6e694-745c-4b7a-9e30-74813d7926f3",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -368,6 +256,28 @@
                     "processors": "",
                     "groups": "PS4;XBox",
                     "action": "PauseToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "080b45e5-f477-4494-ae46-9c8c5118a148",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Scoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2d3d2851-c6ba-4fd7-8d2c-8d259401ed13",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4;XBox",
+                    "action": "Scoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
