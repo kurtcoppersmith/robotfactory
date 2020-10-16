@@ -6,7 +6,8 @@ public class ConveyorScript : MonoBehaviour
 {
     public GameObject conveyorEnd;
     public float speed;
-    bool onBelt = false;
+    private bool onBelt = false;
+    private Vector3 direction;
     private GameObject currentCrate;
 
     // Update is called once per frame
@@ -19,7 +20,7 @@ public class ConveyorScript : MonoBehaviour
             {
                 if ((TutorialManager.Instance != null && TutorialManager.Instance.hasDescription && TutorialManager.Instance.currentObjective > 2) || (TutorialManager.Instance == null))
                 {
-                    Vector3 position  = Vector3.MoveTowards(currentCrate.transform.position, conveyorEnd.transform.position, moveSpeed);
+                    Vector3 position  = currentCrate.transform.position + direction * moveSpeed;
                     currentCrate.GetComponent<Rigidbody>().MovePosition(position);
                 }
             }
@@ -43,6 +44,7 @@ public class ConveyorScript : MonoBehaviour
         {
             currentCrate = obj;
             onBelt = true;
+            direction = (conveyorEnd.transform.position - currentCrate.transform.position).normalized;
             Debug.Log("Enter");
         }
     }
