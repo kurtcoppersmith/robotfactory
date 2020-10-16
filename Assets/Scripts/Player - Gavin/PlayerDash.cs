@@ -13,6 +13,7 @@ public class PlayerDash : MonoBehaviour
     private float dashTime = 0f;
 
     PlayerMovement playerMovement;
+    PlayerModel playerMod;
 
     void Awake()
     {
@@ -20,6 +21,7 @@ public class PlayerDash : MonoBehaviour
         dashTime = maxDashTime;
 
         playerMovement = GetComponent<PlayerMovement>();
+        playerMod = GetComponent<PlayerModel>();
     }
 
     void OnDrawGizmosSelected()
@@ -30,7 +32,7 @@ public class PlayerDash : MonoBehaviour
 
     void OnScoot(InputValue inputValue)
     {
-        if (!isDashing)
+        if (!isDashing && playerMod.playerState != PlayerModel.PlayerState.Stunned)
         {
             isDashing = true;
         }
