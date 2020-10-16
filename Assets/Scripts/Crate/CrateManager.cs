@@ -10,6 +10,8 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
     public float RemaningSpawnTime;
     //time till explosion
     public float duration;
+    //speed of the crates
+    public float crateSpeed;
     //crate prefab for instantiating
     public GameObject Crate;
 

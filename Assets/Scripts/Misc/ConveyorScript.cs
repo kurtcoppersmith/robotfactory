@@ -5,10 +5,15 @@ using UnityEngine;
 public class ConveyorScript : MonoBehaviour
 {
     public GameObject conveyorEnd;
-    public float speed;
+    private float speed;
     private bool onBelt = false;
     private Vector3 direction;
     private GameObject currentCrate;
+
+    private void Start()
+    {
+        speed = CrateManager.Instance.crateSpeed;
+    }
 
     // Update is called once per frame
     void Update()

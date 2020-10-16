@@ -11824,7 +11824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &630403011
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11861,25 +11861,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item1:
-    name: Item 1
+    name: Chasis
     nameText: {fileID: 26761144}
     cost: 20
     costText: {fileID: 901895969}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 4f8069d6bd7271643bb6a70c56ed1d1a, type: 3}
     itemImage: {fileID: 1182100054}
   item2:
-    name: Item 2
+    name: Speed Up
     nameText: {fileID: 1667757050}
     cost: 30
     costText: {fileID: 530614686}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: cb6932caf25b5bb44b7fb307e54c9ad5, type: 3}
     itemImage: {fileID: 1408373782}
   item3:
-    name: Item 3
+    name: Strength Up
     nameText: {fileID: 1131271620}
     cost: 40
     costText: {fileID: 664103039}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: cf0037788f22d2b4e9fa59615e40a506, type: 3}
     itemImage: {fileID: 1963805581}
 --- !u!1001 &630962340
 PrefabInstance:
