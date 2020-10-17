@@ -18,6 +18,8 @@ public class PlayerModel : MonoBehaviour
     public PlayerMovement playerMovement { get; private set; }
     //public QTEManager qteManager { get; private set; }
 
+    public GameObject avatar;
+
     public PlayerPickup playerPickup;
 
     public BoxCollider pickupColliderGizmo;
@@ -33,6 +35,7 @@ public class PlayerModel : MonoBehaviour
 
     public GameObject currentPickup { get; private set; } = null;
     public bool isHolding { get; set; } = false;
+    
 
     /*new void Awake()
     {

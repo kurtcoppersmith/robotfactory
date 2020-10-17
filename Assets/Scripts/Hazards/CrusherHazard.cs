@@ -8,7 +8,7 @@ public class CrusherHazard : MonoBehaviour
     public RangeFloat startTime = new RangeFloat(0, 1.5f);
     private float startTimeCounter = 0;
     public float speed = 0f;
-    public float soften = .9f;
+    public float soften = .5f;
 
     public Vector3 localMovement = Vector3.zero;
     private Vector3 originalLocation = Vector3.zero;

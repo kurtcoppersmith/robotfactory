@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController charController { get; private set; }
     private PlayerModel playerModel;
+    private PlayerDash playerDash;
 
     Vector2 movementInput;
     Vector3 movementVector;
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     {
         charController = GetComponent<CharacterController>();
         playerModel = GetComponent<PlayerModel>();
+        playerDash = GetComponent<PlayerDash>();
 
         HelperUtilities.UpdateCursorLock(true);
 
@@ -157,65 +159,6 @@ public class PlayerMovement : MonoBehaviour
         robotChasis = option;
     }
 
-    /*void TankMove(float h, float v)
-    {
-        float currentTurnRate = Mathf.Lerp(tankRotationSpeed, stoppedTankRotationSpeed, 1 - (currentSpeed / currentTopSpeed));
-        Vector3 angles = transform.eulerAngles;
-        angles.y += (h * currentTurnRate);
-        transform.eulerAngles = angles;
-
-        if (v > 0)
-        {
-            movementVector = transform.forward * v;
-            currentTopSpeed = topForwardSpeed;
-            isAccel = true;
-        }
-        else if (v < 0)
-        {
-            movementVector = transform.forward * v;
-            currentTopSpeed = topReverseSpeed;
-            isAccel = true;
-        }
-        else
-        {
-            movementVector = Vector3.zero;
-            isAccel = false;
-        }
-
-        if (isAccel)
-        {
-            if (currentSpeed < currentTopSpeed)
-            {
-                //currentSpeed = currentSpeed + (acceleration * Time.deltaTime);
-                currentSpeed += acceleration;
-            }
-        }
-        else
-        {
-            if (currentSpeed > 0)
-            {
-                //currentSpeed = currentSpeed - (acceleration * Time.deltaTime);
-                currentSpeed -= acceleration;
-            }
-        }
-
-        if (!(currentSpeed > 0) && movementVector == Vector3.zero)
-        {
-            currentSpeed = 0;
-            isAccel = false;
-        }
-        else
-        {
-            if (currentSpeed > currentTopSpeed)
-            {
-                currentSpeed = currentTopSpeed;
-            }
-        }
-        
-        movementVector.x *= currentSpeed * Time.deltaTime;
-        movementVector.z *= currentSpeed * Time.deltaTime;
-    }*/
-
     Vector2 FindMovementRelativeToCamera(float h, float v)
     {
         Vector3 VertVector = LevelManager.Instance.mainCam.transform.forward;
@@ -300,16 +243,15 @@ public class PlayerMovement : MonoBehaviour
             v = movementInput.y;
         }
 
-        /*if (tankControls)
+        if (!playerDash.isDashing)
         {
-            TankMove(h, v);
+            NormalMove(h, v);
         }
         else
         {
-            NormalMove(h, v);
-        }*/
-
-        NormalMove(h, v);
+            movementVector = Vector3.zero;
+        }
+        
 
         if (!charController.isGrounded)
         {
