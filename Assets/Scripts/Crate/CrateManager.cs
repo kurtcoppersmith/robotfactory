@@ -52,23 +52,18 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
     // Update is called once per frame
     void Update()
     {
-        if (spawnNumbers.min < spawnNumbers.max && !GameManager.Instance.hasEnded)
+        if (RemaningSpawnTime <= 0 && !GameManager.Instance.hasEnded)
         {
-            if (RemaningSpawnTime <= 0)
-            {
-                SpawnCrate();
-                RemaningSpawnTime = SpawnTime;
-            }
-            RemaningSpawnTime -= Time.deltaTime;
+            SpawnCrate();
+            RemaningSpawnTime = SpawnTime;
         }
+        RemaningSpawnTime -= Time.deltaTime;
     }
 
     void SpawnCrate()
     {
         for (int i = 0; i < spawnLocationStatus.Count; i++)
         {
-            if (!spawnLocationStatus[spawnLocations[i]])
-            {
                 GameObject obj = ObjectPoolerGavin.GetPooler(crateKey).GetPooledObject();
                 obj.transform.position = spawnLocations[i].position;
                 obj.GetComponent<IdleCrate>().PickUp(false);
@@ -78,7 +73,6 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
                 spawnLocationStatus[spawnLocations[i]] = true;
                 spawnNumbers.min++;
                 break;
-            }
         }
     }
 
