@@ -16,7 +16,8 @@ public class PlayerModel : MonoBehaviour
     public float maxBoxPickUpTime = 0f;
 
     public PlayerMovement playerMovement { get; private set; }
-    //public QTEManager qteManager { get; private set; }
+    public PlayerDash playerDash { get; private set; }
+    public PlayerPowerups playerPowerups { get; private set; }
 
     public GameObject avatar;
 
@@ -25,6 +26,7 @@ public class PlayerModel : MonoBehaviour
     public BoxCollider pickupColliderGizmo;
 
     public Transform carryingPosition;
+    public Transform strengthCarryingPosition;
 
     public GameObject sparksParticleEffect;
 
@@ -49,9 +51,8 @@ public class PlayerModel : MonoBehaviour
     void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
-
-        //qteManager = GetComponent<QTEManager>();
-        //qteManager.enabled = false;
+        playerDash = GetComponent<PlayerDash>();
+        playerPowerups = GetComponent<PlayerPowerups>();
 
         maxPlayerStunnedTime = playerStunnedTime;
         maxBoxPickUpTime = boxPickUpTime;
@@ -101,7 +102,15 @@ public class PlayerModel : MonoBehaviour
             pickup.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             currentPickup = pickup;
             isHolding = true;
-            pickup.transform.DOMove(carryingPosition.position, maxBoxPickUpTime);
+
+            if (playerPowerups.strengthPower)
+            {
+                pickup.transform.DOMove(strengthCarryingPosition.position, maxBoxPickUpTime);
+            }
+            else
+            {
+                pickup.transform.DOMove(carryingPosition.position, maxBoxPickUpTime);
+            }
             
             if (playerState == PlayerState.Moving)
             {
@@ -155,11 +164,6 @@ public class PlayerModel : MonoBehaviour
             }
             DebugExtension.DebugCapsule(p1 + new Vector3(Mathf.Cos(i), 0, Mathf.Sin(i)), p2 + new Vector3(Mathf.Cos(i), 0, Mathf.Sin(i)), 0);
         }
-
-        //if (Physics.Raycast(transform.position + Vector3.up, -Vector3.up, out hit))
-        //{
-        //    playerMovement.charController.Move(Vector3.up * (1 - hit.distance));
-        //}
     }
 
     public void TutorialPassed()
@@ -192,6 +196,11 @@ public class PlayerModel : MonoBehaviour
             }
 
             GameManager.Instance.addScore(5);
+
+            if (playerPowerups.strengthPower)
+            {
+                playerPowerups.SetStrengthPowerup(false);
+            }
 
             RemoveCurrentPickup();
             ChangeState(PlayerState.Moving);
@@ -291,7 +300,16 @@ public class PlayerModel : MonoBehaviour
             if (boxPickUpTime <= 0)
             {
                 playerMovement.canMove = true;
-                currentPickup.transform.position = carryingPosition.position;
+
+                if (playerPowerups.strengthPower)
+                {
+                    currentPickup.transform.position = strengthCarryingPosition.position;
+                }
+                else
+                {
+                    currentPickup.transform.position = carryingPosition.position;
+                }
+
                 boxPickUpTime = maxBoxPickUpTime;
             }
         }

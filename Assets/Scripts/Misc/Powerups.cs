@@ -6,7 +6,7 @@ public class Powerups : MonoBehaviour
 {
     public enum Enhancements
     {
-        Robotic_Pulse,
+        Robotic_Strength,
         Robotic_Boost,
         Robotic_Chasis,
         Robotic_Enchancements,
@@ -14,15 +14,13 @@ public class Powerups : MonoBehaviour
     }
 
     public Enhancements augments;
-    private PlayerMovement playerVar;
-    private GameManager gm;
+    private PlayerModel playerVar;
 
     // Start is called before the first frame update
     void Start()
     {
         augments = Enhancements.None;
-        playerVar = FindObjectOfType<PlayerMovement>();
-        gm = FindObjectOfType<GameManager>();
+        playerVar = FindObjectOfType<PlayerModel>();
     }
 
     // Update is called once per frame
@@ -30,19 +28,19 @@ public class Powerups : MonoBehaviour
     {
         switch(augments)
         {
-            case Enhancements.Robotic_Pulse:
+            case Enhancements.Robotic_Strength:
                 //add time!
-                gm.addTime(15f);
+                playerVar.playerPowerups.SetStrengthPowerup(true);
                 Debug.Log("time_looop!");
                 break;
             case Enhancements.Robotic_Boost:
                 //Speed up!
-                playerVar.SetPlayerSped(true);
+                playerVar.playerPowerups.SetSpeedPowerup(true);
                 Debug.Log("IAMSPEED!");
                 break;
             case Enhancements.Robotic_Chasis:
                 //NOU!
-                playerVar.SetPlayerChasis(true);
+                playerVar.playerPowerups.SetChasisPowerup(true);
                 Debug.Log("PROTECC!");
                 break;
             default:

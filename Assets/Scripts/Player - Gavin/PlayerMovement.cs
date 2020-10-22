@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Normal Control Variables")]
     public float speed = 4;
-    private float initialSpeed;
+    public float initialSpeed { get; private set; }
     public float rotationSpeed = 4;
 
     [Header("Icey Movement Variables")]
@@ -28,10 +28,6 @@ public class PlayerMovement : MonoBehaviour
     public float slowedSpeed = 4;
     private bool isSlowed = false;
 
-    [Header("Speed Up Movement Variables")]
-    public float spedUpSpeed = 6f;
-    private bool isSped = false;
-
     [Header("General Hazard Effect Variables")]
     public float hazardEffectDuration = 2.0f;
     private float maxHazardEffectDuration;
@@ -39,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
     private float currentSpeed;
     private float currentTopSpeed;
     private bool isAccel = false;
-    private bool robotChasis = false;
 
     [Header("Additional Variables")]
     public float gravity = 10;
@@ -71,9 +66,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetPlayerIced(bool option)
     {
-        if(robotChasis)
+        if(playerModel.playerPowerups.chasisPower)
         {
-            SetPlayerChasis(false);
+            return;
         }
         else 
         {
@@ -105,9 +100,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetPlayerSlowed(bool option)
     {
-        if (robotChasis)
+        if (playerModel.playerPowerups.chasisPower)
         {
-            SetPlayerChasis(false);
+            return;
         }
         else
         {
@@ -130,33 +125,6 @@ public class PlayerMovement : MonoBehaviour
             isSlowed = false;
             speed = initialSpeed;
         }
-    }
-
-    public void SetPlayerSped(bool option)
-    {
-        isSped = option;
-
-        if (option)
-        {
-            speed = spedUpSpeed;
-            hazardEffectDuration = maxHazardEffectDuration + playerModel.maxPlayerStunnedTime;
-        }
-    }
-
-    void SpeedPlayer()
-    {
-        hazardEffectDuration -= Time.deltaTime;
-
-        if (hazardEffectDuration <= 0)
-        {
-            isSped = false;
-            speed = initialSpeed;
-        }
-    }
-
-    public void SetPlayerChasis(bool option)
-    {
-        robotChasis = option;
     }
 
     Vector2 FindMovementRelativeToCamera(float h, float v)
@@ -274,11 +242,6 @@ public class PlayerMovement : MonoBehaviour
         if (isSlowed)
         {
             SlowPlayer();
-        }
-
-        if(isSped)
-        {
-            SpeedPlayer();
         }
     }
 
