@@ -48,7 +48,7 @@ public class PlayerDash : MonoBehaviour
         {
             if(hitInfo.transform.parent != this.transform)
             {
-                if (!isDashing && playerMod.playerState != PlayerModel.PlayerState.Stunned && playerMod.playerMovement.canMove)
+                if (!isDashing && playerMod.playerState != PlayerModel.PlayerState.Stunned && playerMod.playerMovement.canMove && !GameManager.Instance.hasEnded && !GameManager.Instance.isPaused)
                 {
                     isDashing = true;
                 }

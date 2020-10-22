@@ -291,6 +291,7 @@ public class PlayerModel : MonoBehaviour
             if (boxPickUpTime <= 0)
             {
                 playerMovement.canMove = true;
+                currentPickup.transform.position = carryingPosition.position;
                 boxPickUpTime = maxBoxPickUpTime;
             }
         }
@@ -323,7 +324,7 @@ public class PlayerModel : MonoBehaviour
 
     void OnPauseToggle(InputValue inputValue)
     {
-        if (playerState == PlayerState.Moving && !GameManager.Instance.hasEnded)
+        if (!GameManager.Instance.hasEnded)
         {
             LevelManager.Instance.PauseToggle();
         }
