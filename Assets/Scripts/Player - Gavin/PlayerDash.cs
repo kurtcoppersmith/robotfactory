@@ -9,10 +9,13 @@ public class PlayerDash : MonoBehaviour
     public bool isDashing = false;
     public float dashingDistance = 0f;
     public float dashingSpeed = 0f;
+
     private float maxDashTime = 0f;
     private float dashTime = 0f;
 
-    PlayerMovement playerMovement;
+    public float groundCheckDistance = 0f;
+    public float groundCheckBounds = 0f;
+
     PlayerModel playerMod;
 
     void Awake()
@@ -20,7 +23,6 @@ public class PlayerDash : MonoBehaviour
         maxDashTime = dashingDistance / dashingSpeed;
         dashTime = maxDashTime;
 
-        playerMovement = GetComponent<PlayerMovement>();
         playerMod = GetComponent<PlayerModel>();
     }
 
@@ -28,13 +30,29 @@ public class PlayerDash : MonoBehaviour
     {
         Gizmos.color = Color.magenta;
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * dashingDistance);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position + new Vector3(groundCheckBounds, 0, groundCheckBounds), (transform.position + new Vector3(groundCheckBounds, 0, groundCheckBounds)) - transform.up * groundCheckDistance);
+        Gizmos.DrawLine(transform.position + new Vector3(groundCheckBounds, 0, -groundCheckBounds), (transform.position + new Vector3(groundCheckBounds, 0, -groundCheckBounds)) - transform.up * groundCheckDistance);
+        Gizmos.DrawLine(transform.position + new Vector3(-groundCheckBounds, 0, groundCheckBounds), (transform.position + new Vector3(-groundCheckBounds, 0, groundCheckBounds)) - transform.up * groundCheckDistance);
+        Gizmos.DrawLine(transform.position + new Vector3(-groundCheckBounds, 0, -groundCheckBounds), (transform.position + new Vector3(-groundCheckBounds, 0, -groundCheckBounds)) - transform.up * groundCheckDistance);
     }
 
     void OnScoot(InputValue inputValue)
     {
-        if (!isDashing && playerMod.playerState != PlayerModel.PlayerState.Stunned)
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position + new Vector3(groundCheckBounds, 0, groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance)
+            || Physics.Raycast(transform.position + new Vector3(groundCheckBounds, 0, -groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance)
+            || Physics.Raycast(transform.position + new Vector3(-groundCheckBounds, 0, groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance)
+            || Physics.Raycast(transform.position + new Vector3(-groundCheckBounds, 0, -groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance))
         {
-            isDashing = true;
+            if(hitInfo.transform.parent != this.transform)
+            {
+                if (!isDashing && playerMod.playerState != PlayerModel.PlayerState.Stunned && playerMod.playerMovement.canMove)
+                {
+                    isDashing = true;
+                }
+            }
         }
     }
 
@@ -45,7 +63,7 @@ public class PlayerDash : MonoBehaviour
             if(dashTime >= 0)
             {
                 dashTime -= Time.deltaTime;
-                playerMovement.charController.Move(transform.forward.normalized * dashingSpeed * Time.deltaTime);
+                playerMod.playerMovement.charController.Move(transform.forward.normalized * dashingSpeed * Time.deltaTime);
             }
             else
             {

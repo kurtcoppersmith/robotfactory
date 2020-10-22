@@ -16,9 +16,9 @@ public class ConveyorScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        float moveSpeed = speed * Time.deltaTime;
+        float moveSpeed = speed * Time.fixedDeltaTime;
         foreach (GameObject crate in crates)
         {
             MoveCrate(crate, moveSpeed);

@@ -246,20 +246,19 @@ public class PlayerMovement : MonoBehaviour
         if (!playerDash.isDashing)
         {
             NormalMove(h, v);
+            
+            if (!charController.isGrounded)
+            {
+                movementVector.y -= gravity * Time.deltaTime;
+            }
+            else
+            {
+                movementVector.y -= minimumGravity * Time.deltaTime;
+            }
         }
         else
         {
             movementVector = Vector3.zero;
-        }
-        
-
-        if (!charController.isGrounded)
-        {
-            movementVector.y -= gravity * Time.deltaTime;
-        }
-        else
-        {
-            movementVector.y -= minimumGravity * Time.deltaTime;
         }
 
         charController.Move(movementVector);
