@@ -10,18 +10,18 @@ public class PowerUps
     public int cost;
     public Sprite itemSprite;
     public bool unlocked;
+    public Powerups.Enhancements p;
 }
 
 public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
 {
-    
-
     public int numberOfPowerUps = 3;
     public PowerUps[] powerUps;
     public Button b1;
     public Button b2;
     private bool isB1;
     private Sprite sprite;
+    private GameManager gm;
 
     new void Awake()
     {
@@ -41,18 +41,27 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
             Sprite tempSprite = image.sprite;
             image.sprite = b1.image.sprite;
             b1.image.sprite = tempSprite;
+            setPower(b1.image.sprite);
         }else
         {
             Sprite tempSprite = image.sprite;
             image.sprite = b2.image.sprite;
             b2.image.sprite = tempSprite;
+            setPower(b2.image.sprite);
         }
-        Debug.Log("Swap");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void setPower(Sprite s)
     {
-        
+        for (int i=0; i<powerUps.Length;i++)
+        {
+            if(s == powerUps[i].itemSprite)
+            {
+                if(isB1)
+                    gm.powerUp1 = powerUps[i].p;
+                else
+                    gm.powerUp2 = powerUps[i].p;
+            }
+        }
     }
 }

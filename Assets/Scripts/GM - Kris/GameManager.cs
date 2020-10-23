@@ -18,6 +18,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public int score = 0;
     public Transform pm;
 
+    public Powerups.Enhancements powerUp1;
+    public Powerups.Enhancements powerUp2;
+
     public int gears = 0;
 
 

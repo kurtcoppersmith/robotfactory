@@ -41,8 +41,12 @@ public class PlayerPowerups : MonoBehaviour
             playerMod.playerMovement.speed = powerupSpeed;
             powerupDuration = maxPowerupDuration;
 
-            chasisPower = false;
-            strengthPower = false;
+            SetChasisPowerup(false);
+            SetStrengthPowerup(false);
+        }
+        else
+        {
+            playerMod.playerMovement.speed = playerMod.playerMovement.initialSpeed;
         }
     }
 
@@ -59,14 +63,14 @@ public class PlayerPowerups : MonoBehaviour
 
     public void SetChasisPowerup(bool option)
     {
-        chasisPower = true;
+        chasisPower = option;
 
         if (option)
         {
             powerupDuration = maxPowerupDuration;
-            
-            speedPower = false;
-            strengthPower = false;
+
+            SetSpeedPowerup(false);
+            SetStrengthPowerup(false);
         }
     }
 
@@ -88,8 +92,8 @@ public class PlayerPowerups : MonoBehaviour
         {
             tempStrengthCollider.SetActive(true);
 
-            speedPower = false;
-            chasisPower = false;
+            SetSpeedPowerup(false);
+            SetChasisPowerup(false);
         }
         else
         {
