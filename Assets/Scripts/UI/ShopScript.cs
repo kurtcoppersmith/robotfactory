@@ -24,6 +24,11 @@ public class ShopScript : MonoBehaviour
     void Start()
     {
         item = PowerUpManager.Instance;
+        UpdateShop();
+    }
+
+    public void UpdateShop()
+    {
         //Set item names
         item1.nameText.text = item.powerUps[item1.itemNumber].name;
         item2.nameText.text = item.powerUps[item2.itemNumber].name;
@@ -43,13 +48,13 @@ public class ShopScript : MonoBehaviour
         int price = 0;
         switch(itemNumber)
         {
-            case 1:
+            case 0:
                 price = item.powerUps[item1.itemNumber].cost;
                 break;
-            case 2:
+            case 1:
                 price = item.powerUps[item2.itemNumber].cost;
                 break;
-            case 3:
+            case 2:
                 price = item.powerUps[item3.itemNumber].cost;
                 break;
             default:
@@ -59,12 +64,22 @@ public class ShopScript : MonoBehaviour
         if(GameManager.Instance.returnGears() - price >= 0)
         {
             GameManager.Instance.setGears(GameManager.Instance.returnGears() - price);
-            item.powerUps[itemNumber - 1].unlocked = true;
+            item.powerUps[itemNumber].unlocked = true;
+            DefaultItem(itemNumber);
+            Debug.Log("Just bought " + item.powerUps[itemNumber].name);
         }
         else
         {
             Debug.Log("Not enough Gears");
         }
+    }
+
+    public void DefaultItem(int num)
+    {
+        item.powerUps[num].cost = 0;
+        item.powerUps[num].name = "";
+        item.powerUps[num].itemSprite = null;
+        UpdateShop();
     }
     
 }
