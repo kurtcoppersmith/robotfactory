@@ -73,7 +73,6 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
                 
                 spawnLocationStatus[spawnLocations[i]] = true;
                 spawnNumbers.min++;
-                break;
         }
     }
 
