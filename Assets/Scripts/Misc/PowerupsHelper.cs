@@ -20,7 +20,7 @@ public class PowerupsHelper : MonoBehaviour
                 powerup.setEnhancement(Powerups.Enhancements.None);
                 break;
             case 1:
-                powerup.setEnhancement(Powerups.Enhancements.Robotic_Pulse);
+                powerup.setEnhancement(Powerups.Enhancements.Robotic_Strength);
                 break;
             case 2:
                 powerup.setEnhancement(Powerups.Enhancements.Robotic_Boost);

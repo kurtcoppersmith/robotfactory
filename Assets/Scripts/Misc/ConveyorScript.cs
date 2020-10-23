@@ -16,9 +16,9 @@ public class ConveyorScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        float moveSpeed = speed * Time.deltaTime;
+        float moveSpeed = speed * Time.fixedDeltaTime;
         foreach (GameObject crate in crates)
         {
             MoveCrate(crate, moveSpeed);
@@ -32,7 +32,7 @@ public class ConveyorScript : MonoBehaviour
         {
             crates.Add(obj);
             direction = (conveyorEnd.transform.position - crates[crates.Count-1].transform.position).normalized;
-            Debug.Log("Enter");
+            //Debug.Log("Enter");
         }
     }
 
@@ -42,7 +42,7 @@ public class ConveyorScript : MonoBehaviour
         if (obj.tag == "Pickup" && obj.transform.parent.GetComponent<PlayerModel>() == null)
         {
             crates.Remove(obj);
-            Debug.Log("Exit");
+            //Debug.Log("Exit");
         }
     }
 

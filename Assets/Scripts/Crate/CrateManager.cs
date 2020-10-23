@@ -85,7 +85,7 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
 
             if (spawnNumbers.min == spawnNumbers.max - 1)
             {
-                RemaningSpawnTime = SpawnTime;
+                RemaningSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
             }
         }
     }

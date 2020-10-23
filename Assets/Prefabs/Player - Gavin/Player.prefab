@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 6222464800355983534}
   - component: {fileID: 6316313628876847855}
   - component: {fileID: 4831716465687046638}
+  - component: {fileID: 7731216571535359570}
   - component: {fileID: 2813048119358463857}
   m_Layer: 0
   m_Name: Player
@@ -318,6 +319,7 @@ MonoBehaviour:
   playerPickup: {fileID: 5891889522736597555}
   pickupColliderGizmo: {fileID: 1903259900745558312}
   carryingPosition: {fileID: 2664855879011159116}
+  strengthCarryingPosition: {fileID: 0}
   sparksParticleEffect: {fileID: 1199890665654865440}
   sparksParticleSystem: {fileID: 1199890664976008748}
   pickupIndicator: {fileID: 8500260772503836400}
@@ -338,7 +340,6 @@ MonoBehaviour:
   rotationSpeed: 15
   iceSpeed: 6.5
   slowedSpeed: 2.5
-  spedUpSpeed: 6
   hazardEffectDuration: 5
   gravity: 10
   minimumGravity: 0.01
@@ -358,6 +359,24 @@ MonoBehaviour:
   isDashing: 0
   dashingDistance: 2.5
   dashingSpeed: 20
+  groundCheckDistance: 1
+  groundCheckBounds: 0.4
+--- !u!114 &7731216571535359570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2813048119358463863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb517d7a97e39f4590e8f91964f2d6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerupSpeed: 6
+  chasisPower: 0
+  strengthPower: 0
+  powerupDuration: 10
 --- !u!114 &2813048119358463857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,7 +558,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.6, y: 0.6}
+  m_SizeDelta: {x: 0.4, y: 0.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5662502058591360041
 CanvasRenderer:
@@ -808,12 +827,12 @@ PrefabInstance:
     - target: {fileID: 964068889170269472, guid: 045936cb695071e498e9dd7814a1bd87,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 964068889170269472, guid: 045936cb695071e498e9dd7814a1bd87,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 964068889170269472, guid: 045936cb695071e498e9dd7814a1bd87,
         type: 3}
@@ -866,7 +885,7 @@ PrefabInstance:
     - target: {fileID: 2412549230832165578, guid: 045936cb695071e498e9dd7814a1bd87,
         type: 3}
       propertyPath: keyboardText
-      value: SPACE
+      value: E
       objectReference: {fileID: 0}
     - target: {fileID: 5438187731344617315, guid: 045936cb695071e498e9dd7814a1bd87,
         type: 3}
@@ -1115,6 +1134,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff2d9c039fcb2c94595fbbb5bdb64953, type: 3}
+--- !u!1 &1199890665654865440 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2315877777652253656, guid: ff2d9c039fcb2c94595fbbb5bdb64953,
+    type: 3}
+  m_PrefabInstance: {fileID: 3496333324639882744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1199890665654865447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2315877777652253663, guid: ff2d9c039fcb2c94595fbbb5bdb64953,
@@ -1124,12 +1149,6 @@ Transform:
 --- !u!198 &1199890664976008748 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2315877778063789012, guid: ff2d9c039fcb2c94595fbbb5bdb64953,
-    type: 3}
-  m_PrefabInstance: {fileID: 3496333324639882744}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1199890665654865440 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2315877777652253656, guid: ff2d9c039fcb2c94595fbbb5bdb64953,
     type: 3}
   m_PrefabInstance: {fileID: 3496333324639882744}
   m_PrefabAsset: {fileID: 0}
