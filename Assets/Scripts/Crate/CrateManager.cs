@@ -5,7 +5,8 @@ using UnityEngine;
 public class CrateManager : SingletonMonoBehaviour<CrateManager>
 {
     //spawn time in seconds
-    public float SpawnTime;
+    public float minSpawnTime;
+    public float maxSpawnTime;
     //time till next spawn
     public float RemaningSpawnTime;
     //time till explosion
@@ -45,7 +46,7 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
     void Start()
     {
         pooler = ObjectPooler.Instance;
-        RemaningSpawnTime = SpawnTime;
+        RemaningSpawnTime = Random.Range(minSpawnTime,maxSpawnTime);
         SpawnCrate();
     }
 
@@ -55,7 +56,7 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
         if (RemaningSpawnTime <= 0 && !GameManager.Instance.hasEnded)
         {
             SpawnCrate();
-            RemaningSpawnTime = SpawnTime;
+            RemaningSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         }
         RemaningSpawnTime -= Time.deltaTime;
     }
