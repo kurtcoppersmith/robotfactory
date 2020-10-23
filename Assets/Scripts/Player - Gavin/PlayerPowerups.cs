@@ -13,6 +13,7 @@ public class PlayerPowerups : MonoBehaviour
 
     [Header("Strength Up Powerup Variables")]
     public bool strengthPower = false;
+    public GameObject tempStrengthCollider;
 
     [Header("General Variables")]
     public float powerupDuration = 0f;
@@ -85,8 +86,14 @@ public class PlayerPowerups : MonoBehaviour
 
         if (option)
         {
+            tempStrengthCollider.SetActive(true);
+
             speedPower = false;
             chasisPower = false;
+        }
+        else
+        {
+            tempStrengthCollider.SetActive(false);
         }
     }
 
