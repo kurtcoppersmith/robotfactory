@@ -7,7 +7,7 @@ public class CrateStand : MonoBehaviour
     public enum Colors { Red, Blue, Green }
     private Crate collisionCrate;
     public Colors colors;
-    private Color standColor;
+    public Color standColor { get; private set; }
     public GameObject crateManager;
     // Start is called before the first frame update
     void Start()

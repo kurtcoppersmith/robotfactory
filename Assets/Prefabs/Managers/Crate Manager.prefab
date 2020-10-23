@@ -134,7 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd956b7a87d5f864aa776b18d6bb9d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTime: 5
+  minSpawnTime: 0
+  maxSpawnTime: 0
   RemaningSpawnTime: 0
   duration: 35
   crateSpeed: 5
@@ -143,8 +144,6 @@ MonoBehaviour:
   pooler: {fileID: 0}
   spawnLocations:
   - {fileID: 2606852249854301625}
-  - {fileID: 3179061849672548223}
-  - {fileID: 3032922375468992878}
   spawnNumbers:
     min: 0
     max: 0
