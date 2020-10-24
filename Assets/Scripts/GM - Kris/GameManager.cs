@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
@@ -19,6 +20,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public Transform pm;
 
     public int gears = 0;
+
+    public Text soundLevel;
+
 
 
     new void Awake()
@@ -170,6 +174,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
       //  this.setPlayerPosition(data.position[0], data.position[1], data.position[2]);
 
         
+    }
+
+
+    public void SetVolume(float volume)
+    {
+        Debug.Log(volume);
+        soundLevel.text = volume.ToString("F1");
     }
 
         
