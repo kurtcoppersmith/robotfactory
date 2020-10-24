@@ -10,7 +10,6 @@ public class PowerUps
     public int cost;
     public Sprite itemSprite;
     public bool unlocked;
-    public Powerups.Enhancements p;
 }
 
 public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
@@ -26,6 +25,7 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
     new void Awake()
     {
         base.Awake();
+        gm = GameManager.Instance;
     }
 
     public void setB1(bool b)
@@ -57,10 +57,11 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
         {
             if(s == powerUps[i].itemSprite)
             {
-                if(isB1)
-                    gm.powerUp1 = powerUps[i].p;
+                if (isB1)
+                    gm.item1 = powerUps[i].name;
                 else
-                    gm.powerUp2 = powerUps[i].p;
+                    gm.item2 = powerUps[i].name;
+
             }
         }
     }

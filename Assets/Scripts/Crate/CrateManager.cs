@@ -13,8 +13,15 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
     public float duration;
     //speed of the crates
     public float crateSpeed;
+    //power crate varibles
+    public int tillNextPowerMin;
+    public int tillNextPowerMax;
+    private int tillNextPower;
+    public bool spawnPowerCrate;
     //crate prefab for instantiating
     public GameObject Crate;
+
+    private GameObject player;
 
     public GameObject CrateResetObject;
 
@@ -36,6 +43,7 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
 
         spawnLocationStatus = new Dictionary<Transform, bool>();
         spawnNumbers = new RangeInt(0, spawnLocations.Count);
+        tillNextPower = Random.Range(tillNextPowerMin, tillNextPowerMax);
 
         for (int i = 0; i < spawnLocations.Count; i++)
         {
@@ -45,9 +53,11 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         pooler = ObjectPooler.Instance;
         RemaningSpawnTime = Random.Range(minSpawnTime,maxSpawnTime);
         SpawnCrate();
+        tillNextPower--;
     }
 
     // Update is called once per frame
@@ -56,6 +66,7 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
         if (RemaningSpawnTime <= 0 && !GameManager.Instance.hasEnded)
         {
             SpawnCrate();
+            tillNextPower--;
             RemaningSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         }
         RemaningSpawnTime -= Time.deltaTime;
@@ -65,14 +76,30 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
     {
         for (int i = 0; i < spawnLocationStatus.Count; i++)
         {
-                GameObject obj = ObjectPoolerGavin.GetPooler(crateKey).GetPooledObject();
-                obj.transform.position = spawnLocations[i].position;
-                obj.GetComponent<IdleCrate>().PickUp(false);
-                obj.SetActive(true);
-                currentSpawnedItems.Add(obj, spawnLocations[i]);
-                
-                spawnLocationStatus[spawnLocations[i]] = true;
-                spawnNumbers.min++;
+            GameObject obj = ObjectPoolerGavin.GetPooler(crateKey).GetPooledObject();
+            obj.transform.position = spawnLocations[i].position;
+            obj.GetComponent<IdleCrate>().PickUp(false);
+            obj.SetActive(true);
+            if(spawnPowerCrate)
+            currentSpawnedItems.Add(obj, spawnLocations[i]);
+            if(tillNextPower <= 0)
+            {
+                obj.GetComponent<Crate>().SpawnPower();
+                switch(obj.GetComponent<Crate>().power)
+                {
+                    case global::Crate.PowerUp.Strength:
+                        player.GetComponent<PlayerModel>().playerPowerups.SetStrengthPowerup(true);
+                        break;
+                    case global::Crate.PowerUp.Speed:
+                        player.GetComponent<PlayerModel>().playerPowerups.SetSpeedPowerup(true);
+                        break;
+                    case global::Crate.PowerUp.Chasis:
+                        player.GetComponent<PlayerModel>().playerPowerups.SetChasisPowerup(true);
+                        break;
+                }
+            }
+            spawnLocationStatus[spawnLocations[i]] = true;
+            spawnNumbers.min++;
         }
     }
 

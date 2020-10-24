@@ -17,9 +17,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public int lives = 3;
     public int score = 0;
     public Transform pm;
-
-    public Powerups.Enhancements powerUp1;
-    public Powerups.Enhancements powerUp2;
+    //Strings to hold name of current powerups
+    public string item1;
+    public string item2;
 
     public int gears = 0;
 
