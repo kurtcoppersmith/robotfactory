@@ -157,7 +157,10 @@ public class PlayerModel : MonoBehaviour
 
                     if (hit.collider.gameObject.tag == "Hazard" && isHolding)
                     {
-                        Fail();
+                        if (!playerPowerups.strengthPower)
+                        {
+                            Fail();
+                        }
                     }
                 }
 
@@ -227,6 +230,11 @@ public class PlayerModel : MonoBehaviour
         if (!GameManager.Instance.hasEnded)
         {
             GameManager.Instance.subScore(2);
+
+            if (playerPowerups.strengthPower)
+            {
+                playerPowerups.SetStrengthPowerup(false);
+            }
 
             RemoveCurrentPickup();
             ChangeState(PlayerState.Stunned);
@@ -352,8 +360,10 @@ public class PlayerModel : MonoBehaviour
     {
         if (other.gameObject.tag == "Hazard" && isHolding)
         {
-            Debug.Log("Test");
-            Fail();
+            if (!playerPowerups.strengthPower)
+            {
+                Fail();
+            }
         }
     }
 }
