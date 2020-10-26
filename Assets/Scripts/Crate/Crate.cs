@@ -137,33 +137,9 @@ public class Crate : MonoBehaviour//, IPooledObject
         }
     }
 
-    public void SpawnPower()
+    public void SetPower(Crate.PowerUp powerupType)
     {
-        switch(Random.Range(1,2))
-        {
-            case 1:
-                if (GameManager.Instance.item1 == "Strength")
-                    power = PowerUp.Strength;
-                else if (GameManager.Instance.item1 == "Speed")
-                    power = PowerUp.Speed;
-                else if (GameManager.Instance.item1 == "Chasis")
-                    power = PowerUp.Chasis;
-                else
-                    power = PowerUp.None;
-                break;
-            case 2:
-                if (GameManager.Instance.item2 == "Strength")
-                    power = PowerUp.Strength;
-                else if (GameManager.Instance.item2 == "Speed")
-                    power = PowerUp.Speed;
-                else if (GameManager.Instance.item2 == "Chasis")
-                    power = PowerUp.Chasis;
-                else
-                    power = PowerUp.None;
-                break;
-        }
-
-        powerupIndicator.SetActive(true);
+        power = powerupType;
     }
 
     private void SetMaterial()

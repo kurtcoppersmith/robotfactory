@@ -207,6 +207,25 @@ public class PlayerModel : MonoBehaviour
                 playerPowerups.SetStrengthPowerup(false);
             }
 
+            if(currentPickup.GetComponent<Crate>().power != Crate.PowerUp.None)
+            {
+                switch (currentPickup.GetComponent<Crate>().power)
+                {
+                    case Crate.PowerUp.Strength:
+                        playerPowerups.SetStrengthPowerup(true);
+                        Debug.Log("Player Strength");
+                        break;
+                    case Crate.PowerUp.Speed:
+                        playerPowerups.SetSpeedPowerup(true);
+                        Debug.Log("Player Speed");
+                        break;
+                    case Crate.PowerUp.Chasis:
+                        Debug.Log("Player Chasis");
+                        playerPowerups.SetChasisPowerup(true);
+                        break;
+                }
+            }
+
             RemoveCurrentPickup();
             ChangeState(PlayerState.Moving);
         }

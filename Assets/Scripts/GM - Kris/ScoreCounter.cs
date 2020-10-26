@@ -12,7 +12,7 @@ public class ScoreCounter : MonoBehaviour
     {
         if (TutorialManager.Instance == null)
         {
-            scoreTextTMP.text = $"Score: { GameManager.Instance.returnScore()}";
+            scoreTextTMP.text = $"{ GameManager.Instance.returnScore()}";
         }
     }
 
@@ -20,7 +20,7 @@ public class ScoreCounter : MonoBehaviour
     {
         if (!GameManager.Instance.isPaused && !GameManager.Instance.hasEnded && TutorialManager.Instance == null)
         {
-            scoreTextTMP.text = $"Score: { GameManager.Instance.returnScore()}";
+            scoreTextTMP.text = $"{ GameManager.Instance.returnScore()}";
         }
         else
         {
