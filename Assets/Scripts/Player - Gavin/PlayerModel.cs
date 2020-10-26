@@ -100,6 +100,8 @@ public class PlayerModel : MonoBehaviour
             pickup.GetComponent<IdleCrate>().PickUp(true);
             pickup.GetComponent<Rigidbody>().useGravity = false;
             pickup.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            pickup.GetComponent<Crate>().powerupIndicator.SetActive(false);
+
             currentPickup = pickup;
             isHolding = true;
 

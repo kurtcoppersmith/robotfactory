@@ -80,23 +80,60 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
             obj.transform.position = spawnLocations[i].position;
             obj.GetComponent<IdleCrate>().PickUp(false);
             obj.SetActive(true);
-            if(spawnPowerCrate)
+            //if(spawnPowerCrate)
             currentSpawnedItems.Add(obj, spawnLocations[i]);
             if(tillNextPower <= 0)
             {
+                obj.GetComponent<Crate>().powerupIndicator.SetActive(true);
+
                 obj.GetComponent<Crate>().SpawnPower();
-                switch(obj.GetComponent<Crate>().power)
+                tillNextPower = Random.Range(tillNextPowerMin, tillNextPowerMax);
+
+                Random.Range(1, 100);
+
+                switch (GameManager.Instance.item1)
                 {
-                    case global::Crate.PowerUp.Strength:
-                        player.GetComponent<PlayerModel>().playerPowerups.SetStrengthPowerup(true);
+                    case "Strength":
+                        obj.GetComponent<Crate>().powerupIndicator.GetComponent<Material>().color = Color.red;
                         break;
-                    case global::Crate.PowerUp.Speed:
-                        player.GetComponent<PlayerModel>().playerPowerups.SetSpeedPowerup(true);
+                    case "Speed":
+                        obj.GetComponent<Crate>().powerupIndicator.GetComponent<Material>().color = Color.green;
                         break;
-                    case global::Crate.PowerUp.Chasis:
-                        player.GetComponent<PlayerModel>().playerPowerups.SetChasisPowerup(true);
+                    case "Chasis":
+                        obj.GetComponent<Crate>().powerupIndicator.GetComponent<Material>().color = Color.blue;
+                        break;
+                    default:
                         break;
                 }
+
+                switch (GameManager.Instance.item2)
+                {
+                    case "Strength":
+                        obj.GetComponent<Crate>().powerupIndicator.GetComponent<Material>().color = Color.red;
+                        break;
+                    case "Speed":
+                        obj.GetComponent<Crate>().powerupIndicator.GetComponent<Material>().color = Color.green;
+                        break;
+                    case "Chasis":
+                        obj.GetComponent<Crate>().powerupIndicator.GetComponent<Material>().color = Color.blue;
+                        break;
+                }
+
+                //switch(obj.GetComponent<Crate>().power)
+                //{
+                //    case global::Crate.PowerUp.Strength:
+                //        Debug.Log("Str");
+                //        player.GetComponent<PlayerModel>().playerPowerups.SetStrengthPowerup(true);
+                //        break;
+                //    case global::Crate.PowerUp.Speed:
+                //        Debug.Log("Spd");
+                //        player.GetComponent<PlayerModel>().playerPowerups.SetSpeedPowerup(true);
+                //        break;
+                //    case global::Crate.PowerUp.Chasis:
+                //        Debug.Log("Chs");
+                //        player.GetComponent<PlayerModel>().playerPowerups.SetChasisPowerup(true);
+                //        break;
+                //}
             }
             spawnLocationStatus[spawnLocations[i]] = true;
             spawnNumbers.min++;

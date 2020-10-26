@@ -14,6 +14,8 @@ public class Crate : MonoBehaviour//, IPooledObject
     public bool delivered;
     public Color color;
     public PowerUp power;
+    public GameObject powerupIndicator;
+
     [Header("UI Variables")]
     public UnityEngine.UI.Slider durationSlider;
     public UnityEngine.UI.Slider durationSliderBackground;
@@ -160,6 +162,8 @@ public class Crate : MonoBehaviour//, IPooledObject
                     power = PowerUp.None;
                 break;
         }
+
+        powerupIndicator.SetActive(true);
     }
 
     private void SetMaterial()
