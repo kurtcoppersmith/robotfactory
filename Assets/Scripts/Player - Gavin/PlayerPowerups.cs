@@ -19,8 +19,13 @@ public class PlayerPowerups : MonoBehaviour
     public float powerupDuration = 0f;
     private float maxPowerupDuration = 0f;
 
-    //public float strengthDeliveries = 0f;
-    //private float maxStrengthDeliveries = 0f;
+    public GameObject startParticle;
+    public GameObject durationParticle;
+    public GameObject stopParticle;
+
+    public Color strengthColor = Color.red;
+    public Color speedColor = Color.green;
+    public Color chasisColor = Color.blue;
 
     private PlayerModel playerMod;
 
@@ -29,7 +34,17 @@ public class PlayerPowerups : MonoBehaviour
         playerMod = GetComponent<PlayerModel>();
 
         maxPowerupDuration = powerupDuration;
-        //maxStrengthDeliveries = strengthDeliveries;
+    }
+
+    void DoDurationParticle()
+    {
+        startParticle.SetActive(false);
+        durationParticle.SetActive(true);
+    }
+
+    void StopFinalParticle()
+    {
+        stopParticle.SetActive(false);
     }
 
     public void SetSpeedPowerup(bool option)
@@ -43,10 +58,24 @@ public class PlayerPowerups : MonoBehaviour
 
             SetChasisPowerup(false);
             SetStrengthPowerup(false);
+
+            startParticle.GetComponentInChildren<ParticleSystem>().startColor = speedColor;
+            durationParticle.GetComponentInChildren<ParticleSystem>().startColor = speedColor;
+            stopParticle.GetComponentInChildren<ParticleSystem>().startColor = speedColor;
+
+            startParticle.SetActive(true);
+            Invoke("DoDurationParticle", startParticle.GetComponentInChildren<ParticleSystem>().main.duration);
         }
         else
         {
             playerMod.playerMovement.speed = playerMod.playerMovement.initialSpeed;
+
+            if (durationParticle.activeInHierarchy == true)
+            {
+                durationParticle.SetActive(false);
+                stopParticle.SetActive(true);
+                Invoke("StopFinalParticle", stopParticle.GetComponentInChildren<ParticleSystem>().main.duration);
+            }
         }
     }
 
@@ -56,7 +85,7 @@ public class PlayerPowerups : MonoBehaviour
 
         if (powerupDuration <= 0)
         {
-            speedPower = false;
+            SetSpeedPowerup(false);
             playerMod.playerMovement.speed = playerMod.playerMovement.initialSpeed;
         }
     }
@@ -71,6 +100,22 @@ public class PlayerPowerups : MonoBehaviour
 
             SetSpeedPowerup(false);
             SetStrengthPowerup(false);
+
+            startParticle.GetComponentInChildren<ParticleSystem>().startColor = chasisColor;
+            durationParticle.GetComponentInChildren<ParticleSystem>().startColor = chasisColor;
+            stopParticle.GetComponentInChildren<ParticleSystem>().startColor = chasisColor;
+
+            startParticle.SetActive(true);
+            Invoke("DoDurationParticle", startParticle.GetComponentInChildren<ParticleSystem>().main.duration);
+        }
+        else
+        {
+            if(durationParticle.activeInHierarchy == true)
+            {
+                durationParticle.SetActive(false);
+                stopParticle.SetActive(true);
+                Invoke("StopFinalParticle", stopParticle.GetComponentInChildren<ParticleSystem>().main.duration);
+            }
         }
     }
 
@@ -80,7 +125,7 @@ public class PlayerPowerups : MonoBehaviour
 
         if(powerupDuration <= 0)
         {
-            chasisPower = false;
+            SetChasisPowerup(false);
         }
     }
 
@@ -94,10 +139,24 @@ public class PlayerPowerups : MonoBehaviour
 
             SetSpeedPowerup(false);
             SetChasisPowerup(false);
+
+            startParticle.GetComponentInChildren<ParticleSystem>().startColor = strengthColor;
+            durationParticle.GetComponentInChildren<ParticleSystem>().startColor = strengthColor;
+            stopParticle.GetComponentInChildren<ParticleSystem>().startColor = strengthColor;
+
+            startParticle.SetActive(true);
+            Invoke("DoDurationParticle", startParticle.GetComponentInChildren<ParticleSystem>().main.duration);
         }
         else
         {
             tempStrengthCollider.SetActive(false);
+
+            if (durationParticle.activeInHierarchy == true)
+            {
+                durationParticle.SetActive(false);
+                stopParticle.SetActive(true);
+                Invoke("StopFinalParticle", stopParticle.GetComponentInChildren<ParticleSystem>().main.duration);
+            }
         }
     }
 

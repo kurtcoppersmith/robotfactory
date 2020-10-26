@@ -97,7 +97,7 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
 
                 if (GameManager.Instance.item1 == "" && GameManager.Instance.item2 != "")
                 {
-                    switch (GameManager.Instance.item1)
+                    switch (GameManager.Instance.item2)
                     {
                         case "Strength":
                             powerupIndicator.GetComponent<MeshRenderer>().material.color = Color.red;
@@ -118,7 +118,7 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
                 }
                 else if (GameManager.Instance.item1 != "" && GameManager.Instance.item2 == "")
                 {
-                    switch (GameManager.Instance.item2)
+                    switch (GameManager.Instance.item1)
                     {
                         case "Strength":
                             powerupIndicator.GetComponent<MeshRenderer>().material.color = Color.red;
@@ -183,8 +183,9 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
                                 break;
                         }
                     }
-                    tillNextPower = Random.Range(tillNextPowerMin, tillNextPowerMax);
                 }
+
+                tillNextPower = Random.Range(tillNextPowerMin, tillNextPowerMax);
             }
             else
             {
