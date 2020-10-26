@@ -5,6 +5,7 @@ using UnityEngine;
 public class Crate : MonoBehaviour//, IPooledObject
 {
     public enum Colors{Red, Blue, Green}
+    public enum PowerUp {None, Strength, Speed, Chasis}
     public List<Material> bombBoxMats = new List<Material>();
     public MeshRenderer bombBoxMeshRenderer;
 
@@ -12,6 +13,7 @@ public class Crate : MonoBehaviour//, IPooledObject
     private Material materialColor;
     public bool delivered;
     public Color color;
+    public PowerUp power;
     [Header("UI Variables")]
     public UnityEngine.UI.Slider durationSlider;
     public UnityEngine.UI.Slider durationSliderBackground;
@@ -129,6 +131,33 @@ public class Crate : MonoBehaviour//, IPooledObject
             case Colors.Red:
                 color = Color.red;
                 materialColor.color = Color.red;
+                break;
+        }
+    }
+
+    public void SpawnPower()
+    {
+        switch(Random.Range(1,2))
+        {
+            case 1:
+                if (GameManager.Instance.item1 == "Strength")
+                    power = PowerUp.Strength;
+                else if (GameManager.Instance.item1 == "Speed")
+                    power = PowerUp.Speed;
+                else if (GameManager.Instance.item1 == "Chasis")
+                    power = PowerUp.Chasis;
+                else
+                    power = PowerUp.None;
+                break;
+            case 2:
+                if (GameManager.Instance.item2 == "Strength")
+                    power = PowerUp.Strength;
+                else if (GameManager.Instance.item2 == "Speed")
+                    power = PowerUp.Speed;
+                else if (GameManager.Instance.item2 == "Chasis")
+                    power = PowerUp.Chasis;
+                else
+                    power = PowerUp.None;
                 break;
         }
     }

@@ -65,8 +65,8 @@ public class ShopScript : MonoBehaviour
         {
             GameManager.Instance.setGears(GameManager.Instance.returnGears() - price);
             item.powerUps[itemNumber].unlocked = true;
-            DefaultItem(itemNumber);
-            Debug.Log("Just bought " + item.powerUps[itemNumber].name);
+            //DefaultItem(itemNumber);
+            //Debug.Log("Just bought " + item.powerUps[itemNumber].name);
         }
         else
         {
