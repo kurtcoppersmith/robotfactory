@@ -23,4 +23,9 @@ public class MenuScript : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void ButtonClickSound(string audioClipName)
+    {
+        SoundEffectsManager.Instance.Play(audioClipName);
+    }
 }

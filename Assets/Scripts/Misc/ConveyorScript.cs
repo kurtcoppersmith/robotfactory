@@ -19,9 +19,9 @@ public class ConveyorScript : MonoBehaviour
     void FixedUpdate()
     {
         float moveSpeed = speed * Time.fixedDeltaTime;
-        foreach (GameObject crate in crates)
+        for(int i = 0; i < crates.Count; i++)
         {
-            MoveCrate(crate, moveSpeed);
+            MoveCrate(crates[i], moveSpeed);
         }
     }
 

@@ -18,6 +18,14 @@ public class SoundEffectsManager : SingletonMonoBehaviour<SoundEffectsManager>
         }
     }
 
+    void Start()
+    {
+        if (Instance == this)
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
+
     public void Play(string audioClipName)
     {
         if(audioClipName == null || audioClipName == "")
