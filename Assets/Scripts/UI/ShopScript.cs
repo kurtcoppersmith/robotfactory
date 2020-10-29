@@ -19,6 +19,9 @@ public class ShopScript : MonoBehaviour
     public ItemInfo item1;
     public ItemInfo item2;
     public ItemInfo item3;
+    public GameObject itemHolder1;
+    public GameObject itemHolder2;
+    public GameObject itemHolder3;
     private PowerUpManager item;
     // Start is called before the first frame update
     void Start()
@@ -65,8 +68,19 @@ public class ShopScript : MonoBehaviour
         {
             GameManager.Instance.setGears(GameManager.Instance.returnGears() - price);
             item.powerUps[itemNumber].unlocked = true;
-            //DefaultItem(itemNumber);
-            //Debug.Log("Just bought " + item.powerUps[itemNumber].name);
+            //swich to disable item after you buy
+            switch (itemNumber)
+            {
+                case 0:
+                    itemHolder1.SetActive(false);
+                    break;
+                case 1:
+                    itemHolder2.SetActive(false);
+                    break;
+                case 2:
+                    itemHolder3.SetActive(false);
+                    break;
+            }
         }
         else
         {
