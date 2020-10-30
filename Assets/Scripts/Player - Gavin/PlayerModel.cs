@@ -96,6 +96,8 @@ public class PlayerModel : MonoBehaviour
         }
         else
         {
+            boxPickUpTime = maxBoxPickUpTime;
+
             pickup.transform.parent = this.gameObject.transform;
             pickup.GetComponent<IdleCrate>().PickUp(true);
             pickup.GetComponent<Rigidbody>().useGravity = false;
