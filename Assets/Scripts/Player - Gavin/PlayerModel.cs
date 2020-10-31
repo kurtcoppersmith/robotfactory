@@ -295,15 +295,12 @@ public class PlayerModel : MonoBehaviour
         {
             case PlayerState.Moving:
                 playerMovement.canMove = true;
-                //qteManager.enabled = false;
                 break;
             case PlayerState.Carrying:
-                //qteManager.enabled = true;
                 playerMovement.canMove = false;
                 break;
             case PlayerState.Stunned:
                 playerMovement.canMove = false;
-                //qteManager.enabled = false;
 
                 sparksParticleEffect.SetActive(true);
                 if (maxPlayerStunnedTime < sparksParticleSystem.main.duration)
