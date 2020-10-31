@@ -24,8 +24,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public int gears = 0;
 
-    public Text soundLevel;
-
+    
+    public Settings settingsFile;
+    public float volume;
 
 
     new void Awake()
@@ -175,16 +176,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         this.setScore(data.score);
         this.setTime(data.time);
       //  this.setPlayerPosition(data.position[0], data.position[1], data.position[2]);
-
-        
     }
 
-
-    public void SetVolume(float volume)
+    public void GetVolume()
     {
-        Debug.Log(volume);
-        soundLevel.text = volume.ToString("F1");
+        volume = settingsFile.ReturnVolume();
     }
+
 
         
 }
