@@ -87,6 +87,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2500392565723190369}
+  - {fileID: 7027023258009876446}
   m_Father: {fileID: 2500392565287757913}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -116,14 +117,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 5df20f6685e0e15479159fa86cf6fc79, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -312,12 +313,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   descriptions:
   - currentObjectivesKeyboard:
-    - Hi! Welcome to the job, press "Enter" on your keyboard anytime you see ">"
-      to advance the text. >
-    - Great, you seem to take to tasks well. In that case, let's start our training
-      session. >
-    - For this task, press <sprite name="SpaceBar"> to pick up the crate in front
-      of you. Then, use <sprite name="WASD"> to move around the level. >
+    - Hello, and welcome to your new job! Press "Enter"  to advance this dialogue.
+    - Great, you seem to take to tasks well. Let's start our training session.
+    - For this task, press "E" to pick up the crate in front of you.
+    - If you would like to repeat this message, press "Backspace".
     currentObjectivesXBox:
     - Hi! Welcome to the job, press <sprite name="A"> on your controller anytime
       you see ">" to advance the text. >
@@ -333,13 +332,11 @@ MonoBehaviour:
     - For this task, press <sprite name="Cross"> to pick up the crate in front of
       you. Then, use <sprite name="LeftStick"> to move around the level. >
   - currentObjectivesKeyboard:
-    - Whoa! What are you doing?! There has to be something wrong, let me troubleshoot
-      a bit for you. >
-    - Oh. Sorry for the overreaction there. You must still be getting used to that
-      new bod- err. networking. >
-    - Anywho, I've done some reprogramming so that shouldn't happen again. >
-    - Once again, use <sprite name="WASD"> to move around the level. When you're
-      ready to proceed; pick up the box. >
+    - Excellent. Now, use "WASD" to move the bomb to its corresponding conveyor.
+    - Be careful though, these are bombs after all. They may not take too kindly
+      to trauma.
+    - These bombs will also have a timer activate once they are picked up, so you
+      better deliver them quickly!
     currentObjectivesXBox:
     - Whoa! What are you doing?! There has to be something wrong, let me troubleshoot
       a bit for you. >
@@ -357,21 +354,14 @@ MonoBehaviour:
     - Once again, use <sprite name="LeftStick"> to move around the level. When you're
       ready to proceed; pick up the box. >
   - currentObjectivesKeyboard:
-    - Now that you've got a feeling for your... legs, let's move on to the next task.
-      >
-    - 'You''ll have to worry about a couple things during this task: The box''s timer
-      and your flimsy arms! >'
-    - The boxes must be delivered within a certain time limit once they've been picked
-      up. Can't have you slacking off! >
-    - The servos in your arms are quite weak and must be reset regularly so you don't
-      drop the crate. >
-    - 'There are several options for resetting your servos: <sprite name="ArrowKeys">
-      This is done in the form of a Quick Time Event. >'
-    - Make sure to press the corresponding button when it appears on screen. >
-    - Oh, that's a lot, isn't it? If you would like a repeat, press "Backspace".
-      Otherwise, press "Enter" to continue. >
-    - 'Your task: Deliver the crate to the conveyor belt of corresponding color.
-      You must deliver one crate to continue. >'
+    - Very nice work. In a real work environment, those bombs would be moving.
+    - If they reach the end of the belt, you'll be served a penalty. Keep up the
+      pace!
+    - Now, let's teach you about what we here in the industry call the "Scoot Dash".
+    - Press "SHIFT" or "SPACE" to activate the Scoot Dash. It'll propel you forward
+      in whatever direction you are facing.
+    - Take some time to try out the Scoot Dash and deliver another bomb to continue
+      our session.
     currentObjectivesXBox:
     - Now that you've got a feeling for your... legs, let's move on to the next task.
       >
@@ -407,14 +397,12 @@ MonoBehaviour:
     - 'Your task: Deliver the crate to the conveyor belt of corresponding color.
       You must deliver one crate to continue. >'
   - currentObjectivesKeyboard:
-    - Perfect! If you had done that on the clock, you would've scored a couple points!
-      >
-    - What? Money? ...for your work? >
-    - For your next task I want you to deliver another crate, but with a twist! >
-    - We've turned the delivery conveyor belt on, so your crates will begin to move.
-      >
-    - Any crate that you miss will go off screen and explode! That's a penalty on
-      you, so don't let it happen! >
+    - Great work! Just be careful not to slam into a wall.
+    - Finally, let's talk about hazards.
+    - The factory isn't perfect, so issues are bound to arise from time to time.
+    - Two of the most common hazards you may encounter are oil slicks and live wires.
+    - They both affect the delivery process differently, so run over them a couple
+      times to get a feel of how they work.
     currentObjectivesXBox:
     - Perfect! If you had done that on the clock, you would've scored a couple points!
       >
@@ -434,16 +422,17 @@ MonoBehaviour:
     - Any crate that you miss will go off screen and explode! That's a penalty on
       you, so don't let it happen! >
   - currentObjectivesKeyboard:
-    - Great job! You're almost done with training, so keep it up! >
-    - As you can see here, we have two types of hazards you may encounter in the
-      factory while working. >
-    - What's that? Why are there hazards in the factory? ...>
-    - For your final task I want you to familiarize yourself with these hazards.
-      The oil slick (left) and live wire (right) >
-    - Each hazard will affect you in a different ways, so be sure to run into them
-      to get a feel for their consquences. >
-    - (Just a side note, the hazards in later levels may only spawn when you deliver
-      crates. It is not a guaranteed spawn everytime.) >
+    - Congrats! You've completed basic training and are ready to get to work!
+    - As a reward for your efforts, here's a gear!
+    - Gears can be used to buy upgrades from the shop, make sure to visit them when
+      you can!
+    - Play well to earn more gears, and you might just become a perfect working machine!
+    - At least... a more perfect one.
+    - You can continue practicing here if you wish, or press "Escape" to access the
+      pause menu and get to work!
+    - 'Remember to...
+
+      <align="center">Have a blast!'
     currentObjectivesXBox:
     - Great job! You're almost done with training, so keep it up! >
     - As you can see here, we have two types of hazards you may encounter in the
@@ -466,50 +455,10 @@ MonoBehaviour:
       to get a feel for their consquences. >
     - (Just a side note, the hazards in later levels may only spawn when you deliver
       crates. It is not a guaranteed spawn everytime.) >
-  - currentObjectivesKeyboard:
-    - Congrats! You have completed your training session and are ready for the real
-      deal! >
-    - For completing this course, you have earned yourself an ever rare gear (WIP).
-      >
-    - These bad boys will allow you to upgrade yourself with some augments in later
-      levels. Do good in these levels, and you'll earn more!
-    - I'll leave this area to you if you would like to continue honing your skills.
-      >
-    - If you're done, all you need to do is pause the game with "Escape" and exit
-      to the main menu. >
-    - 'Remeber to...
-
-      <align="center"><i>Have a blast!</i> >'
-    currentObjectivesXBox:
-    - Congrats! You have completed your training session and are ready for the real
-      deal! >
-    - For completing this course, you have earned yourself an ever rare gear (WIP).
-      >
-    - These bad boys will allow you to upgrade yourself with some augments in later
-      levels. Do good in these levels, and you'll earn more!
-    - I'll leave this area to you if you would like to continue honing your skills.
-      >
-    - If you're done, all you need to do is pause the game with the "Start" button
-      and exit to the main menu. >
-    - 'Remeber to...
-
-      <align="center"><i>Have a blast!</i> >'
-    currentObjectivesPS4:
-    - Congrats! You have completed your training session and are ready for the real
-      deal! >
-    - For completing this course, you have earned yourself an ever rare gear (WIP).
-      >
-    - These bad boys will allow you to upgrade yourself with some augments in later
-      levels. Do good in these levels, and you'll earn more!
-    - I'll leave this area to you if you would like to continue honing your skills.
-      >
-    - If you're done, all you need to do is pause the game with the "Start" button
-      and exit to the main menu. >
-    - 'Remeber to...
-
-      <align="center"><i>Have a blast!</i> >'
   textBoxObject: {fileID: 2500392565112009151}
   descriptionTextMesh: {fileID: 2500392565723190382}
+  dummyUIText: {fileID: 5772382971891874464}
+  textBoxTimer: 0.5
   currentObjective: 0
   cratePrefab: {fileID: 6697691059644475954, guid: 357842518842f404b967951acdb59d9d,
     type: 3}
@@ -704,10 +653,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.35
+  m_fontSize: 25
   m_fontSizeBase: 15
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 8
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -716,7 +665,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 37
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -736,7 +685,7 @@ MonoBehaviour:
   m_verticalMapping: 0
   m_uvLineOffset: 0
   m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
+  m_IsTextObjectScaleStatic: 1
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
@@ -746,3 +695,81 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5755624296050442434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7027023258009876446}
+  - component: {fileID: 7860751866149497500}
+  - component: {fileID: 5772382971891874464}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7027023258009876446
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5755624296050442434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2500392565112009148}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7860751866149497500
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5755624296050442434}
+  m_CullTransparentMesh: 0
+--- !u!114 &5772382971891874464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5755624296050442434}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 

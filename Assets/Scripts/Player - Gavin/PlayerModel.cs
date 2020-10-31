@@ -96,6 +96,8 @@ public class PlayerModel : MonoBehaviour
         }
         else
         {
+            
+
             boxPickUpTime = maxBoxPickUpTime;
 
             pickup.transform.parent = this.gameObject.transform;
@@ -103,6 +105,12 @@ public class PlayerModel : MonoBehaviour
             pickup.GetComponent<Rigidbody>().useGravity = false;
             pickup.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             pickup.GetComponent<Crate>().powerupIndicator.SetActive(false);
+            
+            if (TutorialManager.Instance != null && TutorialManager.Instance.currentObjective == 0)
+            {
+                TutorialManager.Instance.hasCompletedCurrent = true;
+                pickup.GetComponent<Crate>().SetTutorialTimer(15);
+            }
 
             currentPickup = pickup;
             isHolding = true;
@@ -119,11 +127,6 @@ public class PlayerModel : MonoBehaviour
             if (playerState == PlayerState.Moving)
             {
                 ChangeState(PlayerState.Carrying);
-            }
-
-            if (TutorialManager.Instance != null && TutorialManager.Instance.currentObjective == 1)
-            {
-                TutorialManager.Instance.hasCompletedCurrent = true;
             }
         }
     }

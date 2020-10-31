@@ -34,7 +34,7 @@ public class CrateStand : MonoBehaviour
             {
                 collision.transform.parent.gameObject.GetComponent<PlayerModel>().TutorialPassed();
 
-                if (TutorialManager.Instance.currentObjective == 2 || TutorialManager.Instance.currentObjective == 3)
+                if (TutorialManager.Instance.currentObjective == 1 || TutorialManager.Instance.currentObjective == 2)
                 {
                     TutorialManager.Instance.hasCompletedCurrent = true;
                 }

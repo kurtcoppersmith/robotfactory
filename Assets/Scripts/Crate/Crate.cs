@@ -9,7 +9,7 @@ public class Crate : MonoBehaviour//, IPooledObject
     public List<Material> bombBoxMats = new List<Material>();
     public MeshRenderer bombBoxMeshRenderer;
 
-    private float timer;
+    [HideInInspector] public float timer;
     private Material materialColor;
     public bool delivered;
     public Color color;
@@ -74,6 +74,16 @@ public class Crate : MonoBehaviour//, IPooledObject
                 }
             }
         }
+    }
+
+    public void SetTutorialTimer(float time)
+    {
+        timer = time;
+
+        float currentSliderValue = HelperUtilities.Remap(timer, 0, CrateManager.Instance.duration, 0, 1);
+        durationSlider.value = currentSliderValue;
+        durationSliderBackground.value = durationSlider.value;
+        durationFill.color = Color.Lerp(minDurationColor, maxDurationColor, (float)currentSliderValue / CrateManager.Instance.duration);
     }
 
     void DecreaseCrateTimer()

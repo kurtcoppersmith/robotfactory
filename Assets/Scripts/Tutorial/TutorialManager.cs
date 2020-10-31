@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Description
@@ -28,6 +29,11 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
     [Header("UI Stuff")]
     public GameObject textBoxObject;
     public TextMeshProUGUI descriptionTextMesh;
+    public Text dummyUIText;
+    public float textBoxTimer = 0.5f;
+    private float maxTextBoxTimer;
+    private bool finishedCurrentDialogue = false;
+    private bool textBoxUnderscore = false;
     private InputKeyUI inputKeyUI;
 
     public int currentObjective = 0;
@@ -38,10 +44,15 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
     [HideInInspector]
     public int spawnedCrateAmount = 0;
 
+    [Header("Second Objective")]
     public GameObject redBelt;
     public GameObject blueBelt;
     public GameObject greenBelt;
 
+    [Header("Third Objective")]
+    //public bool hasDashed = false;
+
+    [Header("Fourth Objective")]
     public float hazardSpawnTimer = 0;
     private float maxHazardSpawnTimer = 0;
     public bool hitWire = false;
@@ -60,16 +71,35 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
 
         maxHazardSpawnTimer = hazardSpawnTimer;
         maxFinalCompleteTextTimer = finalCompleteTextTimer;
+
+        dummyUIText.text = "";
+        dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, false);
+        maxTextBoxTimer = textBoxTimer;
     }
 
     void OnEnter(InputValue inputValue)
     {
         currentTextBox++;
+        finishedCurrentDialogue = false;
+
+        if (currentTextBox < descriptions[currentObjective].currentObjectivesKeyboard.Count)
+        {
+            dummyUIText.text = "";
+            dummyUIText.DOKill();
+            descriptionTextMesh.text = "";
+            dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, true);
+        }
     }
 
     void OnBackspace(InputValue inputValue)
     {
         currentTextBox = 0;
+        finishedCurrentDialogue = false;
+
+        dummyUIText.text = "";
+        dummyUIText.DOKill();
+        descriptionTextMesh.text = "";
+        dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, true);
     }
 
     void Update()
@@ -83,7 +113,30 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
                 case KeyboardSchemeName:
                     if (currentTextBox < descriptions[currentObjective].currentObjectivesKeyboard.Count)
                     {
-                        descriptionTextMesh.text = descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox];
+                        if (descriptionTextMesh.text != descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox] && !finishedCurrentDialogue)
+                        {
+                            descriptionTextMesh.text = dummyUIText.text;
+                        }
+                        else
+                        {
+                            finishedCurrentDialogue = true;
+                            textBoxTimer -= Time.deltaTime;
+                            if (textBoxTimer <= 0)
+                            {
+                                textBoxUnderscore = !textBoxUnderscore;
+                                textBoxTimer = maxTextBoxTimer;
+                            }
+
+                            if (textBoxUnderscore)
+                            {
+                                descriptionTextMesh.text = descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox];
+                                descriptionTextMesh.text = descriptionTextMesh.text + "_";
+                            }
+                            else
+                            {
+                                descriptionTextMesh.text = descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox];
+                            }
+                        }
                     }
                     else
                     {
@@ -122,19 +175,23 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
             hasDescription = false;
             textBoxObject.SetActive(true);
             currentTextBox = 0;
+            finishedCurrentDialogue = false;
+
+            dummyUIText.text = "";
+            dummyUIText.DOKill();
+            descriptionTextMesh.text = "";
+            dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, true);
 
             switch (currentObjective)
             {
                 case 1:
-                    Instantiate(cratePrefab, spawnLocation.position, Quaternion.identity);
-                    spawnedCrateAmount++;
-                    break;
-                case 2:
                     redBelt.GetComponent<MeshRenderer>().material.DOColor(Color.red, 3.0f);
                     greenBelt.GetComponent<MeshRenderer>().material.DOColor(Color.green, 3.0f);
                     blueBelt.GetComponent<MeshRenderer>().material.DOColor(Color.blue, 3.0f);
+
+                    spawnedCrateAmount++;
                     break;
-                case 4:
+                case 3:
                     HazardManager.Instance.TutorialSpawnHazards();
                     break;
             }
@@ -142,24 +199,24 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
             hasCompletedCurrent = false;
         }
 
-        if (currentObjective >= 2)
+        if (currentObjective >= 1)
         {
             if (spawnedCrateAmount < 1)
             {
-                if (currentObjective == 2)
-                {
+                //if (currentObjective == 1)
+                //{
                     Instantiate(cratePrefab, spawnLocation.position, Quaternion.identity);
                     spawnedCrateAmount++;
-                }
-                else if (currentObjective > 2)
-                {
-                    Instantiate(cratePrefab, movingSpawnLocation.position, Quaternion.identity);
-                    spawnedCrateAmount++;
-                }
+               // }
+               // else if (currentObjective > 1)
+                //{
+                   // Instantiate(cratePrefab, movingSpawnLocation.position, Quaternion.identity);
+                    //spawnedCrateAmount++;
+               // }
             }
         }
 
-        if (currentObjective >= 4)
+        if (currentObjective >= 3)
         {
             hazardSpawnTimer -= Time.deltaTime;
 
@@ -170,7 +227,7 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
             }
         }
 
-        if (hitWire && hitOil && currentObjective == 4)
+        if (hitWire && hitOil && currentObjective == 3)
         {
             finalCompleteTextTimer -= Time.deltaTime;
 
