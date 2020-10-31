@@ -96,11 +96,21 @@ public class PlayerModel : MonoBehaviour
         }
         else
         {
+            
+
+            boxPickUpTime = maxBoxPickUpTime;
+
             pickup.transform.parent = this.gameObject.transform;
             pickup.GetComponent<IdleCrate>().PickUp(true);
             pickup.GetComponent<Rigidbody>().useGravity = false;
             pickup.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             pickup.GetComponent<Crate>().powerupIndicator.SetActive(false);
+            
+            if (TutorialManager.Instance != null && TutorialManager.Instance.currentObjective == 0)
+            {
+                TutorialManager.Instance.hasCompletedCurrent = true;
+                pickup.GetComponent<Crate>().SetTutorialTimer(15);
+            }
 
             currentPickup = pickup;
             isHolding = true;
@@ -117,11 +127,6 @@ public class PlayerModel : MonoBehaviour
             if (playerState == PlayerState.Moving)
             {
                 ChangeState(PlayerState.Carrying);
-            }
-
-            if (TutorialManager.Instance != null && TutorialManager.Instance.currentObjective == 1)
-            {
-                TutorialManager.Instance.hasCompletedCurrent = true;
             }
         }
     }
@@ -293,15 +298,12 @@ public class PlayerModel : MonoBehaviour
         {
             case PlayerState.Moving:
                 playerMovement.canMove = true;
-                //qteManager.enabled = false;
                 break;
             case PlayerState.Carrying:
-                //qteManager.enabled = true;
                 playerMovement.canMove = false;
                 break;
             case PlayerState.Stunned:
                 playerMovement.canMove = false;
-                //qteManager.enabled = false;
 
                 sparksParticleEffect.SetActive(true);
                 if (maxPlayerStunnedTime < sparksParticleSystem.main.duration)

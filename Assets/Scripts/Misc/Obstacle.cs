@@ -11,11 +11,6 @@ public class Obstacle : MonoBehaviour
             if (TutorialManager.Instance != null)
             {
                 collision.transform.parent.GetComponent<PlayerModel>().TutorialFail();
-
-                if (TutorialManager.Instance.currentObjective == 0)
-                {
-                    TutorialManager.Instance.hasCompletedCurrent = true;
-                }
             }
             else
             {

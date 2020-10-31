@@ -50,7 +50,10 @@ public class PlayerDash : MonoBehaviour
             {
                 if (!isDashing && playerMod.playerState != PlayerModel.PlayerState.Stunned && playerMod.playerMovement.canMove && !GameManager.Instance.hasEnded && !GameManager.Instance.isPaused)
                 {
-                    isDashing = true;
+                    if ((TutorialManager.Instance != null && TutorialManager.Instance.hasDescription && TutorialManager.Instance.currentObjective >= 2) || (TutorialManager.Instance == null))
+                    {
+                        isDashing = true;
+                    }
                 }
             }
         }

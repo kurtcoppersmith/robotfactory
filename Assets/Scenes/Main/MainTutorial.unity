@@ -379,6 +379,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConveyorBelt (Early) (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2591628212498896661, guid: ef819e477ca315447bd2fc16a99345e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2935362397152529839, guid: ef819e477ca315447bd2fc16a99345e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1899,6 +1904,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ConveyorBelt (Early) (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591628212498896661, guid: ef819e477ca315447bd2fc16a99345e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2935362397152529839, guid: ef819e477ca315447bd2fc16a99345e7,
         type: 3}
@@ -6221,6 +6231,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConveyorBelt (Early)
       objectReference: {fileID: 0}
+    - target: {fileID: 2591628212498896661, guid: ef819e477ca315447bd2fc16a99345e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2935362397152529839, guid: ef819e477ca315447bd2fc16a99345e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6595,6 +6610,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ConveyorBelt (Early) (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591628212498896661, guid: ef819e477ca315447bd2fc16a99345e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2935362397152529839, guid: ef819e477ca315447bd2fc16a99345e7,
         type: 3}
@@ -8125,17 +8145,17 @@ PrefabInstance:
     - target: {fileID: 2090834906559733151, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34.66
+      value: -35.39
       objectReference: {fileID: 0}
     - target: {fileID: 2090834906559733151, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.89
+      value: 11.14
       objectReference: {fileID: 0}
     - target: {fileID: 2090834906559733151, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.07
+      value: -14.85
       objectReference: {fileID: 0}
     - target: {fileID: 2090834906559733151, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
@@ -8164,8 +8184,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3368731400051804301, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
+      propertyPath: spawnLocations.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368731400051804301, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
       propertyPath: duration
-      value: 10
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090619839278983798, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -13.099976
       objectReference: {fileID: 0}
     - target: {fileID: 8090619839861226424, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
@@ -8246,6 +8276,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BackGroundColor.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904387566943429068, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f3155707106bb44849326a4529be57, type: 3}
@@ -8350,6 +8385,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ConveyorBelt (Early) (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591628212498896661, guid: ef819e477ca315447bd2fc16a99345e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2935362397152529839, guid: ef819e477ca315447bd2fc16a99345e7,
         type: 3}
@@ -9982,6 +10022,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConveyorBelt (Early) (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2591628212498896661, guid: ef819e477ca315447bd2fc16a99345e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2935362397152529839, guid: ef819e477ca315447bd2fc16a99345e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10476,6 +10521,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ConveyorBelt (Early) (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591628212498896661, guid: ef819e477ca315447bd2fc16a99345e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2935362397152529839, guid: ef819e477ca315447bd2fc16a99345e7,
         type: 3}
@@ -11453,6 +11503,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2500392565112009148, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565112009148, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565112009148, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565112009148, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565112009148, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565112009148, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 2500392565441758512, guid: 424210b00707526449ceda52ca4aa24f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11527,6 +11607,78 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TutorialManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_margin.y
+      value: 158.84471
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_margin.z
+      value: 130.35808
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_margin.x
+      value: 141.1752
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_margin.w
+      value: 204.63026
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: ee52f4be516f77e4686257c0dac42795,
+        type: 2}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3498805273117486757, guid: ee52f4be516f77e4686257c0dac42795,
+        type: 2}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.14117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255396
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500392565723190382, guid: 424210b00707526449ceda52ca4aa24f,
+        type: 3}
+      propertyPath: m_text
+      value: text
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 424210b00707526449ceda52ca4aa24f, type: 3}
