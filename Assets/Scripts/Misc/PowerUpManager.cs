@@ -10,6 +10,8 @@ public class PowerUps
     public int cost;
     public Sprite itemSprite;
     public bool unlocked;
+    public bool equipped1;
+    public bool equipped2;
 }
 
 public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
@@ -34,20 +36,42 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
         Debug.Log("B1?");
     }
 
-    public void Equip(Image image)
+    public void Equip(int item)
     {
         if (isB1)
         {
-            Sprite tempSprite = image.sprite;
-            image.sprite = b1.image.sprite;
-            b1.image.sprite = tempSprite;
-            setPower(b1.image.sprite);
-        }else
+            for(int i=0; i<powerUps.Length; i++)
+            {
+                if (i != item)
+                    powerUps[i].equipped1 = false;
+            }
+            powerUps[item].equipped1 = !powerUps[item].equipped1;
+            Debug.Log(powerUps[item].equipped1);
+            if (powerUps[item].equipped1)
+            {
+                if (powerUps[item].equipped2)
+                    b2.image.sprite = null;
+                b1.image.sprite = powerUps[item].itemSprite;
+            }
+            else
+                b1.image.sprite = null;
+        }
+        else
         {
-            Sprite tempSprite = image.sprite;
-            image.sprite = b2.image.sprite;
-            b2.image.sprite = tempSprite;
-            setPower(b2.image.sprite);
+            for (int i = 0; i < powerUps.Length; i++)
+            {
+                if (i != item)
+                    powerUps[i].equipped2 = false;
+            }
+            powerUps[item].equipped2 = !powerUps[item].equipped2;
+            if (powerUps[item].equipped2)
+            {
+                if (powerUps[item].equipped1)
+                    b1.image.sprite = null;
+                b2.image.sprite = powerUps[item].itemSprite;
+            }
+            else
+                b2.image.sprite = null;
         }
     }
 
