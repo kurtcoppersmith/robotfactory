@@ -318,19 +318,18 @@ MonoBehaviour:
     - For this task, press "E" to pick up the crate in front of you.
     - If you would like to repeat this message, press "Backspace".
     currentObjectivesXBox:
-    - Hi! Welcome to the job, press <sprite name="A"> on your controller anytime
-      you see ">" to advance the text. >
-    - Great, you seem to take to tasks well. In that case, let's start our training
-      session. >
+    - Hello, and welcome to your new job! Press <sprite name="A">  to advance this
+      dialogue.
+    - Great, you seem to take to tasks well. Let's start our training session.
     - For this task, press <sprite name="A"> to pick up the crate in front of you.
-      Then, use <sprite name="LeftStick"> to move around the level. >
+    - If you would like to repeat this message, press <sprite name="B">.
     currentObjectivesPS4:
-    - Hi! Welcome to the job, press <sprite name="Cross"> on your controller anytime
-      you see ">" to advance the text. >
-    - Great, you seem to take to tasks well. In that case, let's start our training
-      session. >
+    - Hello, and welcome to your new job! Press <sprite name="Cross">  to advance
+      this dialogue.
+    - Great, you seem to take to tasks well. Let's start our training session.
     - For this task, press <sprite name="Cross"> to pick up the crate in front of
-      you. Then, use <sprite name="LeftStick"> to move around the level. >
+      you.
+    - If you would like to repeat this message, press <sprite name="Circle">.
   - currentObjectivesKeyboard:
     - Excellent. Now, use "WASD" to move the bomb to its corresponding conveyor.
     - Be careful though, these are bombs after all. They may not take too kindly
@@ -338,21 +337,19 @@ MonoBehaviour:
     - These bombs will also have a timer activate once they are picked up, so you
       better deliver them quickly!
     currentObjectivesXBox:
-    - Whoa! What are you doing?! There has to be something wrong, let me troubleshoot
-      a bit for you. >
-    - Oh. Sorry for the overreaction there. You must still be getting used to that
-      new bod- err. networking. >
-    - Anywho, I've done some reprogramming so that shouldn't happen again. >
-    - Once again, use <sprite name="LeftStick"> to move around the level. When you're
-      ready to proceed; pick up the box. >
+    - Excellent. Now, use <sprite name="LeftStick"> to move the bomb to its corresponding
+      conveyor.
+    - Be careful though, these are bombs after all. They may not take too kindly
+      to trauma.
+    - These bombs will also have a timer activate once they are picked up, so you
+      better deliver them quickly!
     currentObjectivesPS4:
-    - Whoa! What are you doing?! There has to be something wrong, let me troubleshoot
-      a bit for you. >
-    - Oh. Sorry for the overreaction there. You must still be getting used to that
-      new bod- err. networking. >
-    - Anywho, I've done some reprogramming so that shouldn't happen again. >
-    - Once again, use <sprite name="LeftStick"> to move around the level. When you're
-      ready to proceed; pick up the box. >
+    - Excellent. Now, use <sprite name="LeftStick"> to move the bomb to its corresponding
+      conveyor.
+    - Be careful though, these are bombs after all. They may not take too kindly
+      to trauma.
+    - These bombs will also have a timer activate once they are picked up, so you
+      better deliver them quickly!
   - currentObjectivesKeyboard:
     - Very nice work. In a real work environment, those bombs would be moving.
     - If they reach the end of the belt, you'll be served a penalty. Keep up the
@@ -363,39 +360,23 @@ MonoBehaviour:
     - Take some time to try out the Scoot Dash and deliver another bomb to continue
       our session.
     currentObjectivesXBox:
-    - Now that you've got a feeling for your... legs, let's move on to the next task.
-      >
-    - 'You''ll have to worry about a couple things during this task: The box''s timer
-      and your flimsy arms! >'
-    - The boxes must be delivered within a certain time limit once they've been picked
-      up. Can't have you slacking off! >
-    - The servos in your arms are quite weak and must be reset regularly so you don't
-      drop the crate. >
-    - 'There are several options for resetting your servos: <sprite name="A"> <sprite
-      name="B"> <sprite name="X"> <sprite name="Y"> This is done in the form of a
-      Quick Time Event. >'
-    - Make sure to press the corresponding button when it appears on screen. >
-    - Oh, that's a lot, isn't it? If you would like a repeat, press <sprite name="B">.
-      Otherwise, press <sprite name="A"> to continue. >
-    - 'Your task: Deliver the crate to the conveyor belt of corresponding color.
-      You must deliver one crate to continue. >'
+    - Very nice work. In a real work environment, those bombs would be moving.
+    - If they reach the end of the belt, you'll be served a penalty. Keep up the
+      pace!
+    - Now, let's teach you about what we here in the industry call the "Scoot Dash".
+    - Press <sprite name="B"> to activate the Scoot Dash. It'll propel you forward
+      in whatever direction you are facing.
+    - Take some time to try out the Scoot Dash and deliver another bomb to continue
+      our session.
     currentObjectivesPS4:
-    - Now that you've got a feeling for your... legs, let's move on to the next task.
-      >
-    - 'You''ll have to worry about a couple things during this task: The box''s timer
-      and your flimsy arms! >'
-    - The boxes must be delivered within a certain time limit once they've been picked
-      up. Can't have you slacking off! >
-    - The servos in your arms are quite weak and must be reset regularly so you don't
-      drop the crate. >
-    - 'There are several options for resetting your servos: <sprite name="Cross">
-      <sprite name="Circle"> <sprite name="Square"> <sprite name="Triangle">  This
-      is done in the form of a Quick Time Event. >'
-    - Make sure to press the corresponding button when it appears on screen. >
-    - Oh, that's a lot, isn't it? If you would like a repeat, press <sprite name="Circle">.
-      Otherwise, press <sprite name="Cross"> to continue. >
-    - 'Your task: Deliver the crate to the conveyor belt of corresponding color.
-      You must deliver one crate to continue. >'
+    - Very nice work. In a real work environment, those bombs would be moving.
+    - If they reach the end of the belt, you'll be served a penalty. Keep up the
+      pace!
+    - Now, let's teach you about what we here in the industry call the "Scoot Dash".
+    - Press <sprite name="Circle"> to activate the Scoot Dash. It'll propel you forward
+      in whatever direction you are facing.
+    - Take some time to try out the Scoot Dash and deliver another bomb to continue
+      our session.
   - currentObjectivesKeyboard:
     - Great work! Just be careful not to slam into a wall.
     - Finally, let's talk about hazards.
@@ -404,23 +385,19 @@ MonoBehaviour:
     - They both affect the delivery process differently, so run over them a couple
       times to get a feel of how they work.
     currentObjectivesXBox:
-    - Perfect! If you had done that on the clock, you would've scored a couple points!
-      >
-    - What? Money? ...for your work? >
-    - For your next task I want you to deliver another crate, but with a twist! >
-    - We've turned the delivery conveyor belt on, so your crates will begin to move.
-      >
-    - Any crate that you miss will go off screen and explode! That's a penalty on
-      you, so don't let it happen! >
+    - Great work! Just be careful not to slam into a wall.
+    - Finally, let's talk about hazards.
+    - The factory isn't perfect, so issues are bound to arise from time to time.
+    - Two of the most common hazards you may encounter are oil slicks and live wires.
+    - They both affect the delivery process differently, so run over them a couple
+      times to get a feel of how they work.
     currentObjectivesPS4:
-    - Perfect! If you had done that on the clock, you would've scored a couple points!
-      >
-    - What? Money? ...for your work? >
-    - For your next task I want you to deliver another crate, but with a twist! >
-    - We've turned the delivery conveyor belt on, so your crates will begin to move.
-      >
-    - Any crate that you miss will go off screen and explode! That's a penalty on
-      you, so don't let it happen! >
+    - Great work! Just be careful not to slam into a wall.
+    - Finally, let's talk about hazards.
+    - The factory isn't perfect, so issues are bound to arise from time to time.
+    - Two of the most common hazards you may encounter are oil slicks and live wires.
+    - They both affect the delivery process differently, so run over them a couple
+      times to get a feel of how they work.
   - currentObjectivesKeyboard:
     - Congrats! You've completed basic training and are ready to get to work!
     - As a reward for your efforts, here's a gear!
@@ -434,27 +411,29 @@ MonoBehaviour:
 
       <align="center">Have a blast!'
     currentObjectivesXBox:
-    - Great job! You're almost done with training, so keep it up! >
-    - As you can see here, we have two types of hazards you may encounter in the
-      factory while working. >
-    - What's that? Why are there hazards in the factory? ...>
-    - For your final task I want you to familiarize yourself with these hazards.
-      The oil slick (left) and live wire (right) >
-    - Each hazard will affect you in a different ways, so be sure to run into them
-      to get a feel for their consquences. >
-    - (Just a side note, the hazards in later levels may only spawn when you deliver
-      crates. It is not a guaranteed spawn everytime.) >
+    - Congrats! You've completed basic training and are ready to get to work!
+    - As a reward for your efforts, here's a gear!
+    - Gears can be used to buy upgrades from the shop, make sure to visit them when
+      you can!
+    - Play well to earn more gears, and you might just become a perfect working machine!
+    - At least... a more perfect one.
+    - You can continue practicing here if you wish, or press "Pause" to access the
+      pause menu and get to work!
+    - 'Remember to...
+
+      <align="center">Have a blast!'
     currentObjectivesPS4:
-    - Great job! You're almost done with training, so keep it up! >
-    - As you can see here, we have two types of hazards you may encounter in the
-      factory while working. >
-    - What's that? Why are there hazards in the factory? ...>
-    - For your final task I want you to familiarize yourself with these hazards.
-      The oil slick (left) and live wire (right) >
-    - Each hazard will affect you in a different ways, so be sure to run into them
-      to get a feel for their consquences. >
-    - (Just a side note, the hazards in later levels may only spawn when you deliver
-      crates. It is not a guaranteed spawn everytime.) >
+    - Congrats! You've completed basic training and are ready to get to work!
+    - As a reward for your efforts, here's a gear!
+    - Gears can be used to buy upgrades from the shop, make sure to visit them when
+      you can!
+    - Play well to earn more gears, and you might just become a perfect working machine!
+    - At least... a more perfect one.
+    - You can continue practicing here if you wish, or press "Pause" to access the
+      pause menu and get to work!
+    - 'Remember to...
+
+      <align="center">Have a blast!'
   textBoxObject: {fileID: 2500392565112009151}
   descriptionTextMesh: {fileID: 2500392565723190382}
   dummyUIText: {fileID: 5772382971891874464}
