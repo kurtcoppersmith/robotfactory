@@ -5,11 +5,14 @@ using UnityEngine;
 public class CrateStand : MonoBehaviour
 {
     public enum Colors { Red, Blue, Green }
-    private Crate collisionCrate;
     public Colors colors;
     public Color standColor { get; private set; }
+    
     public GameObject crateManager;
-    // Start is called before the first frame update
+    private Crate collisionCrate;
+
+    public GameObject deliveryParticleEffect;
+    
     void Start()
     {
         if (colors == Colors.Red)
@@ -18,6 +21,32 @@ public class CrateStand : MonoBehaviour
             standColor = Color.blue;
         else
             standColor = Color.green;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        switch (colors)
+        {
+            case Colors.Red:
+                Gizmos.color = Color.red;
+                break;
+            case Colors.Blue:
+                Gizmos.color = Color.blue;
+                break;
+            case Colors.Green:
+                Gizmos.color = Color.green;
+                break;
+            default:
+                Gizmos.color = Color.black;
+                break;
+        }
+
+        Gizmos.DrawSphere(transform.position + Vector3.up * 3, 0.2f);
+    }
+
+    void StopDeliveryParticles()
+    {
+        deliveryParticleEffect.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -29,6 +58,9 @@ public class CrateStand : MonoBehaviour
             {
                 CrateManager.Instance.DeliverCrate();
                 collision.transform.parent.gameObject.GetComponent<PlayerModel>().Passed();
+
+                deliveryParticleEffect.SetActive(true);
+                Invoke("StopDeliveryParticles", deliveryParticleEffect.GetComponentInChildren<ParticleSystem>().main.duration);
             }
             else
             {
@@ -38,6 +70,9 @@ public class CrateStand : MonoBehaviour
                 {
                     TutorialManager.Instance.hasCompletedCurrent = true;
                 }
+
+                deliveryParticleEffect.SetActive(true);
+                Invoke("StopDeliveryParticles", deliveryParticleEffect.GetComponentInChildren<ParticleSystem>().main.startLifetime.constant);
             }
         }
         else if(collisionCrate.color != standColor && collision.transform.parent.gameObject.tag == "Player")

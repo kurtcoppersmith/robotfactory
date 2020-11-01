@@ -2250,6 +2250,7 @@ MonoBehaviour:
   colors: 0
   crateManager: {fileID: 6811558908385428311, guid: 002afcda1eebe42439481d66d453bd91,
     type: 3}
+  deliveryParticleEffect: {fileID: 6998438569661627104}
 --- !u!1 &7092471023014266103
 GameObject:
   m_ObjectHideFlags: 0
@@ -2973,20 +2974,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Delivery
       objectReference: {fileID: 0}
+    - target: {fileID: 6940270572027680014, guid: bee3a4d699aa8574dad2c2b9fececa3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6940270572027680015, guid: bee3a4d699aa8574dad2c2b9fececa3c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.858
+      value: 0.636
       objectReference: {fileID: 0}
     - target: {fileID: 6940270572027680015, guid: bee3a4d699aa8574dad2c2b9fececa3c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.12
+      value: 0.957
       objectReference: {fileID: 0}
     - target: {fileID: 6940270572027680015, guid: bee3a4d699aa8574dad2c2b9fececa3c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.42
+      value: -0.523
       objectReference: {fileID: 0}
     - target: {fileID: 6940270572027680015, guid: bee3a4d699aa8574dad2c2b9fececa3c,
         type: 3}
@@ -3043,11 +3049,27 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6940270572063796191, guid: bee3a4d699aa8574dad2c2b9fececa3c,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940270572063796191, guid: bee3a4d699aa8574dad2c2b9fececa3c,
+        type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bee3a4d699aa8574dad2c2b9fececa3c, type: 3}
 --- !u!4 &6998438569661627105 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6940270572027680015, guid: bee3a4d699aa8574dad2c2b9fececa3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 94498200452100078}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6998438569661627104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6940270572027680014, guid: bee3a4d699aa8574dad2c2b9fececa3c,
     type: 3}
   m_PrefabInstance: {fileID: 94498200452100078}
   m_PrefabAsset: {fileID: 0}
