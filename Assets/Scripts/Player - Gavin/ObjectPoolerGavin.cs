@@ -14,7 +14,9 @@ public class ObjectPoolerGavin : MonoBehaviour
 
     public enum Key
     {
-        Pickup
+        AtomBomb,
+        FuseBomb,
+        TNTBomb
     }
 
     public Key key;
@@ -41,7 +43,7 @@ public class ObjectPoolerGavin : MonoBehaviour
             pooledObjects.Add(obj);
         }
 
-        if (key == Key.Pickup)
+        if (key == Key.AtomBomb || key == Key.FuseBomb || key == Key.TNTBomb)
         {
             for (int i = 0; i < pooledObjects.Count - 1; i++)
             {

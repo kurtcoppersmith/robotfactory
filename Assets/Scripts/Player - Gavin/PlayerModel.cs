@@ -140,7 +140,7 @@ public class PlayerModel : MonoBehaviour
 
         currentPickup.GetComponent<IdleCrate>().PickUp(false);
         currentPickup.SetActive(false);
-        currentPickup.transform.parent = ObjectPoolerGavin.GetPooler(ObjectPoolerGavin.Key.Pickup).gameObject.transform;
+        currentPickup.transform.parent = ObjectPoolerGavin.GetPooler(ObjectPoolerGavin.Key.AtomBomb).gameObject.transform;
         isHolding = false;
     }
 

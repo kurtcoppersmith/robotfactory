@@ -11,7 +11,7 @@ public class StrengthPowerupCollider : MonoBehaviour
             PlayerModel playerMod = GetComponentInParent<PlayerModel>();
             if (playerMod.isHolding)
             {
-                if (playerMod.currentPickup.GetComponent<Crate>().color == other.gameObject.GetComponent<CrateStand>().standColor)
+                if (playerMod.currentPickup.GetComponent<Crate>().bombType == other.gameObject.GetComponent<CrateStand>().bombType)
                 {
                     playerMod.Passed();
                 }

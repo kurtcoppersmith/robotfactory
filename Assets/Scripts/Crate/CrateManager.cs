@@ -25,14 +25,13 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
 
     public GameObject CrateResetObject;
 
-    //Object pooler for spawning the objects
-    public ObjectPooler pooler;
-
     public List<Transform> spawnLocations;
     public Dictionary<Transform, bool> spawnLocationStatus { get; private set; }
     public Dictionary<GameObject, Transform> currentSpawnedItems { get; private set; } = new Dictionary<GameObject, Transform>();
 
-    private ObjectPoolerGavin.Key crateKey = ObjectPoolerGavin.Key.Pickup;
+    private ObjectPoolerGavin.Key atomKey = ObjectPoolerGavin.Key.AtomBomb;
+    private ObjectPoolerGavin.Key fuseKey = ObjectPoolerGavin.Key.FuseBomb;
+    private ObjectPoolerGavin.Key tntKey = ObjectPoolerGavin.Key.TNTBomb;
     //Public variable to allow for easy spawning location of crate.
 
     public RangeInt spawnNumbers;
@@ -54,7 +53,6 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        pooler = ObjectPooler.Instance;
         RemaningSpawnTime = Random.Range(minSpawnTime,maxSpawnTime);
         SpawnCrate();
         tillNextPower--;
@@ -76,7 +74,22 @@ public class CrateManager : SingletonMonoBehaviour<CrateManager>
     {
         for (int i = 0; i < spawnLocationStatus.Count; i++)
         {
-            GameObject obj = ObjectPoolerGavin.GetPooler(crateKey).GetPooledObject();
+            int randBomb = Random.Range(0, 3);
+            GameObject obj = null;
+
+            switch (randBomb)
+            {
+                case 0:
+                    obj = ObjectPoolerGavin.GetPooler(atomKey).GetPooledObject();
+                    break;
+                case 1:
+                    obj = ObjectPoolerGavin.GetPooler(fuseKey).GetPooledObject();
+                    break;
+                case 2:
+                    obj = ObjectPoolerGavin.GetPooler(tntKey).GetPooledObject();
+                    break;
+            }
+            
             obj.transform.position = spawnLocations[i].position;
             obj.GetComponent<IdleCrate>().PickUp(false);
             obj.SetActive(true);
