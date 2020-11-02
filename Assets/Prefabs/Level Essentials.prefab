@@ -570,7 +570,7 @@ PrefabInstance:
     - target: {fileID: 1807894758717472414, guid: 8b220d5daef6f354090b268bee17a09e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.1
+      value: -13.099976
       objectReference: {fileID: 0}
     - target: {fileID: 1807894759031729323, guid: 8b220d5daef6f354090b268bee17a09e,
         type: 3}
@@ -697,6 +697,11 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6204850547706012429, guid: 8b220d5daef6f354090b268bee17a09e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: fixedMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 6204850548354745888, guid: 8b220d5daef6f354090b268bee17a09e,
         type: 3}
       propertyPath: m_sharedMaterial
