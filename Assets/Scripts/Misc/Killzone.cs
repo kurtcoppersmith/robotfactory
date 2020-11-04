@@ -14,6 +14,9 @@ public class Killzone : MonoBehaviour
             other.transform.position = origin.transform.position;
             other.transform.rotation = origin.transform.rotation;
             other.gameObject.GetComponent<PlayerMovement>().charController.enabled = true;
+
+            other.gameObject.GetComponent<PlayerMovement>().SetPlayerIced(false);
+            other.gameObject.GetComponent<PlayerMovement>().SetPlayerSlowed(false);
             
             if (other.GetComponent<PlayerModel>().isHolding)
             {

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 6816450915032389912}
   - component: {fileID: 7581597117276968637}
   - component: {fileID: 5680104700083151479}
+  - component: {fileID: 3336339095548951654}
   m_Layer: 0
   m_Name: IceTrap
-  m_TagString: Untagged
+  m_TagString: IceTrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3336339095548951654
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184345336959730594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4801786987395583507, guid: 32053573793d7c842ad66dbc513e7c81, type: 3}
