@@ -11,6 +11,7 @@ public class MenuScript : MonoBehaviour
     public string lavaLevel = "LavaLevelOne";
     public string iceLevel = "IceLevelOne";
     public string mainMenu = "fixedMainMenu";
+    public string levelSelect = "LevelSelect";
     private string curLevel;
 
     public void LoadNextScene()
@@ -31,6 +32,11 @@ public class MenuScript : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene(mainMenu);
+    }
+
+    public void LevelSelectMenu()
+    {
+        SceneManager.LoadScene(levelSelect);
     }
 
     public void QuitGame()
