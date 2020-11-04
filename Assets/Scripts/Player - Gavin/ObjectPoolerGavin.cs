@@ -52,6 +52,14 @@ public class ObjectPoolerGavin : MonoBehaviour
                     Physics.IgnoreCollision(pooledObjects[i].GetComponent<Collider>(), pooledObjects[j].GetComponent<Collider>(), true);
                 }
             }
+
+            for (int i = 0; i < this.transform.childCount; i++)
+            {
+                for (int j = 0; j < pooledObjects.Count; j++)
+                {
+                    Physics.IgnoreCollision(this.transform.GetChild(i).GetComponent<Collider>(), pooledObjects[j].GetComponent<Collider>(), true);
+                }
+            }
         }
     }
 

@@ -36,18 +36,22 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
     private bool textBoxUnderscore = false;
     private InputKeyUI inputKeyUI;
 
+    [Header("Objective Counter")]
     public int currentObjective = 0;
 
-    public GameObject cratePrefab;
+    [Header("Spawning Stuff")]
+    public GameObject atomBomb;
+    public GameObject fuseBomb;
+    public GameObject tntBomb;
     public Transform spawnLocation;
     public Transform movingSpawnLocation;
     [HideInInspector]
     public int spawnedCrateAmount = 0;
 
     [Header("Second Objective")]
-    public GameObject redBelt;
-    public GameObject blueBelt;
-    public GameObject greenBelt;
+    public GameObject atomSign;
+    public GameObject fuseSign;
+    public GameObject tntSign;
 
     [Header("Third Objective")]
     //public bool hasDashed = false;
@@ -118,34 +122,37 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
 
     void OnEnter(InputValue inputValue)
     {
-        if (descriptionTextMesh.text != descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox] && !finishedCurrentDialogue)
+        if (currentTextBox < descriptions[currentObjective].currentObjectivesKeyboard.Count)
         {
-            dummyUIText.DOKill();
-            descriptionTextMesh.text = descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox];
-
-            finishedCurrentDialogue = true;
-        }
-        else
-        {
-            currentTextBox++;
-            finishedCurrentDialogue = false;
-
-            if (currentTextBox < descriptions[currentObjective].currentObjectivesKeyboard.Count)
+            if (descriptionTextMesh.text != descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox] && !finishedCurrentDialogue)
             {
-                dummyUIText.text = "";
                 dummyUIText.DOKill();
-                descriptionTextMesh.text = "";
-                switch (inputKeyUI.lastSeenControlScheme)
+                descriptionTextMesh.text = descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox];
+
+                finishedCurrentDialogue = true;
+            }
+            else
+            {
+                currentTextBox++;
+                finishedCurrentDialogue = false;
+
+                if (currentTextBox < descriptions[currentObjective].currentObjectivesKeyboard.Count)
                 {
-                    case KeyboardSchemeName:
-                        dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, true);
-                        break;
-                    case PS4SchemeName:
-                        dummyUIText.DOText(descriptions[currentObjective].currentObjectivesPS4[currentTextBox], 4.5f, true);
-                        break;
-                    case XBoxSchemeName:
-                        dummyUIText.DOText(descriptions[currentObjective].currentObjectivesXBox[currentTextBox], 4.5f, true);
-                        break;
+                    dummyUIText.text = "";
+                    dummyUIText.DOKill();
+                    descriptionTextMesh.text = "";
+                    switch (inputKeyUI.lastSeenControlScheme)
+                    {
+                        case KeyboardSchemeName:
+                            dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, true);
+                            break;
+                        case PS4SchemeName:
+                            dummyUIText.DOText(descriptions[currentObjective].currentObjectivesPS4[currentTextBox], 4.5f, true);
+                            break;
+                        case XBoxSchemeName:
+                            dummyUIText.DOText(descriptions[currentObjective].currentObjectivesXBox[currentTextBox], 4.5f, true);
+                            break;
+                    }
                 }
             }
         }
@@ -314,9 +321,9 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
             switch (currentObjective)
             {
                 case 1:
-                    redBelt.GetComponent<MeshRenderer>().material.DOColor(Color.red, 3.0f);
-                    greenBelt.GetComponent<MeshRenderer>().material.DOColor(Color.green, 3.0f);
-                    blueBelt.GetComponent<MeshRenderer>().material.DOColor(Color.blue, 3.0f);
+                    atomSign.transform.DOLocalMoveY(2.34f, 3.0f);
+                    fuseSign.transform.DOLocalMoveY(2.34f, 3.0f);
+                    tntSign.transform.DOLocalMoveY(2.34f, 3.0f);
 
                     spawnedCrateAmount++;
                     break;
@@ -332,7 +339,21 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
         {
             if (spawnedCrateAmount < 1)
             {
-                Instantiate(cratePrefab, spawnLocation.position, Quaternion.identity);
+                int randNumb = Random.Range(0, 3);
+
+                switch (randNumb)
+                {
+                    case 0:
+                        Instantiate(atomBomb, spawnLocation.position, Quaternion.identity);
+                        break;
+                    case 1:
+                        Instantiate(fuseBomb, spawnLocation.position, Quaternion.identity);
+                        break;
+                    case 2:
+                        Instantiate(tntBomb, spawnLocation.position, Quaternion.identity);
+                        break;
+                }
+                
                 spawnedCrateAmount++;
             }
         }
