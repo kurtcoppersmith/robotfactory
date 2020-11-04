@@ -14,7 +14,9 @@ public class ObjectPoolerGavin : MonoBehaviour
 
     public enum Key
     {
-        Pickup
+        AtomBomb,
+        FuseBomb,
+        TNTBomb
     }
 
     public Key key;
@@ -41,13 +43,21 @@ public class ObjectPoolerGavin : MonoBehaviour
             pooledObjects.Add(obj);
         }
 
-        if (key == Key.Pickup)
+        if (key == Key.AtomBomb || key == Key.FuseBomb || key == Key.TNTBomb)
         {
             for (int i = 0; i < pooledObjects.Count - 1; i++)
             {
                 for (int j = i + 1; j < pooledObjects.Count; j++)
                 {
                     Physics.IgnoreCollision(pooledObjects[i].GetComponent<Collider>(), pooledObjects[j].GetComponent<Collider>(), true);
+                }
+            }
+
+            for (int i = 0; i < this.transform.childCount; i++)
+            {
+                for (int j = 0; j < pooledObjects.Count; j++)
+                {
+                    Physics.IgnoreCollision(this.transform.GetChild(i).GetComponent<Collider>(), pooledObjects[j].GetComponent<Collider>(), true);
                 }
             }
         }

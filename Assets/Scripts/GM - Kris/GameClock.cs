@@ -47,13 +47,13 @@ public class GameClock : MonoBehaviour
         //Three math functions to get current minutes, seconds, and milliseconds from float value
         minutes = Mathf.FloorToInt(clockTime / 60);
         seconds = Mathf.FloorToInt(clockTime % 60);
-        milliseconds = (clockTime % 1) * 100;
+        milliseconds = Mathf.FloorToInt((clockTime % 1) * 100);
 
 
         //timeText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
         if (!GameManager.Instance.isPaused && !GameManager.Instance.hasEnded)
         {
-            timeTextTMP.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
+            timeTextTMP.text = string.Format("{0}:{1:00}:{2:00}", minutes, seconds, milliseconds);
         }
         else
         {

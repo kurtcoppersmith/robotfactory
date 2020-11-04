@@ -36,18 +36,22 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
     private bool textBoxUnderscore = false;
     private InputKeyUI inputKeyUI;
 
+    [Header("Objective Counter")]
     public int currentObjective = 0;
 
-    public GameObject cratePrefab;
+    [Header("Spawning Stuff")]
+    public GameObject atomBomb;
+    public GameObject fuseBomb;
+    public GameObject tntBomb;
     public Transform spawnLocation;
     public Transform movingSpawnLocation;
     [HideInInspector]
     public int spawnedCrateAmount = 0;
 
     [Header("Second Objective")]
-    public GameObject redBelt;
-    public GameObject blueBelt;
-    public GameObject greenBelt;
+    public GameObject atomSign;
+    public GameObject fuseSign;
+    public GameObject tntSign;
 
     [Header("Third Objective")]
     //public bool hasDashed = false;
@@ -72,14 +76,28 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
         maxHazardSpawnTimer = hazardSpawnTimer;
         maxFinalCompleteTextTimer = finalCompleteTextTimer;
 
-        dummyUIText.text = "";
-        dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, false);
         maxTextBoxTimer = textBoxTimer;
     }
 
-    void OnEnter(InputValue inputValue)
+    void Start()
     {
-        currentTextBox++;
+        dummyUIText.text = "";
+        switch (inputKeyUI.lastSeenControlScheme)
+        {
+            case KeyboardSchemeName:
+                dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, true);
+                break;
+            case PS4SchemeName:
+                dummyUIText.DOText(descriptions[currentObjective].currentObjectivesPS4[currentTextBox], 4.5f, true);
+                break;
+            case XBoxSchemeName:
+                dummyUIText.DOText(descriptions[currentObjective].currentObjectivesXBox[currentTextBox], 4.5f, true);
+                break;
+        }
+    }
+
+    public void StartOverDialogue()
+    {
         finishedCurrentDialogue = false;
 
         if (currentTextBox < descriptions[currentObjective].currentObjectivesKeyboard.Count)
@@ -87,7 +105,56 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
             dummyUIText.text = "";
             dummyUIText.DOKill();
             descriptionTextMesh.text = "";
-            dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, true);
+            switch (inputKeyUI.lastSeenControlScheme)
+            {
+                case KeyboardSchemeName:
+                    dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, true);
+                    break;
+                case PS4SchemeName:
+                    dummyUIText.DOText(descriptions[currentObjective].currentObjectivesPS4[currentTextBox], 4.5f, true);
+                    break;
+                case XBoxSchemeName:
+                    dummyUIText.DOText(descriptions[currentObjective].currentObjectivesXBox[currentTextBox], 4.5f, true);
+                    break;
+            }
+        }
+    }
+
+    void OnEnter(InputValue inputValue)
+    {
+        if (currentTextBox < descriptions[currentObjective].currentObjectivesKeyboard.Count)
+        {
+            if (descriptionTextMesh.text != descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox] && !finishedCurrentDialogue)
+            {
+                dummyUIText.DOKill();
+                descriptionTextMesh.text = descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox];
+
+                finishedCurrentDialogue = true;
+            }
+            else
+            {
+                currentTextBox++;
+                finishedCurrentDialogue = false;
+
+                if (currentTextBox < descriptions[currentObjective].currentObjectivesKeyboard.Count)
+                {
+                    dummyUIText.text = "";
+                    dummyUIText.DOKill();
+                    descriptionTextMesh.text = "";
+                    switch (inputKeyUI.lastSeenControlScheme)
+                    {
+                        case KeyboardSchemeName:
+                            dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, true);
+                            break;
+                        case PS4SchemeName:
+                            dummyUIText.DOText(descriptions[currentObjective].currentObjectivesPS4[currentTextBox], 4.5f, true);
+                            break;
+                        case XBoxSchemeName:
+                            dummyUIText.DOText(descriptions[currentObjective].currentObjectivesXBox[currentTextBox], 4.5f, true);
+                            break;
+                    }
+                }
+            }
         }
     }
 
@@ -99,7 +166,18 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
         dummyUIText.text = "";
         dummyUIText.DOKill();
         descriptionTextMesh.text = "";
-        dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, true);
+        switch (inputKeyUI.lastSeenControlScheme)
+        {
+            case KeyboardSchemeName:
+                dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, true);
+                break;
+            case PS4SchemeName:
+                dummyUIText.DOText(descriptions[currentObjective].currentObjectivesPS4[currentTextBox], 4.5f, true);
+                break;
+            case XBoxSchemeName:
+                dummyUIText.DOText(descriptions[currentObjective].currentObjectivesXBox[currentTextBox], 4.5f, true);
+                break;
+        }
     }
 
     void Update()
@@ -147,7 +225,30 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
                 case PS4SchemeName:
                     if (currentTextBox < descriptions[currentObjective].currentObjectivesPS4.Count)
                     {
-                        descriptionTextMesh.text = descriptions[currentObjective].currentObjectivesPS4[currentTextBox];
+                        if (descriptionTextMesh.text != descriptions[currentObjective].currentObjectivesPS4[currentTextBox] && !finishedCurrentDialogue)
+                        {
+                            descriptionTextMesh.text = dummyUIText.text;
+                        }
+                        else
+                        {
+                            finishedCurrentDialogue = true;
+                            textBoxTimer -= Time.deltaTime;
+                            if (textBoxTimer <= 0)
+                            {
+                                textBoxUnderscore = !textBoxUnderscore;
+                                textBoxTimer = maxTextBoxTimer;
+                            }
+
+                            if (textBoxUnderscore)
+                            {
+                                descriptionTextMesh.text = descriptions[currentObjective].currentObjectivesPS4[currentTextBox];
+                                descriptionTextMesh.text = descriptionTextMesh.text + "_";
+                            }
+                            else
+                            {
+                                descriptionTextMesh.text = descriptions[currentObjective].currentObjectivesPS4[currentTextBox];
+                            }
+                        }
                     }
                     else
                     {
@@ -158,7 +259,30 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
                 case XBoxSchemeName:
                     if (currentTextBox < descriptions[currentObjective].currentObjectivesXBox.Count)
                     {
-                        descriptionTextMesh.text = descriptions[currentObjective].currentObjectivesXBox[currentTextBox];
+                        if (descriptionTextMesh.text != descriptions[currentObjective].currentObjectivesXBox[currentTextBox] && !finishedCurrentDialogue)
+                        {
+                            descriptionTextMesh.text = dummyUIText.text;
+                        }
+                        else
+                        {
+                            finishedCurrentDialogue = true;
+                            textBoxTimer -= Time.deltaTime;
+                            if (textBoxTimer <= 0)
+                            {
+                                textBoxUnderscore = !textBoxUnderscore;
+                                textBoxTimer = maxTextBoxTimer;
+                            }
+
+                            if (textBoxUnderscore)
+                            {
+                                descriptionTextMesh.text = descriptions[currentObjective].currentObjectivesXBox[currentTextBox];
+                                descriptionTextMesh.text = descriptionTextMesh.text + "_";
+                            }
+                            else
+                            {
+                                descriptionTextMesh.text = descriptions[currentObjective].currentObjectivesXBox[currentTextBox];
+                            }
+                        }
                     }
                     else
                     {
@@ -180,19 +304,34 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
             dummyUIText.text = "";
             dummyUIText.DOKill();
             descriptionTextMesh.text = "";
-            dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, true);
+
+            switch (inputKeyUI.lastSeenControlScheme)
+            {
+                case KeyboardSchemeName:
+                    dummyUIText.DOText(descriptions[currentObjective].currentObjectivesKeyboard[currentTextBox], 4.5f, true);
+                    break;
+                case PS4SchemeName:
+                    dummyUIText.DOText(descriptions[currentObjective].currentObjectivesPS4[currentTextBox], 4.5f, true);
+                    break;
+                case XBoxSchemeName:
+                    dummyUIText.DOText(descriptions[currentObjective].currentObjectivesXBox[currentTextBox], 4.5f, true);
+                    break;
+            }
 
             switch (currentObjective)
             {
                 case 1:
-                    redBelt.GetComponent<MeshRenderer>().material.DOColor(Color.red, 3.0f);
-                    greenBelt.GetComponent<MeshRenderer>().material.DOColor(Color.green, 3.0f);
-                    blueBelt.GetComponent<MeshRenderer>().material.DOColor(Color.blue, 3.0f);
+                    atomSign.transform.DOLocalMoveY(2.34f, 3.0f);
+                    fuseSign.transform.DOLocalMoveY(2.34f, 3.0f);
+                    tntSign.transform.DOLocalMoveY(2.34f, 3.0f);
 
                     spawnedCrateAmount++;
                     break;
                 case 3:
                     HazardManager.Instance.TutorialSpawnHazards();
+                    break;
+                case 4:
+                    LevelManager.Instance.levelEnd.TutorialGearAdder();
                     break;
             }
 
@@ -203,16 +342,22 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
         {
             if (spawnedCrateAmount < 1)
             {
-                //if (currentObjective == 1)
-                //{
-                    Instantiate(cratePrefab, spawnLocation.position, Quaternion.identity);
-                    spawnedCrateAmount++;
-               // }
-               // else if (currentObjective > 1)
-                //{
-                   // Instantiate(cratePrefab, movingSpawnLocation.position, Quaternion.identity);
-                    //spawnedCrateAmount++;
-               // }
+                int randNumb = Random.Range(0, 3);
+
+                switch (randNumb)
+                {
+                    case 0:
+                        Instantiate(atomBomb, spawnLocation.position, Quaternion.identity);
+                        break;
+                    case 1:
+                        Instantiate(fuseBomb, spawnLocation.position, Quaternion.identity);
+                        break;
+                    case 2:
+                        Instantiate(tntBomb, spawnLocation.position, Quaternion.identity);
+                        break;
+                }
+                
+                spawnedCrateAmount++;
             }
         }
 

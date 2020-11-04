@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7316497628870203452}
   - component: {fileID: 2928205658575153233}
+  - component: {fileID: 4154505466723386243}
+  - component: {fileID: 9117672866193079242}
   m_Layer: 0
   m_Name: ObjectPoolerManager
   m_TagString: Untagged
@@ -46,5 +48,39 @@ MonoBehaviour:
   pooledAmount: 6
   willGrow: 1
   key: 0
-  pooledObject: {fileID: 6697691059644475954, guid: 357842518842f404b967951acdb59d9d,
+  pooledObject: {fileID: 1004367597303631885, guid: 80073ea7dfa32384195bc169de8b2e81,
+    type: 3}
+--- !u!114 &4154505466723386243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5640277223384418946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d9beccb85bf9748ab243910c6a3a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledAmount: 6
+  willGrow: 1
+  key: 1
+  pooledObject: {fileID: 7570669103687304175, guid: f159e48f418a47c4581845d6e38e7a60,
+    type: 3}
+--- !u!114 &9117672866193079242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5640277223384418946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d9beccb85bf9748ab243910c6a3a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledAmount: 6
+  willGrow: 1
+  key: 2
+  pooledObject: {fileID: 3946310315419498196, guid: 5471bf21d06fa5e4ab526198237fbf8a,
     type: 3}

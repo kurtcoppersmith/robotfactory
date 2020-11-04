@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Crate : MonoBehaviour//, IPooledObject
 {
-    public enum Colors{Red, Blue, Green}
+    public enum BombType{Atom, Fuse, TNT}
+    public BombType bombType;
     public enum PowerUp {None, Strength, Speed, Chasis}
-    public List<Material> bombBoxMats = new List<Material>();
-    public MeshRenderer bombBoxMeshRenderer;
+    //public List<Material> bombBoxMats = new List<Material>();
+    //public MeshRenderer bombBoxMeshRenderer;
 
     [HideInInspector] public float timer;
-    private Material materialColor;
+    //private Material materialColor;
     public bool delivered;
-    public Color color;
+    //public Color color;
     public PowerUp power;
     public GameObject powerupIndicator;
 
@@ -39,7 +40,7 @@ public class Crate : MonoBehaviour//, IPooledObject
         //set crate color
         //SpawnColor();
 
-        SetMaterial();
+        //SetMaterial();
         //set crate timer
         if (CrateManager.Instance != null)
         {
@@ -128,46 +129,46 @@ public class Crate : MonoBehaviour//, IPooledObject
         }
     }
 
-    private void SpawnColor()
-    {
-        switch((Colors)Random.Range(0,3))
-        {
-            case Colors.Blue:
-                color = Color.blue;
-                materialColor.color = Color.blue;
-                break;
-            case Colors.Green:
-                color = Color.green;
-                materialColor.color = Color.green;
-                break;
-            case Colors.Red:
-                color = Color.red;
-                materialColor.color = Color.red;
-                break;
-        }
-    }
+    //private void SpawnColor()
+    //{
+    //    switch((Colors)Random.Range(0,3))
+    //    {
+    //        case Colors.Blue:
+    //            color = Color.blue;
+    //            materialColor.color = Color.blue;
+    //            break;
+    //        case Colors.Green:
+    //            color = Color.green;
+    //            materialColor.color = Color.green;
+    //            break;
+    //        case Colors.Red:
+    //            color = Color.red;
+    //            materialColor.color = Color.red;
+    //            break;
+    //    }
+    //}
 
     public void SetPower(Crate.PowerUp powerupType)
     {
         power = powerupType;
     }
 
-    private void SetMaterial()
-    {
-        switch ((Colors)Random.Range(0, 3))
-        {
-            case Colors.Blue:
-                bombBoxMeshRenderer.material = bombBoxMats[(int)Colors.Blue];
-                color = Color.blue;
-                break;
-            case Colors.Green:
-                bombBoxMeshRenderer.material = bombBoxMats[(int)Colors.Green];
-                color = Color.green;
-                break;
-            case Colors.Red:
-                bombBoxMeshRenderer.material = bombBoxMats[(int)Colors.Red];
-                color = Color.red;
-                break;
-        }
-    }
+    //private void SetMaterial()
+    //{
+    //    switch ((Colors)Random.Range(0, 3))
+    //    {
+    //        case Colors.Blue:
+    //            bombBoxMeshRenderer.material = bombBoxMats[(int)Colors.Blue];
+    //            color = Color.blue;
+    //            break;
+    //        case Colors.Green:
+    //            bombBoxMeshRenderer.material = bombBoxMats[(int)Colors.Green];
+    //            color = Color.green;
+    //            break;
+    //        case Colors.Red:
+    //            bombBoxMeshRenderer.material = bombBoxMats[(int)Colors.Red];
+    //            color = Color.red;
+    //            break;
+    //    }
+    //}
 }

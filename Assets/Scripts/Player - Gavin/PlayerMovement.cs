@@ -24,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
     private float friction = 1.0f;
     private bool isIced = false;
 
+    public float groundCheckDistance = 0f;
+    public float groundCheckBounds = 0f;
+    private bool isPermaIced = false;
+
     [Header("Slowed Movement Variables")]
     public float slowedSpeed = 4;
     private bool isSlowed = false;
@@ -76,12 +80,21 @@ public class PlayerMovement : MonoBehaviour
 
             if (option)
             {
-                speed = iceSpeed;
+                if (speed == initialSpeed)
+                {
+                    speed = iceSpeed;
+                    Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
+                    Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
+                    finalDir = tempFinalDir;
+                }
+                
                 hazardEffectDuration = maxHazardEffectDuration;
-
-                Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
-                Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
-                finalDir = tempFinalDir;
+            }
+            else
+            {
+                isIced = false;
+                friction = 1.0f;
+                speed = initialSpeed;
             }
         }
     }
@@ -92,9 +105,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (hazardEffectDuration <= 0)
         {
-            isIced = false;
-            friction = 1.0f;
-            speed = initialSpeed;
+            if (!CheckForIce())
+            {
+                isIced = false;
+                friction = 1.0f;
+                speed = initialSpeed;
+            }        
         }
     }
 
@@ -165,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 moveDirection = new Vector3(relativeMoveValues.x, 0, relativeMoveValues.y);
         
-        if(isIced)
+        if(isIced || isPermaIced)
         {
             Vector3 directionVelocity = moveDirection * speed;
             finalDir = Vector3.Lerp(finalDir, directionVelocity, friction * Time.deltaTime);
@@ -232,8 +248,96 @@ public class PlayerMovement : MonoBehaviour
         charController.Move(movementVector);
     }
 
+    bool CheckForIce()
+    {
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position + new Vector3(groundCheckBounds, 0, groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance))
+        {
+            if (hitInfo.transform.parent != this.transform && hitInfo.transform.gameObject.tag == "IceTrap")
+            {
+                isPermaIced = true;
+
+                if (speed == initialSpeed)
+                {
+                    speed = iceSpeed;
+                    Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
+                    Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
+                    finalDir = tempFinalDir;
+                }
+                return true;
+            }
+        }
+        
+        if(Physics.Raycast(transform.position + new Vector3(groundCheckBounds, 0, -groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance))
+        {
+            if (hitInfo.transform.parent != this.transform && hitInfo.transform.gameObject.tag == "IceTrap")
+            {
+                isPermaIced = true;
+
+                if (speed == initialSpeed)
+                {
+                    speed = iceSpeed;
+                    Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
+                    Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
+                    finalDir = tempFinalDir;
+                }
+                return true;
+            }
+        }
+        
+        if(Physics.Raycast(transform.position + new Vector3(-groundCheckBounds, 0, groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance))
+        {
+            if (hitInfo.transform.parent != this.transform && hitInfo.transform.gameObject.tag == "IceTrap")
+            {
+                isPermaIced = true;
+
+                if (speed == initialSpeed)
+                {
+                    speed = iceSpeed;
+                    Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
+                    Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
+                    finalDir = tempFinalDir;
+                }
+                return true;
+            }
+        }
+        
+        if(Physics.Raycast(transform.position + new Vector3(-groundCheckBounds, 0, -groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance))
+        {
+            if (hitInfo.transform.parent != this.transform && hitInfo.transform.gameObject.tag == "IceTrap")
+            {
+                isPermaIced = true;
+
+                if (speed == initialSpeed)
+                {
+                    speed = iceSpeed;
+                    Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
+                    Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
+                    finalDir = tempFinalDir;
+                }
+                return true;
+            }
+        }
+
+        if (Physics.Raycast(transform.position + new Vector3(-groundCheckBounds, 0, -groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance))
+        {
+            if (hitInfo.transform.parent != this.transform && hitInfo.transform.gameObject.tag != "IceTrap" && isPermaIced )
+            {
+                isPermaIced = false;
+
+                SetPlayerIced(true);
+
+                return false;
+            }
+        }
+
+        return false;
+    }
+
     void Update()
     {
+        CheckForIce();
+
         if (isIced)
         {
             IcePlayer();

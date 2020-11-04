@@ -4,31 +4,30 @@ using UnityEngine;
 
 public class CrateStand : MonoBehaviour
 {
-    public enum Colors { Red, Blue, Green }
-    private Crate collisionCrate;
-    public Colors colors;
-    public Color standColor { get; private set; }
+    public Crate.BombType bombType;
+    
     public GameObject crateManager;
-    // Start is called before the first frame update
-    void Start()
+    private Crate collisionCrate;
+
+    public GameObject deliveryParticleEffect;
+
+    void StopDeliveryParticles()
     {
-        if (colors == Colors.Red)
-            standColor = Color.red;
-        else if (colors == Colors.Blue)
-            standColor = Color.blue;
-        else
-            standColor = Color.green;
+        deliveryParticleEffect.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         collisionCrate = collision.gameObject.GetComponent<Crate>();
-        if (collisionCrate.color == standColor && collision.transform.parent.gameObject.tag == "Player")
+        if (collisionCrate.bombType == bombType && collision.transform.parent.gameObject.tag == "Player")
         {
             if (TutorialManager.Instance == null)
             {
                 CrateManager.Instance.DeliverCrate();
                 collision.transform.parent.gameObject.GetComponent<PlayerModel>().Passed();
+
+                deliveryParticleEffect.SetActive(true);
+                Invoke("StopDeliveryParticles", deliveryParticleEffect.GetComponentInChildren<ParticleSystem>().main.duration);
             }
             else
             {
@@ -38,9 +37,12 @@ public class CrateStand : MonoBehaviour
                 {
                     TutorialManager.Instance.hasCompletedCurrent = true;
                 }
+
+                deliveryParticleEffect.SetActive(true);
+                Invoke("StopDeliveryParticles", deliveryParticleEffect.GetComponentInChildren<ParticleSystem>().main.startLifetime.constant);
             }
         }
-        else if(collisionCrate.color != standColor && collision.transform.parent.gameObject.tag == "Player")
+        else if(collisionCrate.bombType != bombType && collision.transform.parent.gameObject.tag == "Player")
         {
             if (TutorialManager.Instance == null)
             {
