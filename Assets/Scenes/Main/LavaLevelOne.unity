@@ -3744,6 +3744,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 185604387534323052, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
+      propertyPath: currentLevelIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 185604387534323052, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
+      propertyPath: gearThreshold1
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 185604387534323052, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
+      propertyPath: gearThreshold2
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 185604387534323052, guid: 48f3155707106bb44849326a4529be57,
+        type: 3}
+      propertyPath: gearThreshold3
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 731599118264224041, guid: 48f3155707106bb44849326a4529be57,
         type: 3}
       propertyPath: hazards.Array.size

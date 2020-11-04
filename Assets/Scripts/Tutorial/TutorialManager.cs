@@ -330,6 +330,9 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
                 case 3:
                     HazardManager.Instance.TutorialSpawnHazards();
                     break;
+                case 4:
+                    LevelManager.Instance.levelEnd.TutorialGearAdder();
+                    break;
             }
 
             hasCompletedCurrent = false;

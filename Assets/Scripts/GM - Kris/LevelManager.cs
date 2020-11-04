@@ -9,9 +9,13 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     public GameObject pausePanel;
     public GameObject endPanel;
 
+    public LevelEndChecker levelEnd;
+
     new void Awake()
     {
         base.Awake();
+
+        levelEnd = GetComponent<LevelEndChecker>();
     }
 
     public void PauseToggle()
@@ -36,5 +40,12 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         GameManager.Instance.hasEnded = true;
         HelperUtilities.UpdateCursorLock(false);
         endPanel.SetActive(true);
+
+        levelEnd.CheckFinalScore();
+    }
+
+    public void CheckFinalScore()
+    {
+        levelEnd.CheckFinalScore();
     }
 }
