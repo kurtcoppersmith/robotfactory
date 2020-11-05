@@ -11,8 +11,8 @@ public class PowerSelecter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        item1.SetActive(PowerUpManager.Instance.powerUps[0].unlocked);
-        item2.SetActive(PowerUpManager.Instance.powerUps[1].unlocked);
-        item3.SetActive(PowerUpManager.Instance.powerUps[2].unlocked);
+        item1.SetActive(GameManager.Instance.GetGameData().boughtPowerups.strengthPowerup);
+        item2.SetActive(GameManager.Instance.GetGameData().boughtPowerups.speedPowerup);
+        item3.SetActive(GameManager.Instance.GetGameData().boughtPowerups.chasisPowerup);
     }
 }

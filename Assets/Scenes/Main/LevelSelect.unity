@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -522,19 +522,19 @@ MonoBehaviour:
   numberOfPowerUps: 3
   powerUps:
   - name: Strength
-    cost: 0
+    cost: 3
     itemSprite: {fileID: 21300000, guid: cf0037788f22d2b4e9fa59615e40a506, type: 3}
     unlocked: 0
     equipped1: 0
     equipped2: 0
   - name: Speed
-    cost: 0
+    cost: 1
     itemSprite: {fileID: 21300000, guid: cb6932caf25b5bb44b7fb307e54c9ad5, type: 3}
     unlocked: 0
     equipped1: 0
     equipped2: 0
   - name: Chasis
-    cost: 0
+    cost: 2
     itemSprite: {fileID: 21300000, guid: 4f8069d6bd7271643bb6a70c56ed1d1a, type: 3}
     unlocked: 0
     equipped1: 0
@@ -1946,7 +1946,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: a7249f470fcbfb04796b99726d70a424, type: 3}
+      objectReference: {fileID: 8300000, guid: c51fbea743aefd24fb1d83a2192293f7, type: 3}
     - target: {fileID: 9049778388907579470, guid: 6e1a1fc9886d02647adff9305e0e0f9a,
         type: 3}
       propertyPath: m_LocalPosition.x

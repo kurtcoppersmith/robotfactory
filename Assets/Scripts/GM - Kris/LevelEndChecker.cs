@@ -87,6 +87,7 @@ public class LevelEndChecker : MonoBehaviour
             if (!GameManager.Instance.gameData.scoreHolder.levelScores[currentLevelIndex].gear1)
             {
                 gears[0].enabled = true;
+                firstGearIcon.SetActive(true);
                 GameManager.Instance.addGears(1);
             }
 
@@ -96,6 +97,7 @@ public class LevelEndChecker : MonoBehaviour
                 if (!GameManager.Instance.gameData.scoreHolder.levelScores[currentLevelIndex].gear2)
                 {
                     gears[1].enabled = true;
+                    secondGearIcon.SetActive(true);
                     GameManager.Instance.addGears(1);
                 }
 
@@ -105,6 +107,7 @@ public class LevelEndChecker : MonoBehaviour
                     if (!GameManager.Instance.gameData.scoreHolder.levelScores[currentLevelIndex].gear3)
                     {
                         gears[2].enabled = true;
+                        thirdGearIcon.SetActive(true);
                         GameManager.Instance.addGears(1);
                     }
                 }

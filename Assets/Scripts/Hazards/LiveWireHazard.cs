@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LiveWireHazard : MonoBehaviour
 {
+    public string liveWireSound;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -22,17 +24,29 @@ public class LiveWireHazard : MonoBehaviour
 
                 if (TutorialManager.Instance == null)
                 {
-                    other.GetComponent<PlayerModel>().Fail();
+                    if (!other.gameObject.GetComponent<PlayerModel>().playerPowerups.chasisPower)
+                    {
+                        other.GetComponent<PlayerModel>().Fail();
+                        SoundEffectsManager.Instance.Play(liveWireSound);
+                    }
                 }
                 else
                 {
-                    other.GetComponent<PlayerModel>().TutorialFail();
+                    if (!other.gameObject.GetComponent<PlayerModel>().playerPowerups.chasisPower)
+                    {
+                        other.GetComponent<PlayerModel>().TutorialFail();
+                        SoundEffectsManager.Instance.Play(liveWireSound);
+                    }
                 }
             }
             else
             {
                 other.GetComponent<PlayerModel>().playerMovement.SetPlayerSlowed(true);
-                other.GetComponent<PlayerModel>().ChangeState(PlayerModel.PlayerState.Stunned);
+                if (!other.gameObject.GetComponent<PlayerModel>().playerPowerups.chasisPower)
+                {
+                    other.GetComponent<PlayerModel>().ChangeState(PlayerModel.PlayerState.Stunned);
+                    SoundEffectsManager.Instance.Play(liveWireSound);
+                }
             }
         }
     }

@@ -20,6 +20,14 @@ public class ScoreHolder {
 }
 
 [System.Serializable]
+public class BoughtPowerups
+{
+    public bool strengthPowerup;
+    public bool chasisPowerup;
+    public bool speedPowerup;
+}
+
+[System.Serializable]
 public class PlayerSettings
 {
     public float masterVolume;
@@ -32,6 +40,7 @@ public class GameData
 {
     public ScoreHolder scoreHolder = new ScoreHolder();
     public PlayerSettings playerSettings = new PlayerSettings();
+    public BoughtPowerups boughtPowerups = new BoughtPowerups();
     public int gears;
     public bool hasCompletedTutorial;
 }
@@ -131,6 +140,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         tempGameData.playerSettings.masterVolume = -10;
         tempGameData.playerSettings.musicVolume = -20;
         tempGameData.playerSettings.sfxVolume = -15;
+
+        tempGameData.boughtPowerups.strengthPowerup = false;
+        tempGameData.boughtPowerups.chasisPowerup = false;
+        tempGameData.boughtPowerups.speedPowerup = false;
 
         gameData = tempGameData;
 

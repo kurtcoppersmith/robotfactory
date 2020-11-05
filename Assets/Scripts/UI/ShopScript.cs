@@ -30,6 +30,17 @@ public class ShopScript : MonoBehaviour
         UpdateShop();
     }
 
+    void OnEnable()
+    {
+        if (itemHolder1.activeInHierarchy)
+        {
+            DisableBoughtItems(item1.itemNumber);
+        }
+
+        DisableBoughtItems(item2.itemNumber);
+        DisableBoughtItems(item3.itemNumber);
+    }
+
     public void UpdateShop()
     {
         //Set item names
@@ -64,27 +75,81 @@ public class ShopScript : MonoBehaviour
                 Debug.Log("Invalid itemNumber");
                 break;
         }
-        if(GameManager.Instance.returnGears() - price >= 0)
+        if(GameManager.Instance.GetGameData().gears - price >= 0)
         {
-            GameManager.Instance.setGears(GameManager.Instance.returnGears() - price);
+            GameManager.Instance.subGears(price);
             item.powerUps[itemNumber].unlocked = true;
-            //swich to disable item after you buy
-            switch (itemNumber)
+
+            switch (item.powerUps[itemNumber].name)
             {
-                case 0:
-                    itemHolder1.SetActive(false);
+                case "Strength":
+                    GameManager.Instance.GetGameData().boughtPowerups.strengthPowerup = true;
                     break;
-                case 1:
-                    itemHolder2.SetActive(false);
+                case "Chasis":
+                    GameManager.Instance.GetGameData().boughtPowerups.chasisPowerup = true;
                     break;
-                case 2:
-                    itemHolder3.SetActive(false);
+                case "Speed":
+                    GameManager.Instance.GetGameData().boughtPowerups.speedPowerup = true;
                     break;
             }
+
+            GameManager.Instance.SaveGameData();
+
+            //swich to disable item after you buy
+            DisableBoughtItems(itemNumber);
         }
         else
         {
             Debug.Log("Not enough Gears");
+        }
+    }
+
+    public void DisableBoughtItems(int itemNumber)
+    {
+        switch (PowerUpManager.Instance.powerUps[itemNumber].name)
+        {
+            case "Strength":
+                switch (itemNumber)
+                {
+                    case 0:
+                        itemHolder1.SetActive(!GameManager.Instance.GetGameData().boughtPowerups.strengthPowerup);
+                        break;
+                    case 1:
+                        itemHolder2.SetActive(!GameManager.Instance.GetGameData().boughtPowerups.strengthPowerup);
+                        break;
+                    case 2:
+                        itemHolder3.SetActive(!GameManager.Instance.GetGameData().boughtPowerups.strengthPowerup);
+                        break;
+                }
+                break;
+            case "Chasis":
+                switch (itemNumber)
+                {
+                    case 0:
+                        itemHolder1.SetActive(!GameManager.Instance.GetGameData().boughtPowerups.chasisPowerup);
+                        break;
+                    case 1:
+                        itemHolder2.SetActive(!GameManager.Instance.GetGameData().boughtPowerups.chasisPowerup);
+                        break;
+                    case 2:
+                        itemHolder3.SetActive(!GameManager.Instance.GetGameData().boughtPowerups.chasisPowerup);
+                        break;
+                }
+                break;
+            case "Speed":
+                switch (itemNumber)
+                {
+                    case 0:
+                        itemHolder1.SetActive(!GameManager.Instance.GetGameData().boughtPowerups.speedPowerup);
+                        break;
+                    case 1:
+                        itemHolder2.SetActive(!GameManager.Instance.GetGameData().boughtPowerups.speedPowerup);
+                        break;
+                    case 2:
+                        itemHolder3.SetActive(!GameManager.Instance.GetGameData().boughtPowerups.speedPowerup);
+                        break;
+                }
+                break;
         }
     }
 

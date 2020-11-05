@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class PlayerModel : MonoBehaviour
 {
+    [Header("Player General Variables")]
     public float playerStunnedTime = 3f;
     [Range(0,1)]
     public float bottomOfCharacter = 0.25f;
@@ -19,6 +20,7 @@ public class PlayerModel : MonoBehaviour
     public PlayerDash playerDash { get; private set; }
     public PlayerPowerups playerPowerups { get; private set; }
 
+    [Header("Player Debug Gizmos and Transforms")]
     public GameObject avatar;
 
     public PlayerPickup playerPickup;
@@ -28,11 +30,17 @@ public class PlayerModel : MonoBehaviour
     public Transform carryingPosition;
     public Transform strengthCarryingPosition;
 
+    [Header("Player Particle Effects")]
     public GameObject sparksParticleEffect;
 
     public ParticleSystem sparksParticleSystem;
     private float sparksParticleDuration;
 
+    [Header("Player Audio")]
+    public string explosionSound;
+    public string deliverySound;
+
+    [Header("Misc?")]
     public GameObject pickupIndicator;
 
     public GameObject currentPickup { get; private set; } = null;
@@ -186,6 +194,7 @@ public class PlayerModel : MonoBehaviour
         isHolding = false;
         ChangeState(PlayerState.Moving);
         playerPickup.currentColliders.Remove(currentPickup.GetComponent<Collider>());
+        SoundEffectsManager.Instance.Play(deliverySound);
         Destroy(currentPickup);
 
         TutorialManager.Instance.spawnedCrateAmount--;
@@ -206,6 +215,7 @@ public class PlayerModel : MonoBehaviour
             }
 
             GameManager.Instance.addScore(5);
+            SoundEffectsManager.Instance.Play(deliverySound);
 
             if (playerPowerups.strengthPower)
             {
@@ -241,6 +251,7 @@ public class PlayerModel : MonoBehaviour
         isHolding = false;
         ChangeState(PlayerState.Stunned);
         playerPickup.currentColliders.Remove(currentPickup.GetComponent<Collider>());
+        SoundEffectsManager.Instance.Play(explosionSound);
         Destroy(currentPickup);
 
         TutorialManager.Instance.spawnedCrateAmount--;
@@ -262,6 +273,7 @@ public class PlayerModel : MonoBehaviour
                 playerPowerups.SetStrengthPowerup(false);
             }
 
+            SoundEffectsManager.Instance.Play(explosionSound);
             RemoveCurrentPickup();
             ChangeState(PlayerState.Stunned);
         }
@@ -314,7 +326,7 @@ public class PlayerModel : MonoBehaviour
                 {
                     sparksParticleDuration = sparksParticleSystem.main.duration;
                 }
-                
+
                 //transform.DOPunchPosition(new Vector3(Random.Range(0.1f, 0.2f), 0, Random.Range(0.1f, 0.2f)), maxPlayerStunnedTime / 2);
                 break;
         }

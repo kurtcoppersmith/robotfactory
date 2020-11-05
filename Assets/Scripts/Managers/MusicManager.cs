@@ -27,11 +27,6 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
             }
         }
         base.Awake();
-
-        if (basicAudioSource != null)
-        {
-            basicAudioSource.Play();
-        }
     }
 
     void Start()
@@ -51,6 +46,11 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         masterMixer.SetFloat("musVol", GameManager.Instance.GetGameData().playerSettings.musicVolume);
 
         masterMixer.SetFloat("sfxVol", GameManager.Instance.GetGameData().playerSettings.sfxVolume);
+
+        if (basicAudioSource != null)
+        {
+            basicAudioSource.Play();
+        }
     }
 
     void Update()
