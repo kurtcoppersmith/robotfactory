@@ -20,9 +20,18 @@ public class ScoreHolder {
 }
 
 [System.Serializable]
+public class PlayerSettings
+{
+    public float masterVolume;
+    public float musicVolume;
+    public float sfxVolume;
+}
+
+[System.Serializable]
 public class GameData
 {
-    public ScoreHolder scoreHolder;
+    public ScoreHolder scoreHolder = new ScoreHolder();
+    public PlayerSettings playerSettings = new PlayerSettings();
     public int gears;
     public bool hasCompletedTutorial;
 }
@@ -107,6 +116,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
         tempGameData.gears = 0;
         tempGameData.hasCompletedTutorial = false;
+
+        tempGameData.playerSettings.masterVolume = -30;
+        tempGameData.playerSettings.musicVolume = -10;
+        tempGameData.playerSettings.sfxVolume = -10;
 
         gameData = tempGameData;
 
