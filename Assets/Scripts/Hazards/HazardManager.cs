@@ -209,7 +209,12 @@ public class HazardManager : SingletonMonoBehaviour<HazardManager>
     {
         GetNumOfHazards();
         int i = 0;
-        while(i<numOfHazards)
+        if (numOfHazards > hazards.Count)
+        {
+            numOfHazards = hazards.Count;
+        }
+
+        while (i<numOfHazards)
         {
             int ranInt = Random.Range(0, hazards.Count);
             if (hazards[ranInt].off)

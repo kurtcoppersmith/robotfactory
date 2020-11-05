@@ -63,8 +63,8 @@ public class PlayerPowerups : MonoBehaviour
             durationParticle.GetComponentInChildren<ParticleSystem>().startColor = speedColor;
             stopParticle.GetComponentInChildren<ParticleSystem>().startColor = speedColor;
 
-            durationParticle.SetActive(true);
-            //Invoke("DoDurationParticle", startParticle.GetComponentInChildren<ParticleSystem>().main.duration);
+            startParticle.SetActive(true);
+            Invoke("DoDurationParticle", startParticle.GetComponentInChildren<ParticleSystem>().main.duration);
         }
         else
         {
@@ -73,8 +73,8 @@ public class PlayerPowerups : MonoBehaviour
             if (durationParticle.activeInHierarchy == true)
             {
                 durationParticle.SetActive(false);
-                //stopParticle.SetActive(true);
-                //Invoke("StopFinalParticle", stopParticle.GetComponentInChildren<ParticleSystem>().main.duration);
+                stopParticle.SetActive(true);
+                Invoke("StopFinalParticle", stopParticle.GetComponentInChildren<ParticleSystem>().main.duration);
             }
         }
     }
@@ -105,16 +105,16 @@ public class PlayerPowerups : MonoBehaviour
             durationParticle.GetComponentInChildren<ParticleSystem>().startColor = chasisColor;
             stopParticle.GetComponentInChildren<ParticleSystem>().startColor = chasisColor;
 
-            durationParticle.SetActive(true);
-            //Invoke("DoDurationParticle", startParticle.GetComponentInChildren<ParticleSystem>().main.duration);
+            startParticle.SetActive(true);
+            Invoke("DoDurationParticle", startParticle.GetComponentInChildren<ParticleSystem>().main.duration);
         }
         else
         {
             if(durationParticle.activeInHierarchy == true)
             {
                 durationParticle.SetActive(false);
-                //stopParticle.SetActive(true);
-                //Invoke("StopFinalParticle", stopParticle.GetComponentInChildren<ParticleSystem>().main.duration);
+                stopParticle.SetActive(true);
+                Invoke("StopFinalParticle", stopParticle.GetComponentInChildren<ParticleSystem>().main.duration);
             }
         }
     }
@@ -144,8 +144,8 @@ public class PlayerPowerups : MonoBehaviour
             durationParticle.GetComponentInChildren<ParticleSystem>().startColor = strengthColor;
             stopParticle.GetComponentInChildren<ParticleSystem>().startColor = strengthColor;
 
-            durationParticle.SetActive(true);
-            //Invoke("DoDurationParticle", startParticle.GetComponentInChildren<ParticleSystem>().main.duration);
+            startParticle.SetActive(true);
+            Invoke("DoDurationParticle", startParticle.GetComponentInChildren<ParticleSystem>().main.duration);
         }
         else
         {
@@ -154,10 +154,17 @@ public class PlayerPowerups : MonoBehaviour
             if (durationParticle.activeInHierarchy == true)
             {
                 durationParticle.SetActive(false);
-                //stopParticle.SetActive(true);
-                //Invoke("StopFinalParticle", stopParticle.GetComponentInChildren<ParticleSystem>().main.duration);
+                stopParticle.SetActive(true);
+                Invoke("StopFinalParticle", stopParticle.GetComponentInChildren<ParticleSystem>().main.duration);
             }
         }
+    }
+
+    public void ResetAllPowerups()
+    {
+        SetChasisPowerup(false);
+        SetSpeedPowerup(false);
+        SetStrengthPowerup(false);
     }
 
     void Update()

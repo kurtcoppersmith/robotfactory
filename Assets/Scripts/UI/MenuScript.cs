@@ -23,6 +23,8 @@ public class MenuScript : MonoBehaviour
             GameManager.Instance.setScore(0);
             GameManager.Instance.hasEnded = false;
             GameManager.Instance.isPaused = false;
+            GameManager.Instance.item1 = "";
+            GameManager.Instance.item2 = "";
         }
 
         checkLevel();
@@ -46,6 +48,15 @@ public class MenuScript : MonoBehaviour
 
     public void ResetLevel()
     {
+        Time.timeScale = 1.0f;
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.setTime(150);
+            GameManager.Instance.setScore(0);
+            GameManager.Instance.hasEnded = false;
+            GameManager.Instance.isPaused = false;
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

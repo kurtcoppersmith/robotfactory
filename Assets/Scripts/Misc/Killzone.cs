@@ -17,6 +17,7 @@ public class Killzone : MonoBehaviour
 
             other.gameObject.GetComponent<PlayerMovement>().SetPlayerIced(false);
             other.gameObject.GetComponent<PlayerMovement>().SetPlayerSlowed(false);
+            other.gameObject.GetComponent<PlayerModel>().playerPowerups.ResetAllPowerups();
             
             if (other.GetComponent<PlayerModel>().isHolding)
             {
