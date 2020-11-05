@@ -10,7 +10,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     public GameObject endPanel;
 
     public LevelEndChecker levelEnd;
-    public EndScoreDisplay endCard;
+    //public EndScoreDisplay endCard;
 
     public int score1 = 10;
     public int score2 = 20;
@@ -46,7 +46,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         GameManager.Instance.hasEnded = true;
         HelperUtilities.UpdateCursorLock(false);
         endPanel.SetActive(true);
-        endCard.displayGears();
+        //levelEnd.displayGears();
         
 
         levelEnd.CheckFinalScore();

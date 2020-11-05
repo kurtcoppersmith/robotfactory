@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class LevelEndChecker : MonoBehaviour
 {
@@ -9,11 +11,16 @@ public class LevelEndChecker : MonoBehaviour
     public int gearThreshold2 = 0;
     public int gearThreshold3 = 0;
 
+    public GameObject tutorialGearIcon;
     public GameObject firstGearIcon;
     public GameObject secondGearIcon;
     public GameObject thirdGearIcon;
 
-    public GameObject tutorialGearIcon;
+    public Image[] gears;
+    public TextMeshProUGUI scoreText;
+    public LevelManager scores;
+
+    private int maxGears;
 
     public void TutorialGearAdder()
     {
@@ -28,22 +35,47 @@ public class LevelEndChecker : MonoBehaviour
     {
         if (GameManager.Instance.GetGameData().scoreHolder.levelScores[currentLevelIndex].gear1)
         {
+            gears[0].enabled = true;
             firstGearIcon.SetActive(true);
         }
 
         if (GameManager.Instance.GetGameData().scoreHolder.levelScores[currentLevelIndex].gear2)
         {
+            gears[1].enabled = true;
             secondGearIcon.SetActive(true);
         }
 
         if (GameManager.Instance.GetGameData().scoreHolder.levelScores[currentLevelIndex].gear3)
         {
+            gears[2].enabled = true;
             thirdGearIcon.SetActive(true);
+        }
+
+        maxGears = gears.Length;
+        scores = FindObjectOfType<LevelManager>();
+    }
+
+    public void displayGears()
+    {
+        int playerScore = GameManager.Instance.returnScore();
+        if (playerScore >= scores.getGearScore(1))
+        {
+            gears[0].enabled = true;
+        }
+        if (playerScore >= scores.getGearScore(2))
+        {
+            gears[1].enabled = true;
+        }
+        if (playerScore >= scores.getGearScore(3))
+        {
+            gears[2].enabled = true;
         }
     }
 
     public void CheckFinalScore()
     {
+        //scoreText.text = $"{ GameManager.Instance.returnScore()}";
+
         bool gear1 = false;
         bool gear2 = false;
         bool gear3 = false;
@@ -54,6 +86,7 @@ public class LevelEndChecker : MonoBehaviour
             gear1 = true;
             if (!GameManager.Instance.gameData.scoreHolder.levelScores[currentLevelIndex].gear1)
             {
+                gears[0].enabled = true;
                 GameManager.Instance.addGears(1);
             }
 
@@ -62,6 +95,7 @@ public class LevelEndChecker : MonoBehaviour
                 gear2 = true;
                 if (!GameManager.Instance.gameData.scoreHolder.levelScores[currentLevelIndex].gear2)
                 {
+                    gears[1].enabled = true;
                     GameManager.Instance.addGears(1);
                 }
 
@@ -70,6 +104,7 @@ public class LevelEndChecker : MonoBehaviour
                     gear3 = true;
                     if (!GameManager.Instance.gameData.scoreHolder.levelScores[currentLevelIndex].gear3)
                     {
+                        gears[2].enabled = true;
                         GameManager.Instance.addGears(1);
                     }
                 }
