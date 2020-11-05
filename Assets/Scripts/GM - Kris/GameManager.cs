@@ -92,7 +92,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
-    void SaveGameData()
+    public void LoadGameData()
+    {
+        gameData = SaveSystem.LoadData<GameData>(saveFile);
+
+        if (gameData == null)
+        {
+            ResetGameData();
+        }
+    }
+
+    public void SaveGameData()
     {
         SaveSystem.SaveData<GameData>(gameData, saveFile);
     }
@@ -101,6 +111,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         GameData tempGameData = new GameData();
         tempGameData.scoreHolder = new ScoreHolder();
+        tempGameData.playerSettings = new PlayerSettings();
 
         for (int i = 0; i < amountOfLevels; i++)
         {
@@ -117,9 +128,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         tempGameData.gears = 0;
         tempGameData.hasCompletedTutorial = false;
 
-        tempGameData.playerSettings.masterVolume = -30;
-        tempGameData.playerSettings.musicVolume = -10;
-        tempGameData.playerSettings.sfxVolume = -10;
+        tempGameData.playerSettings.masterVolume = -10;
+        tempGameData.playerSettings.musicVolume = -20;
+        tempGameData.playerSettings.sfxVolume = -15;
 
         gameData = tempGameData;
 

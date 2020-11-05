@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using DG.Tweening;
 
 public class MusicManager : SingletonMonoBehaviour<MusicManager>
@@ -13,6 +14,8 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
     public float fadeInTime = 3;
     public float timeUntilPanicMusic = 61f;
+
+    public AudioMixer masterMixer;
 
     new void Awake()
     {
@@ -36,7 +39,18 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         if (Instance == this)
         {
             DontDestroyOnLoad(this.gameObject);
+
+            SetAudioLevels();
         }
+    }
+
+    public void SetAudioLevels()
+    {
+        masterMixer.SetFloat("mastVol", GameManager.Instance.GetGameData().playerSettings.masterVolume);
+
+        masterMixer.SetFloat("musVol", GameManager.Instance.GetGameData().playerSettings.musicVolume);
+
+        masterMixer.SetFloat("sfxVol", GameManager.Instance.GetGameData().playerSettings.sfxVolume);
     }
 
     void Update()
