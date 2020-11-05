@@ -10,12 +10,18 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     public GameObject endPanel;
 
     public LevelEndChecker levelEnd;
+    public EndScoreDisplay endCard;
+
+    public int score1 = 10;
+    public int score2 = 20;
+    public int score3 = 30;
 
     new void Awake()
     {
         base.Awake();
 
         levelEnd = GetComponent<LevelEndChecker>();
+        //endCard = FindObjectOfType <EndScoreDisplay>();
     }
 
     public void PauseToggle()
@@ -40,6 +46,8 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         GameManager.Instance.hasEnded = true;
         HelperUtilities.UpdateCursorLock(false);
         endPanel.SetActive(true);
+        endCard.displayGears();
+        
 
         levelEnd.CheckFinalScore();
     }
@@ -47,5 +55,20 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     public void CheckFinalScore()
     {
         levelEnd.CheckFinalScore();
+    }
+
+    public int getGearScore(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                return score1;
+            case 2:
+                return score2;
+            case 3:
+                return score3;
+            default:
+                return score1;
+        }
     }
 }

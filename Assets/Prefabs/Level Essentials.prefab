@@ -141,6 +141,11 @@ MonoBehaviour:
   mainCam: {fileID: 8394764549274472464}
   pausePanel: {fileID: 8090619840175743749}
   endPanel: {fileID: 8090619839301278768}
+  levelEnd: {fileID: 0}
+  endCard: {fileID: 0}
+  score1: 10
+  score2: 20
+  score3: 30
 --- !u!114 &185604387534323052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,6 +598,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -13.099976
       objectReference: {fileID: 0}
+    - target: {fileID: 1807894758741330136, guid: 8b220d5daef6f354090b268bee17a09e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1807894759031729323, guid: 8b220d5daef6f354090b268bee17a09e,
         type: 3}
       propertyPath: m_Name
@@ -703,6 +713,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3337489380227509579, guid: 8b220d5daef6f354090b268bee17a09e,
+        type: 3}
+      propertyPath: scores
+      value: 
+      objectReference: {fileID: 7637801264707167398}
     - target: {fileID: 6204850546550877738, guid: 8b220d5daef6f354090b268bee17a09e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
