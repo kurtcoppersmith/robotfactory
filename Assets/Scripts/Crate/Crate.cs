@@ -59,6 +59,7 @@ public class Crate : MonoBehaviour//, IPooledObject
         transform.rotation = originalRotation;
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        power = PowerUp.None;
     }
 
     // Update is called once per frame

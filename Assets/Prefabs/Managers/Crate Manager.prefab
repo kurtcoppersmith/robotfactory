@@ -139,9 +139,11 @@ MonoBehaviour:
   RemaningSpawnTime: 0
   duration: 35
   crateSpeed: 5
+  tillNextPowerMin: 3
+  tillNextPowerMax: 7
+  spawnPowerCrate: 0
   Crate: {fileID: 6697691059644475954, guid: 357842518842f404b967951acdb59d9d, type: 3}
   CrateResetObject: {fileID: 4784010335072337791}
-  pooler: {fileID: 0}
   spawnLocations:
   - {fileID: 2606852249854301625}
   spawnNumbers:
