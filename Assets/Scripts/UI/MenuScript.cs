@@ -23,8 +23,6 @@ public class MenuScript : MonoBehaviour
             GameManager.Instance.setScore(0);
             GameManager.Instance.hasEnded = false;
             GameManager.Instance.isPaused = false;
-            GameManager.Instance.item1 = "";
-            GameManager.Instance.item2 = "";
         }
 
         checkLevel();

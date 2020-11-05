@@ -30,6 +30,22 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
         gm = GameManager.Instance;
     }
 
+    void Start()
+    {
+        for (int i = 0; i < powerUps.Length; i++)
+        {
+            if (powerUps[i].name == GameManager.Instance.item1)
+            {
+                b1.image.sprite = powerUps[i].itemSprite;
+            }
+
+            if (powerUps[i].name == GameManager.Instance.item2)
+            {
+                b2.image.sprite = powerUps[i].itemSprite;
+            }
+        }
+    }
+
     public void setB1(bool b)
     {
         isB1 = b;

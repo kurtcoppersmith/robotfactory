@@ -23,6 +23,8 @@ public class ShopScript : MonoBehaviour
     public GameObject itemHolder2;
     public GameObject itemHolder3;
     private PowerUpManager item;
+
+    public TMPro.TextMeshProUGUI gearsMesh;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,11 @@ public class ShopScript : MonoBehaviour
 
         DisableBoughtItems(item2.itemNumber);
         DisableBoughtItems(item3.itemNumber);
+    }
+
+    void Update()
+    {
+        gearsMesh.text = $"Gears: {GameManager.Instance.GetGameData().gears}";
     }
 
     public void UpdateShop()
