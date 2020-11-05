@@ -43,6 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71807150d5992a048aec2ace2b285b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazaradGameObject: {fileID: 5553283467922761412, guid: 0606442370c26884d825601e798ef99c,
-    type: 3}
+  oilSlickGameObject: {fileID: 0}
+  liveWireGameObject: {fileID: 0}
+  difficulty:
+    easy: 0
+    medium: 12
+    hard: 24
+    veryHard: 33
   hazards: []
