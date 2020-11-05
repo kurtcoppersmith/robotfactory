@@ -55,6 +55,7 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
             }
             else
                 b1.image.sprite = null;
+            setPower(b1.image.sprite);
         }
         else
         {
@@ -72,6 +73,7 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
             }
             else
                 b2.image.sprite = null;
+            setPower(b2.image.sprite);
         }
     }
 
