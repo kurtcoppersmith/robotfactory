@@ -142,7 +142,6 @@ MonoBehaviour:
   pausePanel: {fileID: 8090619840175743749}
   endPanel: {fileID: 8090619839301278768}
   levelEnd: {fileID: 0}
-  endCard: {fileID: 0}
   score1: 10
   score2: 20
   score3: 30
@@ -166,6 +165,9 @@ MonoBehaviour:
   secondGearIcon: {fileID: 8034784859047088428}
   thirdGearIcon: {fileID: 3617730422095667452}
   tutorialGearIcon: {fileID: 8034784859047088428}
+  gears: []
+  scoreText: {fileID: 0}
+  scores: {fileID: 0}
 --- !u!1 &8255926737371857906
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +750,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseImage
       objectReference: {fileID: 0}
+    - target: {fileID: 9025545417167543776, guid: 8b220d5daef6f354090b268bee17a09e,
+        type: 3}
+      propertyPath: scores
+      value: 
+      objectReference: {fileID: 7637801264707167398}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b220d5daef6f354090b268bee17a09e, type: 3}
 --- !u!224 &8090619838511642695 stripped
