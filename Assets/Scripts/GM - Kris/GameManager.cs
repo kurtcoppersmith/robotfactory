@@ -116,7 +116,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         SaveSystem.SaveData<GameData>(gameData, saveFile);
     }
 
-    void ResetGameData()
+    public void ResetGameData()
     {
         GameData tempGameData = new GameData();
         tempGameData.scoreHolder = new ScoreHolder();
