@@ -14,6 +14,8 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     private int levelMax = 3;
     public int curLevel = 0;
 
+    public List<GameObject> levelList = new List<GameObject>();
+
     void Start()
     {
         curLevel = 0;

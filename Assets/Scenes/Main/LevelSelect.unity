@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -160,6 +160,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &24552345 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8927218160048894256, guid: 8860378b871334845ae26273c7da6660,
+    type: 3}
+  m_PrefabInstance: {fileID: 1257496346}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &26761142
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +244,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26761142}
   m_CullTransparentMesh: 0
+--- !u!1 &50038184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8927218160048894256, guid: 8860378b871334845ae26273c7da6660,
+    type: 3}
+  m_PrefabInstance: {fileID: 419637272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &51471892
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +361,11 @@ MonoBehaviour:
   offset: 500
   smooth: 0.25
   curLevel: 0
+  levelList:
+  - {fileID: 1113441548}
+  - {fileID: 24552345}
+  - {fileID: 50038184}
+  - {fileID: 394996005}
 --- !u!4 &99984280
 Transform:
   m_ObjectHideFlags: 0
@@ -1140,6 +1157,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4237763258622345487, guid: 028ba0ae9b8706c49ae5b9dd6fcd6147,
     type: 3}
   m_PrefabInstance: {fileID: 355939801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &394996005 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8927218160048894256, guid: 8860378b871334845ae26273c7da6660,
+    type: 3}
+  m_PrefabInstance: {fileID: 860671631}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &419637272
 PrefabInstance:
@@ -3974,6 +3997,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109486908}
   m_CullTransparentMesh: 0
+--- !u!1 &1113441548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8927218160048894256, guid: 8860378b871334845ae26273c7da6660,
+    type: 3}
+  m_PrefabInstance: {fileID: 4549974436572175166}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1131271618
 GameObject:
   m_ObjectHideFlags: 0

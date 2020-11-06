@@ -12,6 +12,10 @@ public class LevelProperties : MonoBehaviour
 
     void Start()
     {
-        //gear1 = Game
+        gear1.enabled = GameManager.Instance.GetGameData().scoreHolder.levelScores[UIManager.Instance.levelList.FindIndex(a => a == (transform.gameObject))].gear1;
+        gear2.enabled = GameManager.Instance.GetGameData().scoreHolder.levelScores[UIManager.Instance.levelList.FindIndex(a => a == (transform.gameObject))].gear2;
+        gear3.enabled = GameManager.Instance.GetGameData().scoreHolder.levelScores[UIManager.Instance.levelList.FindIndex(a => a == (transform.gameObject))].gear3;
+
+        highScoreMesh.text = $"High Score: {GameManager.Instance.GetGameData().scoreHolder.levelScores[UIManager.Instance.levelList.FindIndex(a => a == (transform.gameObject))].highScore}";
     }
 }
