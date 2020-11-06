@@ -75,8 +75,6 @@ public class LevelEndChecker : MonoBehaviour
 
     public void CheckFinalScore()
     {
-        //scoreText.text = $"{ GameManager.Instance.returnScore()}";
-
         bool gear1 = false;
         bool gear2 = false;
         bool gear3 = false;
@@ -116,5 +114,8 @@ public class LevelEndChecker : MonoBehaviour
         }
 
         GameManager.Instance.SetScoreAndGears(currentLevelIndex, currentScore, gear1, gear2, gear3);
+
+        highscoreText.text = $"High Score: {GameManager.Instance.GetGameData().scoreHolder.levelScores[currentLevelIndex].highScore}";
+        scoreText.text = $"Score: {currentScore}";
     }
 }
