@@ -250,6 +250,11 @@ public class PlayerMovement : MonoBehaviour
 
     bool CheckForIce()
     {
+        if (playerModel.playerPowerups.chasisPower)
+        {
+            return false;
+        }
+
         RaycastHit hitInfo;
         if (Physics.Raycast(transform.position + new Vector3(groundCheckBounds, 0, groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance))
         {
