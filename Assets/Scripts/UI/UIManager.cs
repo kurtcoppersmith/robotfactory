@@ -47,12 +47,20 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     private void slideRight()
     {
         curLevel++;
-        levelsPanel.DOAnchorPos(new Vector2(levelsPanel.localPosition.x - offset, 0), smooth);
+        levelsPanel.DOKill(true);
+        if (DOTween.PlayingTweens() == null)
+        {
+            levelsPanel.DOAnchorPos(new Vector2(levelsPanel.localPosition.x - offset, 0), smooth);
+        }    
     }
 
     private void slideLeft()
     {
         curLevel--;
-        levelsPanel.DOAnchorPos(new Vector2(levelsPanel.localPosition.x + offset, 0), smooth);
+
+        if(DOTween.PlayingTweens() == null)
+        {
+            levelsPanel.DOAnchorPos(new Vector2(levelsPanel.localPosition.x + offset, 0), smooth);
+        }
     }
 }
