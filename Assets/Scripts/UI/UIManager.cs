@@ -46,10 +46,11 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
 
     private void slideRight()
     {
-        curLevel++;
-        levelsPanel.DOKill(true);
-        if (DOTween.PlayingTweens() == null)
+        
+        //levelsPanel.DOKill(true);
+        if (!DOTween.IsTweening(levelsPanel))
         {
+            curLevel++;
             levelsPanel.DOAnchorPos(new Vector2(levelsPanel.localPosition.x - offset, 0), smooth);
         }    
     }
@@ -60,6 +61,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
         levelsPanel.DOKill(true);
         if(DOTween.PlayingTweens() == null)
         {
+            curLevel--;
             levelsPanel.DOAnchorPos(new Vector2(levelsPanel.localPosition.x + offset, 0), smooth);
         }
     }
