@@ -18,6 +18,7 @@ public class LevelEndChecker : MonoBehaviour
 
     public Image[] gears;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highscoreText;
     public LevelManager scores;
 
     private int maxGears;
