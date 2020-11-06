@@ -837,7 +837,6 @@ GameObject:
   - component: {fileID: 1807894758741330139}
   - component: {fileID: 1807894758741330141}
   - component: {fileID: 1807894758741330138}
-  - component: {fileID: 9025545417167543776}
   m_Layer: 5
   m_Name: EndPanel
   m_TagString: Untagged
@@ -906,33 +905,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9025545417167543776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1807894758741330136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870e2a0d80721024ca5b843e91231a03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLevelIndex: 0
-  gearThreshold1: 0
-  gearThreshold2: 0
-  gearThreshold3: 0
-  tutorialGearIcon: {fileID: 0}
-  firstGearIcon: {fileID: 0}
-  secondGearIcon: {fileID: 0}
-  thirdGearIcon: {fileID: 0}
-  gears:
-  - {fileID: 4696937389522937502}
-  - {fileID: 3975360388392934210}
-  - {fileID: 3419626162715886998}
-  scoreText: {fileID: 1807894758365880310}
-  highscoreText: {fileID: 2213835661831232634}
-  scores: {fileID: 0}
 --- !u!1 &1807894759031729323
 GameObject:
   m_ObjectHideFlags: 0

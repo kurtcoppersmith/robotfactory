@@ -57,7 +57,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     private void slideLeft()
     {
         curLevel--;
-
+        levelsPanel.DOKill(true);
         if(DOTween.PlayingTweens() == null)
         {
             levelsPanel.DOAnchorPos(new Vector2(levelsPanel.localPosition.x + offset, 0), smooth);
