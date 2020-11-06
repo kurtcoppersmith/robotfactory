@@ -4,18 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class UIManager : MonoBehaviour
+public class UIManager : SingletonMonoBehaviour<UIManager>
 {
     public RectTransform levelsPanel;
 
     public int offset = 500;
     public float smooth = 0.25f;
 
-    private int levelMax = 4;
+    private int levelMax = 3;
     public int curLevel = 0;
 
-    private void Start()
+    void Start()
     {
+        curLevel = 0;
         levelsPanel.DOAnchorPos(Vector2.zero, 0);
     }
 
