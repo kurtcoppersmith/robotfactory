@@ -20,6 +20,8 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     {
         curLevel = 0;
         levelsPanel.DOAnchorPos(Vector2.zero, 0);
+
+        DOTween.KillAll();
     }
 
     public void nextLevelButton()
@@ -46,9 +48,8 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
 
     private void slideRight()
     {
-        
-        //levelsPanel.DOKill(true);
-        if (!DOTween.IsTweening(levelsPanel))
+        levelsPanel.DOKill(true);
+        if (DOTween.TotalPlayingTweens() == 0)
         {
             curLevel++;
             levelsPanel.DOAnchorPos(new Vector2(levelsPanel.localPosition.x - offset, 0), smooth);
@@ -57,9 +58,8 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
 
     private void slideLeft()
     {
-        curLevel--;
         levelsPanel.DOKill(true);
-        if(DOTween.PlayingTweens() == null)
+        if(DOTween.TotalPlayingTweens() == 0)
         {
             curLevel--;
             levelsPanel.DOAnchorPos(new Vector2(levelsPanel.localPosition.x + offset, 0), smooth);

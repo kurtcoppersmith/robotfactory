@@ -31,11 +31,39 @@ public class MenuScript : MonoBehaviour
 
     public void MainMenu()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(mainMenu);
+    }
+
+    public void MainMenuPlay()
+    {
+        Time.timeScale = 1.0f;
+        if (GameManager.Instance.GetGameData().hasCompletedTutorial)
+        {
+            LevelSelectMenu();
+        }
+        else
+        {
+            SceneManager.LoadScene(tutorialLevel);
+        }
+    }
+
+    public void ExitTutorial()
+    {
+        Time.timeScale = 1.0f;
+        if (GameManager.Instance.GetGameData().hasCompletedTutorial)
+        {
+            LevelSelectMenu();
+        }
+        else
+        {
+            SceneManager.LoadScene(mainMenu);
+        }
     }
 
     public void LevelSelectMenu()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(levelSelect);
     }
 

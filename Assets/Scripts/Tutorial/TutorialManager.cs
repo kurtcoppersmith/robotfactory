@@ -36,6 +36,11 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
     private bool textBoxUnderscore = false;
     private InputKeyUI inputKeyUI;
 
+    [Header("Input Variables")]
+    public InputActionAsset inputActionAsset;
+    public string inputActionMapName;
+    private InputActionMap inputActionMap = null;
+
     [Header("Objective Counter")]
     public int currentObjective = 0;
 
@@ -81,7 +86,13 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
 
     void Start()
     {
+        Invoke("InitScreen", 1);
+    }
+
+    void InitScreen()
+    {
         dummyUIText.text = "";
+
         switch (inputKeyUI.lastSeenControlScheme)
         {
             case KeyboardSchemeName:
@@ -92,6 +103,9 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
                 break;
             case XBoxSchemeName:
                 dummyUIText.DOText(descriptions[currentObjective].currentObjectivesXBox[currentTextBox], 4.5f, true);
+                break;
+            default:
+                Debug.Log("Broken.");
                 break;
         }
     }
@@ -321,9 +335,9 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
             switch (currentObjective)
             {
                 case 1:
-                    atomSign.transform.DOLocalMoveY(2.34f, 3.0f);
-                    fuseSign.transform.DOLocalMoveY(2.34f, 3.0f);
-                    tntSign.transform.DOLocalMoveY(2.34f, 3.0f);
+                    atomSign.transform.DOLocalMoveY(1.90f, 3.0f);
+                    fuseSign.transform.DOLocalMoveY(1.90f, 3.0f);
+                    tntSign.transform.DOLocalMoveY(1.90f, 3.0f);
 
                     spawnedCrateAmount++;
                     break;

@@ -351,7 +351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1807894757736822764
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2245,7 +2245,7 @@ PrefabInstance:
     - target: {fileID: 5695610997947314186, guid: e402f118ff449174c8b926fe45829b41,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: MainMenu
+      value: LevelSelect
       objectReference: {fileID: 0}
     - target: {fileID: 5695610997947314187, guid: e402f118ff449174c8b926fe45829b41,
         type: 3}
@@ -2709,7 +2709,7 @@ PrefabInstance:
     - target: {fileID: 5695610997947314186, guid: e402f118ff449174c8b926fe45829b41,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5695610997947314186, guid: e402f118ff449174c8b926fe45829b41,
         type: 3}
@@ -2725,7 +2725,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8697876805883762860}
+      objectReference: {fileID: 5129607618524456391}
     - target: {fileID: 5695610997947314186, guid: e402f118ff449174c8b926fe45829b41,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -2764,6 +2764,11 @@ PrefabInstance:
     - target: {fileID: 5695610997947314186, guid: e402f118ff449174c8b926fe45829b41,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695610997947314186, guid: e402f118ff449174c8b926fe45829b41,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5695610997947314187, guid: e402f118ff449174c8b926fe45829b41,

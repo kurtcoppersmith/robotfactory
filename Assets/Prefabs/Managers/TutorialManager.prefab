@@ -438,15 +438,19 @@ MonoBehaviour:
   descriptionTextMesh: {fileID: 2500392565723190382}
   dummyUIText: {fileID: 5772382971891874464}
   textBoxTimer: 0.5
-  currentObjective: 0
-  cratePrefab: {fileID: 6697691059644475954, guid: 357842518842f404b967951acdb59d9d,
+  inputActionAsset: {fileID: -944628639613478452, guid: 5cdb392dce75a53428c50d2947e8e176,
     type: 3}
+  inputActionMapName: TutorialsController
+  currentObjective: 0
+  atomBomb: {fileID: 0}
+  fuseBomb: {fileID: 0}
+  tntBomb: {fileID: 0}
   spawnLocation: {fileID: 2500392565398923042}
   movingSpawnLocation: {fileID: 2500392565615538137}
   spawnedCrateAmount: 0
-  redBelt: {fileID: 0}
-  blueBelt: {fileID: 0}
-  greenBelt: {fileID: 0}
+  atomSign: {fileID: 0}
+  fuseSign: {fileID: 0}
+  tntSign: {fileID: 0}
   hazardSpawnTimer: 10
   hitWire: 0
   hitOil: 0
