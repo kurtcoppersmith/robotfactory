@@ -207,6 +207,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 16976584}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &16976586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4966536487776605366, guid: d5bfe34554ec51e4995bb2bdc6ab5326,
+    type: 3}
+  m_PrefabInstance: {fileID: 16976584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &16976587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16976586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ad7c49a7d4acf43a90473409817bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  degreesPerSecond: 15
+  amplitude: 0.1
+  frequency: 1
 --- !u!1001 &38853532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -545,6 +566,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1552456553}
     m_Modifications:
+    - target: {fileID: 397319828668658837, guid: 0ca5d9ced83d27f4c98effd31dc36674,
+        type: 3}
+      propertyPath: amplitude
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7260750429486370711, guid: 0ca5d9ced83d27f4c98effd31dc36674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -715,6 +741,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1552456553}
     m_Modifications:
+    - target: {fileID: 397319828668658837, guid: 0ca5d9ced83d27f4c98effd31dc36674,
+        type: 3}
+      propertyPath: amplitude
+      value: 0.12
+      objectReference: {fileID: 0}
     - target: {fileID: 7260750429486370711, guid: 0ca5d9ced83d27f4c98effd31dc36674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2114,6 +2145,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 565109686}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &565109688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4966536487776605366, guid: d5bfe34554ec51e4995bb2bdc6ab5326,
+    type: 3}
+  m_PrefabInstance: {fileID: 565109686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &565109689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565109688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ad7c49a7d4acf43a90473409817bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  degreesPerSecond: 15
+  amplitude: 0.1
+  frequency: 1
 --- !u!1001 &592928635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6095,6 +6147,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1708614612}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1708614614 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8144027446799797116, guid: 562955b0e224e584e82c94ec6c999983,
+    type: 3}
+  m_PrefabInstance: {fileID: 1708614612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1708614615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708614614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ad7c49a7d4acf43a90473409817bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  degreesPerSecond: 15
+  amplitude: 0.25
+  frequency: 1
 --- !u!1001 &1759298707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6779,6 +6852,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1955602440}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1955602442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4966536487776605366, guid: d5bfe34554ec51e4995bb2bdc6ab5326,
+    type: 3}
+  m_PrefabInstance: {fileID: 1955602440}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1955602443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955602442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ad7c49a7d4acf43a90473409817bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  degreesPerSecond: 15
+  amplitude: 0.16
+  frequency: 1
 --- !u!1001 &1956230158
 PrefabInstance:
   m_ObjectHideFlags: 0

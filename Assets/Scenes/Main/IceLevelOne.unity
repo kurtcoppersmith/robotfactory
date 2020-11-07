@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1276,6 +1276,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 245181570}
     m_Modifications:
+    - target: {fileID: 27859358733807859, guid: 2673d1cd0dc7b9e4a911f64f33054e16,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 148263c22fe575c4b8ab1efcead4bb55, type: 2}
     - target: {fileID: 1164696366843186076, guid: 2673d1cd0dc7b9e4a911f64f33054e16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3449,6 +3454,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 494943250}
     m_Modifications:
+    - target: {fileID: 4808738620711472733, guid: 887b7159d0542f146a2973a3d125777c,
+        type: 3}
+      propertyPath: degreesPerSecond
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808738620711472733, guid: 887b7159d0542f146a2973a3d125777c,
+        type: 3}
+      propertyPath: amplitude
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8102955541201580320, guid: 887b7159d0542f146a2973a3d125777c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5220,6 +5235,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 494943250}
     m_Modifications:
+    - target: {fileID: 4808738620711472733, guid: 887b7159d0542f146a2973a3d125777c,
+        type: 3}
+      propertyPath: degreesPerSecond
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808738620711472733, guid: 887b7159d0542f146a2973a3d125777c,
+        type: 3}
+      propertyPath: amplitude
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8102955541201580320, guid: 887b7159d0542f146a2973a3d125777c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6575,6 +6600,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FrozenSnowman
+      objectReference: {fileID: 0}
+    - target: {fileID: 6473217569129072650, guid: 3ba589ba63da3ac4fa2175f5f7e3111e,
+        type: 3}
+      propertyPath: amplitude
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6699578754823538313, guid: 3ba589ba63da3ac4fa2175f5f7e3111e,
         type: 3}

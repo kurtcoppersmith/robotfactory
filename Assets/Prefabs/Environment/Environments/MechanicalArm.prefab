@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6011326519207772210}
   - component: {fileID: 8397087774122128632}
   - component: {fileID: 999345959438765270}
+  - component: {fileID: 397319828668658837}
   m_Layer: 0
   m_Name: MechanicalArm
   m_TagString: Untagged
@@ -94,3 +95,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3577713583717642487, guid: 46ea74922e85c274b94ec2a923bfa0b4, type: 3}
+--- !u!114 &397319828668658837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8036830384882488621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ad7c49a7d4acf43a90473409817bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  degreesPerSecond: 15
+  amplitude: 0.25
+  frequency: 1
