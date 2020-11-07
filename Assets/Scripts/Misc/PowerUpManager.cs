@@ -9,6 +9,7 @@ public class PowerUps
     public string name;
     public int cost;
     public Sprite itemSprite;
+    public string description;
     public bool unlocked;
     public bool equipped1;
     public bool equipped2;
@@ -62,7 +63,6 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
                     powerUps[i].equipped1 = false;
             }
             powerUps[item].equipped1 = !powerUps[item].equipped1;
-            Debug.Log(powerUps[item].equipped1);
             if (powerUps[item].equipped1)
             {
                 if (powerUps[item].equipped2)
@@ -71,6 +71,10 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
             }
             else
                 b1.image.sprite = null;
+            if (b1.image.sprite == null)
+                b1.transform.GetChild(0).gameObject.SetActive(true);
+            else
+                b1.transform.GetChild(0).gameObject.SetActive(false);
             setPower(b1.image.sprite);
         }
         else
@@ -89,6 +93,10 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
             }
             else
                 b2.image.sprite = null;
+            if (b2.image.sprite == null)
+                b2.transform.GetChild(0).gameObject.SetActive(true);
+            else
+                b2.transform.GetChild(0).gameObject.SetActive(false);
             setPower(b2.image.sprite);
         }
     }
