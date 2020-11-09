@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 787255920284993722}
   - component: {fileID: 4414440795971913503}
   - component: {fileID: 1920725635785225173}
+  - component: {fileID: 8638727672598455693}
+  - component: {fileID: 473067449426784721}
+  - component: {fileID: 6703645343011211981}
   m_Layer: 0
   m_Name: Push_Forklift_Textured
   m_TagString: Untagged
@@ -25,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119122989090951680}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.19, y: 1.27, z: -9.33}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
@@ -81,3 +84,48 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8638727672598455693
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119122989090951680}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7656348851005705370, guid: 7c7916061e92e314b9e71e4f850a4203, type: 3}
+--- !u!114 &473067449426784721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119122989090951680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b58171f42ec634dbffdb1395e2481a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6703645343011211981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119122989090951680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c4710998958764da1bcc3f8db18a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTime:
+    min: 0
+    max: 1.5
+    selectedDebug: 
+  speed: 1.3
+  soften: 0.5
+  localMovement: {x: 0, y: 0, z: 0}
