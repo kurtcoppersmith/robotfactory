@@ -5,6 +5,7 @@ using UnityEngine;
 public class ConveyorScript : MonoBehaviour
 {
     public GameObject conveyorEnd;
+    public Transform beginningOfConveyor;
     private float speed;
     private Vector3 direction;
     private List<GameObject> crates;
@@ -13,6 +14,9 @@ public class ConveyorScript : MonoBehaviour
     {
         speed = CrateManager.Instance.crateSpeed;
         crates = new List<GameObject>();
+
+        direction = (conveyorEnd.transform.position - beginningOfConveyor.position).normalized;
+        direction.y = 0;
     }
 
     // Update is called once per frame
@@ -31,7 +35,8 @@ public class ConveyorScript : MonoBehaviour
         if (obj.tag == "Pickup" && obj.transform.parent.GetComponent<PlayerModel>() == null)
         {
             crates.Add(obj);
-            direction = (conveyorEnd.transform.position - crates[crates.Count-1].transform.position).normalized;
+            obj.transform.rotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
+            //direction = (conveyorEnd.transform.position - obj.transform.position).normalized;
             //Debug.Log("Enter");
         }
     }
