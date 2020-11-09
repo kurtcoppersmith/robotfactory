@@ -33,6 +33,8 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
 
     void Start()
     {
+        b1.image.sprite = null;
+        b2.image.sprite = null;
         for (int i = 0; i < powerUps.Length; i++)
         {
             if (powerUps[i].name == GameManager.Instance.item1)
@@ -50,7 +52,6 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
     public void setB1(bool b)
     {
         isB1 = b;
-        Debug.Log("B1?");
     }
 
     public void Equip(int item)
@@ -66,15 +67,14 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
             if (powerUps[item].equipped1)
             {
                 if (powerUps[item].equipped2)
+                {
                     b2.image.sprite = null;
+                    powerUps[item].equipped2 = false;
+                }
                 b1.image.sprite = powerUps[item].itemSprite;
             }
             else
                 b1.image.sprite = null;
-            if (b1.image.sprite == null)
-                b1.transform.GetChild(0).gameObject.SetActive(true);
-            else
-                b1.transform.GetChild(0).gameObject.SetActive(false);
             setPower(b1.image.sprite);
         }
         else
@@ -88,17 +88,24 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
             if (powerUps[item].equipped2)
             {
                 if (powerUps[item].equipped1)
+                {
                     b1.image.sprite = null;
-                b2.image.sprite = powerUps[item].itemSprite;
+                    powerUps[item].equipped1 = false;
+                }
+            b2.image.sprite = powerUps[item].itemSprite;
             }
             else
-                b2.image.sprite = null;
-            if (b2.image.sprite == null)
-                b2.transform.GetChild(0).gameObject.SetActive(true);
-            else
-                b2.transform.GetChild(0).gameObject.SetActive(false);
+                b2.image.sprite = null; 
             setPower(b2.image.sprite);
         }
+        if (b1.image.sprite == null)
+            b1.transform.GetChild(0).gameObject.SetActive(true);
+        else
+            b1.transform.GetChild(0).gameObject.SetActive(false);
+        if (b2.image.sprite == null)
+            b2.transform.GetChild(0).gameObject.SetActive(true);
+        else
+            b2.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void setPower(Sprite s)
