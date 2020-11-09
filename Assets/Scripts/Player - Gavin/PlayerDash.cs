@@ -53,6 +53,7 @@ public class PlayerDash : MonoBehaviour
                     if ((TutorialManager.Instance != null && TutorialManager.Instance.hasDescription && TutorialManager.Instance.currentObjective >= 2) || (TutorialManager.Instance == null))
                     {
                         isDashing = true;
+                        playerMod.anim.SetTrigger("dash");
                     }
                 }
             }
@@ -72,6 +73,7 @@ public class PlayerDash : MonoBehaviour
             {
                 isDashing = false;
                 dashTime = maxDashTime;
+                playerMod.anim.ResetTrigger("dash");
             }
         }
     }

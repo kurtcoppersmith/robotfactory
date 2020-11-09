@@ -40,6 +40,9 @@ public class PlayerModel : MonoBehaviour
     public string explosionSound;
     public string deliverySound;
 
+    [Header("Player Animator")]
+    public Animator anim;
+
     [Header("Misc?")]
     public GameObject pickupIndicator;
 
@@ -113,7 +116,8 @@ public class PlayerModel : MonoBehaviour
             pickup.GetComponent<Rigidbody>().useGravity = false;
             pickup.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             pickup.GetComponent<Crate>().powerupIndicator.SetActive(false);
-            
+            anim.SetBool("grab", true);
+
             if (TutorialManager.Instance != null && TutorialManager.Instance.currentObjective == 0)
             {
                 TutorialManager.Instance.hasCompletedCurrent = true;
@@ -216,6 +220,7 @@ public class PlayerModel : MonoBehaviour
 
             GameManager.Instance.addScore(5);
             SoundEffectsManager.Instance.Play(deliverySound);
+            anim.SetBool("grab", false);
 
             if (playerPowerups.strengthPower)
             {
@@ -327,6 +332,9 @@ public class PlayerModel : MonoBehaviour
                     sparksParticleDuration = sparksParticleSystem.main.duration;
                 }
 
+                anim.SetBool("grab", false);
+                anim.SetBool("shutdown", true);
+
                 //transform.DOPunchPosition(new Vector3(Random.Range(0.1f, 0.2f), 0, Random.Range(0.1f, 0.2f)), maxPlayerStunnedTime / 2);
                 break;
         }
@@ -380,6 +388,8 @@ public class PlayerModel : MonoBehaviour
         {
             ChangeState(PlayerState.Moving);
             playerStunnedTime = maxPlayerStunnedTime;
+
+            anim.SetBool("shutdown", false);
         }
     }
 
