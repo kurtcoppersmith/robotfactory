@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4747699538892329579}
   - component: {fileID: 4747699538892329572}
   - component: {fileID: 4747699538892329573}
-  - component: {fileID: 4747699538892329574}
   m_Layer: 0
   m_Name: ConveyorBelt (Early) (1)
   m_TagString: Untagged
@@ -99,20 +98,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3127664470471701773, guid: 355d301a591dbbc419ed2d4eb721bc86, type: 3}
---- !u!114 &4747699538892329574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4747699538892329575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d669bae449940c4c91fbfbe282cc40d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conveyorEnd: {fileID: 4747699540315842422}
-  speed: 1.5
 --- !u!1 &4747699539162461516
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +298,6 @@ GameObject:
   - component: {fileID: 4747699539377045384}
   - component: {fileID: 4747699539377045385}
   - component: {fileID: 4747699539377045386}
-  - component: {fileID: 4747699539377045387}
   m_Layer: 0
   m_Name: ConveyorBelt (Early)Slanted
   m_TagString: Untagged
@@ -400,20 +384,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3127664470471701773, guid: 355d301a591dbbc419ed2d4eb721bc86, type: 3}
---- !u!114 &4747699539377045387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4747699539377045380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d669bae449940c4c91fbfbe282cc40d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conveyorEnd: {fileID: 4747699539586314963}
-  speed: 1.5
 --- !u!1 &4747699539425670064
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +705,6 @@ GameObject:
   - component: {fileID: 4747699540244395987}
   - component: {fileID: 4747699540244395980}
   - component: {fileID: 4747699540244395981}
-  - component: {fileID: 4747699540244395982}
   m_Layer: 0
   m_Name: ConveyorBelt (Early)
   m_TagString: Untagged
@@ -822,20 +791,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3127664470471701773, guid: 355d301a591dbbc419ed2d4eb721bc86, type: 3}
---- !u!114 &4747699540244395982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4747699540244395983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d669bae449940c4c91fbfbe282cc40d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conveyorEnd: {fileID: 4747699539425670064}
-  speed: 1.5
 --- !u!1 &4747699540315842422
 GameObject:
   m_ObjectHideFlags: 0

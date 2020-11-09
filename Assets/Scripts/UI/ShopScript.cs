@@ -84,7 +84,7 @@ public class ShopScript : MonoBehaviour
         }
         if(GameManager.Instance.GetGameData().gears - price >= 0)
         {
-            GameManager.Instance.subGears(price);
+            GameManager.Instance.GetGameData().gears = GameManager.Instance.GetGameData().gears - price;
             item.powerUps[itemNumber].unlocked = true;
 
             switch (item.powerUps[itemNumber].name)

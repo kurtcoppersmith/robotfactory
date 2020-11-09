@@ -139,7 +139,6 @@ GameObject:
   - component: {fileID: 4733067245446424757}
   - component: {fileID: 4733067245446424906}
   - component: {fileID: 4733067245446424907}
-  - component: {fileID: 4733067245446424904}
   m_Layer: 0
   m_Name: ConveyorBelt (Early) (2)
   m_TagString: Untagged
@@ -155,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4733067245446424905}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.110001, y: 0.63999987, z: -24.21}
+  m_LocalPosition: {x: -11.110001, y: 1, z: -24.21}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 4733067246082304195}
@@ -226,20 +225,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3127664470471701773, guid: 355d301a591dbbc419ed2d4eb721bc86, type: 3}
---- !u!114 &4733067245446424904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4733067245446424905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d669bae449940c4c91fbfbe282cc40d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conveyorEnd: {fileID: 4733067246082304192}
-  speed: 1.5
 --- !u!1 &4733067245491588980
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +265,7 @@ BoxCollider:
   m_GameObject: {fileID: 4733067245491588980}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 0.59168625, z: 0.20989513}
   m_Center: {x: 0, y: -0.20415688, z: -0.09108925}
@@ -310,13 +295,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4733067246070004188}
-  m_LocalRotation: {x: -0.09229599, y: 0.7010574, z: -0.09229599, w: 0.7010574}
-  m_LocalPosition: {x: -3, y: -310, z: -88}
+  m_LocalRotation: {x: -0.053896867, y: 0.7050498, z: -0.053896867, w: 0.7050498}
+  m_LocalPosition: {x: -3, y: -347, z: -83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4733067244747600892}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -15}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: -8.743}
 --- !u!33 &4733067246070004184
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -418,7 +403,7 @@ BoxCollider:
   m_GameObject: {fileID: 4733067246082304192}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 0.59168625, z: 0.20989513}
   m_Center: {x: 0, y: -0.20415688, z: -0.09108925}
@@ -744,7 +729,7 @@ BoxCollider:
   m_GameObject: {fileID: 4733067246477284113}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 0.59168625, z: 0.20989513}
   m_Center: {x: 0, y: -0.20415688, z: -0.09108925}
@@ -760,7 +745,6 @@ GameObject:
   - component: {fileID: 4733067246545132288}
   - component: {fileID: 4733067246545132289}
   - component: {fileID: 4733067246545132294}
-  - component: {fileID: 4733067246545132295}
   m_Layer: 0
   m_Name: ConveyorBelt (Early) (3)
   m_TagString: Untagged
@@ -847,20 +831,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3127664470471701773, guid: 355d301a591dbbc419ed2d4eb721bc86, type: 3}
---- !u!114 &4733067246545132295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4733067246545132292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d669bae449940c4c91fbfbe282cc40d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conveyorEnd: {fileID: 4733067245491588980}
-  speed: 1.5
 --- !u!1 &4733067246572546664
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,13 +857,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4733067246572546664}
-  m_LocalRotation: {x: -0.09229599, y: 0.7010574, z: -0.09229599, w: 0.7010574}
-  m_LocalPosition: {x: -3, y: -309, z: 252}
+  m_LocalRotation: {x: -0.063221365, y: 0.70427483, z: -0.063221365, w: 0.70427483}
+  m_LocalPosition: {x: -3, y: -353, z: 204}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4733067244747600892}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -15}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: -10.259001}
 --- !u!33 &4733067246572546644
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -967,7 +937,6 @@ GameObject:
   - component: {fileID: 4733067246581270936}
   - component: {fileID: 4733067246581270937}
   - component: {fileID: 4733067246581270942}
-  - component: {fileID: 4733067246581270943}
   m_Layer: 0
   m_Name: ConveyorBelt (Early)Slanted (1)
   m_TagString: Untagged
@@ -982,8 +951,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4733067246581270940}
-  m_LocalRotation: {x: -0, y: 0.9914449, z: -0.13052616, w: 0}
-  m_LocalPosition: {x: -11.119999, y: 1.0700002, z: -20.36}
+  m_LocalRotation: {x: -0, y: 0.99761784, z: -0.06898362, w: -0}
+  m_LocalPosition: {x: -11.119999, y: 1.29, z: -20.36}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 4733067246477284112}
@@ -991,7 +960,7 @@ Transform:
   - {fileID: 4733067246572546667}
   m_Father: {fileID: 4733067245269582181}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 15, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.9110003, y: 180.00002, z: 0}
 --- !u!33 &4733067246581270936
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1054,17 +1023,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3127664470471701773, guid: 355d301a591dbbc419ed2d4eb721bc86, type: 3}
---- !u!114 &4733067246581270943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4733067246581270940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d669bae449940c4c91fbfbe282cc40d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conveyorEnd: {fileID: 4733067246477284113}
-  speed: 1.5

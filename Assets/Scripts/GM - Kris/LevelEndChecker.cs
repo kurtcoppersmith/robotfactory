@@ -87,7 +87,7 @@ public class LevelEndChecker : MonoBehaviour
             {
                 gears[0].enabled = true;
                 firstGearIcon.SetActive(true);
-                GameManager.Instance.addGears(1);
+                GameManager.Instance.GetGameData().gears += 1;
             }
 
             if(currentScore > gearThreshold2)
@@ -97,7 +97,7 @@ public class LevelEndChecker : MonoBehaviour
                 {
                     gears[1].enabled = true;
                     secondGearIcon.SetActive(true);
-                    GameManager.Instance.addGears(1);
+                    GameManager.Instance.GetGameData().gears += 1;
                 }
 
                 if (currentScore > gearThreshold3)
@@ -107,11 +107,13 @@ public class LevelEndChecker : MonoBehaviour
                     {
                         gears[2].enabled = true;
                         thirdGearIcon.SetActive(true);
-                        GameManager.Instance.addGears(1);
+                        GameManager.Instance.GetGameData().gears += 1;
                     }
                 }
             }
         }
+
+        GameManager.Instance.SaveGameData();
 
         GameManager.Instance.SetScoreAndGears(currentLevelIndex, currentScore, gear1, gear2, gear3);
 
