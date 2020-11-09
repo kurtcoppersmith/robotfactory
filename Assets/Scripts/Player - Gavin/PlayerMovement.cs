@@ -109,7 +109,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 isIced = false;
                 friction = 1.0f;
-                speed = initialSpeed;
+                if (playerModel.playerPowerups.speedPower)
+                {
+                    speed = playerModel.playerPowerups.powerupSpeed;
+                }
+                else
+                {
+                    speed = initialSpeed;
+                }
             }        
         }
     }

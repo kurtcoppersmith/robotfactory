@@ -6,7 +6,7 @@ public class PlayerPowerups : MonoBehaviour
 {
     [Header("Speed Up Powerup Variables")]
     public float powerupSpeed = 6f;
-    private bool speedPower = false;
+    public bool speedPower = false;
 
     [Header("Chasis Up Powerup Variables")]
     public bool chasisPower = false;
@@ -165,6 +165,13 @@ public class PlayerPowerups : MonoBehaviour
         SetChasisPowerup(false);
         SetSpeedPowerup(false);
         SetStrengthPowerup(false);
+
+        if (durationParticle.activeInHierarchy == true)
+        {
+            durationParticle.SetActive(false);
+            stopParticle.SetActive(true);
+            Invoke("StopFinalParticle", stopParticle.GetComponentInChildren<ParticleSystem>().main.duration);
+        }
     }
 
     void Update()
