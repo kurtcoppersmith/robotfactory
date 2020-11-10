@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class bobbing : MonoBehaviour
 {
-    public float degreesPerSecond = 15.0f;
     public float amplitude = 0.25f;
     public float frequency = 1f;
 
