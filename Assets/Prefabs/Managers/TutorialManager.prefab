@@ -315,20 +315,21 @@ MonoBehaviour:
   - currentObjectivesKeyboard:
     - Hello, and welcome to your new job! Press "Enter"  to advance this dialogue.
     - Great, you seem to take to tasks well. Let's start our training session.
-    - For this task, press "E" to pick up the crate in front of you.
+    - For this task, press "E" to pick up the bomb placed in front of you.
     - If you would like to repeat this message, press "Backspace".
     currentObjectivesXBox:
     - Hello, and welcome to your new job! Press <sprite name="A">  to advance this
       dialogue.
     - Great, you seem to take to tasks well. Let's start our training session.
-    - For this task, press <sprite name="A"> to pick up the crate in front of you.
+    - For this task, press <sprite name="A"> to pick up the bomb placed in front
+      of you.
     - If you would like to repeat this message, press <sprite name="B">.
     currentObjectivesPS4:
     - Hello, and welcome to your new job! Press <sprite name="Cross">  to advance
       this dialogue.
     - Great, you seem to take to tasks well. Let's start our training session.
-    - For this task, press <sprite name="Cross"> to pick up the crate in front of
-      you.
+    - For this task, press <sprite name="Cross"> to pick up the bomb placed in front
+      of you.
     - If you would like to repeat this message, press <sprite name="Circle">.
   - currentObjectivesKeyboard:
     - Excellent. Now, use "WASD" to move the bomb to its corresponding conveyor.
@@ -403,6 +404,11 @@ MonoBehaviour:
     - As a reward for your efforts, here's a gear!
     - Gears can be used to buy upgrades from the shop, make sure to visit them when
       you can!
+    - Once an upgrade is bought, you may equip them in the level select screen.
+    - Bombs will then have a chance to spawn with a sphere above them in the corresponding
+      color to your upgrade.
+    - Deliver one of these bombs, and your upgrade will take effect for a short period
+      of time!
     - Play well to earn more gears, and you might just become a perfect working machine!
     - At least... a more perfect one.
     - You can continue practicing here if you wish, or press "Escape" to access the
@@ -415,6 +421,11 @@ MonoBehaviour:
     - As a reward for your efforts, here's a gear!
     - Gears can be used to buy upgrades from the shop, make sure to visit them when
       you can!
+    - Once an upgrade is bought, you may equip them in the level select screen.
+    - Bombs will then have a chance to spawn with a sphere above them in the corresponding
+      color to your upgrade.
+    - Deliver one of these bombs, and your upgrade will take effect for a short period
+      of time!
     - Play well to earn more gears, and you might just become a perfect working machine!
     - At least... a more perfect one.
     - You can continue practicing here if you wish, or press "Pause" to access the
@@ -427,6 +438,11 @@ MonoBehaviour:
     - As a reward for your efforts, here's a gear!
     - Gears can be used to buy upgrades from the shop, make sure to visit them when
       you can!
+    - Once an upgrade is bought, you may equip them in the level select screen.
+    - Bombs will then have a chance to spawn with a sphere above them in the corresponding
+      color to your upgrade.
+    - Deliver one of these bombs, and your upgrade will take effect for a short period
+      of time!
     - Play well to earn more gears, and you might just become a perfect working machine!
     - At least... a more perfect one.
     - You can continue practicing here if you wish, or press "Pause" to access the
