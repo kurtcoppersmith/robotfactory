@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1796168, g: 0.2249019, b: 0.30646846, a: 1}
+  m_IndirectSpecularColor: {r: 0.17961732, g: 0.22490263, b: 0.3064692, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -389,7 +389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ad7c49a7d4acf43a90473409817bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  degreesPerSecond: 15
   amplitude: 0.15
   frequency: 1
 --- !u!1 &90924860 stripped
@@ -6703,7 +6702,12 @@ PrefabInstance:
     - target: {fileID: 6316313628876847855, guid: caa48001451e2be44936a4c9c95a53e8,
         type: 3}
       propertyPath: hazardEffectDuration
-      value: 0.5
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316313628876847855, guid: caa48001451e2be44936a4c9c95a53e8,
+        type: 3}
+      propertyPath: stopIcyTime
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caa48001451e2be44936a4c9c95a53e8, type: 3}

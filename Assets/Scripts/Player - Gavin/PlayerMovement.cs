@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Icey Movement Variables")]
     Vector3 finalDir = Vector3.zero;
     public float iceSpeed = 5.5f;
+    public float stopIcyTime = 1f;
     private float friction = 1.0f;
     private bool isIced = false;
 
@@ -47,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector]
     public bool canMove = true;
+    private DOTween speedTween;
+    private DOTween movementTween;
 
     void Awake()
     {
@@ -80,9 +83,12 @@ public class PlayerMovement : MonoBehaviour
 
             if (option)
             {
-                if (speed == initialSpeed)
+                if (speed != iceSpeed)
                 {
+                    DOTween.Kill(1);
+                    DOTween.Kill(2);
                     speed = iceSpeed;
+
                     Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
                     Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
                     finalDir = tempFinalDir;
@@ -94,7 +100,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 isIced = false;
                 friction = 1.0f;
-                speed = initialSpeed;
+
+                DOTween.To(() => speed, x => speed = x, initialSpeed, stopIcyTime).SetId(1);
+
+                Vector2 relativeMoveValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
+                Vector3 moveDirection = new Vector3(relativeMoveValues.x, 0, relativeMoveValues.y);
+                DOTween.To(() => finalDir, y => finalDir = y, moveDirection, stopIcyTime).SetId(2);
+                //speed = initialSpeed;
             }
         }
     }
@@ -111,11 +123,22 @@ public class PlayerMovement : MonoBehaviour
                 friction = 1.0f;
                 if (playerModel.playerPowerups.speedPower)
                 {
-                    speed = playerModel.playerPowerups.powerupSpeed;
+
+                    DOTween.To(() => speed, x => speed = x, playerModel.playerPowerups.powerupSpeed, stopIcyTime).SetId(1);
+                    
+                    Vector2 relativeMoveValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
+                    Vector3 moveDirection = new Vector3(relativeMoveValues.x, 0, relativeMoveValues.y);
+                    DOTween.To(() => finalDir, y => finalDir = y, moveDirection, stopIcyTime).SetId(2);
+                    //speed = playerModel.playerPowerups.powerupSpeed;
                 }
                 else
                 {
-                    speed = initialSpeed;
+                    DOTween.To(() => speed, x => speed = x, initialSpeed, stopIcyTime).SetId(1);
+
+                    Vector2 relativeMoveValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
+                    Vector3 moveDirection = new Vector3(relativeMoveValues.x, 0, relativeMoveValues.y);
+                    DOTween.To(() => finalDir, y => finalDir = y, moveDirection, stopIcyTime).SetId(2);
+                    //speed = initialSpeed;
                 }
             }        
         }
@@ -269,8 +292,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 isPermaIced = true;
 
-                if (speed == initialSpeed)
+                if (speed != iceSpeed)
                 {
+                    DOTween.Kill(1);
+                    DOTween.Kill(2);
                     speed = iceSpeed;
                     Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
                     Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
@@ -286,8 +311,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 isPermaIced = true;
 
-                if (speed == initialSpeed)
+                if (speed != iceSpeed)
                 {
+                    DOTween.Kill(1);
+                    DOTween.Kill(2);
+
                     speed = iceSpeed;
                     Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
                     Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
@@ -303,8 +331,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 isPermaIced = true;
 
-                if (speed == initialSpeed)
+                if (speed != iceSpeed)
                 {
+                    DOTween.Kill(1);
+                    DOTween.Kill(2);
+
                     speed = iceSpeed;
                     Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
                     Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
@@ -320,8 +351,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 isPermaIced = true;
 
-                if (speed == initialSpeed)
+                if (speed != iceSpeed)
                 {
+                    DOTween.Kill(1);
+                    DOTween.Kill(2);
+
                     speed = iceSpeed;
                     Vector2 tempRelativeValues = FindMovementRelativeToCamera(movementInput.x, movementInput.y);
                     Vector3 tempFinalDir = new Vector3(tempRelativeValues.x, 0, tempRelativeValues.y) * speed;
