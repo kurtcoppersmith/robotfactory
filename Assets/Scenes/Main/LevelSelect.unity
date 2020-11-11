@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3079,6 +3079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d84ec5f6eb714b439e99e5d12700d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
 --- !u!95 &852742980
 Animator:
   serializedVersion: 3
@@ -7848,6 +7849,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4237763258622345484, guid: 028ba0ae9b8706c49ae5b9dd6fcd6147,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237763258622345484, guid: 028ba0ae9b8706c49ae5b9dd6fcd6147,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 999519196}
@@ -7870,6 +7876,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Menu_Select
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237763258622345484, guid: 028ba0ae9b8706c49ae5b9dd6fcd6147,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237763258622345484, guid: 028ba0ae9b8706c49ae5b9dd6fcd6147,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237763258622345484, guid: 028ba0ae9b8706c49ae5b9dd6fcd6147,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 852742979}
+    - target: {fileID: 4237763258622345484, guid: 028ba0ae9b8706c49ae5b9dd6fcd6147,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: fadeIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237763258622345484, guid: 028ba0ae9b8706c49ae5b9dd6fcd6147,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4237763258622345486, guid: 028ba0ae9b8706c49ae5b9dd6fcd6147,
         type: 3}
