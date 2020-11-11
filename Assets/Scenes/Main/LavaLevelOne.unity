@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -225,7 +225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ad7c49a7d4acf43a90473409817bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  degreesPerSecond: 15
   amplitude: 0.1
   frequency: 1
 --- !u!1001 &38853532
@@ -2157,7 +2156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ad7c49a7d4acf43a90473409817bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  degreesPerSecond: 15
   amplitude: 0.1
   frequency: 1
 --- !u!1001 &592928635
@@ -2520,6 +2518,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7988e39038ec8e4f9bbc045900d20c0, type: 3}
+--- !u!1 &768104482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8144027446799797116, guid: 562955b0e224e584e82c94ec6c999983,
+    type: 3}
+  m_PrefabInstance: {fileID: 1825998568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &768104483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768104482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ad7c49a7d4acf43a90473409817bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.25
+  frequency: 1
 --- !u!4 &793361689 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7482411248903906063, guid: f7988e39038ec8e4f9bbc045900d20c0,
@@ -6010,7 +6028,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ad7c49a7d4acf43a90473409817bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  degreesPerSecond: 15
   amplitude: 0.25
   frequency: 1
 --- !u!1001 &1759298707
@@ -6795,7 +6812,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ad7c49a7d4acf43a90473409817bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  degreesPerSecond: 15
   amplitude: 0.16
   frequency: 1
 --- !u!1001 &1956230158
@@ -7188,8 +7204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ad7c49a7d4acf43a90473409817bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  degreesPerSecond: 15
-  amplitude: 0.8
+  amplitude: 0.1
   frequency: 2
 --- !u!1001 &2087780404
 PrefabInstance:
