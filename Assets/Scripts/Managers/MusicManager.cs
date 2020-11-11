@@ -8,6 +8,7 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 {
     public AudioSource basicAudioSource;
     public AudioClip panicMusic;
+    public AudioClip levelEndMusic;
 
     private AudioClip fadeTempMusic;
     public float volumeLevel = 1;
@@ -57,15 +58,21 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     {
         if (LevelManager.Instance != null)
         {
-            if (GameManager.Instance.returnTime() <= timeUntilPanicMusic && fadeTempMusic != panicMusic)
+            if (!GameManager.Instance.hasEnded && GameManager.Instance.returnTime() <= timeUntilPanicMusic && fadeTempMusic != panicMusic && basicAudioSource.clip.name != panicMusic.name)
             {
                 FadeInPlay(basicAudioSource, panicMusic);
+            }
+
+            if (GameManager.Instance.hasEnded && fadeTempMusic != levelEndMusic && basicAudioSource.clip.name != levelEndMusic.name)
+            {
+                FadeInPlay(basicAudioSource, levelEndMusic);
             }
         }
     }
 
     void PlayFadeMusic()
     {
+        DOTween.Kill(3);
         basicAudioSource.volume = volumeLevel;
         basicAudioSource.clip = fadeTempMusic;
         basicAudioSource.Play();
@@ -73,8 +80,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
 
     void FadeInPlay(AudioSource InstanceSource, AudioClip audioClip)
     {
+        InstanceSource.DOKill();
         fadeTempMusic = audioClip;
-        InstanceSource.DOFade(0, fadeInTime);
+        InstanceSource.DOFade(0, fadeInTime).SetId(3);
 
         Invoke("PlayFadeMusic", fadeInTime);
     }
