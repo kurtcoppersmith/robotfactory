@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1796168, g: 0.2249019, b: 0.30646846, a: 1}
+  m_IndirectSpecularColor: {r: 0.17961732, g: 0.22490263, b: 0.3064692, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -220,7 +220,6 @@ Transform:
   - {fileID: 1641735786}
   - {fileID: 1154037898}
   - {fileID: 1199619779}
-  - {fileID: 2106190487}
   m_Father: {fileID: 1279219587}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10686,12 +10685,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b4607eba6c1a84ebe97044b07b8c38, type: 3}
---- !u!4 &2106190487 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4732810685907692783, guid: 8ac73717214cdbb4796d11f0c3f387dd,
-    type: 3}
-  m_PrefabInstance: {fileID: 7833317082718342200}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2126697068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10878,7 +10871,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 45257901}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2158998080575299424, guid: 8ac73717214cdbb4796d11f0c3f387dd,
         type: 3}
@@ -10888,17 +10881,17 @@ PrefabInstance:
     - target: {fileID: 4732810685907692783, guid: 8ac73717214cdbb4796d11f0c3f387dd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.425709
+      value: -5.7799997
       objectReference: {fileID: 0}
     - target: {fileID: 4732810685907692783, guid: 8ac73717214cdbb4796d11f0c3f387dd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.198775
+      value: 0.031211853
       objectReference: {fileID: 0}
     - target: {fileID: 4732810685907692783, guid: 8ac73717214cdbb4796d11f0c3f387dd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.792552
+      value: 7.2800007
       objectReference: {fileID: 0}
     - target: {fileID: 4732810685907692783, guid: 8ac73717214cdbb4796d11f0c3f387dd,
         type: 3}
@@ -10923,7 +10916,7 @@ PrefabInstance:
     - target: {fileID: 4732810685907692783, guid: 8ac73717214cdbb4796d11f0c3f387dd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4732810685907692783, guid: 8ac73717214cdbb4796d11f0c3f387dd,
         type: 3}
