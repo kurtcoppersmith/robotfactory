@@ -39,14 +39,24 @@ public class PowerUpManager : SingletonMonoBehaviour<PowerUpManager>
         {
             if (powerUps[i].name == GameManager.Instance.item1)
             {
-                b1.image.sprite = powerUps[i].itemSprite;
+                isB1 = true;
+                Equip(i);
             }
 
             if (powerUps[i].name == GameManager.Instance.item2)
             {
-                b2.image.sprite = powerUps[i].itemSprite;
+                isB1 = false;
+                Equip(i);
             }
         }
+        if (b1.image.sprite == null)
+            b1.transform.GetChild(0).gameObject.SetActive(true);
+        else
+            b1.transform.GetChild(0).gameObject.SetActive(false);
+        if (b2.image.sprite == null)
+            b2.transform.GetChild(0).gameObject.SetActive(true);
+        else
+            b2.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void setB1(bool b)
