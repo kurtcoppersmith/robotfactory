@@ -6,13 +6,13 @@ public class ConveyorScript : MonoBehaviour
 {
     public GameObject conveyorEnd;
     public Transform beginningOfConveyor;
-    private float speed;
+    private float speed = 0;
     private Vector3 direction;
     private List<GameObject> crates;
 
     private void Start()
     {
-        speed = CrateManager.Instance.crateSpeed;
+        //speed = CrateManager.Instance.crateSpeed;
         crates = new List<GameObject>();
 
         direction = (conveyorEnd.transform.position - beginningOfConveyor.position).normalized;
