@@ -123,6 +123,7 @@ public class Character : MonoBehaviour
             currentPickup = pickup;
             LevelManagerHP.Instance.currentHolder = this.gameObject;
             currentPickup.transform.position = carryingPosition.position;
+            currentPickup.transform.rotation = Quaternion.LookRotation(carryingPosition.transform.right, Vector3.up);
             isHolding = true;
             pickup.GetComponent<ObjectHP>().SetHoldFalse();
 
@@ -154,7 +155,7 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        if (isHolding)
+        if (isHolding && !GameManager.Instance.hasEnded)
         {
             scoreTimer -= Time.deltaTime;
             if (scoreTimer <= 0)

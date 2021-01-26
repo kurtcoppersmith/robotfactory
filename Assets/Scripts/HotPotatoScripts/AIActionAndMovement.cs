@@ -54,11 +54,11 @@ public class AIActionAndMovement : MonoBehaviour
                     if (hitInfo[i].transform.gameObject.tag == "Obstacle" || (hitInfo[i].transform.gameObject.GetComponent<Character>() != null && hitInfo[i].transform.gameObject != this.gameObject))
                     {
                         Debug.Log(hitInfo[i].transform.position - transform.position);
-                        if (hitInfo[i].transform.gameObject.GetComponent<Character>() == null && Vector3.Distance(new Vector3(hitInfo[i].transform.position.x, 0 , hitInfo[i].transform.position.z), new Vector3(transform.position.x, 0, transform.position.z)) > 3f)
-                        {
-                            continue;
-                        }
-                        else
+                        //if (hitInfo[i].transform.gameObject.GetComponent<Character>() == null && Vector3.Distance(new Vector3(hitInfo[i].transform.position.x, 0 , hitInfo[i].transform.position.z), new Vector3(transform.position.x, 0, transform.position.z)) > 3f)
+                        //{
+                        //    continue;
+                        //}
+                        //else
                         {
                             runDir += (hitInfo[i].transform.position - transform.position).normalized;
                             test++;
@@ -73,6 +73,7 @@ public class AIActionAndMovement : MonoBehaviour
                 if(test != 0)
                 {
                     runDir /= test;
+                    character.currentVelocity = runDir;
                     Debug.Log(runDir);
                     nav.SetDestination((transform.position - runDir));
                     
@@ -107,18 +108,19 @@ public class AIActionAndMovement : MonoBehaviour
     void ChaseHolder()
     {
         GameObject currentHolder = LevelManagerHP.Instance.currentHolder;
+        GameObject currentObject = LevelManagerHP.Instance.currentObject;
 
         float randNumb = Random.Range(0, 1);
         if(randNumb < percentToUseVelocity)
         {
-            Vector3 navDir = (currentHolder.transform.position + currentHolder.GetComponent<Character>().currentVelocity);
-            transform.rotation = Quaternion.LookRotation(new Vector3(currentHolder.transform.position.x, 0, currentHolder.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z), Vector3.up);
+            Vector3 navDir = (currentObject.transform.position + currentHolder.GetComponent<Character>().currentVelocity);
+            transform.rotation = Quaternion.LookRotation(new Vector3(currentObject.transform.position.x, 0, currentObject.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z), Vector3.up);
             nav.SetDestination(navDir);
         }
         else
         {
-            Vector3 navDir = currentHolder.transform.position;
-            transform.rotation = Quaternion.LookRotation(new Vector3(currentHolder.transform.position.x, 0, currentHolder.transform.position.z), Vector3.up);
+            Vector3 navDir = currentObject.transform.position;
+            transform.rotation = Quaternion.LookRotation(new Vector3(currentObject.transform.position.x, 0, currentObject.transform.position.z), Vector3.up);
             nav.SetDestination(navDir);
         }
     }

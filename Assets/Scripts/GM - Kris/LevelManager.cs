@@ -8,6 +8,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
 
     public GameObject pausePanel;
     public GameObject endPanel;
+    public TMPro.TextMeshProUGUI finalTextbox;
 
     public LevelEndChecker levelEnd;
     //public EndScoreDisplay endCard;
@@ -45,6 +46,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     {
         GameManager.Instance.hasEnded = true;
         HelperUtilities.UpdateCursorLock(false);
+        finalTextbox.text = $"{LevelManagerHP.Instance.currentHolder.GetComponent<Character>().characterName} held bomb last!";
         endPanel.SetActive(true);
         //levelEnd.displayGears();
         
