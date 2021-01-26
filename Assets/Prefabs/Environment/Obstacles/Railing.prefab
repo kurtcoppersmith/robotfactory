@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 6911990715016770915}
   - component: {fileID: 8142413299555175604}
   - component: {fileID: 1571701577005104567}
+  - component: {fileID: 1580694841546309856}
   m_Layer: 0
   m_Name: Railing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5739695010689879564
 Transform:
@@ -107,3 +108,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b58171f42ec634dbffdb1395e2481a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &1580694841546309856
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4966536487776605366}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 127.215004, y: 46.461002, z: 9.512}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 42.852, z: 0}
+  m_TimeToStationary: 0.5

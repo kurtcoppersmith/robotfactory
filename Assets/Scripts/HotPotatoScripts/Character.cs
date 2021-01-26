@@ -50,6 +50,12 @@ public class Character : MonoBehaviour
     public GameObject currentPickup { get; private set; } = null;
     public bool isHolding { get; set; } = false;
 
+    private float scoreTimer = 0;
+    public int currentScore = 0;
+    public string characterName = "";
+
+    public Vector3 currentVelocity = Vector3.zero;
+
     void Awake()
     {
         characterMovement = GetComponent<CharacterMovement>();
@@ -76,7 +82,7 @@ public class Character : MonoBehaviour
         Gizmos.DrawWireCube(pickupColliderGizmo.transform.position, pickupColliderGizmo.size);
     }
 
-    void OnBoxPickup(InputValue inputValue)
+    public void BoxPickUp()
     {
         if (isHolding || GameManager.Instance.hasEnded)
         {
@@ -99,92 +105,38 @@ public class Character : MonoBehaviour
         }
         else
         {
-            currentPickup.transform.position = carryingPosition.position;
+            if (!pickup.GetComponent<ObjectHP>().canBeHeld)
+            {
+                return;
+            }
+
+            if (LevelManagerHP.Instance.currentHolder != null)
+            {
+                LevelManagerHP.Instance.currentHolder.GetComponent<Character>().RemoveCurrentPickup();
+            }
+
             pickup.transform.parent = this.gameObject.transform;
-            pickup.GetComponent<IdleCrate>().PickUp(true);
             pickup.GetComponent<Rigidbody>().useGravity = false;
             pickup.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-            pickup.GetComponent<Crate>().powerupIndicator.SetActive(false);
-            anim.SetBool("grab", true);
+            pickup.GetComponent<Collider>().isTrigger = true;
 
             currentPickup = pickup;
+            LevelManagerHP.Instance.currentHolder = this.gameObject;
+            currentPickup.transform.position = carryingPosition.position;
             isHolding = true;
+            pickup.GetComponent<ObjectHP>().SetHoldFalse();
 
-            if (playerState == PlayerState.Moving)
-            {
-                ChangeState(PlayerState.Carrying);
-            }
+            ChangeState(PlayerState.Carrying);
         }
     }
 
     public void RemoveCurrentPickup()
     {
-        //CrateManager.Instance.Explode();
-        //CrateManager.Instance.spawnLocationStatus[CrateManager.Instance.currentSpawnedItems[currentPickup]] = false;
-        //CrateManager.Instance.currentSpawnedItems.Remove(currentPickup);
+        
         playerPickup.currentColliders.Remove(currentPickup.GetComponent<Collider>());
-
-        //currentPickup.GetComponent<IdleCrate>().PickUp(false);
-        //currentPickup.SetActive(false);
-        currentPickup.transform.parent = null;//ObjectPoolerGavin.GetPooler(ObjectPoolerGavin.Key.AtomBomb).gameObject.transform;
+        currentPickup.transform.parent = null;
         isHolding = false;
-    }
-
-    void DetectCollisions()
-    {
-        RaycastHit hit;
-        Vector3 p1 = transform.position + Vector3.up * bottomOfCharacter;
-        Vector3 p2 = p1 + Vector3.up * characterMovement.charController.height;
-
-        for (int i = 0; i < 360; i += 18)
-        {
-            if (Physics.CapsuleCast(p1, p2, 0, new Vector3(Mathf.Cos(i), 0, Mathf.Sin(i)), out hit, characterMovement.charController.radius + collisionDetectionDistance))
-            {
-                PlayerModel tempPlay = null;
-                tempPlay = hit.collider.gameObject.GetComponentInParent<PlayerModel>();
-                if (tempPlay == null)
-                {
-                    Vector3 temp = (hit.point - transform.position).normalized;
-                    temp.y = 0;
-                    characterMovement.charController.Move((temp) * (collisionDetectionDistance - hit.distance));
-
-                    //if (hit.collider.gameObject.tag == "Hazard" && isHolding)
-                    //{
-                    //    if (!playerPowerups.strengthPower)
-                    //    {
-                    //        Fail();
-                    //    }
-                    //}
-                }
-
-            }
-            DebugExtension.DebugCapsule(p1 + new Vector3(Mathf.Cos(i), 0, Mathf.Sin(i)), p2 + new Vector3(Mathf.Cos(i), 0, Mathf.Sin(i)), 0);
-        }
-    }
-
-    void ShowPickUpIndicator()
-    {
-        if (isHolding || GameManager.Instance.hasEnded || (TutorialManager.Instance != null))
-        {
-            pickupIndicator.SetActive(false);
-            return;
-        }
-        bool pickup = false;
-
-        for (int i = 0; i < playerPickup.currentColliders.Count; i++)
-        {
-            if (playerPickup.currentColliders[i].gameObject.tag == "Pickup")
-            {
-                pickup = true;
-                pickupIndicator.SetActive(true);
-                break;
-            }
-        }
-
-        if (!pickup)
-        {
-            pickupIndicator.SetActive(false);
-        }
+        ChangeState(PlayerState.Moving);
     }
 
     public void ChangeState(PlayerState state)
@@ -192,10 +144,8 @@ public class Character : MonoBehaviour
         switch (state)
         {
             case PlayerState.Moving:
-                characterMovement.canMove = true;
                 break;
             case PlayerState.Carrying:
-                characterMovement.canMove = false;
                 break;
         }
 
@@ -204,8 +154,19 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        //DetectCollisions();
-        ShowPickUpIndicator();
+        if (isHolding)
+        {
+            scoreTimer -= Time.deltaTime;
+            if (scoreTimer <= 0)
+            {
+                currentScore++;
+                scoreTimer = 1;
+            }
+        }
+        else
+        {
+            scoreTimer = 0;
+        }
     }
 
     void OnPauseToggle(InputValue inputValue)

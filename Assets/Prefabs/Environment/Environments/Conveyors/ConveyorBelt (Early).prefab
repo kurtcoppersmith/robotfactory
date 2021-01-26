@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4769143350157295166
 Transform:
@@ -45,7 +45,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1899917693277122346
 Transform:
@@ -87,12 +87,13 @@ GameObject:
   - component: {fileID: 4104939048816031424}
   - component: {fileID: 5463377589858546380}
   - component: {fileID: 7623266747795510571}
+  - component: {fileID: 6201129197871510862}
   m_Layer: 0
   m_Name: ConveyorBelt (Early)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2935362397152529839
 Transform:
@@ -187,6 +188,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 139.30632, y: 41.202084, z: 384.25}
   m_Center: {x: -0.0000076293945, y: 0, z: 0}
+--- !u!208 &6201129197871510862
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2591628212498896661}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 69.653, y: 20.601002, z: 194.274}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1846237487182804546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -198,6 +215,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MetalSupportRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137382119511388526, guid: 4543ac4baf1740640bf2dce0223cab5d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8909836675763874772, guid: 4543ac4baf1740640bf2dce0223cab5d,
         type: 3}
@@ -288,6 +310,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MetalSupportRed (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137382119511388526, guid: 4543ac4baf1740640bf2dce0223cab5d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8909836675763874772, guid: 4543ac4baf1740640bf2dce0223cab5d,
         type: 3}

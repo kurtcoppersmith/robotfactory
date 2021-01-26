@@ -743,6 +743,9 @@ MonoBehaviour:
   deliverySound: 
   anim: {fileID: 0}
   pickupIndicator: {fileID: 2606321902870418709}
+  currentScore: 0
+  characterName: 
+  currentVelocity: {x: 0, y: 0, z: 0}
   playerState: 0
 --- !u!114 &1801857000016601062
 MonoBehaviour:
@@ -1130,7 +1133,7 @@ PrefabInstance:
     - target: {fileID: 2412549230832165578, guid: 045936cb695071e498e9dd7814a1bd87,
         type: 3}
       propertyPath: keyboardText
-      value: E
+      value: SPACE
       objectReference: {fileID: 0}
     - target: {fileID: 5438187731344617315, guid: 045936cb695071e498e9dd7814a1bd87,
         type: 3}
@@ -1151,11 +1154,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSize
       value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5910007277967496163, guid: 045936cb695071e498e9dd7814a1bd87,
-        type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5910007277967496163, guid: 045936cb695071e498e9dd7814a1bd87,
         type: 3}

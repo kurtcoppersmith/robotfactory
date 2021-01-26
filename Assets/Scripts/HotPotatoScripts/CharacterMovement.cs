@@ -57,6 +57,7 @@ public class CharacterMovement : MonoBehaviour
         //playerDash = GetComponent<PlayerDash>();
 
         movementVector = Vector3.zero;
+        character.currentVelocity = movementVector;
         //charController.detectCollisions = true;
 
         initialSpeed = speed;
@@ -66,6 +67,46 @@ public class CharacterMovement : MonoBehaviour
     void OnMovement(InputValue inputValue)
     {
         movementInput = inputValue.Get<Vector2>();
+    }
+
+    void OnBoxPickup(InputValue inputValue)
+    {
+        character.BoxPickUp();
+    }
+
+    void ShowPickUpIndicator()
+    {
+        if (character.isHolding || GameManager.Instance.hasEnded)
+        {
+            character.pickupIndicator.SetActive(false);
+            return;
+        }
+        bool pickup = false;
+
+        for (int i = 0; i < character.playerPickup.currentColliders.Count; i++)
+        {
+            if (character.playerPickup.currentColliders[i].gameObject.tag == "Pickup")
+            {   
+                if (!character.playerPickup.currentColliders[i].gameObject.GetComponent<ObjectHP>().canBeHeld)
+                {
+                    return;
+                }
+
+                pickup = true;
+                character.pickupIndicator.SetActive(true);
+                break;
+            }
+        }
+
+        if (!pickup)
+        {
+            character.pickupIndicator.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        ShowPickUpIndicator();
     }
 
     Vector2 FindMovementRelativeToCamera(float h, float v)
@@ -150,7 +191,8 @@ public class CharacterMovement : MonoBehaviour
             movementVector.y -= minimumGravity * Time.deltaTime;
         }
 
-        charController.Move(new Vector3(movementVector.x,0, movementVector.z));
+        charController.Move(movementVector);
+        character.currentVelocity = new Vector3(movementVector.x, 0, movementVector.z);
     }
 
     void FixedUpdate()
