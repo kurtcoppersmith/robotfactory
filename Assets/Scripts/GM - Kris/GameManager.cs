@@ -166,7 +166,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         else
         {
             timeRemaining = 0;
-            LevelManager.Instance.EnableEndScreen();
+            //LevelManager.Instance.EnableEndScreen();
         }
     }
 

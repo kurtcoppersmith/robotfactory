@@ -56,22 +56,22 @@ public class LevelEndChecker : MonoBehaviour
         scores = FindObjectOfType<LevelManager>();
     }
 
-    public void displayGears()
-    {
-        int playerScore = GameManager.Instance.returnScore();
-        if (playerScore >= scores.getGearScore(1))
-        {
-            gears[0].enabled = true;
-        }
-        if (playerScore >= scores.getGearScore(2))
-        {
-            gears[1].enabled = true;
-        }
-        if (playerScore >= scores.getGearScore(3))
-        {
-            gears[2].enabled = true;
-        }
-    }
+    //public void displayGears()
+    //{
+    //    int playerScore = GameManager.Instance.returnScore();
+    //    if (playerScore >= scores.getGearScore(1))
+    //    {
+    //        gears[0].enabled = true;
+    //    }
+    //    if (playerScore >= scores.getGearScore(2))
+    //    {
+    //        gears[1].enabled = true;
+    //    }
+    //    if (playerScore >= scores.getGearScore(3))
+    //    {
+    //        gears[2].enabled = true;
+    //    }
+    //}
 
     public void CheckFinalScore()
     {

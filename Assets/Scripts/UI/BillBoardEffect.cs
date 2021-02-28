@@ -12,14 +12,14 @@ public class BillBoardEffect : MonoBehaviour
     void Start()
     {
         originalRotation = transform.localRotation;
-        camTransform = LevelManager.Instance.mainCam.transform;
+        //camTransform = LevelManager.Instance.mainCam.transform;
 
         canvas = GetComponent<Canvas>();
-        canvas.worldCamera = LevelManager.Instance.mainCam;
+        //canvas.worldCamera = LevelManager.Instance.mainCam;
     }
 
     void Update()
     {
-        transform.rotation = LevelManager.Instance.mainCam.transform.rotation * originalRotation;
+        //transform.rotation = LevelManager.Instance.mainCam.transform.rotation * originalRotation;
     }
 }

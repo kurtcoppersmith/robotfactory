@@ -4,73 +4,30 @@ using UnityEngine;
 
 public class LevelManager : SingletonMonoBehaviour<LevelManager>
 {
-    public Camera mainCam;
+    [Header("Player Spawn Points")]
+    public Transform[] characterSpawnLocations = new Transform[4];
 
-    public GameObject pausePanel;
-    public GameObject endPanel;
-    public TMPro.TextMeshProUGUI finalTextbox;
+    [Header("AI Waypoints")]
+    public List<Transform> AIWaypoints = new List<Transform>();
 
-    public LevelEndChecker levelEnd;
-    //public EndScoreDisplay endCard;
+    [Header("Various Variables")]
+    public SplitScreenManager splitScreenManager;
+    public GameObject levelPickup;
 
-    public int score1 = 10;
-    public int score2 = 20;
-    public int score3 = 30;
-
-    new void Awake()
+    private void Start()
     {
-        base.Awake();
+        PlayerManager.Instance.SetPickup(levelPickup);
 
-        levelEnd = GetComponent<LevelEndChecker>();
-        //endCard = FindObjectOfType <EndScoreDisplay>();
-    }
-
-    public void PauseToggle()
-    {
-        GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
-        if (Time.timeScale == 0.0f)
+        int currentPlayersAdded = PlayerManager.Instance.GetCurrentPlayerCharacterNumb();
+        for (int i = 0; i < currentPlayersAdded; i++)
         {
-            Time.timeScale = 1.0f;
-            HelperUtilities.UpdateCursorLock(true);
-            pausePanel.SetActive(false);
+            PlayerManager.Instance.characters[i].playerCam.rect = splitScreenManager.wrappedRects[currentPlayersAdded - 1].viewportRects[i];
         }
-        else
+
+        for (int i = 0; i < PlayerManager.Instance.characters.Length; i++)
         {
-            Time.timeScale = 0.0f;
-            HelperUtilities.UpdateCursorLock(false);
-            pausePanel.SetActive(true);
-        }
-    }
-
-    public void EnableEndScreen()
-    {
-        GameManager.Instance.hasEnded = true;
-        HelperUtilities.UpdateCursorLock(false);
-        finalTextbox.text = $"{LevelManagerHP.Instance.currentHolder.GetComponent<Character>().characterName} held bomb last!";
-        endPanel.SetActive(true);
-        //levelEnd.displayGears();
-        
-
-        levelEnd.CheckFinalScore();
-    }
-
-    public void CheckFinalScore()
-    {
-        levelEnd.CheckFinalScore();
-    }
-
-    public int getGearScore(int index)
-    {
-        switch (index)
-        {
-            case 1:
-                return score1;
-            case 2:
-                return score2;
-            case 3:
-                return score3;
-            default:
-                return score1;
+            PlayerManager.Instance.characters[i].Spawn(characterSpawnLocations[i].position);
+            PlayerManager.Instance.characters[i].EnableObj();
         }
     }
 }

@@ -14,13 +14,13 @@ public class Powerups : MonoBehaviour
     }
 
     public Enhancements augments;
-    private PlayerModel playerVar;
+    //private PlayerModel playerVar;
 
     // Start is called before the first frame update
     void Start()
     {
         augments = Enhancements.None;
-        playerVar = FindObjectOfType<PlayerModel>();
+        //playerVar = FindObjectOfType<PlayerModel>();
     }
 
     // Update is called once per frame
@@ -30,17 +30,17 @@ public class Powerups : MonoBehaviour
         {
             case Enhancements.Robotic_Strength:
                 //add time!
-                playerVar.playerPowerups.SetStrengthPowerup(true);
+                //playerVar.playerPowerups.SetStrengthPowerup(true);
                 Debug.Log("time_looop!");
                 break;
             case Enhancements.Robotic_Boost:
                 //Speed up!
-                playerVar.playerPowerups.SetSpeedPowerup(true);
+                //playerVar.playerPowerups.SetSpeedPowerup(true);
                 Debug.Log("IAMSPEED!");
                 break;
             case Enhancements.Robotic_Chasis:
                 //NOU!
-                playerVar.playerPowerups.SetChasisPowerup(true);
+                //playerVar.playerPowerups.SetChasisPowerup(true);
                 Debug.Log("PROTECC!");
                 break;
             default:

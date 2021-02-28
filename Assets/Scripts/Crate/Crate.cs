@@ -102,31 +102,31 @@ public class Crate : MonoBehaviour//, IPooledObject
         //call explode when timer = 0;
         if (timer <= 0 && !delivered)
         {
-            PlayerModel playerMod = null;
-            playerMod = transform.GetComponentInParent<PlayerModel>();
-            if (playerMod != null)
-            {
-                if (TutorialManager.Instance == null)
-                {
-                    playerMod.Fail();
-                }
-                else
-                {
-                    if (TutorialManager.Instance.currentObjective > 0)
-                    {
-                        playerMod.TutorialFail();
-                    }
-                }
-            }
-            else
-            {
+            //PlayerModel playerMod = null;
+            //playerMod = transform.GetComponentInParent<PlayerModel>();
+            //if (playerMod != null)
+            //{
+            //    if (TutorialManager.Instance == null)
+            //    {
+            //        playerMod.Fail();
+            //    }
+            //    else
+            //    {
+            //        if (TutorialManager.Instance.currentObjective > 0)
+            //        {
+            //            playerMod.TutorialFail();
+            //        }
+            //    }
+            //}
+            //else
+            //{
                 GameManager.Instance.subScore(1);
                 CrateManager.Instance.Explode();
                 CrateManager.Instance.spawnLocationStatus[CrateManager.Instance.currentSpawnedItems[this.gameObject]] = false;
                 CrateManager.Instance.currentSpawnedItems.Remove(this.gameObject);
 
                 gameObject.SetActive(false);
-            }
+            //}
         }
     }
 

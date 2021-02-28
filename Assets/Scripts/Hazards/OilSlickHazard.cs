@@ -19,16 +19,16 @@ public class OilSlickHazard : MonoBehaviour
                 TutorialManager.Instance.hitOil = true;
             }
 
-            if (other.GetComponent<PlayerModel>().isHolding)
-            {
-                other.GetComponent<PlayerModel>().playerMovement.SetPlayerIced(true);
-                //other.GetComponent<PlayerModel>().qteManager.Fail();
-            }
-            else
-            {
-                other.GetComponent<PlayerModel>().playerMovement.SetPlayerIced(true);
-                //other.GetComponent<PlayerModel>().ChangeState(PlayerModel.PlayerState.Stunned);
-            }
+            //if (other.GetComponent<PlayerModel>().isHolding)
+            //{
+            //    other.GetComponent<PlayerModel>().playerMovement.SetPlayerIced(true);
+            //    //other.GetComponent<PlayerModel>().qteManager.Fail();
+            //}
+            //else
+            //{
+            //    other.GetComponent<PlayerModel>().playerMovement.SetPlayerIced(true);
+            //    //other.GetComponent<PlayerModel>().ChangeState(PlayerModel.PlayerState.Stunned);
+            //}
         }
     }
 }

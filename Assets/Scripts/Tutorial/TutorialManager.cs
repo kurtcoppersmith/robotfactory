@@ -345,7 +345,7 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
                     HazardManager.Instance.TutorialSpawnHazards();
                     break;
                 case 4:
-                    LevelManager.Instance.levelEnd.TutorialGearAdder();
+                    //LevelManager.Instance.levelEnd.TutorialGearAdder();
                     break;
             }
 

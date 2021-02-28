@@ -24,14 +24,14 @@ public class CrateStand : MonoBehaviour
             if (TutorialManager.Instance == null)
             {
                 CrateManager.Instance.DeliverCrate();
-                collision.transform.parent.gameObject.GetComponent<PlayerModel>().Passed();
+                //collision.transform.parent.gameObject.GetComponent<PlayerModel>().Passed();
 
                 deliveryParticleEffect.SetActive(true);
                 Invoke("StopDeliveryParticles", deliveryParticleEffect.GetComponentInChildren<ParticleSystem>().main.duration);
             }
             else
             {
-                collision.transform.parent.gameObject.GetComponent<PlayerModel>().TutorialPassed();
+                //collision.transform.parent.gameObject.GetComponent<PlayerModel>().TutorialPassed();
 
                 if (TutorialManager.Instance.currentObjective == 1 || TutorialManager.Instance.currentObjective == 2)
                 {
@@ -46,11 +46,11 @@ public class CrateStand : MonoBehaviour
         {
             if (TutorialManager.Instance == null)
             {
-                collision.transform.parent.gameObject.GetComponent<PlayerModel>().Fail();
+                //collision.transform.parent.gameObject.GetComponent<PlayerModel>().Fail();
             }
             else
             {
-                collision.transform.parent.gameObject.GetComponent<PlayerModel>().TutorialFail();
+                //collision.transform.parent.gameObject.GetComponent<PlayerModel>().TutorialFail();
             }
         }
         

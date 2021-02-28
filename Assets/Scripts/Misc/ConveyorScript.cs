@@ -32,7 +32,7 @@ public class ConveyorScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         GameObject obj = collision.gameObject;
-        if (obj.tag == "Pickup" && obj.transform.parent.GetComponent<PlayerModel>() == null)
+        if (obj.tag == "Pickup")// && obj.transform.parent.GetComponent<PlayerModel>() == null)
         {
             crates.Add(obj);
             obj.transform.rotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
@@ -44,7 +44,7 @@ public class ConveyorScript : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         GameObject obj = collision.gameObject;
-        if (obj.tag == "Pickup" && obj.transform.parent.GetComponent<PlayerModel>() == null)
+        if (obj.tag == "Pickup")// && obj.transform.parent.GetComponent<PlayerModel>() == null)
         {
             crates.Remove(obj);
             //Debug.Log("Exit");

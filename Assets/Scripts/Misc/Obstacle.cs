@@ -10,11 +10,11 @@ public class Obstacle : MonoBehaviour
         {
             if (TutorialManager.Instance != null)
             {
-                collision.transform.parent.GetComponent<PlayerModel>().TutorialFail();
+                //collision.transform.parent.GetComponent<PlayerModel>().TutorialFail();
             }
             else
             {
-                collision.transform.parent.gameObject.GetComponent<PlayerModel>().Fail();
+                //collision.transform.parent.gameObject.GetComponent<PlayerModel>().Fail();
             }
         }
     }

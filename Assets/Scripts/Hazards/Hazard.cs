@@ -11,14 +11,14 @@ public class Hazard : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
-            if (other.GetComponent<PlayerModel>().isHolding)
-            {
-                other.GetComponent<PlayerModel>().Fail();
-            }
-            else
-            {
-                other.GetComponent<PlayerModel>().ChangeState(PlayerModel.PlayerState.Stunned);
-            }
+            //if (other.GetComponent<PlayerModel>().isHolding)
+            //{
+            //    other.GetComponent<PlayerModel>().Fail();
+            //}
+            //else
+            //{
+            //    other.GetComponent<PlayerModel>().ChangeState(PlayerModel.PlayerState.Stunned);
+            //}
         }
     }
 }
