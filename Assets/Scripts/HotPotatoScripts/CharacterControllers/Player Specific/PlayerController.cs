@@ -9,8 +9,6 @@ public class PlayerController : Character
     [HideInInspector] public PlayerMovement playerMovement;
     [HideInInspector] public PlayerGroundDetection groundDetection;
 
-    //[Header("Player Specific Variables")]
-
     private void Awake()
     {
         playerUI = GetComponent<PlayerUI>();
@@ -18,6 +16,7 @@ public class PlayerController : Character
         groundDetection = GetComponent<PlayerGroundDetection>();
 
         maxAttackAbilityRecharge = attackAbilityRecharge;
+        maxUpdateScoreTimer = updateScoreTimer;
     }
 
     public override void EnableObj()
@@ -43,6 +42,20 @@ public class PlayerController : Character
         base.Move();
 
         playerMovement.Move();
+    }
+
+    public override void Holding()
+    {
+        base.Holding();
+
+        updateScoreTimer -= Time.deltaTime;
+
+        if (updateScoreTimer <= 0)
+        {
+            characterScore++;
+            playerUI.UpdatePlayerScore(characterScore);
+            updateScoreTimer = maxUpdateScoreTimer;
+        }
     }
 
     void OnAttack(InputValue inputValue)
@@ -182,24 +195,40 @@ public class PlayerController : Character
         pickup.transform.parent = avatar.transform;
         PlayerManager.Instance.SetCurrentHolder(this);
 
-        //if (catchCollider.currentCharactersInRange.Count > 0)
-        //{
-        //    foreach (int characterIndex in catchCollider.currentCharactersInRange)
-        //    {
-        //        PlayerManager.Instance.characters[characterIndex].OnHit(transform.position);
-        //    }
-        //}
+        updateScoreTimer = 0;
+    }
 
-        //playerMovement.speed = playerMovement.normalSpeed;
+    public override void DisableObj()
+    {
+        base.DisableObj();
+
+        playerCam.enabled = false;
+
+        Debug.Log("Disabled");
     }
 
     private void Update()
     {
         if (isEnabled)
         {
+            if (GameManager.Instance.hasEnded)
+            {
+                if (!isUnwrapped)
+                {
+                    DisableObj();
+                }
+
+                return;
+            }
+
             Move();
             UpdateAttack();
             OnCatchPickUp();
+
+            if (currentPickup != null)
+            {
+                Holding();
+            }
         }
     }
 }

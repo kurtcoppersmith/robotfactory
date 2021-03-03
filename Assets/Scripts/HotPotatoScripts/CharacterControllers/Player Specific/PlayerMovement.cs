@@ -212,8 +212,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        UpdateDash();
-        UpdateKnockback();
-        UpdateDaze();
+        if (playerController.isEnabled)
+        {
+            UpdateDash();
+            UpdateKnockback();
+            UpdateDaze();
+        }
     }
 }

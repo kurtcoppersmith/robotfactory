@@ -7,11 +7,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 {
+    [Header("Main Manager Variables")]
     public PlayerInputManager inputManager;
     public Character[] characters = new Character[4];
     public Color[] playerColors = new Color[4];
     public GameObject characterAI;
 
+    [Header("External Variables")]
+    public float lastHolderDivider = 0;
+
+    ///Private Variables
     private GameObject currentPickup;
     private GameObject currentPickupIcon;
     private Character currentPickupHolder = null;

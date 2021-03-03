@@ -8,8 +8,10 @@ public class Character : MonoBehaviour
     [Header("PlayerManager Variables")]
     public PlayerInput playerInput;
     public int playerIndex = -1;
-    public bool isEnabled = false;
     public string characterName = "";
+    public int characterScore = 0;
+    [HideInInspector] public bool isEnabled = false;
+    [HideInInspector] public bool isUnwrapped = false;
 
     [Header("External Colliders")]
     public CharacterHandCollider characterHand;
@@ -24,6 +26,10 @@ public class Character : MonoBehaviour
     public GameObject currentPickup = null;
     public GameObject avatar;
     public Transform pickupTransform;
+
+    [Header("Score Variables")]
+    public float updateScoreTimer = 0;
+    [HideInInspector] public float maxUpdateScoreTimer = 0;
 
     [Header("Ability Cooldowns")]
     public float dashAbilityRecharge = 0f;
@@ -62,6 +68,7 @@ public class Character : MonoBehaviour
     public Vector3 currentVelocity = Vector3.zero;
 
     public virtual void EnableObj() { isEnabled = true; }
+    public virtual void DisableObj() { isEnabled = false; }
     public virtual void Spawn(Vector3 spawnLocation) { }
     public virtual void Move() { }
     public virtual void Attack() { }
@@ -85,4 +92,6 @@ public class Character : MonoBehaviour
     }
 
     public virtual void OnPickup(GameObject pickup) { }//currentPickup = pickup; }
+
+    public virtual void Holding() { }
 }

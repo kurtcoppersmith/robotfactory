@@ -95,6 +95,8 @@ public class AIController : Character
         standSubStateTimer = maxStandSubStateTimer.GetRandom();
         chaseSubStateTimer = maxChaseSubStateTimer.GetRandom();
         chasePredictionTimer = maxChasePredictionTimer.GetRandom();
+
+        maxUpdateScoreTimer = updateScoreTimer;
     }
 
     public override void EnableObj()
@@ -141,6 +143,19 @@ public class AIController : Character
         ChangeSubState(SubState.Knockback);
     }
 
+    public override void Holding()
+    {
+        base.Holding();
+
+        updateScoreTimer -= Time.deltaTime;
+
+        if (updateScoreTimer <= 0)
+        {
+            characterScore++;
+            updateScoreTimer = maxUpdateScoreTimer;
+        }
+    }
+
     public override void OnPickup(GameObject pickup)
     {
         currentPickup = pickup;
@@ -148,6 +163,8 @@ public class AIController : Character
         pickup.transform.position = pickupTransform.position;
         pickup.transform.parent = avatar.transform;
         PlayerManager.Instance.SetCurrentHolder(this);
+
+        updateScoreTimer = 0;
     }
 
     void OnCatchPickUp()
@@ -1073,10 +1090,31 @@ public class AIController : Character
         }
     }
 
+    public override void DisableObj()
+    {
+        base.DisableObj();
+
+        nav.isStopped = true;
+        nav.enabled = false;
+        characterController.enabled = false;
+
+        Debug.Log("AI Disabled");
+    }
+
     private void Update()
     {
         if (isEnabled)
         {
+            if (GameManager.Instance.hasEnded)
+            {
+                if (!isUnwrapped)
+                {
+                    DisableObj();
+                }
+
+                return;
+            }
+
             UpdatePreviousLocation();
 
             ///Update pickup status
@@ -1091,6 +1129,11 @@ public class AIController : Character
             UpdateKnockback();
             UpdateDaze();
             UpdateStand();
+
+            if (currentPickup != null)
+            {
+                Holding();
+            }
         }
     }
 }

@@ -65,6 +65,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [Header("Important Internal Variables")]
     //Float used by in game timer
     public float timeRemaining = 150;
+    [HideInInspector] public float maxTime = 0;
     public int lives = 3;
     public int score = 0;
     public Transform pm;
@@ -83,7 +84,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         base.Awake();
 
-        InputSystem.onEvent += (ptr, device) => { lastDetectedDevice = device; };
+        maxTime = timeRemaining;
     }
 
     void Start()
@@ -159,14 +160,23 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     
     public void subtractTime()
     {
-        if(timeRemaining > 0)
+        if (!hasEnded)
         {
-            timeRemaining -= Time.deltaTime;
-        }
-        else
-        {
-            timeRemaining = 0;
-            //LevelManager.Instance.EnableEndScreen();
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+
+                if (timeRemaining < 0)
+                {
+                    timeRemaining = 0;
+                    hasEnded = true;
+                }
+            }
+            else
+            {
+                timeRemaining = 0;
+                hasEnded = true;
+            }
         }
     }
 

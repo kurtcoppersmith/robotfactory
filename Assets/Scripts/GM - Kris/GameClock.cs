@@ -4,60 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameClock : MonoBehaviour
+static public class GameClock
 {
-    //Gamemanager which holds time variable
-    public GameManager GM;
-
-    //Three variables used for displaying the time
-    float minutes;
-    float seconds;
-    float milliseconds;
-
-    //In game UI Text which displays the current timer
-    //public Text timeText;
-    public TextMeshProUGUI timeTextTMP;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Attach current Gamemanager to the timer script
-        GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-
-        if(GameManager.Instance != null)
-        {
-            timeTextTMP.text = "";
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (TutorialManager.Instance == null)
-        {
-            //call GM SubtractTime script and TimerDisplay Script
-            GM.subtractTime();
-            TimerDisplay(GM.returnTime());
-        }
-    }
-
     //Used to display the remaining float time in a traditional clock format
-    void TimerDisplay(float clockTime)
+    public static string TimerDisplay(float clockTime)
     {
         //Three math functions to get current minutes, seconds, and milliseconds from float value
-        minutes = Mathf.FloorToInt(clockTime / 60);
-        seconds = Mathf.FloorToInt(clockTime % 60);
-        milliseconds = Mathf.FloorToInt((clockTime % 1) * 100);
+        float minutes = Mathf.FloorToInt(clockTime / 60);
+        float seconds = Mathf.FloorToInt(clockTime % 60);
+        float milliseconds = Mathf.FloorToInt((clockTime % 1) * 100);
 
 
         //timeText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
         if (!GameManager.Instance.isPaused && !GameManager.Instance.hasEnded)
         {
-            timeTextTMP.text = string.Format("{0}:{1:00}:{2:00}", minutes, seconds, milliseconds);
+            return string.Format("{0}:{1:00}:{2:00}", minutes, seconds, milliseconds);
         }
         else
         {
-            timeTextTMP.text = "";
+            return "";
         } 
     }
 }

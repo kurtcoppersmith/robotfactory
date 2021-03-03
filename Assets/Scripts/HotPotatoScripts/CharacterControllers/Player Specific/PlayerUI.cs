@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
+    public Character currentCharacter;
+
     [Header("HUD Display")]
     public TMPro.TextMeshProUGUI playerNameTextMesh;
+    public TMPro.TextMeshProUGUI playerTimerTextMesh;
+    public TMPro.TextMeshProUGUI playerScoreTextMesh;
     public Image dashAbilityImage;
     public Image punchAbilityImage;
 
@@ -17,6 +21,7 @@ public class PlayerUI : MonoBehaviour
 
     private RenderTexture minimapRender;
     private int currentCharPlayerIndex = -1;
+    private float timeRemaining = 0;
 
     private Dictionary<int, GameObject> otherMinimapIcons = new Dictionary<int, GameObject>();
 
@@ -40,6 +45,11 @@ public class PlayerUI : MonoBehaviour
         minimapCam.cullingMask = minimapCam.cullingMask | (1 << LayerMask.NameToLayer($"Player{playerIndex + 1}Minimap"));
 
         playerNameTextMesh.text = characterName;
+
+        timeRemaining = GameManager.Instance.maxTime;
+
+        playerTimerTextMesh.text = GameClock.TimerDisplay(timeRemaining);
+        playerScoreTextMesh.text = "Score: " + currentCharacter.characterScore;
     }
 
     public void AddOtherMinimapIcons(int playerIndex)
@@ -125,9 +135,43 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    void UpdatePersonalTimer()
+    {
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+
+            if (timeRemaining < 0)
+            {
+                timeRemaining = 0;
+            }
+
+            playerTimerTextMesh.text = GameClock.TimerDisplay(timeRemaining);
+        }
+        else if (timeRemaining != 0)
+        {
+            timeRemaining = 0;
+
+            playerTimerTextMesh.text = GameClock.TimerDisplay(timeRemaining);
+        }
+    }
+
+    public void UpdatePlayerScore(int newPlayerScore)
+    {
+        playerScoreTextMesh.text = "Score: " + newPlayerScore;
+    }
+
+    private void Update()
+    {
+        if (currentCharacter.isEnabled)
+        {
+            UpdatePersonalTimer();
+        }
+    }
+
     void LateUpdate()
     {
-        if (otherMinimapIcons.Count > 0 && currentCharPlayerIndex != -1)
+        if (otherMinimapIcons.Count > 0 && currentCharPlayerIndex != -1 && currentCharacter.isEnabled)
         {
             UpdateMinimap();
         }

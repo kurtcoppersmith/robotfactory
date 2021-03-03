@@ -2,7 +2,7 @@
     "name": "PlayerActions",
     "maps": [
         {
-            "name": "PlayerController",
+            "name": "Gameplay",
             "id": "15b88eed-343c-41a1-abfd-ec17ba25202e",
             "actions": [
                 {
@@ -14,9 +14,25 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Box Pickup",
+                    "name": "Dash",
                     "type": "Button",
                     "id": "63b016c8-7a2b-476d-9b8f-7953fd732c18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "15080d07-1e96-4774-a2a2-671e04a0363b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "52272d57-0a1d-467a-862a-aa3ed6136a56",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -28,19 +44,11 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Scoot",
-                    "type": "Button",
-                    "id": "15080d07-1e96-4774-a2a2-671e04a0363b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
                 {
-                    "name": "Keyboard",
+                    "name": "KeyboardMovement",
                     "id": "ccfdbf40-e14f-4644-af4a-943719357900",
                     "path": "2DVector",
                     "interactions": "",
@@ -95,134 +103,35 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Gamepad",
-                    "id": "3bb5e41e-3d91-4f9e-9e71-c744f82aa5e5",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "cdfef108-f5fb-4046-93b7-08a10cbf5ee4",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "PS4;XBox",
                     "action": "Movement",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "e5899350-8da7-4526-93d8-be3bb63a9915",
-                    "path": "<Gamepad>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4;XBox",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "8fc70438-6a6d-4fd2-a118-eb14e921e3d5",
-                    "path": "<Gamepad>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4;XBox",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "984977c4-4011-416a-866a-bd35f8102d73",
-                    "path": "<Gamepad>/leftStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4;XBox",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "8ca378ad-9309-4f0d-a34e-95c9aaf56850",
-                    "path": "<Gamepad>/leftStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4;XBox",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Gamepad Alt",
-                    "id": "728c26eb-07c3-4fe1-9dab-da922d9a1d7d",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "5768adc9-39df-4b1b-b728-ad4f435f37bd",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4;XBox",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "2332565c-dcd2-4a97-9b7c-a9f57f3bc8a9",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4;XBox",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "85a184f4-a611-4c04-be21-bd863436596c",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4;XBox",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "68304deb-226b-44f1-8ef0-00d0865414d3",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PS4;XBox",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
                     "id": "5a70a2f7-30af-4a41-973c-8903836809d6",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Box Pickup",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "6ab83988-f1d5-423e-8840-de74a0c525d4",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "PS4;XBox",
-                    "action": "Box Pickup",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -255,29 +164,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Scoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7cd9f22d-640b-4eec-8b45-3ec7296d47be",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Scoot",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "2d3d2851-c6ba-4fd7-8d2c-8d259401ed13",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "PS4;XBox",
-                    "action": "Scoot",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b401a500-e8ac-4b3d-9415-e479a9396f66",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c5b235a-9f6d-4c29-ba38-dd1c5dd087dc",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XBox;PS4",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
