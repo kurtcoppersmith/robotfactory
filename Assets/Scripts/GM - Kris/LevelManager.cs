@@ -17,13 +17,20 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     public SplitScreenManager splitScreenManager;
     public GameObject levelPickup;
     public Camera levelCamera;
+    public GameObject mainMenuButton;
 
     private bool levelEnded = false;
     private float lastHolderDivider = 0;
 
     private void Start()
     {
+        SetUpLevel();
+    }
+
+    void SetUpLevel()
+    {
         PlayerManager.Instance.SetPickup(levelPickup);
+        lastHolderDivider = PlayerManager.Instance.lastHolderDivider;
 
         int currentPlayersAdded = PlayerManager.Instance.GetCurrentPlayerCharacterNumb();
         for (int i = 0; i < currentPlayersAdded; i++)
@@ -33,11 +40,15 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
 
         for (int i = 0; i < PlayerManager.Instance.characters.Length; i++)
         {
-            PlayerManager.Instance.characters[i].Spawn(characterSpawnLocations[i].position);
+            Vector3 currentCharPos = characterSpawnLocations[i].position, tempPickupLocation = levelPickup.transform.position;
+            currentCharPos.y = 0;
+            tempPickupLocation.y = 0;
+            Vector3 lookDir = tempPickupLocation - currentCharPos;
+            Quaternion lookRotation = Quaternion.LookRotation(lookDir, Vector3.up);
+
+            PlayerManager.Instance.characters[i].Spawn(characterSpawnLocations[i].position, lookRotation);
             PlayerManager.Instance.characters[i].EnableObj();
         }
-
-        lastHolderDivider = PlayerManager.Instance.lastHolderDivider;
     }
 
     void ApplyLastHolderBonus()
@@ -88,6 +99,8 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
             tempCameraPos.y = 0;
             Vector3 lookDir = tempCameraPos - tempWinnerPos;
             winner.avatar.transform.rotation = Quaternion.LookRotation(lookDir, Vector3.up);
+            winner.winCanvas.transform.rotation = Quaternion.LookRotation(-winnerPositions[i].forward, Vector3.up);
+            winner.EnableWinCanvas();
 
             tempCharacters.Remove(winner);
         }
@@ -108,6 +121,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
                 ApplyLastHolderBonus();
                 FindWinner();
 
+                mainMenuButton.SetActive(true);
                 levelEnded = true;
             }
         }
@@ -117,5 +131,6 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     {
         GameManager.Instance.setTime(GameManager.Instance.maxTime);
         GameManager.Instance.hasEnded = false;
+        PlayerManager.Instance.SelfDestruct();
     }
 }

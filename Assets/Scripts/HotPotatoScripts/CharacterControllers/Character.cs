@@ -67,9 +67,20 @@ public class Character : MonoBehaviour
     [Header("Current Velocity")]
     public Vector3 currentVelocity = Vector3.zero;
 
+    [Header("Win Variables")]
+    public GameObject winCanvas;
+    public TMPro.TextMeshProUGUI winName;
+    public TMPro.TextMeshProUGUI winScore;
+
     public virtual void EnableObj() { isEnabled = true; }
     public virtual void DisableObj() { isEnabled = false; }
-    public virtual void Spawn(Vector3 spawnLocation) { }
+    public void EnableWinCanvas()
+    {
+        winCanvas.SetActive(true);
+        winName.text = characterName;
+        winScore.text = "Score: " + characterScore;
+    }
+    public virtual void Spawn(Vector3 spawnLocation, Quaternion lookRotation) { }
     public virtual void Move() { }
     public virtual void Attack() { }
     public virtual void OnHit(Vector3 attackerPosition) 

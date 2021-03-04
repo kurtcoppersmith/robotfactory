@@ -109,9 +109,10 @@ public class AIController : Character
 
     }
 
-    public override void Spawn(Vector3 spawnLocation)
+    public override void Spawn(Vector3 spawnLocation, Quaternion lookRotation)
     {
         transform.position = spawnLocation;
+        transform.rotation = lookRotation;
     }
 
     public override void Attack()

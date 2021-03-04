@@ -32,9 +32,11 @@ public class PlayerController : Character
         playerMovement.canMove = true;
     }
 
-    public override void Spawn(Vector3 spawnLocation)
+    public override void Spawn(Vector3 spawnLocation, Quaternion lookRotation)
     {
         transform.position = spawnLocation;
+        //Fix this problem on startup.
+        avatar.transform.rotation = lookRotation;
     }
 
     public override void Move()

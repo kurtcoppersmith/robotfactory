@@ -38,14 +38,15 @@ public class MenuScript : MonoBehaviour
     public void MainMenuPlay()
     {
         Time.timeScale = 1.0f;
-        if (GameManager.Instance.GetGameData().hasCompletedTutorial)
-        {
-            LevelSelectMenu();
-        }
-        else
-        {
-            SceneManager.LoadScene(tutorialLevel);
-        }
+        //if (GameManager.Instance.GetGameData().hasCompletedTutorial)
+        //{
+        //    LevelSelectMenu();
+        //}
+        //else
+        //{
+        //    SceneManager.LoadScene(tutorialLevel);
+        //}
+        LevelSelectMenu();
     }
 
     public void ExitTutorial()

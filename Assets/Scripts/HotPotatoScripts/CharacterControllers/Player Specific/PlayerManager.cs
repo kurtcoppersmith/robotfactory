@@ -138,4 +138,9 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             }
         }
     }
+
+    public void SelfDestruct()
+    {
+        Destroy(this.gameObject);
+    }
 }
