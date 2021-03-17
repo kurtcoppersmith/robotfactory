@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3992798496567022808
 Transform:
@@ -43,10 +43,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3992798496567022808}
     m_Modifications:
+    - target: {fileID: 4156454724791749777, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609898717844630194, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8298743741167525032, guid: 02cd8184ab78d204e9a710e4192643f2,
         type: 3}
       propertyPath: m_Name
       value: BaseConveyor (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298743741167525032, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8674179011271263762, guid: 02cd8184ab78d204e9a710e4192643f2,
         type: 3}
@@ -118,10 +133,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3992798496567022808}
     m_Modifications:
+    - target: {fileID: 4156454724791749777, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609898717844630194, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8298743741167525032, guid: 02cd8184ab78d204e9a710e4192643f2,
         type: 3}
       propertyPath: m_Name
       value: BaseConveyor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298743741167525032, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8674179011271263762, guid: 02cd8184ab78d204e9a710e4192643f2,
         type: 3}
@@ -193,10 +223,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3992798496567022808}
     m_Modifications:
+    - target: {fileID: 4156454724791749777, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609898717844630194, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8298743741167525032, guid: 02cd8184ab78d204e9a710e4192643f2,
         type: 3}
       propertyPath: m_Name
       value: BaseConveyor (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298743741167525032, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8674179011271263762, guid: 02cd8184ab78d204e9a710e4192643f2,
         type: 3}
@@ -268,10 +313,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3992798496567022808}
     m_Modifications:
+    - target: {fileID: 4156454724791749777, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4156454724791749777, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609898717844630194, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609898717844630194, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 8298743741167525032, guid: 02cd8184ab78d204e9a710e4192643f2,
         type: 3}
       propertyPath: m_Name
       value: BaseConveyor (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298743741167525032, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298743741167525032, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8674179011271263762, guid: 02cd8184ab78d204e9a710e4192643f2,
         type: 3}
@@ -343,10 +418,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3992798496567022808}
     m_Modifications:
+    - target: {fileID: 4156454724791749777, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609898717844630194, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8298743741167525032, guid: 02cd8184ab78d204e9a710e4192643f2,
         type: 3}
       propertyPath: m_Name
       value: BaseConveyor (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298743741167525032, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8674179011271263762, guid: 02cd8184ab78d204e9a710e4192643f2,
         type: 3}
@@ -418,10 +508,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3992798496567022808}
     m_Modifications:
+    - target: {fileID: 4156454724791749777, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609898717844630194, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8298743741167525032, guid: 02cd8184ab78d204e9a710e4192643f2,
         type: 3}
       propertyPath: m_Name
       value: BaseConveyor (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298743741167525032, guid: 02cd8184ab78d204e9a710e4192643f2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8674179011271263762, guid: 02cd8184ab78d204e9a710e4192643f2,
         type: 3}
