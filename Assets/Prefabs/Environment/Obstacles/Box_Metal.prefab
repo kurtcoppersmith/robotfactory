@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 153990310328314819}
   - component: {fileID: 9006588784283631343}
   - component: {fileID: 8014394939719544353}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: metal_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5463778493937888041
 Transform:
@@ -103,12 +103,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7124602973491557705}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Box_Metal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7124602973491557705
 Transform:
@@ -118,7 +118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7607842029339914227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.03314, y: 0.21086264, z: -2.338528}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5463778493937888041}
