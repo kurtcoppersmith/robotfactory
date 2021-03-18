@@ -17,6 +17,7 @@ public class PlayerController : Character
 
         maxAttackAbilityRecharge = attackAbilityRecharge;
         maxUpdateScoreTimer = updateScoreTimer;
+        maxStunnedTime = stunnedTime;
     }
 
     public override void EnableObj()
@@ -121,9 +122,38 @@ public class PlayerController : Character
         base.Drop();
     }
 
+    int CheckForInteractable()
+    {
+        for(int i = 0; i < LevelManager.Instance.levelInteractableWaypoints.Count; i++)
+        {
+            Vector3 interactablePos = LevelManager.Instance.levelInteractableWaypoints[i].currentInteractable.gameObject.transform.position,
+                currentPos = transform.position;
+            interactablePos.y = 0;
+            currentPos.y = 0;
+
+            if (Vector3.Distance(currentPos, interactablePos) < 
+                LevelManager.Instance.levelInteractableWaypoints[i].currentInteractable.gameObject.GetComponent<Collider>().bounds.size.magnitude)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
     void OnInteract(InputValue inputValue)
     {
-        
+        if (currentPickup != null || !isEnabled)
+        {
+            return;
+        }
+
+        int environmentChecker = CheckForInteractable();
+
+        if(environmentChecker != -1)
+        {
+            LevelManager.Instance.levelInteractableWaypoints[environmentChecker].currentInteractable.InitiateInteractable(this);
+        }
     }
 
     void OnCatchPickUp()
@@ -132,7 +162,6 @@ public class PlayerController : Character
         {
             return;
         }
-
 
         if (catchCollider.currentPickupColliders.Count > 0 && currentPickup == null)
         {
@@ -198,6 +227,14 @@ public class PlayerController : Character
         PlayerManager.Instance.SetCurrentHolder(this);
 
         updateScoreTimer = 0;
+    }
+
+    public override void Stun()
+    {
+        base.Stun();
+
+        isStunned = true;
+        stunnedTime = maxStunnedTime;
     }
 
     public override void DisableObj()

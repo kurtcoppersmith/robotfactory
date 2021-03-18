@@ -64,6 +64,12 @@ public class Character : MonoBehaviour
     [HideInInspector] public bool isDazed = false;
     [HideInInspector] public float maxDazedTime = 0f;
 
+    [Header("Stunned Variables")]
+    public float stunnedTime = 0f;
+
+    [HideInInspector] public bool isStunned = false;
+    [HideInInspector] public float maxStunnedTime = 0f;
+
     [Header("Current Velocity")]
     public Vector3 currentVelocity = Vector3.zero;
 
@@ -105,4 +111,10 @@ public class Character : MonoBehaviour
     public virtual void OnPickup(GameObject pickup) { }//currentPickup = pickup; }
 
     public virtual void Holding() { }
+
+    public virtual void Stun()
+    {
+        isStunned = true;
+        stunnedTime = maxStunnedTime;
+    }
 }

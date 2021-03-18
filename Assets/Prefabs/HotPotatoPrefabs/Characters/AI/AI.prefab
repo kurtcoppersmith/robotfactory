@@ -214,6 +214,9 @@ MonoBehaviour:
   dazedTime: 5
   isDazed: 0
   maxDazedTime: 0
+  stunnedTime: 1.2
+  isStunned: 0
+  maxStunnedTime: 0
   currentVelocity: {x: 0, y: 0, z: 0}
   winCanvas: {fileID: 4024094442563334183}
   winName: {fileID: 4979813997993481070}
@@ -239,7 +242,7 @@ MonoBehaviour:
   dashPercent: 80
   attackPercent: 40
   standPercent: 5
-  environmentPercent: 0
+  environmentPercent: 80
   randomLocalePercent: 50
   velocityPredictionPercent: 50
   velocityPredictionRange: 0.5

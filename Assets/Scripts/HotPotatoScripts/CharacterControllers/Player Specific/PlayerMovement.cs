@@ -77,6 +77,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move()
     {
+        if (playerController.isStunned)
+        {
+            return;
+        }
+
         if (canMove)
         {
             currentVelocity = new Vector3(movementInput.x, 0, movementInput.y);
@@ -210,10 +215,29 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void UpdateStun()
+    {
+        if (playerController.isStunned)
+        {
+            playerController.stunnedTime -= Time.deltaTime;
+            if(playerController.stunnedTime <= 0)
+            {
+                playerController.isStunned = false;
+                playerController.stunnedTime = playerController.maxStunnedTime;
+            }
+        }
+    }
+
     private void Update()
     {
         if (playerController.isEnabled)
         {
+            UpdateStun();
+            if (playerController.isStunned)
+            {
+                return;
+            }
+
             UpdateDash();
             UpdateKnockback();
             UpdateDaze();

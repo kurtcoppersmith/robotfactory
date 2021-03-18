@@ -1072,6 +1072,9 @@ MonoBehaviour:
   dazedTime: 5
   isDazed: 0
   maxDazedTime: 0
+  stunnedTime: 1.2
+  isStunned: 0
+  maxStunnedTime: 0
   currentVelocity: {x: 0, y: 0, z: 0}
   winCanvas: {fileID: 561056437068168113}
   winName: {fileID: 8433811887016368376}
@@ -1095,7 +1098,7 @@ MonoBehaviour:
   gravity: 1
   turnSpeed: 20
   canMove: 1
-  normalSpeed: 0
+  normalSpeed: 5
 --- !u!114 &4826486634466474892
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,7 +18,9 @@ public class AIController : Character
         Stand,
         Flee,
         Knockback,
-        RandomLocale
+        RandomLocale,
+        Stun,
+        Environment
     }
 
     [Header("AI Specific Variables")]
@@ -72,7 +74,10 @@ public class AIController : Character
 
     private List<Transform> waypoints = new List<Transform>();
     private Transform currentFleeWaypoint = null;
-    private Transform currentChaseWaypoint;
+    private Transform currentChaseWaypoint = null;
+
+    private List<EnvironmentInteract> currentEnvironmentInteractables = new List<EnvironmentInteract>();
+    private int currentEnvironmentInteractableIndex = -1;
 
     private void Awake()
     {
@@ -92,6 +97,8 @@ public class AIController : Character
 
         maxDazedTime = dazedTime;
 
+        maxStunnedTime = stunnedTime;
+
         standSubStateTimer = maxStandSubStateTimer.GetRandom();
         chaseSubStateTimer = maxChaseSubStateTimer.GetRandom();
         chasePredictionTimer = maxChasePredictionTimer.GetRandom();
@@ -105,8 +112,8 @@ public class AIController : Character
         characterController.enabled = false;
 
         waypoints = new List<Transform>(LevelManager.Instance.AIWaypoints);
+        currentEnvironmentInteractables = new List<EnvironmentInteract>(LevelManager.Instance.levelInteractableWaypoints);
         base.EnableObj();
-
     }
 
     public override void Spawn(Vector3 spawnLocation, Quaternion lookRotation)
@@ -166,6 +173,13 @@ public class AIController : Character
         PlayerManager.Instance.SetCurrentHolder(this);
 
         updateScoreTimer = 0;
+    }
+
+    public override void Stun()
+    {
+        base.Stun();
+
+        ChangeSubState(SubState.Stun);
     }
 
     void OnCatchPickUp()
@@ -332,8 +346,15 @@ public class AIController : Character
                 }
                 else
                 {
-                    ChangeSubState(SubState.Chase);
-                    return;
+                    if (randDefaultNumb < environmentPercent && currentEnvironmentInteractables.Count > 0)
+                    {
+                        ChangeSubState(SubState.Environment);
+                    }
+                    else
+                    {
+                        ChangeSubState(SubState.Chase);
+                        return;
+                    }
                 }
             }
         }
@@ -448,6 +469,66 @@ public class AIController : Character
 
         if (Vector3.Distance(tempCurrentPos, tempHolderPos) < maxFleeRange)
         {
+            ChangeSubState(SubState.Chase);
+        }
+    }
+
+    void ChooseEnvironmentInteractable()
+    {
+        if (currentEnvironmentInteractables.Count <= 0)
+        {
+            return;
+        }
+        else if (currentPickup != null)
+        {
+            ChangeMainState(MainState.Carrying);
+            return;
+        }
+
+        Vector3 interactablePos = currentEnvironmentInteractables[0].interactableWaypoint.position,
+            currentPos = transform.position;
+        interactablePos.y = 0;
+        currentPos.y = 0;
+
+        float minDist = Vector3.Distance(currentPos, interactablePos);
+        int minIndex = 0;
+
+        for (int i = 1; i < currentEnvironmentInteractables.Count; i++)
+        {
+            interactablePos = currentEnvironmentInteractables[i].interactableWaypoint.position;
+            interactablePos.y = 0;
+
+            if (Vector3.Distance(currentPos, interactablePos) < minDist)
+            {
+                minDist = Vector3.Distance(currentPos, interactablePos);
+                minIndex = i;
+            }
+        }
+
+        currentEnvironmentInteractableIndex = minIndex;
+        interactablePos = currentEnvironmentInteractables[minIndex].interactableWaypoint.position;
+        interactablePos.y = 0;
+
+        EnableNav();
+        nav.SetDestination(interactablePos);
+    }
+
+    void UpdateEnvironmentPosition()
+    {
+        if (PlayerManager.Instance.GetCurrentHolder() == null)
+        {
+            ChangeSubState(SubState.Chase);
+            return;
+        }
+
+        Vector3 interactablePos = currentEnvironmentInteractables[currentEnvironmentInteractableIndex].interactableWaypoint.position,
+            currentPos = transform.position;
+        interactablePos.y = 0;
+        currentPos.y = 0;
+
+        if (Vector3.Distance(currentPos, interactablePos) < 0.3f)
+        {
+            currentEnvironmentInteractables[currentEnvironmentInteractableIndex].currentInteractable.InitiateInteractable(this);
             ChangeSubState(SubState.Chase);
         }
     }
@@ -882,6 +963,27 @@ public class AIController : Character
         }
     }
 
+    void UpdateStun()
+    {
+        if (isStunned)
+        {
+            stunnedTime -= Time.deltaTime;
+            if (stunnedTime <= 0)
+            {
+                isStunned = false;
+
+                if (mainState == MainState.Chasing)
+                {
+                    FindNewChaseSubState();
+                }
+                else
+                {
+                    FindNewCarrySubState();
+                }
+            }
+        }
+    }
+
     void SetDashRotation(Vector3 dashDestination)
     {
         Vector3 tempDashDestination = dashDestination, tempCurrentPos = transform.position;
@@ -1005,6 +1107,18 @@ public class AIController : Character
 
                 ChooseRandomLocale();
                 break;
+            case SubState.Stun:
+                nav.enabled = true;
+                nav.isStopped = true;
+                nav.ResetPath();
+
+                isStunned = true;
+                stunnedTime = maxStunnedTime;
+                break;
+            case SubState.Environment:
+                ChooseEnvironmentInteractable();
+
+                break;
         }
 
         subState = newSubState;
@@ -1019,6 +1133,11 @@ public class AIController : Character
         else if (currentPickup != null && mainState != MainState.Carrying)
         {
             ChangeMainState(MainState.Carrying);
+        }
+
+        if (isStunned)
+        {
+            return;
         }
 
         switch (mainState)
@@ -1088,6 +1207,11 @@ public class AIController : Character
             case SubState.RandomLocale:
                 UpdateRandomLocale();
                 break;
+            case SubState.Stun:
+                break;
+            case SubState.Environment:
+                UpdateEnvironmentPosition();
+                break;
         }
     }
 
@@ -1126,6 +1250,7 @@ public class AIController : Character
             UpdateSubStates();
 
             ///Update all character controller components
+            UpdateStun();
             UpdateDash();
             UpdateKnockback();
             UpdateDaze();

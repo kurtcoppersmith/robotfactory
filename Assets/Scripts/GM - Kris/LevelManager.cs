@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class EnvironmentInteract
+{
+    public EnvironmentInteractable currentInteractable;
+    public Transform interactableWaypoint;
+}
+
 public class LevelManager : SingletonMonoBehaviour<LevelManager>
 {
     [Header("Player Spawn Points")]
@@ -9,6 +16,9 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
 
     [Header("AI Waypoints")]
     public List<Transform> AIWaypoints = new List<Transform>();
+
+    [Header("Environment Interactables and Waypoints")]
+    public List<EnvironmentInteract> levelInteractableWaypoints = new List<EnvironmentInteract>();
 
     [Header("Winner Positions")]
     public Transform[] winnerPositions = new Transform[4];
