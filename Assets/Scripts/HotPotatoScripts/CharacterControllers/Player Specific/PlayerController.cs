@@ -18,6 +18,8 @@ public class PlayerController : Character
         maxAttackAbilityRecharge = attackAbilityRecharge;
         maxUpdateScoreTimer = updateScoreTimer;
         maxStunnedTime = stunnedTime;
+
+        sparkParticle.Stop();
     }
 
     public override void EnableObj()

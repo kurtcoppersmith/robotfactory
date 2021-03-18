@@ -104,6 +104,8 @@ public class AIController : Character
         chasePredictionTimer = maxChasePredictionTimer.GetRandom();
 
         maxUpdateScoreTimer = updateScoreTimer;
+
+        sparkParticle.Stop();
     }
 
     public override void EnableObj()
@@ -204,7 +206,11 @@ public class AIController : Character
                     }
 
                     OnPickup(catchCollider.currentPickupColliders[randNumb].gameObject);
-                    ChangeMainState(MainState.Carrying);
+
+                    if (!isStunned)
+                    {
+                        ChangeMainState(MainState.Carrying);
+                    }
                 }
 
                 return;
@@ -220,7 +226,10 @@ public class AIController : Character
                     }
 
                     OnPickup(catchCollider.currentPickupColliders[0].gameObject);
-                    ChangeMainState(MainState.Carrying);
+                    if (!isStunned)
+                    {
+                        ChangeMainState(MainState.Carrying);
+                    }
                 }
             }
         }
@@ -241,7 +250,10 @@ public class AIController : Character
                 PlayerManager.Instance.GetCurrentHolder().Drop();
 
                 OnPickup(PlayerManager.Instance.GetCurrentPickup());
-                ChangeMainState(MainState.Carrying);
+                if (!isStunned)
+                {
+                    ChangeMainState(MainState.Carrying);
+                }
             }
         }
     }

@@ -78,6 +78,9 @@ public class Character : MonoBehaviour
     public TMPro.TextMeshProUGUI winName;
     public TMPro.TextMeshProUGUI winScore;
 
+    [Header("Particle Effects")]
+    public ParticleSystem sparkParticle;
+
     public virtual void EnableObj() { isEnabled = true; }
     public virtual void DisableObj() { isEnabled = false; }
     public void EnableWinCanvas()
@@ -116,5 +119,7 @@ public class Character : MonoBehaviour
     {
         isStunned = true;
         stunnedTime = maxStunnedTime;
+
+        sparkParticle.Play();
     }
 }
