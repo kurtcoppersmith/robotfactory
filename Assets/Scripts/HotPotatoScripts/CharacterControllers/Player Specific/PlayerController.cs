@@ -9,6 +9,8 @@ public class PlayerController : Character
     [HideInInspector] public PlayerMovement playerMovement;
     [HideInInspector] public PlayerGroundDetection groundDetection;
 
+    private Color initialDashUIColor;
+
     private void Awake()
     {
         playerUI = GetComponent<PlayerUI>();
@@ -20,6 +22,8 @@ public class PlayerController : Character
         maxStunnedTime = stunnedTime;
 
         sparkParticle.Stop();
+
+        initialDashUIColor = playerUI.dashAbilityImage.color;
     }
 
     public override void EnableObj()
@@ -122,6 +126,15 @@ public class PlayerController : Character
     public override void Drop()
     {
         base.Drop();
+
+        playerUI.dashAbilityImage.color = initialDashUIColor;
+        playerUI.dashAbilityImage.fillAmount =
+                                     HelperUtilities.Remap(maxDashAbilityRecharge - dashAbilityRecharge, 0, maxDashAbilityRecharge, 0, 1);
+
+        if (dashAbilityRecharge <= 0)
+        {
+            playerUI.dashAbilityImage.gameObject.SetActive(false);
+        }
     }
 
     int CheckForInteractable()
@@ -227,6 +240,10 @@ public class PlayerController : Character
         pickup.transform.position = pickupTransform.position;
         pickup.transform.parent = avatar.transform;
         PlayerManager.Instance.SetCurrentHolder(this);
+
+        playerUI.dashAbilityImage.gameObject.SetActive(true);
+        playerUI.dashAbilityImage.color = new Color(Color.red.r, Color.red.g, Color.red.b, initialDashUIColor.a);
+        playerUI.dashAbilityImage.fillAmount = 1;
 
         updateScoreTimer = 0;
     }

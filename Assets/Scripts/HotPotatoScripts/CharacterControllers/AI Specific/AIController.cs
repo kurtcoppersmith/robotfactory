@@ -387,18 +387,20 @@ public class AIController : Character
 
     void FindNewCarrySubState()
     {
-        int randDefaultNumb = Random.Range(0, 100);
+        //int randDefaultNumb = Random.Range(0, 100);
 
-        if (randDefaultNumb < dashPercent && canDash)
-        {
-            ChangeSubState(SubState.Dash);
-            return;
-        }
-        else
-        {
-            ChangeSubState(SubState.Flee);
-            return;
-        }
+        //if (randDefaultNumb < dashPercent && canDash)
+        //{
+        //    ChangeSubState(SubState.Dash);
+        //    return;
+        //}
+        //else
+        //{
+        //    ChangeSubState(SubState.Flee);
+        //    return;
+        //}
+
+        ChangeSubState(SubState.Flee);
     }
 
     void EnableNav()

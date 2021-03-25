@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDash(InputValue inputValue)
     {
-        if (!playerController.isEnabled)
+        if (!playerController.isEnabled || playerController.currentPickup != null)
         {
             return;
         }
@@ -138,8 +138,12 @@ public class PlayerMovement : MonoBehaviour
         if (!playerController.canDash)
         {
             playerController.dashAbilityRecharge -= Time.deltaTime;
-            playerController.playerUI.dashAbilityImage.fillAmount = 
-                HelperUtilities.Remap(playerController.maxDashAbilityRecharge - playerController.dashAbilityRecharge, 0, playerController.maxDashAbilityRecharge, 0, 1);
+
+            if (playerController.currentPickup == null)
+            {
+                playerController.playerUI.dashAbilityImage.fillAmount =
+                                    HelperUtilities.Remap(playerController.maxDashAbilityRecharge - playerController.dashAbilityRecharge, 0, playerController.maxDashAbilityRecharge, 0, 1);
+            }
 
             if (playerController.dashAbilityRecharge <= 0)
             {
@@ -147,7 +151,10 @@ public class PlayerMovement : MonoBehaviour
 
                 playerController.canDash = true;
                 playerController.dashAbilityRecharge = playerController.maxDashAbilityRecharge;
-                playerController.playerUI.dashAbilityImage.gameObject.SetActive(false);
+                if (playerController.currentPickup == null)
+                {
+                    playerController.playerUI.dashAbilityImage.gameObject.SetActive(false);
+                }
             }
         }
 
