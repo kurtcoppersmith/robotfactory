@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class CraneInteractable : EnvironmentInteractable
 {
-    public MessagePrompt messagePrompt;
-
     void Awake()
     {
         maxCooldownTimer = cooldownTimer;
-        messagePrompt.UpdateCooldownSlider(1);
+        UpdateCooldownSlider(1);
     }
 
     public override void InitiateInteractable(Character currentChar)
@@ -40,14 +38,16 @@ public class CraneInteractable : EnvironmentInteractable
         cooldownTimer = maxCooldownTimer;
     }
 
-    void Update()
+    public override void Update()
     {
+        base.Update();
+
         if (!canActivate)
         {
             cooldownTimer -= Time.deltaTime;
             float cooldownVal =
                 HelperUtilities.Remap(maxCooldownTimer - cooldownTimer, 0, maxCooldownTimer, 0, 1);
-            messagePrompt.UpdateCooldownSlider(cooldownVal);
+            UpdateCooldownSlider(cooldownVal);
 
             if (cooldownTimer <= 0)
             {
@@ -55,7 +55,7 @@ public class CraneInteractable : EnvironmentInteractable
                 cooldownTimer = maxCooldownTimer;
 
                 cooldownVal = 1;
-                messagePrompt.UpdateCooldownSlider(cooldownVal);
+                UpdateCooldownSlider(cooldownVal);
             }
         }
     }

@@ -147,7 +147,7 @@ public class PlayerController : Character
             currentPos.y = 0;
 
             if (Vector3.Distance(currentPos, interactablePos) < 
-                LevelManager.Instance.levelInteractableWaypoints[i].currentInteractable.gameObject.GetComponent<Collider>().bounds.size.magnitude)
+                LevelManager.Instance.levelInteractableWaypoints[i].currentInteractable.colliderBoxBounds)
             {
                 return i;
             }
