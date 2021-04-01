@@ -1,5 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &200311969863508086
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4156454724791749777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8756660214954007081, guid: bf428ebda36d79e4aa685c065350c4cc, type: 3}
+--- !u!64 &4544887265473878022
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609898717844630194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8756660214954007081, guid: bf428ebda36d79e4aa685c065350c4cc, type: 3}
 --- !u!1 &8298743741167525032
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +40,7 @@ GameObject:
   - component: {fileID: 5750819986976672183}
   - component: {fileID: 7506360415080086909}
   - component: {fileID: 4113783042845171350}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BaseConveyor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,6 +136,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MetalSupportRed (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8137382119511388526, guid: 4543ac4baf1740640bf2dce0223cab5d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 8909836675763874772, guid: 4543ac4baf1740640bf2dce0223cab5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -180,6 +213,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4543ac4baf1740640bf2dce0223cab5d, type: 3}
+--- !u!1 &5609898717844630194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8137382119511388526, guid: 4543ac4baf1740640bf2dce0223cab5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4411157937152269276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5085001060234047496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8909836675763874772, guid: 4543ac4baf1740640bf2dce0223cab5d,
@@ -197,6 +236,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MetalSupportRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137382119511388526, guid: 4543ac4baf1740640bf2dce0223cab5d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8909836675763874772, guid: 4543ac4baf1740640bf2dce0223cab5d,
         type: 3}
@@ -270,6 +314,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4543ac4baf1740640bf2dce0223cab5d, type: 3}
+--- !u!1 &4156454724791749777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8137382119511388526, guid: 4543ac4baf1740640bf2dce0223cab5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5279195543785160191}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3667444263752603179 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8909836675763874772, guid: 4543ac4baf1740640bf2dce0223cab5d,
