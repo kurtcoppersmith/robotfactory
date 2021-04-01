@@ -135,6 +135,8 @@ public class PlayerController : Character
         {
             playerUI.dashAbilityImage.gameObject.SetActive(false);
         }
+
+        DropWallCollisions();
     }
 
     int CheckForInteractable()
@@ -233,6 +235,25 @@ public class PlayerController : Character
         }
     }
 
+    void PickupWallCollisions()
+    {
+        for (int i = 0; i < LevelManager.Instance.interactableWalls.Count; i++)
+        {
+            if (LevelManager.Instance.interactableWalls[i].isNavigable)
+            {
+                Physics.IgnoreCollision(LevelManager.Instance.interactableWalls[i].wallCollider, GetComponent<Collider>(), true);
+            }
+        }
+    }
+
+    void DropWallCollisions()
+    {
+        for (int i = 0; i < LevelManager.Instance.interactableWalls.Count; i++)
+        {
+            Physics.IgnoreCollision(LevelManager.Instance.interactableWalls[i].wallCollider, GetComponent<Collider>(), false);
+        }
+    }
+
     public override void OnPickup(GameObject pickup)
     {
         currentPickup = pickup;
@@ -244,6 +265,8 @@ public class PlayerController : Character
         playerUI.dashAbilityImage.gameObject.SetActive(true);
         playerUI.dashAbilityImage.color = new Color(Color.red.r, Color.red.g, Color.red.b, initialDashUIColor.a);
         playerUI.dashAbilityImage.fillAmount = 1;
+
+        PickupWallCollisions();
 
         updateScoreTimer = 0;
     }

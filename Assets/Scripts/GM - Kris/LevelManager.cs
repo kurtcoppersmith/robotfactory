@@ -20,6 +20,9 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     [Header("Environment Interactables and Waypoints")]
     public List<EnvironmentInteract> levelInteractableWaypoints = new List<EnvironmentInteract>();
 
+    [Header("Interactable Walls")]
+    public List<InteractableWall> interactableWalls = new List<InteractableWall>();
+
     [Header("Winner Positions")]
     public Transform[] winnerPositions = new Transform[4];
 
