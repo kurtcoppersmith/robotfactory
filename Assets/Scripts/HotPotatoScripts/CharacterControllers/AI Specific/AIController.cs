@@ -168,6 +168,8 @@ public class AIController : Character
 
     public override void OnPickup(GameObject pickup)
     {
+        base.OnPickup(pickup);
+
         currentPickup = pickup;
         pickup.GetComponent<Pickup>().SetPickedUp(true);
         pickup.transform.position = pickupTransform.position;

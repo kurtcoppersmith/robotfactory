@@ -111,7 +111,13 @@ public class Character : MonoBehaviour
         }
     }
 
-    public virtual void OnPickup(GameObject pickup) { }//currentPickup = pickup; }
+    public virtual void OnPickup(GameObject pickup)
+    {
+        for (int i = 0; i < LevelManager.Instance.interactableWalls.Count; i++)
+        {
+            LevelManager.Instance.interactableWalls[i].SetNavigable(true);
+        }
+    }
 
     public virtual void Holding() { }
 

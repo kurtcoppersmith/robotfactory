@@ -89,16 +89,24 @@ public class PlayerController : Character
         if (!canAttack)
         {
             attackAbilityRecharge -= Time.deltaTime;
-            playerUI.punchAbilityImage.fillAmount = 
-                HelperUtilities.Remap(maxAttackAbilityRecharge - attackAbilityRecharge, 0, maxAttackAbilityRecharge, 0, 1);
 
+            if(currentPickup == null)
+            {
+                playerUI.punchAbilityImage.fillAmount =
+                                HelperUtilities.Remap(maxAttackAbilityRecharge - attackAbilityRecharge, 0, maxAttackAbilityRecharge, 0, 1);
+            }
+            
             if (attackAbilityRecharge <= 0)
             {
                 playerUI.punchAbilityImage.fillAmount = 1;
 
                 attackAbilityRecharge = maxAttackAbilityRecharge;
                 canAttack = true;
-                playerUI.punchAbilityImage.gameObject.SetActive(false);
+
+                if (currentPickup == null)
+                {
+                    playerUI.punchAbilityImage.gameObject.SetActive(false);
+                }
             }
         }
     }
@@ -134,6 +142,15 @@ public class PlayerController : Character
         if (dashAbilityRecharge <= 0)
         {
             playerUI.dashAbilityImage.gameObject.SetActive(false);
+        }
+
+        playerUI.punchAbilityImage.color = initialDashUIColor;
+        playerUI.punchAbilityImage.fillAmount =
+                                     HelperUtilities.Remap(maxAttackAbilityRecharge - attackAbilityRecharge, 0, maxAttackAbilityRecharge, 0, 1);
+
+        if (attackAbilityRecharge <= 0)
+        {
+            playerUI.punchAbilityImage.gameObject.SetActive(false);
         }
 
         DropWallCollisions();
@@ -235,6 +252,9 @@ public class PlayerController : Character
         }
     }
 
+    /// <summary>
+    /// Add these for the AI too!!!
+    /// </summary>
     void PickupWallCollisions()
     {
         for (int i = 0; i < LevelManager.Instance.interactableWalls.Count; i++)
@@ -256,6 +276,8 @@ public class PlayerController : Character
 
     public override void OnPickup(GameObject pickup)
     {
+        base.OnPickup(pickup);
+
         currentPickup = pickup;
         pickup.GetComponent<Pickup>().SetPickedUp(true);
         pickup.transform.position = pickupTransform.position;
@@ -265,6 +287,10 @@ public class PlayerController : Character
         playerUI.dashAbilityImage.gameObject.SetActive(true);
         playerUI.dashAbilityImage.color = new Color(Color.red.r, Color.red.g, Color.red.b, initialDashUIColor.a);
         playerUI.dashAbilityImage.fillAmount = 1;
+
+        playerUI.punchAbilityImage.gameObject.SetActive(true);
+        playerUI.punchAbilityImage.color = new Color(Color.red.r, Color.red.g, Color.red.b, initialDashUIColor.a);
+        playerUI.punchAbilityImage.fillAmount = 1;
 
         PickupWallCollisions();
 
