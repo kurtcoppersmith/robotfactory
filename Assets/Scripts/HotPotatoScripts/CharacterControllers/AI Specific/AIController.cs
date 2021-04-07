@@ -570,20 +570,17 @@ public class AIController : Character
 
     void UpdateEnvironmentPosition()
     {
-        if (!currentEnvironmentInteractables[currentEnvironmentInteractableIndex].currentInteractable.canActivate)
-        {
-            int randNumb = Random.Range(0, 100);
-            if (randNumb < 20)
-            {
-                ChangeSubState(SubState.Chase);
-                return;
-            }
-        }
-
         Vector3 interactablePos = currentEnvironmentInteractables[currentEnvironmentInteractableIndex].interactableWaypoint.position,
             currentPos = transform.position;
         interactablePos.y = 0;
         currentPos.y = 0;
+
+        if (!currentEnvironmentInteractables[currentEnvironmentInteractableIndex].currentInteractable.canActivate && 
+            Vector3.Distance(currentPos, interactablePos) < 5f)
+        {
+            ChangeSubState(SubState.Chase);
+            return;
+        }
 
         if (Vector3.Distance(currentPos, interactablePos) < 0.3f)
         {
