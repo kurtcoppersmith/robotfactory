@@ -252,9 +252,6 @@ public class PlayerController : Character
         }
     }
 
-    /// <summary>
-    /// Add these for the AI too!!!
-    /// </summary>
     void PickupWallCollisions()
     {
         for (int i = 0; i < LevelManager.Instance.interactableWalls.Count; i++)

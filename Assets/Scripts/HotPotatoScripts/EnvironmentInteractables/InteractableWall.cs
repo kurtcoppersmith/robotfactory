@@ -6,6 +6,7 @@ public class InteractableWall : MonoBehaviour
 {
     public Collider colliderTrigger;
     public Collider wallCollider;
+    public UnityEngine.AI.NavMeshObstacle navObst;
     public bool isNavigable = true;
 
     private bool hasPassedThrough = false;
@@ -28,6 +29,7 @@ public class InteractableWall : MonoBehaviour
         }
 
         isNavigable = isNav;
+        navObst.enabled = !isNav;
     }
 
 

@@ -166,6 +166,25 @@ public class AIController : Character
         }
     }
 
+    void PickupWallCollisions()
+    {
+        for (int i = 0; i < LevelManager.Instance.interactableWalls.Count; i++)
+        {
+            if (LevelManager.Instance.interactableWalls[i].isNavigable)
+            {
+                Physics.IgnoreCollision(LevelManager.Instance.interactableWalls[i].wallCollider, GetComponent<Collider>(), true);
+            }
+        }
+    }
+
+    void DropWallCollisions()
+    {
+        for (int i = 0; i < LevelManager.Instance.interactableWalls.Count; i++)
+        {
+            Physics.IgnoreCollision(LevelManager.Instance.interactableWalls[i].wallCollider, GetComponent<Collider>(), false);
+        }
+    }
+
     public override void OnPickup(GameObject pickup)
     {
         base.OnPickup(pickup);
@@ -176,7 +195,20 @@ public class AIController : Character
         pickup.transform.parent = avatar.transform;
         PlayerManager.Instance.SetCurrentHolder(this);
 
+        nav.areaMask = (1 << 0) + (1 << 1) + (1 << 2) + (1 << 3);
+
+        PickupWallCollisions();
+
         updateScoreTimer = 0;
+    }
+
+    public override void Drop()
+    {
+        base.Drop();
+
+        nav.areaMask = (1 << 0) + (1 << 1) + (1 << 2);
+
+        DropWallCollisions();
     }
 
     public override void Stun()

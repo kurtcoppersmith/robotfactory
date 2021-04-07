@@ -85,7 +85,7 @@ public class Pickup : MonoBehaviour
         finalDir += transform.position;
 
         NavMeshHit hit;
-        NavMesh.SamplePosition(finalDir, out hit, radius, 1);
+        NavMesh.SamplePosition(finalDir, out hit, radius, 3);
         return hit.position;
     }
 
