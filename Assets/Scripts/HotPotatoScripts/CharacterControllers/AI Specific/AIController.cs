@@ -78,6 +78,7 @@ public class AIController : Character
 
     private List<EnvironmentInteract> currentEnvironmentInteractables = new List<EnvironmentInteract>();
     private int currentEnvironmentInteractableIndex = -1;
+    private bool hasHitCurrentEnvironmentInteractable = false;
 
     private void Awake()
     {
@@ -309,6 +310,11 @@ public class AIController : Character
 
     void FindNewChaseSubState()
     {
+        if (subState == SubState.Environment && !hasHitCurrentEnvironmentInteractable)
+        {
+            return;
+        }
+
         ///If pickup is on the ground, rush to pick it up as fast as possible.
         if (!PlayerManager.Instance.GetCurrentPickup().GetComponent<Pickup>().IsPickedUp())
         {
@@ -523,6 +529,7 @@ public class AIController : Character
 
     void ChooseEnvironmentInteractable()
     {
+        hasHitCurrentEnvironmentInteractable = false;
         if (currentEnvironmentInteractables.Count <= 0)
         {
             return;
@@ -563,10 +570,14 @@ public class AIController : Character
 
     void UpdateEnvironmentPosition()
     {
-        if (PlayerManager.Instance.GetCurrentHolder() == null)
+        if (!currentEnvironmentInteractables[currentEnvironmentInteractableIndex].currentInteractable.canActivate)
         {
-            ChangeSubState(SubState.Chase);
-            return;
+            int randNumb = Random.Range(0, 100);
+            if (randNumb < 20)
+            {
+                ChangeSubState(SubState.Chase);
+                return;
+            }
         }
 
         Vector3 interactablePos = currentEnvironmentInteractables[currentEnvironmentInteractableIndex].interactableWaypoint.position,
@@ -577,6 +588,7 @@ public class AIController : Character
         if (Vector3.Distance(currentPos, interactablePos) < 0.3f)
         {
             currentEnvironmentInteractables[currentEnvironmentInteractableIndex].currentInteractable.InitiateInteractable(this);
+            hasHitCurrentEnvironmentInteractable = true;
             ChangeSubState(SubState.Chase);
         }
     }
