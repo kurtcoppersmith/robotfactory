@@ -8,6 +8,8 @@ public class EnvironmentInteractable : MonoBehaviour
     public GameObject worldCanvas;
     public UnityEngine.UI.Slider cooldownSlider;
     public BoxCollider interactableCollider;
+    public MeshRenderer objectMeshRenderer;
+    public int materialOutlineIndex = 0;
     public Material greenMat;
     public Material redMat;
 
@@ -15,6 +17,7 @@ public class EnvironmentInteractable : MonoBehaviour
 
     [Header("Activation Variables")]
     public float colliderBoxBounds = 0;
+    public bool shouldUseSameBoxColliderBounds = false;
 
     [Header("Cooldown Variables")]
     public bool canActivate = true;
@@ -23,7 +26,7 @@ public class EnvironmentInteractable : MonoBehaviour
 
     private void Awake()
     {
-        currentMat = GetComponent<MeshRenderer>().material;
+        currentMat = objectMeshRenderer.materials[materialOutlineIndex];
     }
 
     void Start()
@@ -32,7 +35,7 @@ public class EnvironmentInteractable : MonoBehaviour
         interactableCollider.isTrigger = true;
 
         currentMat = greenMat;
-        GetComponent<MeshRenderer>().material = greenMat;
+        objectMeshRenderer.materials[materialOutlineIndex] = greenMat;
     }
 
     private void OnDrawGizmosSelected()
@@ -52,7 +55,7 @@ public class EnvironmentInteractable : MonoBehaviour
     /// </summary>
     public virtual void Update()
     {
-        if (interactableCollider.size.magnitude != colliderBoxBounds)
+        if (interactableCollider.size.magnitude != colliderBoxBounds && shouldUseSameBoxColliderBounds)
         {
             
             interactableCollider.size = new Vector3(colliderBoxBounds, colliderBoxBounds, colliderBoxBounds);
@@ -62,16 +65,24 @@ public class EnvironmentInteractable : MonoBehaviour
         {
             if (currentMat != redMat)
             {
+                Material[] tempMaterials = objectMeshRenderer.materials;
+                tempMaterials[materialOutlineIndex] = redMat;
+
+                objectMeshRenderer.materials = tempMaterials;
+
                 currentMat = redMat;
-                GetComponent<MeshRenderer>().material = redMat;
             }
         }
         else
         {
             if (currentMat != greenMat)
             {
+                Material[] tempMaterials = objectMeshRenderer.materials;
+                tempMaterials[materialOutlineIndex] = greenMat;
+
+                objectMeshRenderer.materials = tempMaterials;
+
                 currentMat = greenMat;
-                GetComponent<MeshRenderer>().material = greenMat;
             }
         }
     }
