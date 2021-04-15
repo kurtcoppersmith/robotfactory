@@ -1289,6 +1289,7 @@ public class AIController : Character
         nav.isStopped = true;
         nav.enabled = false;
         characterController.enabled = false;
+        characterAnim.SetBool("WalkBool", false);
 
         Debug.Log("AI Disabled");
     }

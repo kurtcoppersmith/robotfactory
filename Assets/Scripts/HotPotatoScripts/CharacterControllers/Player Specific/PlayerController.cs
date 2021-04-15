@@ -122,6 +122,9 @@ public class PlayerController : Character
                 PlayerManager.Instance.characters[characterIndex].OnHit(transform.position);
             }
         }
+
+        playerUI.punchAbilityImage.gameObject.SetActive(true);
+        playerUI.punchAbilityImage.color = initialDashUIColor;
     }
 
     public override void OnHit(Vector3 attackerPosition)
@@ -307,6 +310,7 @@ public class PlayerController : Character
         base.DisableObj();
 
         playerCam.enabled = false;
+        characterAnim.SetBool("WalkBool", false);
 
         Debug.Log("Disabled");
     }
@@ -332,6 +336,24 @@ public class PlayerController : Character
             if (currentPickup != null)
             {
                 Holding();
+            }
+
+            if (characterHand.currentCharactersInRange.Count > 0)
+            {
+                if (currentPickup == null && canAttack && playerUI.punchAbilityImage.color != Color.green)
+                {
+                    playerUI.punchAbilityImage.gameObject.SetActive(true);
+                    playerUI.punchAbilityImage.color = new Color(Color.green.r, Color.green.g, Color.green.b, initialDashUIColor.a);
+                    playerUI.punchAbilityImage.fillAmount = 1;
+                }
+            }
+            else
+            {
+                if (currentPickup == null && canAttack)
+                {
+                    playerUI.punchAbilityImage.color = initialDashUIColor;
+                    playerUI.punchAbilityImage.gameObject.SetActive(false);
+                }
             }
         }
     }

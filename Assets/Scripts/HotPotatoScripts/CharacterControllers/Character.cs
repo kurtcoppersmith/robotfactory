@@ -94,7 +94,6 @@ public class Character : MonoBehaviour
     public virtual void Move() { }
     public virtual void Attack() 
     {
-        characterAnim.ResetTrigger("AttackTrigger");
         characterAnim.SetTrigger("AttackTrigger");
     }
     public virtual void OnHit(Vector3 attackerPosition) 
