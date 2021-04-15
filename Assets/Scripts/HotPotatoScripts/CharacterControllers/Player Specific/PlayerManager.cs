@@ -130,7 +130,8 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         for (int i = 0; i < characters.Length; i++)
         {
             characters[i].minimapIcon.material.color = playerColors[i];
-            characters[i].characterRenderer.material.color = playerColors[i];
+
+            characters[i].characterRenderer.materials[1].color = playerColors[i];
 
             if (characters[i].characterName == "")
             {

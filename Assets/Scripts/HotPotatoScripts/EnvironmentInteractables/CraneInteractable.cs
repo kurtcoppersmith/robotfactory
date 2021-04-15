@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CraneInteractable : EnvironmentInteractable
 {
+    public Animator craneAnim;
+
     void Awake()
     {
         maxCooldownTimer = cooldownTimer;
@@ -16,6 +18,8 @@ public class CraneInteractable : EnvironmentInteractable
         {
             return;
         }
+
+        craneAnim.SetTrigger("use");
 
         base.InitiateInteractable(currentChar);
         List<int> characterPool = new List<int>();

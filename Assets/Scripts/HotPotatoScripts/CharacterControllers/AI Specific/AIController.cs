@@ -800,8 +800,6 @@ public class AIController : Character
                 SetDashRotation(dashingDestination);
             }
         }
-
-        characterAnim.SetTrigger("dash");
     }
 
     void CarryDash()
@@ -874,8 +872,6 @@ public class AIController : Character
                 SetDashRotation(dashingDestination);
             }
         }
-
-        characterAnim.SetTrigger("dash");
     }
 
     void Stand()
@@ -985,7 +981,6 @@ public class AIController : Character
             else
             {
                 isKnockbacked = false;
-                characterAnim.SetBool("shutdown", false);
 
                 if (mainState == MainState.Chasing)
                 {
@@ -1085,6 +1080,8 @@ public class AIController : Character
                 nav.isStopped = false;
                 nav.ResetPath();
 
+                characterAnim.SetBool("WalkBool", true);
+
                 break;
             case SubState.Dash:
                 if (nav.enabled)
@@ -1117,7 +1114,9 @@ public class AIController : Character
                         ChangeSubState(SubState.Flee);
                     }
                 }
-                
+
+                characterAnim.SetBool("WalkBool", false);
+
                 break;
             case SubState.Attack:
                 if (canAttack)
@@ -1139,6 +1138,7 @@ public class AIController : Character
                 }
 
                 isStanding = true;
+                characterAnim.SetBool("WalkBool", false);
                 break;
             case SubState.Flee:
                 characterController.enabled = false;
@@ -1149,6 +1149,8 @@ public class AIController : Character
                     nav.ResetPath();
                 }
                 currentFleeWaypoint = null;
+
+                characterAnim.SetBool("WalkBool", true);
 
                 break;
             case SubState.Knockback:
@@ -1169,6 +1171,7 @@ public class AIController : Character
                 nav.ResetPath();
 
                 ChooseRandomLocale();
+                characterAnim.SetBool("WalkBool", true);
                 break;
             case SubState.Stun:
                 nav.enabled = true;
@@ -1181,6 +1184,7 @@ public class AIController : Character
             case SubState.Environment:
                 ChooseEnvironmentInteractable();
 
+                characterAnim.SetBool("WalkBool", true);
                 break;
         }
 

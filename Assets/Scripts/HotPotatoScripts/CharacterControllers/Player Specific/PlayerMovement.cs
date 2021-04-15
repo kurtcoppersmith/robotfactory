@@ -71,8 +71,6 @@ public class PlayerMovement : MonoBehaviour
                 playerController.canDash = false;
                 playerController.playerUI.dashAbilityImage.gameObject.SetActive(true);
                 playerController.playerUI.dashAbilityImage.fillAmount = 0;
-
-                playerController.characterAnim.SetTrigger("dash");
             }
         }
     }
@@ -101,6 +99,18 @@ public class PlayerMovement : MonoBehaviour
             if (movementInput != Vector2.zero)
             {
                 previousVelocity = currentVelocity;
+
+                if (!playerController.characterAnim.GetBool("WalkBool"))
+                {
+                    playerController.characterAnim.SetBool("WalkBool", true);
+                }
+            }
+            else
+            {
+                if (playerController.characterAnim.GetBool("WalkBool"))
+                {
+                    playerController.characterAnim.SetBool("WalkBool", false);
+                }
             }
 
             Vector3 tempVelocity = previousVelocity;
@@ -207,7 +217,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 canMove = true;
                 playerController.isKnockbacked = false;
-                playerController.characterAnim.SetBool("shutdown", false);
             }
         }
     }

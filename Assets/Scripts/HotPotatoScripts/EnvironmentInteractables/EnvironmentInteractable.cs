@@ -8,7 +8,7 @@ public class EnvironmentInteractable : MonoBehaviour
     public GameObject worldCanvas;
     public UnityEngine.UI.Slider cooldownSlider;
     public BoxCollider interactableCollider;
-    public MeshRenderer objectMeshRenderer;
+    public Renderer objectMeshRenderer;
     public int materialOutlineIndex = 0;
     public Material greenMat;
     public Material redMat;
