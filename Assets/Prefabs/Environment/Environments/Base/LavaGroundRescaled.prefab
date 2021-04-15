@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4955132500282043212}
   - component: {fileID: 8317006480624772329}
   - component: {fileID: 6093095545739546659}
+  - component: {fileID: 4738141412149258350}
   m_Layer: 13
   m_Name: LavaGroundRescaled
   m_TagString: Untagged
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4738141412149258350
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5733076200834576886}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6162959350083010548, guid: 631d725d4bbffaf41ad01a9357fa76ad, type: 3}
