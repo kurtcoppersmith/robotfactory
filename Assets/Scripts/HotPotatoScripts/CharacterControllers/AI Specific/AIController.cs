@@ -146,12 +146,13 @@ public class AIController : Character
 
         attackerPos = attackerPosition;
 
-        if (currentPickup == null && mainState == MainState.Carrying)
-        {
+        //if (currentPickup == null && mainState == MainState.Carrying)
+       // {
             mainState = MainState.Chasing;
-        }
+        //}
 
         ChangeSubState(SubState.Knockback);
+        Debug.Log(playerIndex);
     }
 
     public override void Holding()
@@ -799,6 +800,8 @@ public class AIController : Character
                 SetDashRotation(dashingDestination);
             }
         }
+
+        characterAnim.SetTrigger("dash");
     }
 
     void CarryDash()
@@ -871,6 +874,8 @@ public class AIController : Character
                 SetDashRotation(dashingDestination);
             }
         }
+
+        characterAnim.SetTrigger("dash");
     }
 
     void Stand()
@@ -980,6 +985,7 @@ public class AIController : Character
             else
             {
                 isKnockbacked = false;
+                characterAnim.SetBool("shutdown", false);
 
                 if (mainState == MainState.Chasing)
                 {

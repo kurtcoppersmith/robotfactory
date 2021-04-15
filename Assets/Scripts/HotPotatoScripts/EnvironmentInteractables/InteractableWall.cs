@@ -35,27 +35,22 @@ public class InteractableWall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Something has entered");
         Character otherCharacter = null;
         otherCharacter = other.gameObject.GetComponent<Character>();
         if (otherCharacter != null)
         {
             hasPassedThrough = true;
-            Debug.Log("Character has entered");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Somethign has exited.");
         if (hasPassedThrough && isNavigable)
         {
-            Debug.Log("Parameters met.");
             Character otherCharacter = null;
             otherCharacter = other.gameObject.GetComponent<Character>();
             if (otherCharacter != null)
             {
-                Debug.Log("Character has exited");
                 SetNavigable(false);
             }
         }

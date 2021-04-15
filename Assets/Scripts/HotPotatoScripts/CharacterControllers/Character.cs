@@ -21,6 +21,7 @@ public class Character : MonoBehaviour
     public MeshRenderer minimapIcon;
     public SkinnedMeshRenderer characterRenderer;
     public Camera playerCam = null;
+    public Animator characterAnim;
 
     [Header("External Objects")]
     public GameObject currentPickup = null;
@@ -94,6 +95,9 @@ public class Character : MonoBehaviour
     public virtual void Attack() { }
     public virtual void OnHit(Vector3 attackerPosition) 
     {
+        characterAnim.SetBool("grab", false);
+        characterAnim.SetBool("shutdown", true);
+
         if (currentPickup != null)
         {
             currentPickup.GetComponent<Pickup>().Dropped();
@@ -103,6 +107,7 @@ public class Character : MonoBehaviour
 
     public virtual void Drop()
     {
+        characterAnim.SetBool("grab", false);
         if (currentPickup != null)
         {
             currentPickup.transform.parent = null;
@@ -113,6 +118,7 @@ public class Character : MonoBehaviour
 
     public virtual void OnPickup(GameObject pickup)
     {
+        characterAnim.SetBool("grab", true);
         for (int i = 0; i < LevelManager.Instance.interactableWalls.Count; i++)
         {
             LevelManager.Instance.interactableWalls[i].SetNavigable(true);

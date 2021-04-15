@@ -28,18 +28,45 @@ public class OilSpill : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Character currentChar = null;
-        currentChar = other.GetComponent<Character>();
-        if (currentChar != null)
+        if (!shouldDeactivate)
         {
-            Vector3 pushPosition = other.gameObject.transform.position - currentChar.currentVelocity;
-            currentChar.OnHit(pushPosition);
+            Character currentChar = null;
+            currentChar = other.GetComponent<Character>();
+            if (currentChar != null)
+            {
+                Vector3 pushPosition = other.gameObject.transform.position - currentChar.currentVelocity;
+                currentChar.OnHit(pushPosition);
 
-            oilSpillTime = maxOilSpillTime;
-            isActive = false;
-            oilCollider.enabled = false;
-            oilSpill.transform.DOScale(Vector3.zero, maxDeactiveTime);
-            shouldDeactivate = true;
+                Debug.Log(currentChar.playerIndex);
+
+                oilSpillTime = maxOilSpillTime;
+                isActive = false;
+                oilCollider.enabled = false;
+                oilSpill.transform.DOScale(Vector3.zero, maxDeactiveTime);
+                shouldDeactivate = true;
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!shouldDeactivate)
+        {
+            Character currentChar = null;
+            currentChar = other.GetComponent<Character>();
+            if (currentChar != null)
+            {
+                Vector3 pushPosition = other.gameObject.transform.position - currentChar.currentVelocity;
+                currentChar.OnHit(pushPosition);
+
+                Debug.Log(currentChar.playerIndex);
+
+                oilSpillTime = maxOilSpillTime;
+                isActive = false;
+                oilCollider.enabled = false;
+                oilSpill.transform.DOScale(Vector3.zero, maxDeactiveTime);
+                shouldDeactivate = true;
+            }
         }
     }
 

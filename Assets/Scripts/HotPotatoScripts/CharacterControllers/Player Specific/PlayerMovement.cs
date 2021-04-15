@@ -71,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
                 playerController.canDash = false;
                 playerController.playerUI.dashAbilityImage.gameObject.SetActive(true);
                 playerController.playerUI.dashAbilityImage.fillAmount = 0;
+
+                playerController.characterAnim.SetTrigger("dash");
             }
         }
     }
@@ -205,6 +207,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 canMove = true;
                 playerController.isKnockbacked = false;
+                playerController.characterAnim.SetBool("shutdown", false);
             }
         }
     }
