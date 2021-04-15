@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cd924cc1476d3e340adbb089306cbfa2
+guid: bb06f5ff8e3276347acf00eefdb56142
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
@@ -23,10 +23,8 @@ ModelImporter:
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'TopStomach' has translation animation that
-      will be discarded.\n\t'TopStomach' is inbetween humanoid transforms and has
-      rotation animation that will be discarded.\n\t'Heel_R' has translation animation
-      that will be discarded.\n"
+      to improve retargeting quality.\n\t'Neck' has translation animation that will
+      be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -44,15 +42,15 @@ ModelImporter:
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 80
+      lastFrame: 37
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -463,18 +461,18 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Walk(Clone)
+    - name: GettingHit(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Robot_main_rig
-      parentName: Walk(Clone)
+      parentName: GettingHit(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Main_J
-      parentName: Walk(Clone)
+      parentName: GettingHit(Clone)
       position: {x: 0.000029468281, y: 0.041164193, z: 1.7328558e-36}
       rotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
       scale: {x: 1.0000002, y: 1.0000002, z: 1}
@@ -510,22 +508,22 @@ ModelImporter:
       scale: {x: 1.0000001, y: 1.0000002, z: 1.0000002}
     - name: Wrist_R
       parentName: Elbow_R
-      position: {x: -0.015549007, y: -3.1086245e-17, z: -1.2490009e-17}
+      position: {x: -0.015549007, y: -2.6645352e-17, z: -1.1934897e-17}
       rotation: {x: -0.005115181, y: 0.1614623, z: -0.031248618, w: 0.9863708}
       scale: {x: 1.0000011, y: 1.0000005, z: 1.0000014}
     - name: Pinkie_R
       parentName: Wrist_R
-      position: {x: -0.0051581985, y: 4.440892e-18, z: -1.2212453e-17}
+      position: {x: -0.0051581985, y: 1.3322676e-17, z: -7.771561e-18}
       rotation: {x: 0.0049140425, y: -0.15511307, z: 0.031280875, w: 0.9873892}
       scale: {x: 1.0000001, y: 1.0000002, z: 1.0000004}
     - name: joint8 1
       parentName: Pinkie_R
-      position: {x: -0.0025767568, y: 4.440892e-18, z: -1.2906343e-17}
+      position: {x: -0.0025767568, y: 4.440892e-18, z: -1.0963452e-17}
       rotation: {x: 4.6566107e-10, y: -0.004567561, z: -0.000000058847917, w: 0.99998957}
       scale: {x: 1.0000004, y: 1.0000004, z: 1.000001}
     - name: joint9 1
       parentName: joint8 1
-      position: {x: -0.0016500131, y: -1.7763568e-17, z: -3.6082247e-18}
+      position: {x: -0.0016500131, y: -1.7763568e-17, z: -3.469447e-18}
       rotation: {x: 0.0000000019335111, y: -0.006221266, z: 0.000000037304407, w: 0.9999807}
       scale: {x: 1, y: 1.0000001, z: 1.0000002}
     - name: Ring_R
@@ -535,12 +533,12 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: joint12 1
       parentName: Ring_R
-      position: {x: -0.0028851654, y: 3.5527136e-17, z: -1.0269563e-17}
+      position: {x: -0.0028851654, y: 3.9968027e-17, z: -1.11022296e-17}
       rotation: {x: 0.000000005122273, y: -0.023237461, z: -0.000000027415801, w: 0.99973005}
       scale: {x: 1, y: 1.0000001, z: 1.0000002}
     - name: joint13 1
       parentName: joint12 1
-      position: {x: -0.0018263734, y: -5.7731595e-17, z: -8.6042285e-18}
+      position: {x: -0.0018263734, y: -6.217249e-17, z: -7.771561e-18}
       rotation: {x: -0.000000005807317, y: 0.035397183, z: 0.000000032250405, w: 0.9993734}
       scale: {x: 0.99999994, y: 1, z: 0.99999994}
     - name: Middle_R
@@ -550,12 +548,12 @@ ModelImporter:
       scale: {x: 1, y: 1.0000001, z: 1}
     - name: joint16 1
       parentName: Middle_R
-      position: {x: -0.0031972337, y: 3.1086245e-17, z: -1.2212453e-17}
+      position: {x: -0.0031972337, y: 3.5527136e-17, z: -1.0547119e-17}
       rotation: {x: 0.0000000023283055, y: 0.005924178, z: -0.000000022817394, w: 0.9999825}
       scale: {x: 1.0000001, y: 1.0000002, z: 1.0000004}
     - name: joint17 1
       parentName: joint16 1
-      position: {x: -0.0019583064, y: -4.4408918e-17, z: -3.330669e-18}
+      position: {x: -0.0019583064, y: -4.4408918e-17, z: -3.8857806e-18}
       rotation: {x: -0.0000000029800236, y: -0.016161647, z: 0.000000015093038, w: 0.99986947}
       scale: {x: 0.9999997, y: 0.9999997, z: 0.99999946}
     - name: Pointer_R
@@ -565,12 +563,12 @@ ModelImporter:
       scale: {x: 0.9999998, y: 1, z: 0.99999994}
     - name: joint20 1
       parentName: Pointer_R
-      position: {x: -0.002886901, y: -8.881784e-18, z: -1.2767564e-17}
+      position: {x: -0.002886901, y: -8.881784e-18, z: -1.2212453e-17}
       rotation: {x: 0.000000005122273, y: 0.011877176, z: -0.000000015366819, w: 0.99992955}
       scale: {x: 1, y: 1, z: 1}
     - name: joint21 1
       parentName: joint20 1
-      position: {x: -0.001922525, y: -3.5527136e-17, z: 2.7755574e-18}
+      position: {x: -0.001922525, y: -3.1086245e-17, z: 3.330669e-18}
       rotation: {x: 3.0843983e-10, y: -0.0059399153, z: 0.00000002093184, w: 0.9999824}
       scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
     - name: Thumb_R
@@ -580,7 +578,7 @@ ModelImporter:
       scale: {x: 0.9999996, y: 1.0000001, z: 1}
     - name: joint24 1
       parentName: Thumb_R
-      position: {x: -0.0036805186, y: 1.3322676e-17, z: -4.440892e-18}
+      position: {x: -0.0036805186, y: 2.2204459e-17, z: -8.881784e-18}
       rotation: {x: -0.0000000037252894, y: 0.079673685, z: -0.000000012107191, w: 0.99682105}
       scale: {x: 1, y: 1.0000001, z: 1.0000004}
     - name: Shoulder_L6
@@ -621,12 +619,12 @@ ModelImporter:
       scale: {x: 0.9999997, y: 0.99999994, z: 1.0000002}
     - name: joint12
       parentName: Ling_L
-      position: {x: 0.0028851654, y: -1.3798744e-11, z: 2.906232e-12}
+      position: {x: 0.0028851654, y: -1.3798744e-11, z: 2.9062321e-12}
       rotation: {x: -4.6566118e-10, y: -0.023237461, z: 0.000000014668327, w: 0.99973}
       scale: {x: 1.0000002, y: 0.99999994, z: 1}
     - name: joint13
       parentName: joint12
-      position: {x: 0.0018263734, y: -8.5973095e-12, z: 1.8397072e-12}
+      position: {x: 0.0018263734, y: -8.597314e-12, z: 1.8397079e-12}
       rotation: {x: -3.722218e-10, y: 0.03539717, z: -0.000000018306027, w: 0.9993733}
       scale: {x: 0.9999998, y: 1, z: 1}
     - name: Middle_L

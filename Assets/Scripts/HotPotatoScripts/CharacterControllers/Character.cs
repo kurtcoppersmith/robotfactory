@@ -98,6 +98,8 @@ public class Character : MonoBehaviour
     }
     public virtual void OnHit(Vector3 attackerPosition) 
     {
+        characterAnim.SetTrigger("GetHitTrigger");
+        
         if (currentPickup != null)
         {
             currentPickup.GetComponent<Pickup>().Dropped();
@@ -107,6 +109,8 @@ public class Character : MonoBehaviour
 
     public virtual void Drop()
     {
+        characterAnim.SetBool("GrabBool", false);
+
         if (currentPickup != null)
         {
             currentPickup.transform.parent = null;
@@ -117,13 +121,18 @@ public class Character : MonoBehaviour
 
     public virtual void OnPickup(GameObject pickup)
     {
+        characterAnim.SetBool("GrabBool", true);
+
         for (int i = 0; i < LevelManager.Instance.interactableWalls.Count; i++)
         {
             LevelManager.Instance.interactableWalls[i].SetNavigable(true);
         }
     }
 
-    public virtual void Holding() { }
+    public virtual void Holding() 
+    {
+        characterAnim.SetBool("GrabBool", true);
+    }
 
     public virtual void Stun()
     {
