@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1920725635785225173}
   - component: {fileID: 473067449426784721}
   - component: {fileID: 6703645343011211981}
+  - component: {fileID: 7837989438650023766}
   m_Layer: 13
   m_Name: Push_Forklift_Textured
   m_TagString: Untagged
@@ -114,3 +115,17 @@ MonoBehaviour:
   speed: 1.3
   soften: 0.5
   localMovement: {x: 0, y: 0, z: 0}
+--- !u!64 &7837989438650023766
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119122989090951680}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7656348851005705370, guid: 7c7916061e92e314b9e71e4f850a4203, type: 3}
