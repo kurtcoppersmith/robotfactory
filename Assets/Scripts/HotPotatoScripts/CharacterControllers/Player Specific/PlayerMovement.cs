@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerController playerController;
-    private CharacterController characterController;
 
     private Vector2 movementInput = Vector2.zero;
     public float speed = 0;
@@ -23,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     {
         normalSpeed = speed;
 
-        characterController = GetComponent<CharacterController>();
         playerController = GetComponent<PlayerController>();
     }
 
@@ -121,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
 
             playerController.currentVelocity = currentVelocity;
 
-            characterController.Move(currentVelocity * Time.deltaTime);
+            playerController.characterController.Move(currentVelocity * Time.deltaTime);
         }
     }
 
@@ -181,13 +179,13 @@ public class PlayerMovement : MonoBehaviour
                     {
                         playerController.currentVelocity = playerController.avatar.transform.forward.normalized * playerController.dashingSpeed;
 
-                        characterController.Move(playerController.avatar.transform.forward.normalized * playerController.dashingSpeed * Time.deltaTime);
+                        playerController.characterController.Move(playerController.avatar.transform.forward.normalized * playerController.dashingSpeed * Time.deltaTime);
                     }
                     else
                     {
                         playerController.currentVelocity = currentVelocity.normalized * playerController.dashingSpeed;
 
-                        characterController.Move(currentVelocity.normalized * playerController.dashingSpeed * Time.deltaTime);
+                        playerController.characterController.Move(currentVelocity.normalized * playerController.dashingSpeed * Time.deltaTime);
 
                         Vector3 tempVelocity = previousVelocity;
                         tempVelocity.y = 0;
@@ -211,7 +209,7 @@ public class PlayerMovement : MonoBehaviour
             playerController.knockbackTime -= Time.deltaTime;
             if (playerController.knockbackTime >= 0)
             {
-                characterController.Move(playerController.knockbackDir * playerController.knockbackSpeed * Time.deltaTime);
+                playerController.characterController.Move(playerController.knockbackDir * playerController.knockbackSpeed * Time.deltaTime);
             }
             else
             {

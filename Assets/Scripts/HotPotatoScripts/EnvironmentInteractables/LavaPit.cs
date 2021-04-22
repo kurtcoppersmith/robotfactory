@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Killzone : MonoBehaviour
+public class LavaPit : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
@@ -10,9 +10,11 @@ public class Killzone : MonoBehaviour
         currentChar = other.GetComponent<Character>();
         if (currentChar != null)
         {
-            currentChar.characterController.enabled = false;
-            currentChar.Spawn(LevelManager.Instance.characterSpawnLocations[currentChar.playerIndex].position, Quaternion.identity);
-            currentChar.characterController.enabled = true;
+            if (currentChar.currentPickup != null)
+            {
+                currentChar.currentPickup.GetComponent<Pickup>().Dropped();
+                currentChar.Drop();
+            }
         }
     }
 }

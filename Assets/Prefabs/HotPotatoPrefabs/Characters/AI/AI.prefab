@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 5220220238083391687}
   - component: {fileID: 5250349244410693574}
   - component: {fileID: 5874345781145825347}
+  - component: {fileID: 4783711116954921293}
   m_Layer: 0
   m_Name: AI
   m_TagString: Untagged
@@ -194,6 +195,8 @@ MonoBehaviour:
   currentPickup: {fileID: 0}
   avatar: {fileID: 8299800937078572715}
   pickupTransform: {fileID: 7756996056575301559}
+  groundDetection: {fileID: 4783711116954921293}
+  characterController: {fileID: 1927057013151565372}
   updateScoreTimer: 0.75
   maxUpdateScoreTimer: 0
   dashAbilityRecharge: 5
@@ -227,6 +230,7 @@ MonoBehaviour:
   sparkParticle: {fileID: 3230513113913884699}
   mainState: 0
   subState: 0
+  gravity: 5
   maxChaseSubStateTimer:
     min: 3
     max: 8
@@ -282,6 +286,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.3, z: 0.5}
   m_Center: {x: 0, y: 0.6, z: 0}
+--- !u!114 &4783711116954921293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719423755160358541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95831bec4c10a2647831bc407a6d9e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheckDistance: 0.6
+  groundCheckBounds: 0.3
 --- !u!1 &5790442865186792429
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,15 +816,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cdffba5286179747ac5202125a91e69, type: 3}
---- !u!23 &1942893487646037358 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7665832417138125326, guid: 2cdffba5286179747ac5202125a91e69,
-    type: 3}
-  m_PrefabInstance: {fileID: 8112120522197630816}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2929437004665860696 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6355557423784185144, guid: 2cdffba5286179747ac5202125a91e69,
+    type: 3}
+  m_PrefabInstance: {fileID: 8112120522197630816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1942893487646037358 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7665832417138125326, guid: 2cdffba5286179747ac5202125a91e69,
     type: 3}
   m_PrefabInstance: {fileID: 8112120522197630816}
   m_PrefabAsset: {fileID: 0}
@@ -849,12 +867,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c6db1d6a66a3d649b4e87b52f6846a5, type: 3}
---- !u!137 &3042280574865580130 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6458296860052061601, guid: 3c6db1d6a66a3d649b4e87b52f6846a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 8329443617513102787}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2617094975514544123 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6325845352595479096, guid: 3c6db1d6a66a3d649b4e87b52f6846a5,
@@ -864,6 +876,12 @@ Transform:
 --- !u!95 &8264640602872536449 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 83815778314321986, guid: 3c6db1d6a66a3d649b4e87b52f6846a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8329443617513102787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3042280574865580130 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6458296860052061601, guid: 3c6db1d6a66a3d649b4e87b52f6846a5,
     type: 3}
   m_PrefabInstance: {fileID: 8329443617513102787}
   m_PrefabAsset: {fileID: 0}

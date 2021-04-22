@@ -7,7 +7,6 @@ public class PlayerController : Character
 {
     [HideInInspector] public PlayerUI playerUI;
     [HideInInspector] public PlayerMovement playerMovement;
-    [HideInInspector] public PlayerGroundDetection groundDetection;
 
     private Color initialDashUIColor;
 
@@ -15,7 +14,6 @@ public class PlayerController : Character
     {
         playerUI = GetComponent<PlayerUI>();
         playerMovement = GetComponent<PlayerMovement>();
-        groundDetection = GetComponent<PlayerGroundDetection>();
 
         maxAttackAbilityRecharge = attackAbilityRecharge;
         maxUpdateScoreTimer = updateScoreTimer;
@@ -44,6 +42,7 @@ public class PlayerController : Character
         transform.position = spawnLocation;
         //Fix this problem on startup.
         avatar.transform.rotation = lookRotation;
+        Debug.Log("Spawned.");
     }
 
     public override void Move()

@@ -19,10 +19,10 @@ public class PlayerGroundDetection : MonoBehaviour
     public bool IsPlayerGrounded()
     {
         RaycastHit hitInfo;
-        if (Physics.Raycast(transform.position + new Vector3(groundCheckBounds, 0, groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance)
-            || Physics.Raycast(transform.position + new Vector3(groundCheckBounds, 0, -groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance)
-            || Physics.Raycast(transform.position + new Vector3(-groundCheckBounds, 0, groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance)
-            || Physics.Raycast(transform.position + new Vector3(-groundCheckBounds, 0, -groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance))
+        if (Physics.Raycast(transform.position + new Vector3(groundCheckBounds, 0, groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance, -1, QueryTriggerInteraction.Ignore)
+            || Physics.Raycast(transform.position + new Vector3(groundCheckBounds, 0, -groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance, -1, QueryTriggerInteraction.Ignore)
+            || Physics.Raycast(transform.position + new Vector3(-groundCheckBounds, 0, groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance, -1, QueryTriggerInteraction.Ignore)
+            || Physics.Raycast(transform.position + new Vector3(-groundCheckBounds, 0, -groundCheckBounds), -transform.up, out hitInfo, groundCheckDistance, -1, QueryTriggerInteraction.Ignore))
         {
             if (hitInfo.transform.parent != this.transform)
             {

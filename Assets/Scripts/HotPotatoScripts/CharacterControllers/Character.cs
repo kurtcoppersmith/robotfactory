@@ -27,6 +27,8 @@ public class Character : MonoBehaviour
     public GameObject currentPickup = null;
     public GameObject avatar;
     public Transform pickupTransform;
+    public PlayerGroundDetection groundDetection;
+    public CharacterController characterController;
 
     [Header("Score Variables")]
     public float updateScoreTimer = 0;

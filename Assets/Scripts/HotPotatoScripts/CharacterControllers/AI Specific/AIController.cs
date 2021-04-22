@@ -20,15 +20,16 @@ public class AIController : Character
         Knockback,
         RandomLocale,
         Stun,
-        Environment
+        Environment,
+        Falling
     }
 
     [Header("AI Specific Variables")]
     public MainState mainState = MainState.Chasing;
     public SubState subState = SubState.Chase;
+    public float gravity = 0;
 
     private NavMeshAgent nav;
-    private CharacterController characterController;
 
     public RangeFloat maxChaseSubStateTimer = new RangeFloat(0f, 0f);
     private float chaseSubStateTimer = 0f;
@@ -312,6 +313,10 @@ public class AIController : Character
     void FindNewChaseSubState()
     {
         if (subState == SubState.Environment && !hasHitCurrentEnvironmentInteractable)
+        {
+            return;
+        }
+        else if (subState == SubState.Falling && !groundDetection.IsPlayerGrounded())
         {
             return;
         }
@@ -955,6 +960,12 @@ public class AIController : Character
             {
                 isDashing = false;
                 dashTime = maxDashTime;
+
+                if (!groundDetection.IsPlayerGrounded())
+                {
+                    ChangeSubState(SubState.Falling);
+                    return;
+                }
                 
                 if (mainState == MainState.Chasing)
                 {
@@ -981,6 +992,12 @@ public class AIController : Character
             else
             {
                 isKnockbacked = false;
+
+                if (!groundDetection.IsPlayerGrounded())
+                {
+                    ChangeSubState(SubState.Falling);
+                    return;
+                }
 
                 if (mainState == MainState.Chasing)
                 {
@@ -1017,6 +1034,26 @@ public class AIController : Character
                 isStanding = false;
                 standSubStateTimer = maxStandSubStateTimer.GetRandom();
                 ChangeSubState(SubState.Chase);
+            }
+        }
+    }
+
+    void UpdateFalling()
+    {
+        if (!groundDetection.IsPlayerGrounded())
+        {
+            Vector3 fallingMovement = new Vector3(0, -gravity, 0);
+            characterController.Move(fallingMovement * Time.deltaTime);
+        }
+        else
+        {
+            if (mainState == MainState.Chasing)
+            {
+                ChangeSubState(SubState.Chase);
+            }
+            else
+            {
+                ChangeSubState(SubState.Flee);
             }
         }
     }
@@ -1186,6 +1223,9 @@ public class AIController : Character
 
                 characterAnim.SetBool("WalkBool", true);
                 break;
+            case SubState.Falling:
+                EnableCharacter();
+                break;
         }
 
         subState = newSubState;
@@ -1278,6 +1318,9 @@ public class AIController : Character
                 break;
             case SubState.Environment:
                 UpdateEnvironmentPosition();
+                break;
+            case SubState.Falling:
+                UpdateFalling();
                 break;
         }
     }
