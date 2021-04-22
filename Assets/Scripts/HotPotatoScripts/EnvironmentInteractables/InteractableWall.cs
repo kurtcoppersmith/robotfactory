@@ -10,6 +10,13 @@ public class InteractableWall : MonoBehaviour
     public bool isNavigable = true;
 
     private bool hasPassedThrough = false;
+    public Material transMat;
+    public Material nonTransMat;
+
+    private void Awake()
+    {
+        GetComponent<MeshRenderer>().material = nonTransMat;
+    }
 
     private void OnDrawGizmosSelected()
     {
@@ -22,10 +29,21 @@ public class InteractableWall : MonoBehaviour
         if (isNav && PlayerManager.Instance.GetCurrentHolder() != null)
         {
             Physics.IgnoreCollision(wallCollider, PlayerManager.Instance.GetCurrentHolder().gameObject.GetComponent<Collider>(), true);
+            
         }
         else if (!isNav && PlayerManager.Instance.GetCurrentHolder() != null)
         {
             Physics.IgnoreCollision(wallCollider, PlayerManager.Instance.GetCurrentHolder().gameObject.GetComponent<Collider>(), false);
+            
+        }
+
+        if (isNav)
+        {
+            GetComponent<MeshRenderer>().material = transMat;
+        }
+        else
+        {
+            GetComponent<MeshRenderer>().material = nonTransMat;
         }
 
         isNavigable = isNav;
