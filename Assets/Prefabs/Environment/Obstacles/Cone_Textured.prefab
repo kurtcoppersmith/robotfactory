@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5396384360680034742}
   - component: {fileID: 7856311528614421884}
   - component: {fileID: 3236178180811358248}
+  - component: {fileID: 1672870427347411191}
   m_Layer: 13
   m_Name: Cone_Textured
   m_TagString: Untagged
@@ -94,3 +95,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8611604174255588538, guid: 97477cd1b2fa48d48854b97308737faa, type: 3}
+--- !u!65 &1672870427347411191
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8504983874524267689}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 73.37312, y: 83.658806, z: 66.31163}
+  m_Center: {x: 0, y: 40.688004, z: 0}
