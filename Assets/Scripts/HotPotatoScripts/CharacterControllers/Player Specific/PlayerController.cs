@@ -275,6 +275,11 @@ public class PlayerController : Character
 
     public override void OnPickup(GameObject pickup)
     {
+        if (!groundDetection.IsPlayerGrounded())
+        {
+            return;
+        }
+
         base.OnPickup(pickup);
 
         currentPickup = pickup;

@@ -190,6 +190,15 @@ public class AIController : Character
 
     public override void OnPickup(GameObject pickup)
     {
+        if (subState == SubState.Falling || !groundDetection.IsPlayerGrounded())
+        {
+            if (subState != SubState.Falling)
+            {
+                ChangeSubState(SubState.Chase);
+            }
+            return;
+        }
+
         base.OnPickup(pickup);
 
         currentPickup = pickup;
