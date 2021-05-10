@@ -44,14 +44,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ecb5378dbcd1345a3869ce8fbfe849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterSpawnLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  spawnGroups:
+  - characterSpawnLocations:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - characterSpawnLocations:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   AIWaypoints: []
+  levelInteractableWaypoints: []
+  interactableWalls: []
+  winnerPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   splitScreenManager: {fileID: 9078403149817311362}
   levelPickup: {fileID: 0}
+  levelCamera: {fileID: 0}
+  mainMenuButton: {fileID: 0}
+  currentSpawnGroup: -1
 --- !u!114 &9078403149817311362
 MonoBehaviour:
   m_ObjectHideFlags: 0

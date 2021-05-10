@@ -11,7 +11,7 @@ public class Killzone : MonoBehaviour
         if (currentChar != null)
         {
             currentChar.characterController.enabled = false;
-            currentChar.Spawn(LevelManager.Instance.characterSpawnLocations[currentChar.playerIndex].position, Quaternion.identity);
+            currentChar.Spawn(LevelManager.Instance.spawnGroups[LevelManager.Instance.currentSpawnGroup].characterSpawnLocations[currentChar.playerIndex].position, Quaternion.identity);
             currentChar.characterController.enabled = true;
         }
     }

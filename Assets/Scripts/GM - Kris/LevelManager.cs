@@ -9,10 +9,17 @@ public class EnvironmentInteract
     public Transform interactableWaypoint;
 }
 
+[System.Serializable]
+public class SpawnGroup
+{
+    public Transform[] characterSpawnLocations = new Transform[4];
+    public Transform pickupStartLocation;
+}
+
 public class LevelManager : SingletonMonoBehaviour<LevelManager>
 {
     [Header("Player Spawn Points")]
-    public Transform[] characterSpawnLocations = new Transform[4];
+    public List<SpawnGroup> spawnGroups = new List<SpawnGroup>();
 
     [Header("AI Waypoints")]
     public List<Transform> AIWaypoints = new List<Transform>();
@@ -31,6 +38,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     public GameObject levelPickup;
     public Camera levelCamera;
     public GameObject mainMenuButton;
+    [HideInInspector] public int currentSpawnGroup = -1;
 
     private bool levelEnded = false;
     private float lastHolderDivider = 0;
@@ -51,15 +59,22 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
             PlayerManager.Instance.characters[i].playerCam.rect = splitScreenManager.wrappedRects[currentPlayersAdded - 1].viewportRects[i];
         }
 
+        int randLocaleNumb = Random.Range(0, spawnGroups.Count);
+        currentSpawnGroup = randLocaleNumb;
+        levelPickup.transform.position = spawnGroups[randLocaleNumb].pickupStartLocation.position;
+
         for (int i = 0; i < PlayerManager.Instance.characters.Length; i++)
         {
-            Vector3 currentCharPos = characterSpawnLocations[i].position, tempPickupLocation = levelPickup.transform.position;
+            Vector3 currentCharPos = spawnGroups[randLocaleNumb].characterSpawnLocations[i].position, 
+                    tempPickupLocation = levelPickup.transform.position;
             currentCharPos.y = 0;
             tempPickupLocation.y = 0;
             Vector3 lookDir = tempPickupLocation - currentCharPos;
             Quaternion lookRotation = Quaternion.LookRotation(lookDir, Vector3.up);
 
-            PlayerManager.Instance.characters[i].Spawn(characterSpawnLocations[i].position, lookRotation);
+            PlayerManager.Instance.characters[i].characterController.enabled = false;
+            PlayerManager.Instance.characters[i].Spawn(spawnGroups[randLocaleNumb].characterSpawnLocations[i].position, lookRotation);
+            PlayerManager.Instance.characters[i].characterController.enabled = true;
             PlayerManager.Instance.characters[i].EnableObj();
         }
     }

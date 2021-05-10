@@ -86,6 +86,7 @@ public class AIController : Character
         nav = GetComponent<NavMeshAgent>();
         characterController = GetComponent<CharacterController>();
         characterController.enabled = false;
+        nav.enabled = false;
 
         normalSpeed = nav.speed;
 
