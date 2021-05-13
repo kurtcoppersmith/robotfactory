@@ -36,4 +36,9 @@ public class SoundEffectsManager : SingletonMonoBehaviour<SoundEffectsManager>
         soundEffectSource.spatialize = false;
         soundEffectSource.PlayOneShot(namedAudioClips[audioClipName]);
     }
+
+    public void Stop()
+    {
+        soundEffectSource.Stop();
+    }
 }

@@ -18,6 +18,7 @@ public class EnvironmentInteractable : MonoBehaviour
     [Header("Activation Variables")]
     public float colliderBoxBounds = 0;
     public bool shouldUseSameBoxColliderBounds = false;
+    public string activationSFX;
 
     [Header("Cooldown Variables")]
     public bool canActivate = true;

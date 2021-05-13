@@ -22,6 +22,7 @@ public class CraneInteractable : EnvironmentInteractable
         craneAnim.SetTrigger("use");
 
         base.InitiateInteractable(currentChar);
+        LevelManager.Instance.CheckPlayerAudioRange(this.gameObject.transform.position, activationSFX);
         List<int> characterPool = new List<int>();
 
         for (int i = 0; i < PlayerManager.Instance.characters.Length; i++)

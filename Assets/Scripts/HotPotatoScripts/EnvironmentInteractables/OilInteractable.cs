@@ -7,6 +7,7 @@ public class OilInteractable : EnvironmentInteractable
     [Header("Oil Interactable")]
     public List<OilSpill> oilSpills = new List<OilSpill>();
     public float oilTime = 0f;
+    public string oilSpillSFX;
 
     void Awake()
     {
@@ -27,11 +28,13 @@ public class OilInteractable : EnvironmentInteractable
         }
 
         base.InitiateInteractable(currentChar);
+        LevelManager.Instance.CheckPlayerAudioRange(this.gameObject.transform.position, activationSFX);
         
         for(int i = 0; i < oilSpills.Count; i++)
         {
             oilSpills[i].gameObject.SetActive(true);
             oilSpills[i].ActivateOilSpill();
+            LevelManager.Instance.CheckPlayerAudioRange(oilSpills[i].gameObject.transform.position, oilSpillSFX);
         }
 
         canActivate = false;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LavaPit : MonoBehaviour
 {
+    public string lavaSFX;
     private void OnTriggerEnter(Collider other)
     {
         Character currentChar = null;
@@ -15,6 +16,8 @@ public class LavaPit : MonoBehaviour
                 currentChar.currentPickup.GetComponent<Pickup>().Dropped();
                 currentChar.Drop();
             }
+
+            LevelManager.Instance.CheckPlayerAudioRange(other.gameObject.transform.position, lavaSFX);
         }
     }
 }

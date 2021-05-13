@@ -124,6 +124,8 @@ public class PlayerController : Character
 
         playerUI.punchAbilityImage.gameObject.SetActive(true);
         playerUI.punchAbilityImage.color = initialDashUIColor;
+
+        SoundEffectsManager.Instance.Play(attackSFX);
     }
 
     public override void OnHit(Vector3 attackerPosition)

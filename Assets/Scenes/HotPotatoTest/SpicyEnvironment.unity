@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -10611,7 +10611,7 @@ PrefabInstance:
     - target: {fileID: 4156940995529286560, guid: 5ff90705154a28344acfb5b45b831d33,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ff90705154a28344acfb5b45b831d33, type: 3}
@@ -15632,6 +15632,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1929859864}
     m_Modifications:
+    - target: {fileID: 1580694841546309856, guid: d5bfe34554ec51e4995bb2bdc6ab5326,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4966536487776605366, guid: d5bfe34554ec51e4995bb2bdc6ab5326,
         type: 3}
       propertyPath: m_Name
@@ -15691,6 +15696,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 13.996
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674820459168310952, guid: d5bfe34554ec51e4995bb2bdc6ab5326,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5bfe34554ec51e4995bb2bdc6ab5326, type: 3}
@@ -33384,7 +33394,7 @@ PrefabInstance:
     - target: {fileID: 4156940995529286560, guid: 5ff90705154a28344acfb5b45b831d33,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ff90705154a28344acfb5b45b831d33, type: 3}
@@ -33663,6 +33673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02dcd48c1d3c0146a00ca814538dace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lavaSFX: LavaBoil
 --- !u!1001 &1905891827
 PrefabInstance:
   m_ObjectHideFlags: 0

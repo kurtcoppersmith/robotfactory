@@ -134,13 +134,15 @@ MonoBehaviour:
   redMat: {fileID: 2100000, guid: 6b9ca202ac870a5418d0553ec327ca4d, type: 2}
   colliderBoxBounds: 3
   shouldUseSameBoxColliderBounds: 0
+  activationSFX: MetalWheel
   canActivate: 1
-  cooldownTimer: 9
+  cooldownTimer: 10.1
   maxCooldownTimer: 0
   oilSpills:
   - {fileID: 0}
   - {fileID: 0}
   oilTime: 9
+  oilSpillSFX: DrippingWater
 --- !u!1001 &523004568158174261
 PrefabInstance:
   m_ObjectHideFlags: 0

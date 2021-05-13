@@ -44,6 +44,7 @@ public class OilSpill : MonoBehaviour
                 oilCollider.enabled = false;
                 oilSpill.transform.DOScale(Vector3.zero, maxDeactiveTime);
                 shouldDeactivate = true;
+                SoundEffectsManager.Instance.Stop();
             }
         }
     }
@@ -66,6 +67,7 @@ public class OilSpill : MonoBehaviour
                 oilCollider.enabled = false;
                 oilSpill.transform.DOScale(Vector3.zero, maxDeactiveTime);
                 shouldDeactivate = true;
+                SoundEffectsManager.Instance.Stop();
             }
         }
     }

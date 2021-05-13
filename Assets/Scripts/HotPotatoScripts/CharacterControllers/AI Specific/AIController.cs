@@ -140,6 +140,7 @@ public class AIController : Character
         }
 
         ChangeSubState(SubState.Chase);
+        LevelManager.Instance.CheckPlayerAudioRange(this.gameObject.transform.position, attackSFX);
     }
 
     public override void OnHit(Vector3 attackerPosition)
@@ -790,6 +791,8 @@ public class AIController : Character
             dashingDestination = previousPickupLocation;
             isDashing = true;
             canDash = false;
+
+            LevelManager.Instance.CheckPlayerAudioRange(this.gameObject.transform.position, dashSFX);
         }
         else
         {
@@ -860,6 +863,7 @@ public class AIController : Character
             dashingDestination = finalDestination + tempCurrentPos;
             isDashing = true;
             canDash = false;
+            LevelManager.Instance.CheckPlayerAudioRange(this.gameObject.transform.position, dashSFX);
 
             SetDashRotation(dashingDestination);
         }
@@ -875,6 +879,7 @@ public class AIController : Character
                 dashingDestination = currentFleeWaypoint.position;
                 isDashing = true;
                 canDash = false;
+                LevelManager.Instance.CheckPlayerAudioRange(this.gameObject.transform.position, dashSFX);
 
                 SetDashRotation(dashingDestination);
             }
@@ -883,6 +888,7 @@ public class AIController : Character
                 dashingDestination = currentFleeWaypoint.position;
                 isDashing = true;
                 canDash = false;
+                LevelManager.Instance.CheckPlayerAudioRange(this.gameObject.transform.position, dashSFX);
 
                 SetDashRotation(dashingDestination);
             }

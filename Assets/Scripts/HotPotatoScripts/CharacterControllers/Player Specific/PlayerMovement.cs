@@ -69,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
                 playerController.canDash = false;
                 playerController.playerUI.dashAbilityImage.gameObject.SetActive(true);
                 playerController.playerUI.dashAbilityImage.fillAmount = 0;
+
+                SoundEffectsManager.Instance.Play(playerController.dashSFX);
             }
         }
     }

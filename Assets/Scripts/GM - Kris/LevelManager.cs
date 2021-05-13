@@ -136,6 +136,25 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         //return winner;
     }
 
+    public void CheckPlayerAudioRange(Vector3 position, string audioName)
+    {
+        Vector3 tempAudPos = position;
+        tempAudPos.y = 0;
+
+        int currentPlayersAdded = PlayerManager.Instance.GetCurrentPlayerCharacterNumb();
+        for (int i = 0; i < currentPlayersAdded; i++)
+        {
+            Vector3 tempChar = PlayerManager.Instance.characters[i].gameObject.transform.position;
+            tempChar.y = 0;
+
+            if (Vector3.Distance(tempAudPos, tempChar) < 8)
+            {
+                SoundEffectsManager.Instance.Play(audioName);
+                return;
+            }
+        }
+    }
+
     private void Update()
     {
         if (!GameManager.Instance.hasEnded)

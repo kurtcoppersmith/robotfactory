@@ -29,6 +29,8 @@ public class Character : MonoBehaviour
     public Transform pickupTransform;
     public PlayerGroundDetection groundDetection;
     public CharacterController characterController;
+    public string attackSFX;
+    public string dashSFX;
 
     [Header("Score Variables")]
     public float updateScoreTimer = 0;
