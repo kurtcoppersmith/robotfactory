@@ -147,7 +147,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
             Vector3 tempChar = PlayerManager.Instance.characters[i].gameObject.transform.position;
             tempChar.y = 0;
 
-            if (Vector3.Distance(tempAudPos, tempChar) < 8)
+            if (Vector3.Distance(tempAudPos, tempChar) < 11)
             {
                 SoundEffectsManager.Instance.Play(audioName);
                 return;
