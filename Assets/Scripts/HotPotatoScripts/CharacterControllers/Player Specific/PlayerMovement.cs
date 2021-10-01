@@ -59,6 +59,11 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        if (!LevelManager.Instance.isLevelActive)
+        {
+            return;
+        }
+
         if (playerController.groundDetection.IsPlayerGrounded())
         {
             if (canMove && playerController.canDash)
@@ -116,8 +121,11 @@ public class PlayerMovement : MonoBehaviour
             Vector3 tempVelocity = previousVelocity;
             tempVelocity.y = 0;
 
-            playerController.avatar.transform.rotation =
+            if (tempVelocity.magnitude > 0)
+            {
+                playerController.avatar.transform.rotation =
                 Quaternion.Slerp(playerController.avatar.transform.rotation, Quaternion.LookRotation(tempVelocity, Vector3.up), turnSpeed * Time.deltaTime);
+            }            
 
             playerController.currentVelocity = currentVelocity;
 

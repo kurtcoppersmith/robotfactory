@@ -49,12 +49,22 @@ public class PlayerController : Character
     {
         base.Move();
 
+        if (!LevelManager.Instance.isLevelActive)
+        {
+            return;
+        }
+
         playerMovement.Move();
     }
 
     public override void Holding()
     {
         base.Holding();
+
+        if (!LevelManager.Instance.isLevelActive)
+        {
+            return;
+        }
 
         updateScoreTimer -= Time.deltaTime;
 
@@ -69,6 +79,11 @@ public class PlayerController : Character
     void OnAttack(InputValue inputValue)
     {
         if (!isEnabled || currentPickup != null)
+        {
+            return;
+        }
+
+        if (!LevelManager.Instance.isLevelActive)
         {
             return;
         }

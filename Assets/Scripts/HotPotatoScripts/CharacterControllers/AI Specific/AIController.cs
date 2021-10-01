@@ -1355,6 +1355,11 @@ public class AIController : Character
 
     private void Update()
     {
+        if (!LevelManager.Instance.isLevelActive)
+        {
+            return;
+        }
+
         if (isEnabled)
         {
             if (GameManager.Instance.hasEnded)

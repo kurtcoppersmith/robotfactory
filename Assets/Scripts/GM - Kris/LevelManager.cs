@@ -18,6 +18,8 @@ public class SpawnGroup
 
 public class LevelManager : SingletonMonoBehaviour<LevelManager>
 {
+    public bool isLevelActive = false;
+
     [Header("Player Spawn Points")]
     public List<SpawnGroup> spawnGroups = new List<SpawnGroup>();
 
