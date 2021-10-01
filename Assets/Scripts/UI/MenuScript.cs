@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
     public UIManager levelInt;
-    public string tutorialLevel = "MainTutorial";
     public string factoryLevel = "FactoryLevel";
     public string lavaLevel = "LavaLevelOne";
     public string iceLevel = "IceLevelOne";
@@ -49,19 +48,6 @@ public class MenuScript : MonoBehaviour
         LevelSelectMenu();
     }
 
-    public void ExitTutorial()
-    {
-        Time.timeScale = 1.0f;
-        if (GameManager.Instance.GetGameData().hasCompletedTutorial)
-        {
-            LevelSelectMenu();
-        }
-        else
-        {
-            SceneManager.LoadScene(mainMenu);
-        }
-    }
-
     public void LevelSelectMenu()
     {
         Time.timeScale = 1.0f;
@@ -97,19 +83,16 @@ public class MenuScript : MonoBehaviour
         switch(levelInt.curLevel)
         {
             case 0:
-                curLevel = tutorialLevel;
-                break;
-            case 1:
                 curLevel = factoryLevel;
                 break;
-            case 2:
+            case 1:
                 curLevel = lavaLevel;
                 break;
-            case 3:
+            case 2:
                 curLevel = iceLevel;
                 break;
             default:
-                curLevel = tutorialLevel;
+                curLevel = factoryLevel;
                 break;
         }
     }

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5177,6 +5177,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 692285114}
+        m_MethodName: DestroyPlayerManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 305551491}
         m_MethodName: LoadNextScene
         m_Mode: 1
@@ -5237,7 +5248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b5b937d93047f4088a8bf979c78ac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: MainMenu
+  sceneName: LevelSelectWithCharacter
 --- !u!1001 &308714242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11574,6 +11585,18 @@ PrefabInstance:
       objectReference: {fileID: 1861316289}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11f00a5baee38d042aa8cdbed706af95, type: 3}
+--- !u!114 &692285114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7862187601374325207, guid: 11f00a5baee38d042aa8cdbed706af95,
+    type: 3}
+  m_PrefabInstance: {fileID: 692285113}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ecb5378dbcd1345a3869ce8fbfe849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &692294485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12812,7 +12835,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main Menu
+  m_text: Level Select
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

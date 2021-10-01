@@ -11,7 +11,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     public int offset = 500;
     public float smooth = 0.25f;
 
-    private int levelMax = 3;
+    public int levelMax = 3;
     public int curLevel = 0;
 
     public List<GameObject> levelList = new List<GameObject>();
@@ -19,6 +19,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     void Start()
     {
         curLevel = 0;
+        levelMax--;
         levelsPanel.DOAnchorPos(Vector2.zero, 0);
 
         DOTween.KillAll();

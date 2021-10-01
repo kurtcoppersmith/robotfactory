@@ -58,6 +58,29 @@ public class MultiplayerSelectionUI : MonoBehaviour
         }
     }
 
+    public void RemoveAllCurrent()
+    {
+        if (PlayerManager.Instance.GetCurrentPlayerCharacterNumb() == 0)
+        {
+            return;
+        }
+            
+        for (int i = 0; i < PlayerManager.Instance.GetCurrentPlayerCharacterNumb(); i++)
+        {
+            inputField.SetTextWithoutNotify("");
+            PlayerManager.Instance.characters[0].characterName = "";
+
+            displayTextMesh.text = basicText;
+            Destroy(PlayerManager.Instance.characters[0].gameObject);
+            PlayerManager.Instance.characters[0] = null;
+            currentCharacter = null;
+
+            inputField.gameObject.SetActive(false);
+
+            PlayerManager.Instance.ReshuffleCharacters(0);
+        }
+    }
+
     public void ChangeCharacterName()
     {
         PlayerManager.Instance.characters[selectionIndex].characterName = inputField.text;
@@ -77,5 +100,15 @@ public class MultiplayerSelectionUI : MonoBehaviour
         {
             PlayerManager.Instance.inputManager.DisableJoining();
         }
+    }
+
+    private void OnEnable()
+    {
+        EnableCharacterJoin();
+    }
+
+    private void OnDisable()
+    {
+        DisableCharacterJoin();
     }
 }

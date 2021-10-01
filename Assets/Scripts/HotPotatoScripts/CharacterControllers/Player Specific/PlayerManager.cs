@@ -30,6 +30,11 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         DontDestroyOnLoad(this);
     }
 
+    public void Start()
+    {
+        inputManager.DisableJoining();
+    }
+
     public int GetCurrentPlayerCharacterNumb()
     {
         return currentPlayerCharNumb;

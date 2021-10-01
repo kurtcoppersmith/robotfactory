@@ -174,10 +174,14 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         }
     }
 
+    public void DestroyPlayerManager()
+    {
+        PlayerManager.Instance.SelfDestruct();
+    }
+
     private void OnDestroy()
     {
         GameManager.Instance.setTime(GameManager.Instance.maxTime);
         GameManager.Instance.hasEnded = false;
-        PlayerManager.Instance.SelfDestruct();
     }
 }
