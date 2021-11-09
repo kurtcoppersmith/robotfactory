@@ -159,7 +159,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
 
     private void Update()
     {
-        if (!GameManager.Instance.hasEnded)
+        if (!GameManager.Instance.hasEnded && isLevelActive)
         {
             GameManager.Instance.subtractTime();
         }

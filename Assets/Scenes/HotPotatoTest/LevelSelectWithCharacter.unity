@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1046,8 +1046,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelInt: {fileID: 1945489661}
   factoryLevel: SpicyEnvironment
-  lavaLevel: LavaLevelOne
-  iceLevel: IceLevelOne
+  lavaLevel: SpicyLava
+  iceLevel: SpicyIce
   mainMenu: MainMenu
   levelSelect: LevelSelectWithCharacter
 --- !u!114 &1017698253

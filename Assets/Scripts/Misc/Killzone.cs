@@ -10,6 +10,12 @@ public class Killzone : MonoBehaviour
         currentChar = other.GetComponent<Character>();
         if (currentChar != null)
         {
+            if (currentChar.currentPickup != null)
+            {
+                currentChar.Drop();
+                LevelManager.Instance.levelPickup.GetComponent<Pickup>().Dropped();
+            }
+
             currentChar.characterController.enabled = false;
             currentChar.Spawn(LevelManager.Instance.spawnGroups[LevelManager.Instance.currentSpawnGroup].characterSpawnLocations[currentChar.playerIndex].position, Quaternion.identity);
             currentChar.characterController.enabled = true;

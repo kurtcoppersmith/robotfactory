@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8503228939198292810}
   - component: {fileID: 5901262399736682368}
   - component: {fileID: 7698810532286758697}
-  - component: {fileID: 2158998080575299424}
   m_Layer: 0
   m_Name: FloatingIcePlatform
   m_TagString: IceTrap
@@ -95,17 +94,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1456341787451805714, guid: 700d571cd0b37c4499e538e586c6b12f, type: 3}
---- !u!114 &2158998080575299424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396863295540115029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c522b78ad5254d43a4229fbef8132e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 2
-  localMovement: {x: 0, y: 0, z: -5}
