@@ -85,7 +85,6 @@ GameObject:
   - component: {fileID: 2935362397152529839}
   - component: {fileID: 2239233602923512330}
   - component: {fileID: 4104939048816031424}
-  - component: {fileID: 5463377589858546380}
   - component: {fileID: 7623266747795510571}
   - component: {fileID: 6201129197871510862}
   m_Layer: 0
@@ -104,7 +103,7 @@ Transform:
   m_GameObject: {fileID: 2591628212498896661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -22.41, y: 0.98, z: -3.87}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.009999999, y: 0.01, z: 0.009999999}
   m_Children:
   - {fileID: 1899917693277122346}
   - {fileID: 4769143350157295166}
@@ -161,20 +160,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &5463377589858546380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2591628212498896661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d669bae449940c4c91fbfbe282cc40d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conveyorEnd: {fileID: 1599482732420972154}
-  beginningOfConveyor: {fileID: 4769143350157295166}
 --- !u!65 &7623266747795510571
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -198,7 +183,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 69.653, y: 20.601002, z: 194.274}
+  m_Extents: {x: 69.653, y: 81.75, z: 194.274}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1

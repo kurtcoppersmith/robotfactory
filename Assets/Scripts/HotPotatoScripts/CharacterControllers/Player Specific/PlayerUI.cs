@@ -137,6 +137,11 @@ public class PlayerUI : MonoBehaviour
 
     void UpdatePersonalTimer()
     {
+        if (!LevelManager.Instance.isLevelActive)
+        {
+            return;
+        }
+
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;

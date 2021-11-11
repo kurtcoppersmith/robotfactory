@@ -160,6 +160,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     
     public void subtractTime()
     {
+        Debug.Log("Yuh");
         if (!hasEnded)
         {
             if (timeRemaining > 0)
