@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7639681257141906089}
   - component: {fileID: -9156366041577940387}
   - component: {fileID: 1729352505038182993}
+  - component: {fileID: 8460581389951797289}
   m_Layer: 13
   m_Name: Crate
   m_TagString: Untagged
@@ -107,3 +108,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b58171f42ec634dbffdb1395e2481a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &8460581389951797289
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144027446799797116}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 45.552002, y: 55.545, z: 45.552002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.33600003, y: 45.552002, z: -2.6980002}
+  m_TimeToStationary: 0.5

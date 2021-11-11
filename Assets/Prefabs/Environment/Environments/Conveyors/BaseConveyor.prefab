@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 5750819986976672183}
   - component: {fileID: 7506360415080086909}
   - component: {fileID: 4113783042845171350}
+  - component: {fileID: 5368129322472775728}
   m_Layer: 13
   m_Name: BaseConveyor
   m_TagString: Untagged
@@ -124,6 +125,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 139.30632, y: 51.063545, z: 419.99997}
   m_Center: {x: -0.0000059604645, y: 4.9307375, z: -0.000023841858}
+--- !u!208 &5368129322472775728
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8298743741167525032}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 94.17, y: 149.25, z: 194.274}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -68.3, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &4411157937152269276
 PrefabInstance:
   m_ObjectHideFlags: 0

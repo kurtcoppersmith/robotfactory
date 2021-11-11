@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 999345959438765270}
   - component: {fileID: 7243054147136225054}
   - component: {fileID: 8970753594590032407}
+  - component: {fileID: 5511716226814412079}
   m_Layer: 13
   m_Name: MechanicalArm
   m_TagString: Untagged
@@ -88,6 +89,22 @@ MonoBehaviour:
   cooldownTimer: 5
   maxCooldownTimer: 0
   craneAnim: {fileID: 2691353339892296750}
+--- !u!208 &5511716226814412079
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8036830384882488621}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1, y: 0.5, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -1.48, z: -1.15}
+  m_TimeToStationary: 0.5
 --- !u!1001 &6111285310961344584
 PrefabInstance:
   m_ObjectHideFlags: 0
