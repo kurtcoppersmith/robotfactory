@@ -1484,13 +1484,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426587149}
-  m_LocalRotation: {x: 0.34618863, y: 0.5198367, z: -0.24240384, w: 0.742404}
+  m_LocalRotation: {x: 0.41981745, y: -0.10416849, z: 0.04857456, w: 0.90030146}
   m_LocalPosition: {x: -13.1669655, y: -25.927248, z: -24.790098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: 70, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: -13.2, z: 0}
 --- !u!1001 &430182316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2522,6 +2522,21 @@ PrefabInstance:
       propertyPath: levelInteractableWaypoints.Array.data[1].currentInteractable
       value: 
       objectReference: {fileID: 241421030}
+    - target: {fileID: 418014213645556648, guid: a148836b8203b9c4fb61b1899714c847,
+        type: 3}
+      propertyPath: levelInteractableWaypoints.Array.data[0].interactableWaypoint
+      value: 
+      objectReference: {fileID: 8417246}
+    - target: {fileID: 418014213645556648, guid: a148836b8203b9c4fb61b1899714c847,
+        type: 3}
+      propertyPath: levelInteractableWaypoints.Array.data[1].interactableWaypoint
+      value: 
+      objectReference: {fileID: 36648239}
+    - target: {fileID: 1532993257069385922, guid: a148836b8203b9c4fb61b1899714c847,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b8c2860cefcc6f4e81eda5d7dd2fe05, type: 3}
     - target: {fileID: 7552831526258812196, guid: a148836b8203b9c4fb61b1899714c847,
         type: 3}
       propertyPath: m_Name

@@ -81,6 +81,14 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         }
     }
 
+    public void StartLevel()
+    {
+        if (!isLevelActive)
+        {
+            isLevelActive = true;
+        }
+    }
+
     void ApplyLastHolderBonus()
     {
         int currentMax = PlayerManager.Instance.characters[0].characterScore;
