@@ -39,6 +39,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     public SplitScreenManager splitScreenManager;
     public GameObject levelPickup;
     public Camera levelCamera;
+    public GameObject winnerBlocker;
     public GameObject mainMenuButton;
     [HideInInspector] public int currentSpawnGroup = -1;
 
@@ -78,6 +79,11 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
             PlayerManager.Instance.characters[i].Spawn(spawnGroups[randLocaleNumb].characterSpawnLocations[i].position, lookRotation);
             PlayerManager.Instance.characters[i].characterController.enabled = true;
             PlayerManager.Instance.characters[i].EnableObj();
+        }
+
+        if (PlayerManager.Instance.GetCurrentPlayerCharacterNumb() > 2)
+        {
+            winnerBlocker.SetActive(true);
         }
     }
 
@@ -181,6 +187,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
                 ApplyLastHolderBonus();
                 FindWinner();
 
+                winnerBlocker.SetActive(false);
                 mainMenuButton.SetActive(true);
                 levelEnded = true;
             }

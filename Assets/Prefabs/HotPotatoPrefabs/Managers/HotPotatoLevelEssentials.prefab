@@ -301,15 +301,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10591a66d7390e143817d26955e2d6c7, type: 3}
---- !u!4 &380423821164987712 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7896645448791486203, guid: 10591a66d7390e143817d26955e2d6c7,
-    type: 3}
-  m_PrefabInstance: {fileID: 7552831526221196219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &380423821628814473 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 7896645450336378674, guid: 10591a66d7390e143817d26955e2d6c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7552831526221196219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5906985930386563069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4118779532270564422, guid: 10591a66d7390e143817d26955e2d6c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7552831526221196219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &380423821164987712 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7896645448791486203, guid: 10591a66d7390e143817d26955e2d6c7,
     type: 3}
   m_PrefabInstance: {fileID: 7552831526221196219}
   m_PrefabAsset: {fileID: 0}
@@ -575,6 +581,11 @@ PrefabInstance:
       propertyPath: winnerPositions.Array.data[3]
       value: 
       objectReference: {fileID: 914643633192509174}
+    - target: {fileID: 7862187601374325207, guid: 11f00a5baee38d042aa8cdbed706af95,
+        type: 3}
+      propertyPath: winnerBlocker
+      value: 
+      objectReference: {fileID: 5906985930386563069}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11f00a5baee38d042aa8cdbed706af95, type: 3}
 --- !u!4 &8330324021065096686 stripped
