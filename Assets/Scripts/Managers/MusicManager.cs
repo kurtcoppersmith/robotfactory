@@ -37,7 +37,12 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
             fadeTempMusic = basicAudioSource.clip;
             DontDestroyOnLoad(this.gameObject);
 
-            SetAudioLevels();
+            //SetAudioLevels();
+
+            if (basicAudioSource != null)
+            {
+                basicAudioSource.Play();
+            }
         }
     }
 
