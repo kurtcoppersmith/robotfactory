@@ -98,6 +98,11 @@ public class PlayerController : Character
         }
     }
 
+    void OnPauseToggle(InputValue inputValue)
+    {
+        PauseUI.Instance.TogglePause();
+    }
+
     void UpdateAttack()
     {
         if (!canAttack)

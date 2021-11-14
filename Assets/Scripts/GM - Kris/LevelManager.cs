@@ -184,6 +184,8 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         {
             if (!levelEnded)
             {
+                PauseUI.Instance.CanPause(false);
+
                 ApplyLastHolderBonus();
                 FindWinner();
 

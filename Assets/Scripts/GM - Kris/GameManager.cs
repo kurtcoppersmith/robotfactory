@@ -94,27 +94,27 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             DontDestroyOnLoad(this.gameObject);
         }
 
-        gameData = SaveSystem.LoadData<GameData>(saveFile);
+        //gameData = SaveSystem.LoadData<GameData>(saveFile);
 
-        if (gameData == null)
-        {
-            ResetGameData();
-        }
+        //if (gameData == null)
+        //{
+        //    ResetGameData();
+        //}
     }
 
     public void LoadGameData()
     {
-        gameData = SaveSystem.LoadData<GameData>(saveFile);
+        //gameData = SaveSystem.LoadData<GameData>(saveFile);
 
-        if (gameData == null)
-        {
-            ResetGameData();
-        }
+        //if (gameData == null)
+        //{
+        //    ResetGameData();
+        //}
     }
 
     public void SaveGameData()
     {
-        SaveSystem.SaveData<GameData>(gameData, saveFile);
+        //SaveSystem.SaveData<GameData>(gameData, saveFile);
     }
 
     public void ResetGameData()
@@ -148,7 +148,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         gameData = tempGameData;
 
-        SaveGameData();
+        //SaveGameData();
     }
 
     public GameData GetGameData()
