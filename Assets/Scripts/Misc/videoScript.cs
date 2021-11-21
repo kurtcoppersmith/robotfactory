@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class videoScript : MonoBehaviour
 {
     int nextScene = 0;
+    public string Level;
     public Animator anim;
 
     void Start()
@@ -18,6 +19,6 @@ public class videoScript : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         nextScene++;
-        SceneManager.LoadScene(nextScene);
+        SceneManager.LoadScene(Level);
     }
 }
