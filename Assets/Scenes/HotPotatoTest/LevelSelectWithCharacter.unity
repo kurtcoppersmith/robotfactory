@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1527,6 +1527,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1017698251}
     m_Modifications:
+    - target: {fileID: 4483610319376978485, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483610319376978485, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483610319376978485, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483610319376978485, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4483610319376978486, guid: feebc34d5abb7ba48bf49e072f62043f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -1537,11 +1557,56 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1017698253}
+    - target: {fileID: 4483610319450124823, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483610319450124823, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483610319450124823, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483610319450124823, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483610320231364428, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483610320231364428, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483610320231364428, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483610320231364428, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4483610320231364431, guid: feebc34d5abb7ba48bf49e072f62043f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1017698253}
+    - target: {fileID: 8156612464095449648, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8156612464106426364, guid: feebc34d5abb7ba48bf49e072f62043f,
         type: 3}
       propertyPath: m_Name
@@ -1777,6 +1842,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1017698253}
+    - target: {fileID: 8156612465359266507, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156612465629920724, guid: feebc34d5abb7ba48bf49e072f62043f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9211121319232488180, guid: feebc34d5abb7ba48bf49e072f62043f,
         type: 3}
       propertyPath: m_AnchorMin.y
